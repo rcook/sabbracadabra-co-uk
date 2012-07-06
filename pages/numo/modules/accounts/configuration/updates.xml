@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+  <update>
+    <date>2011-06-21 15:15:00</date>
+	<priority>low</priority>
+	<decsription>Fixed problem with such and such</decsription>
+    <filename>numo/modules/accounts/menu.htm</filename>
+  </update>
+</updates>

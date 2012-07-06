@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<gallery>
+<!-- time, in milliseconds, to display each picture - 5000 = 5 seconds -->
+<delay>20000</delay>
+	
+	<!-- target can be: _blank, _top, _self, or _parent - when testing on your local machine, links will ALWAYS open in a new window, regardless of the setting -->
+	
+    <images>
+    
+    
+		<pic>
+			<image>Site/themed_images/secondary_rotator1.jpg</image>
+			<link>index.htm</link>
+			<target>_self</target>
+			<title>Caption</title>
+			<description>Short description goes here.</description>
+			<frame>on</frame>
+		</pic>
+
+		<pic>
+			<image>Site/themed_images/secondary_rotator2.jpg</image>
+			<link>index.htm</link>
+			<target>_self</target>
+			<title>Caption</title>
+			<description>Short description goes here.</description>
+			<frame>on</frame>
+		</pic>
+
+		<pic>
+			<image>Site/themed_images/secondary_rotator3.jpg</image>
+			<link>index.htm</link>
+			<target>_self</target>
+			<title>Caption</title>
+			<description>Short description goes here.</description>
+			<frame>on</frame>
+		</pic>
+			
+	
+	</images>
+	
+</gallery>

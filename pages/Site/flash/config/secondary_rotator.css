@@ -1,0 +1,22 @@
+﻿/* button title text */
+h1 {
+	font-weight: normal;
+	color:#470602;
+	font-family: "Trebuchet MS", Arial, Verdana, Tahoma;
+	text-align: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+/* button short description text */
+p {
+	font-weight: normal;
+	color: #470602;
+	font-family: "Trebuchet MS", Arial, Verdana, Tahoma;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;	
+}
+
+

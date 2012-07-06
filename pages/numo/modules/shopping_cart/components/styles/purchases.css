@@ -1,0 +1,5 @@
+.numo_shopping_cart_product_order_contents {border: 1px solid #999; border-collapse: collapse; font-size: 12px; width: 552px;}
+.numo_shopping_cart_product_order_contents td,.numo_shopping_cart_product_order_contents th {border: 1px solid #999; vertical-align: top; padding: 5px; text-align: left;}
+.numo_shopping_cart_product_order_qty_column {text-align: center; width: 30px;}
+.numo_shopping_cart_product_order_cost_column {text-align: right;  width: 100px;}
+.numo_shopping_cart_product_order_product_item_name {text-decoration: underline; font-size: 12px;}

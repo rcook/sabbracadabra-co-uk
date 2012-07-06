@@ -1,0 +1,1 @@
+INSERT INTO `modules` (`site_id`, `name`) VALUES (1,'settings')

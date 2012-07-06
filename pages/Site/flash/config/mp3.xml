@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mp3player>
+    <!-- set displayPlayer can have the following settings: off on -->
+    <displayPlayer>on</displayPlayer>
+    
+    <mp3s>
+    
+    
+	    <mp3 id="1">
+			<title>MP3 1 Song Name</title>
+			<artist>Artist / album name</artist>
+		    <url>mp3/mp3-0.mp3</url>
+	    </mp3>
+	
+	    <mp3 id="2">
+			<title>MP3 2 Song Name</title>
+			<artist>Artist / album name</artist>
+		    <url>mp3/mp3-1.mp3</url>
+	    </mp3>
+	
+	    <mp3 id="3">
+			<title>MP3 3 Song Name</title>
+			<artist>Artist / album name</artist>
+		    <url>mp3/mp3-2.mp3</url>
+	    </mp3>
+	    
+	    
+	</mp3s>
+</mp3player>

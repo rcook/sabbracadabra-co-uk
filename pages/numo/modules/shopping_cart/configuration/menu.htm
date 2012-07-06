@@ -1,0 +1,33 @@
+<?php if ($access->hasAccess("shopping_cart", "manage-products")) { ?>
+<li class='menu-separator'><a href="module/shopping_cart/manage-products/">Shopping Cart</a>
+	<ul>
+	<li><a href="module/shopping_cart/manage-products/">Products</a>
+		<ul>
+		<li><a href="module/shopping_cart/manage-products/">Manage</a></li>
+		<?php if ($access->hasAccess("shopping_cart", "create-product")) { ?>
+		<li><a href="module/shopping_cart/create-product/">Create</a></li>
+        <?php } ?>
+		</ul>
+	</li>
+    <?php if ($access->hasAccess("shopping_cart", "product-categories")) { ?>
+	<li><a href="module/shopping_cart/product-categories/">Categories</a></li>
+    <?php } ?>
+	<?php if ($access->hasAccess("shopping_cart", "components")) { ?>    
+	<li><a href="module/shopping_cart/components/">Components</a></li>
+    <?php } ?>
+	<?php if ($access->hasAccess("shopping_cart", "product-settings")) { ?>    
+	<li><a href="module/shopping_cart/product-settings/">Settings</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("shopping_cart", "daily-purchases")) { ?>
+    <li><a href="module/shopping_cart/daily-purchases/">Shopping Cart Orders</a>
+        <ul>    
+        <li><a href="module/shopping_cart/daily-purchases/">Daily Sales</a>
+        <?php if ($access->hasAccess("shopping_cart", "customer-orders")) { ?>
+        <li><a href="module/shopping_cart/customer-orders/">Order Lookup</a>
+        <?php } ?>
+        </ul>
+    </li>
+    <?php } ?>    
+	</ul>
+</li>
+<?php } ?>

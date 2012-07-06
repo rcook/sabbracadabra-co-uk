@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^.*/check.php
+RewriteCond %{REQUEST_URI} !^.*/numo/
+RewriteCond %{REQUEST_URI} !^.*/numo$
+RewriteCond %{REQUEST_URI} !^.*/dynamo/
+RewriteCond %{REQUEST_URI} !^.*/dynamo$
+RewriteCond %{REQUEST_URI} !^.*/Site/
+RewriteRule (.*) check.php?where=$1&%{QUERY_STRING} [L]

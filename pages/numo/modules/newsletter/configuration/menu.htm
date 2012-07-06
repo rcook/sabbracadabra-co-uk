@@ -1,0 +1,45 @@
+<?php if ($access->hasAccess("newsletter", "manage")) { ?>
+<li class='menu-separator'><a href="module/newsletter/manage/">Newsletter</a>
+	<ul>
+	<?php if ($access->hasAccess("newsletter", "manage")) { ?>
+    <li><a href="module/newsletter/manage/">Newsletter Messages</a>
+	<?php if ($access->hasAccess("newsletter", "compose-new")) { ?>	
+        <ul>
+		<li><a href="module/newsletter/manage/">Manage</a></li>
+		<li><a href="module/newsletter/compose-new/">Compose New</a></li>
+		</ul>
+	<?php } ?>
+    </li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "manage-list")) { ?>
+	<li><a href="module/newsletter/manage-list/">Subscription Lists</a>
+      <?php if ($access->hasAccess("newsletter", "create-list")) { ?>	
+        <ul>
+		<li><a href="module/newsletter/manage-list/">Manage</a></li>
+		<li><a href="module/newsletter/create-list/">Create</a></li>
+		</ul>
+      <?php } ?>
+	</li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "manage-subscribers")) { ?>	
+	<li><a href="module/newsletter/manage-subscribers/">Subscribers</a>
+		<ul>
+		<li><a href="module/newsletter/manage-subscribers/">Manage</a></li>
+        <?php if ($access->hasAccess("newsletter", "create-subscriber")) { ?>	
+		<li><a href="module/newsletter/create-subscriber/">Create</a></li>
+        <?php } ?>
+        <?php if ($access->hasAccess("newsletter", "import")) { ?>	
+		<li><a href="module/newsletter/import/">Import</a></li>
+        <?php } ?>
+		</ul>
+	</li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "components")) { ?>
+	<li><a href="module/newsletter/components/">Components</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "configure")) { ?>
+	<li><a href="module/newsletter/configure/">Configure</a></li>
+    <?php } ?>
+	</ul>
+</li>
+<?php } ?>

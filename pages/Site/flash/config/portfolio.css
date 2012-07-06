@@ -1,0 +1,44 @@
+﻿
+/* button title text */
+h1 {
+	font-weight: normal;
+	color:#000000;
+	font-family:"Trebuchet MS", Tahoma, Arial, Verdana ;
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+	font-variant:small-caps;
+	
+}
+
+
+/* button short description text */
+p {
+	font-weight: normal;
+	color:#FBFBEB;
+	font-family: Arial, Verdana, Tahoma, Trebuchet MS;
+	text-align: center;
+	font-size: 9px;
+}
+
+
+/* image long description text */
+.longDescription {
+	font-weight: normal;
+	color:#ffffff;
+	font-family: Arial, Verdana, Tahoma, Trebuchet MS;
+	text-align: center;
+	font-size: 11px;
+	font-style:normal;
+	font-weight: bold;
+}
+
+
+/* image click me text */
+.link {
+  color: #1A3E55;
+  text-decoration: underline;
+  margin-top: 10px;
+  text-align: right;
+  font-weight: bold;	
+}

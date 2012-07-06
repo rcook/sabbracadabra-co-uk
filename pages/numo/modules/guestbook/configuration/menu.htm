@@ -1,0 +1,17 @@
+<?php if ($access->hasAccess("guestbook", "responses")) { ?>
+<li class='menu-separator'>
+	<a href="module/guestbook/responses/">Guestbook</a>
+	<ul>
+		<li><a href="module/guestbook/responses/">Responses</a></li>
+        <?php if ($access->hasAccess("guestbook", "components")) { ?>
+		<li><a href="module/guestbook/components/">Component</a></li>
+        <?php } ?>
+        <?php if ($access->hasAccess("guestbook", "manage")) { ?>
+		<li><a href="module/guestbook/manage/">Manage</a></li>
+        <?php } ?>
+        <?php if ($access->hasAccess("guestbook", "configure-layout")) { ?>
+		<li><a href="module/guestbook/configure-layout/">Layout</a></li>
+        <?php } ?>
+	</ul>
+</li>
+<?php } ?>

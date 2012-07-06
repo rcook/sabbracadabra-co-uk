@@ -1,0 +1,31 @@
+<gallery base = "">
+
+<!-- EDIT Gallery Name -->
+<sitename>Second Gallery</sitename>
+
+<!-- OPTIONAL SEO / RSS info -->
+<photographer></photographer>
+<contactinfo></contactinfo>
+<email></email><security>
+
+<!-- do not alter the following line -->
+<![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
+
+<!-- EDIT links to photos, [photo width and height-{for animation}] -->
+<photo path = "pic1.jpg" width = "375" height = "500"></photo>
+<photo path = "image1.jpg" width = "375" height = "500"></photo>
+<photo path = "image2.jpg" width = "500" height = "375"></photo>
+<photo path = "image3.jpg" width = "375" height = "500"></photo>
+<photo path = "image4.jpg" width = "500" height = "375"></photo>
+<photo path = "image5.jpg" width = "375" height = "500"></photo>
+<photo path = "image6.jpg" width = "500" height = "375"></photo>
+<photo path = "pic2.jpg" width = "500" height = "375"></photo>
+<photo path = "image7.jpg" width = "375" height = "500"></photo>
+<photo path = "image8.jpg" width = "500" height = "375"></photo>
+<photo path = "image9.jpg" width = "375" height = "500"></photo>
+<photo path = "image10.jpg" width = "500" height = "375"></photo>
+<photo path = "image11.jpg" width = "375" height = "500"></photo>
+<photo path = "image12.jpg" width = "500" height = "375"></photo>
+
+<!-- do not edit past this line -->
+</photos></gallery>

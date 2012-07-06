@@ -1,0 +1,15 @@
+<?php if ($access->hasAccess("settings", "general")) { ?>
+<li class='menu-separator'><a href="module/settings/general/">Settings</a>
+    <?php if ($access->hasAccess("settings", "manage-syntax") && ($access->hasAccess("settings", "manage-ssl-security") || $access->hasAccess("settings", "update"))) { ?>
+	<ul>
+	<li><a href="module/settings/manage-syntax/">Syntax Configuration</a></li>
+	<?php if ($access->hasAccess("settings", "manage-ssl-certificate")) { ?>
+    <li><a href="module/settings/manage-ssl-security/">SSL Security</a></li>
+	<?php } ?>
+	<?php if ($access->hasAccess("settings", "update")) { ?>
+    <li><a href="module/settings/update/">System Updates</a></li>
+    <?php } ?>
+	</ul>
+    <?php } ?>
+</li>
+<?php } ?>

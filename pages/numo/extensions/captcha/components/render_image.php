@@ -1,0 +1,1 @@
+<img src="<?=NUMO_FOLDER_PATH?>extensions/captcha/components/captcha_image.php" alt="" title="" />

@@ -1,0 +1,33 @@
+.product_thumbnail {width: 80px; border: 0px;}
+.product_thumbnail_large {width: 160px; border: 1px solid #efefef;}
+table.view_cart_contents {border: 1px solid #ddd; border-collapse: collapse;}
+table.view_cart_contents td,table.view_cart_contents th {vertical-align: top; padding: 0px 10px; border: 1px solid #ddd; padding-top: 5px;}
+table.view_cart_contents th {text-align: left; background: #ddd; color: #333333;}
+table.view_cart_contents td.view_cart_contents_item_info h4 {font-weight: bold; font-size: 16px; padding: 0px; margin: 0px;}
+table.view_cart_contents td.view_cart_contents_item_info p {font-size: 12px; padding: 0px; margin: 0px; font-style: italic;}
+table.view_cart_contents td.view_cart_contents_item_quantity {width: 50px; text-align: center;}
+table.view_cart_contents .view_cart_contents_item_tax {width: 50px; text-align: center;}
+table.view_cart_contents td.view_cart_contents_item_quantity input {width: 30px;}
+table.view_cart_contents td.view_cart_contents_item_quantity input.numo_submit_button {width: auto; font-size: 11px; padding: 0px; margin: 0px;}
+table.view_cart_contents td.view_cart_contents_item_cost,table.view_cart_contents th.view_cart_contents_item_cost {width: 80px; text-align: right;}
+table.product_catalog_display { border-collapse: collapse; }
+table.product_catalog_display td {border-bottom: 1px solid #ddd;padding: 5px; vertical-align: top;}
+table.product_catalog_display td a {font-weight: bold;}
+.shopping_cart_product_not_in_stock {font-weight: bold; color: #900;}
+.product_catalog_display_price_box { font-family: Arial, sans-serif; font-size: 15px; color: #fff; font-weight: bold; border: 2px solid #AAA; background: #333; padding: 10px; margin: 0px; display: inline-block; -moz-border-radius: 10px; -webkit-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px;}
+input.product_catalog_display_price_box {overflow:visible;}
+.product_catalog_display_price_box:hover { border: 2px solid #000; cursor: pointer; }
+.numo_product_purchase_options { border: 1px solid #cccccc; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.numo_product_purchase_options input.attr { width: 97%; }
+p.product_sku {
+	font-size: 8pt;
+	color: #333333;
+	font-family: Arial, Tahoma;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 3px;
+}
+table.product_catalog_display td.numo_catalog_back_next { border: 0px;}
+table.product_catalog_display td.numo_catalog_back_next a { font-weight: normal; }
+div.product_catalog_display_section_break { border-top: 1px solid #333333; }
+h3.numo_shopping_cart_product_name { font-size: 14pt;  margin-top: 0px; margin-bottom: 0px;}

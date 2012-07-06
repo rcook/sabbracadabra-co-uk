@@ -1,0 +1,8 @@
+#numo_account_registration_box_component {border: 0px solid #666;}
+#numo_account_registration_box_component form { margin: 0px; padding: 0px}
+#numo_account_registration_box_component form ul {list-style-type: none; margin: 0px; padding: 0px}
+#numo_account_registration_box_component form ul li {margin: 0px; padding: 0px; font-size: 13px;}
+#numo_account_registration_box_component form ul li label { font-weight: bold; font-size: 13px; width: 120px; display: inline-block; }
+#numo_account_registration_box_component p {color: #060; font-size: 12px; text-align: center; font-weight: bold; padding: 0px 0px 4px 0px; margin: 0px;}
+#numo_account_registration_box_component p.error {color: #f00;}
+#numo_account_registration_box_component input.numo_text_input_short { vertical-align: top; width: 50px;  padding: 5px; margin-left: 5px;}

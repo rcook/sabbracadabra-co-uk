@@ -1,0 +1,78 @@
+<menu>
+ 
+    <buttons>
+ 
+        <button>
+            <label>Home</label>
+            <linkTo>../../index.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>Contact</label>
+            <linkTo>../../contact.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>Catalog</label>
+            <linkTo>../../catalog.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>FAQs</label>
+            <linkTo>../../faqs.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>Photo's</label>
+            <linkTo>../../photo_gallery.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>Privacy</label>
+            <linkTo>../../privacy.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>Services</label>
+            <linkTo>../../services.htm</linkTo>
+        </button>
+        
+        <button>
+            <label>Sitemap</label>
+            <linkTo>../../sitemap.htm</linkTo>
+        </button>
+
+<!-- DO NOT EDIT BELOW THIS LINE -->
+<!-- NOT REMOVE THE CLOSING CONTAINER-->        
+        <button>
+            <label>^^^^^^^^^^</label>
+            <linkTo>**DO NOT EDIT** ** LEAVE AS THE LAST BUTTON**</linkTo>
+        </button>
+<!-- NOT REMOVE THE CLOSING CONTAINER-->        
+<!-- DO NOT EDIT THE ABOVE CONTAINER -->
+
+    </buttons>
+ 
+</menu>
+
+<!-- ** TO CREATE A NEW BUTTON, COPY THE FOLLOWING CODE, PASTE INTO THE MENU ABOVE AND EDIT THE 
+
+<label>Button Name</label> 
+
+and the 
+
+<linkTo>../../page_name.htm</linkTo>
+
+----copy below only----
+
+
+        <button>
+            <label>Button Name</label>
+            <linkTo>../../page_name.htm</linkTo>
+        </button>
+        
+        
+----copy above only----
+        
+        
+-->        

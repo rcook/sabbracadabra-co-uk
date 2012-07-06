@@ -1,0 +1,27 @@
+<?php if ($access->hasAccess("accounts", "account-manage")) { ?>
+<li class='menu-separator'><a href="module/accounts/account-manage/">Accounts</a>
+<?php if ($access->hasAccess("accounts", "account-pending") || $access->hasAccess("accounts", "account-create")) { ?>
+	<ul>
+    <?php if ($access->hasAccess("accounts", "account-manage")) { ?>
+	<li><a href="module/accounts/account-manage/">Manage Accounts</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("accounts", "account-pending")) { ?>
+	<li><a href="module/accounts/account-pending/">Pending Accounts</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("accounts", "account-create")) { ?>
+	<li><a href="module/accounts/account-create/">Create Account</a></li>
+    <?php } ?>
+	</ul>
+<?php } ?>
+</li>
+<?php } ?>
+<?php if ($access->hasAccess("accounts", "group-manage")) { ?>
+<li><a href="module/accounts/group-manage/">Account Groups</a>
+<?php if ($access->hasAccess("accounts", "group-create")) { ?>
+	<ul>
+	<li><a href="module/accounts/group-manage/">Manage Groups</a></li>
+	<li><a href="module/accounts/group-create/">Create Group</a></li>
+	</ul>
+<?php } ?>
+</li>
+<?php } ?>
