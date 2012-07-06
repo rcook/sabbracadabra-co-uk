@@ -1,0 +1,31 @@
+﻿
+headline {
+	display: block;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+paragraph {
+	display: block;
+	color: #80B2E4;
+}
+
+inline {
+	display: inline;
+	color: #80B2E4;
+}
+
+break {
+	font-size: 7px;
+	display:block;
+}
+
+a {
+	color: #FFFFFF;
+	display: inline;
+}
+
+a:hover {
+	color: #000000;
+	display: inline;
+}

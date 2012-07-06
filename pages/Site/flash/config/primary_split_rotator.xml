@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SplitRotator>
+  <Settings>
+    <imageWidth>500</imageWidth>
+    <imageHeight>280</imageHeight>
+    <segments>7</segments>
+    <tweenTime>1.2</tweenTime>
+    <tweenDelay>0.1</tweenDelay>
+    <tweenType>easeInOutBack</tweenType>
+    <zDistance>0</zDistance>
+    <expand>20</expand>
+    <innerColor>0x111111</innerColor>
+    <textBackground>0x0064C8</textBackground>
+    <shadowDarkness>100</shadowDarkness>
+    <textDistance>25</textDistance>
+    <autoplay>12</autoplay>
+  </Settings>
+  
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-1.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-2.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-3.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-4.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-5.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-6.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-7.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/portfolio-large-8.jpg">
+    <Text>
+      <headline>Description Text</headline>
+      <break>Ӂ</break>
+      <paragraph>Here you can add a description text for every single image.</paragraph>
+      <break>Ӂ</break>
+      <inline>This is HTML text loaded from the external XML file and formatted with an external CSS file. So it's pretty simple to set this text. You can also easily add</inline>
+      <a href="http://www.i3dthemes.com" target="_blank">Ӂhyperlinks</a>
+      <paragraph>. Change this hyperlink unless you would like to visit i3dthemes:)</paragraph>
+    </Text>
+  </Image>
+  
+  
+</SplitRotator>

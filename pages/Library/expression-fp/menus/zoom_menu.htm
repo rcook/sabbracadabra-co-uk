@@ -1,0 +1,59 @@
+﻿<body><!-- #BeginLibraryItem "/Library/dreamweaver/menus/zoom_menu.lbi" -->
+  
+  <script type='text/javascript' src='../../../Site/javascript/jquery.jqDock.min.js'></script>
+  <script type='text/javascript'>
+  <!--
+  jQuery(function($){
+/*********************
+** JQDOCK SETUPS... **
+*********************/
+    //apply jqDock to each of the demo menus, setting varying options for each one...
+    $('div.demo').each(function(i){ //opts updated so as not to use null as 'don't override default' - jQuery v1.2.5 changed extend() to not ignore nulls!
+        var opts = { align:        [ 'bottom', 'right', 'top' , 'middle', 'left', 'center' ][i] || 'bottom' //default
+                   , size:         [  48     ,  48    ,  48   ,  48     ,  36   ,  60      ][i] || 36       //default
+                   , distance:     [  60     ,  60    ,  60   ,  60     ,  48   ,  80      ][i] || 54       //default
+                   , coefficient : [  1.5    ,  1.5   ,  1.5  ,  1      ,  1.5  ,  1.5     ][i] || 1.5      //default
+                   , labels:       [  true   ,  'mc'  ,  true ,  'br'   ,  true ,  false   ][i] || false    //default
+                   , duration:     500 //default
+                     //for menu1 and menu7, set a function to use the 'alt' attribute if present, else construct a PNG path from the 'src'...
+                   , source:       (i==0 || i==6) ? function(i){ return (this.alt) ? false : this.src.replace(/(jpg|gif)$/,'png'); } : false //default
+                   };
+        $(this).jqDock(opts);
+      });
+ 
+    $('div.demo a>img').not($('#menu1 a>img')).bind('click', function(){
+        var Href = $(this).parent().get(0).href;
+ 
+        if(Href && !/^javascript:/i.test(Href)){ //change location...
+          location.href = Href;
+        }else{ //trigger a click handler?...
+          $(this).parent().trigger('click');
+        }
+        return false;
+      });
+  });
+  // -->
+  </script>
+
+  
+<div id='menu1' class='demo'></div>
+<div id='menu2' class='demo'></div>
+<div id='menu3' class='demo'></div>
+
+  
+<div id='zoom_menu' class='demo'>
+
+<a title="About Us" 	href="../../../aboutus.htm">				<img src='../../../Site/themed_images/zoom_about.png' 			alt='About Us' /></a>
+<a title="Contact" 		href="../../../contact.htm">			<img src='../../../Site/themed_images/zoom_contact.png' 		alt='Contact' /></a>
+<a title="Photos" 		href="../../../photo_gallery.htm">		<img src='../../../Site/themed_images/zoom_gallery.png' 		alt='Photos' /></a>
+<a title="Services" 	href="../../../services.htm">			<img src='../../../Site/themed_images/zoom_services.png' 		alt='Services' /></a>
+<a title="Sitemap" 		href="../../../sitemap.htm">			<img src='../../../Site/themed_images/zoom_sitemap.png' 		alt='Sitemap' /></a>
+
+</div>
+
+
+
+<!-- #EndLibraryItem -->
+</body>
+
+

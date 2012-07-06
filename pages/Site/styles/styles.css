@@ -1,0 +1,473 @@
+﻿@import url('font-styles/modern2.css');
+@import url('font-colors.css');
+@import url('../logo/logo.css');
+
+
+/* TOP MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** set top level padding */
+.ddsmoothmenu ul li a					{padding: 15px 0px 15px 20px;}
+.ddsmoothmenu ul li a					{margin: 0px 20px 0px 0px;}
+
+/****** CSS classes applied to down and right arrow images  ######### */
+.downarrowclass							{position: absolute;top: 36px;right: 0px;}
+.rightarrowclass						{position: absolute;top: 17px;right: 0px;}
+
+/******  set sub level padding */
+.ddsmoothmenu ul li ul li a				{padding:6px 10px 6px 10px; margin-bottom:0px; }
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NEWS TICKER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.webwidget_slideshow_common						{position: relative;}
+.webwidget_slideshow_common .slides_box			{padding: 0px;margin: 0px;overflow: hidden;position: absolute; top:7px; left:120px; height:23px;}
+.webwidget_slideshow_common h4					{position: absolute;top:5px; left:0px;padding:0px;margin: 0px; }
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** HORIZONTAL BOXES --------------------- */
+.boxi-content							{padding:0px 15px 0px 15px;		margin:0px;}
+.boxi-content p 						{padding:1px 0px 0px 0px; 		margin:0px;}
+.boxi-content h3						{padding:5px 0px 10px 5px;		margin:0px;}
+/****** LEFT/RIGHT COLUMN BOXES --------------------- */
+.box1-content							{padding:0px 15px 0px 15px;		margin:0px;}
+.box1-content p							{padding:5px 0px 5px 0px;		margin:0px;}
+.box1-content h3						{padding:5px 0px 5px 0px;		margin:0px;}
+#smoothmenu2 h3							{padding:5px 0px 10px 5px;		margin:0px;}
+/****** CENTER COLUMN BOXES --------------------- */
+.box4-content							{padding:0px 15px 0px 15px;	margin:0px;}
+.box4-content p							{padding:5px 0px 5px 0px;		margin:0px;}
+.box4-content h3						{padding:5px 0px 5px 5px;		margin:0px;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SIDE MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** set the position of the main buttons*/
+.ddsmoothmenu-v 						{margin:0px 0px 0px -13px;}
+
+/****** set the main button width */
+.ddsmoothmenu-v ul						{width: 228px;  margin:0px 0px 0px 0px; padding-top:5px; }
+
+/****** set the sub level button width  */
+.ddsmoothmenu-v ul li ul				{width: 170px; margin-top:-1px; -moz-border-radius: 10px; border-radius: 10px; padding:10px 0px 10px 0px;}
+.ddsmoothmenu-v ul li ul a				{padding:5px 0px 5px 20px;}
+
+/****** set the main button border color */
+.ddsmoothmenu-v ul li a					{padding: 7px 35px 9px 35px; text-decoration:none; height:23px;} /*force hasLayout in IE7 */
+
+/****** topmenu SUBMENU button background color */
+.ddsmoothmenu ul li ul li a:hover		{background-color: #000000; background:#000000; -moz-border-radius: 8px; border-radius: 8px;}
+
+/****** sidemenu SUBMENU button background color */
+.ddsmoothmenu-v ul li ul a:hover 		{background-color: #B0BCCE; background-image:none;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES HORIZONTAL */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+.boxi-inner								{background: url('../graphics/boxi_0.jpg'); min-height:20px;}
+.boxi-2									{background: url('../graphics/boxi_2.jpg') repeat-x left top; 			vertical-align:top;}
+.boxi-6									{background: url('../graphics/boxi_6.jpg') repeat-x left bottom;}
+.boxi-4									{background: url('../graphics/boxi_4.jpg') repeat-y right top;}
+.boxi-8									{background: url('../graphics/boxi_8.jpg') repeat-y left top;}
+.boxi-5									{background: url('../graphics/boxi_5.jpg') no-repeat right bottom;}
+.boxi-7									{background: url('../graphics/boxi_7.jpg') no-repeat left bottom;}
+.boxi-3									{background: url('../graphics/boxi_3.jpg') no-repeat right top; 			vertical-align:top;}
+.boxi-1									{background: url('../graphics/boxi_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.boxi									{margin:0px 0px 0px 0px;	padding:0px;}
+*/
+/****** Top corners and border   
+.bti 									{height:14px; 	margin:0px 0px 0px 50px; 			background:url('../graphics/boxi.png') no-repeat 100% 0;}
+.bti div 								{height:14px; 	left:-50px; width:50px; 			background:url('../graphics/boxi.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}*/
+/****** Bottom corners and border  
+.bbi 									{height:22px; 	margin:0px 0px 0px 50px; 			background:url('../graphics/boxi.png') no-repeat 100% 100%;}
+.bbi div 								{height:22px; 	left:-50px; width:50px; 			background:url('../graphics/boxi.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}*/
+/****** Left border 
+.i1i 									{padding:0px 0px 0px 5px;							background:url('../graphics/boxi_l.png') repeat-y 0 0;}*/
+/****** Right border 
+.i2i 									{padding:0px 5px 0px 0px;							background:url('../graphics/boxi_r.png') repeat-y 100% 0;}
+
+.i3i 									{display:block;}
+.i3i 									{padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.i3i 									{background:url('../graphics/boxi_bg.png');}
+.i3i:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3i 									{display:inline-block;}
+.i3i 									{display:block;}
+*/
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES LEFT/RIGHT COLUMN */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.box1-inner								{background: url('../graphics/box1_0.jpg'); min-height:20px;}
+.box1-2									{background: url('../graphics/box1_2.jpg') repeat-x left top; 			vertical-align:top;}
+.box1-6									{background: url('../graphics/box1_6.jpg') repeat-x left bottom;}
+.box1-4									{background: url('../graphics/box1_4.jpg') repeat-y right top;}
+.box1-8									{background: url('../graphics/box1_8.jpg') repeat-y left top;}
+.box1-5									{background: url('../graphics/box1_5.jpg') no-repeat right bottom;}
+.box1-7									{background: url('../graphics/box1_7.jpg') no-repeat left bottom;}
+.box1-3									{background: url('../graphics/box1_3.jpg') no-repeat right top; 			vertical-align:top;}
+.box1-1									{background: url('../graphics/box1_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.box1									{margin:0px 0px 0px 0px;	padding:0px;}
+/****** Top corners and border */
+.bt 									{height:14px; 	margin:0px 0px 0px 50px; 			background:url('../graphics/box1.png') no-repeat 100% 0;}
+.bt div 								{height:14px; 	left:-50px; width:50px; 			background:url('../graphics/box1.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+/****** Bottom corners and border  */
+.bb 									{height:25px; 	margin:0px 0px 0px 50px; 			background:url('../graphics/box1.png') no-repeat 100% 100%;}
+.bb div 								{height:25px; 	left:-50px; width:50px; 			background:url('../graphics/box1.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+/****** Left border*/ 
+.i1 									{padding:0px 0px 0px 5px;							background:url('../graphics/box1_l.png') repeat-y 0 0;}
+/****** Right border */
+.i2 									{padding:0px 5px 0px 0px;							background:url('../graphics/box1_r.png') repeat-y 100% 0;}
+
+.i3 									{display:block;}
+.i3 									{padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.i3 									{background:url('../graphics/box1_bg.png');}
+.i3:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3 									{display:inline-block;}
+.i3 									{display:block;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES CENTER COLUMN */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+.box4-inner								{background: url('../graphics/box4_0.jpg'); min-height:20px;}
+.box4-2									{background: url('../graphics/box4_2.jpg') repeat-x left top; 			vertical-align:top;}
+.box4-6									{background: url('../graphics/box4_6.jpg') repeat-x left bottom;}
+.box4-4									{background: url('../graphics/box4_4.jpg') repeat-y right top;}
+.box4-8									{background: url('../graphics/box4_8.jpg') repeat-y left top;}
+.box4-5									{background: url('../graphics/box4_5.jpg') no-repeat right bottom;}
+.box4-7									{background: url('../graphics/box4_7.jpg') no-repeat left bottom;}
+.box4-3									{background: url('../graphics/box4_3.jpg') no-repeat right top; 			vertical-align:top;}
+.box4-1									{background: url('../graphics/box4_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.box4									{margin:0px 0px 0px 0px;	padding:0px;margin:0px 0px 0px 0px;	padding:0px 0px 0px 0px; border:0px aqua solid; }*/
+
+/****** Top corners and border 
+.bt4 									{height:14px; 	margin:0px 0px 0px 50px; 			background:url('../graphics/box4.png') no-repeat 100% 0;}
+.bt4 div 								{height:14px; 	left:-50px; width:50px; 			background:url('../graphics/box4.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/ 
+/****** Bottom corners and border  
+.bb4 									{height:25px; 	margin:0px 0px 0px 50px; 			background:url('../graphics/box4.png') no-repeat 100% 100%;}
+.bb4 div 								{height:25px; 	left:-50px; width:50px; 			background:url('../graphics/box4.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+*/
+/****** Left border 
+.i14 									{padding:0px 0px 0px 5px;							background:url('../graphics/box4_l.png') repeat-y 0 0;}
+*/
+/****** Right border 
+.i24 									{padding:0px 5px 0px 0px;							background:url('../graphics/box4_r.png') repeat-y 100% 0;}
+
+.i34 									{display:block;}
+.i34 									{padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.i34 									{background:url('../graphics/box4_bg.png');}
+.i34:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i34 									{display:inline-block;}
+.i34 									{display:block;}
+*/
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES HORIZONTAL IMAGE BOXES*/
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.centerpic img						{ background-color: #efefef;	-moz-border-radius: 3px;	-webkit-border-radius: 3px;	border-radius: 3px;	border: 1px solid #ffffff;	padding: 3px;	box-shadow: 0px 1px 2px #A7A7A7;}
+.centerpic 							{ overflow: hidden; 	padding:0px 0px 0px 0px;	position: relative;}
+.centerpic a 						{ position: relative;	margin: 0px 0px 0px 0px;}
+
+.centerpic a:hover:after,
+.centerpic a:focus:after
+{
+	content: attr(title);
+	position: absolute;
+	bottom: 0px;
+	left:4px;
+	height: 30px;
+	line-height: 30px;
+	width:281px;
+	background: rgb(255,255,255);
+	background: rgba(255,255,255,0.7);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0.7), rgba(204,204,204,0.2)); /* Firefox 3.6+ */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0.7)), to(rgba(204,204,204,0.7))); /* Safari */
+	display: block;
+	margin:0px 0px 7px 0px;
+	padding:0px 0px 0px 0px;
+}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES LEFT/RIGHT COLUMN IMAGE BOXES*/
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.sidepic img						{ background-color: #efefef;	-moz-border-radius: 3px;	-webkit-border-radius: 3px;	border-radius: 3px;	border: 1px solid #ffffff;	padding: 2px;	box-shadow: 0px 1px 2px #111111;}
+
+.sidepic 							{ overflow: hidden; 	padding:0px 0px 0px 0px;	position: relative;}
+.sidepic a 							{ position: relative;	margin: 0px 0px 0px 0px; }
+.sidepic a:hover:after,
+.sidepic a:focus:after
+{
+	content: attr(title);
+	position: absolute;
+	bottom: 0px;
+	left:3px;
+	height: 30px;
+	line-height: 30px;
+	width:195px;
+	background: rgb(255,255,255);
+	background: rgba(255,255,255,0.7);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0.7), rgba(204,204,204,0.2)); /* Firefox 3.6+ */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0.7)), to(rgba(204,204,204,0.7))); /* Safari */
+	display: block;
+	margin:0px 0px 6px 0px;
+	padding:0px 0px 0px 0px;
+}
+
+
+/* FOOTER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#footerleft								{vertical-align:top; text-align:left;}
+#footerright							{vertical-align:top; text-align:left;}
+#footercenter							{vertical-align:top; text-align:left;}
+
+.footer_quicklink h3					{background:url('../graphics/footer_quicklinks.png') 	no-repeat 0px 10px; height:52px; padding:26px 0px 0px 0px; margin:0px; text-indent:60px;  }
+.footer_social h3						{background:url('../graphics/footer_social.png') 		no-repeat 0px 10px; height:52px; padding:26px 0px 0px 0px; margin:0px; text-indent:60px;  }
+.footer_contactbox h3					{background:url('../graphics/footer_contact.png') 		no-repeat 0px 10px; height:52px; padding:26px 0px 0px 0px; margin:0px; text-indent:60px;  }
+
+.footer_quicklink li					{border-bottom:1px #333333 dotted;list-style: none; padding:5px 0px 5px 0px; width:150px; }
+.footer_quicklink li a					{background:url('../graphics/footer_quicklist.png') no-repeat 0px 0px; padding:0px 0px 10px 25px; list-style: none; }
+.footer_quicklink li a:link				{}
+.footer_quicklink li a:visited			{}
+.footer_quicklink li a:hover			{background:url('../graphics/footer_quicklist_hover.png') no-repeat 0px 0px; }
+.footer_quicklink li a:active			{}
+
+.footer_contactbox ul					{list-style: none; padding:0px; margin:0px; }
+.footer_contactbox li					{border-bottom:1px #333333 dotted;list-style: none; padding:5px 0px 5px 33px; margin:0px; }
+.footer_address							{background:url('../graphics/footer_address.png') no-repeat 0px 0px;  }
+.footer_phone							{background:url('../graphics/footer_phone.png') no-repeat 0px 0px;  }
+.footer_email							{background:url('../graphics/footer_email.png') no-repeat 0px 0px;  }
+.footer_contact							{background:url('../graphics/footer_webcontact.png') no-repeat 0px 0px;  }
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* TOP MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+ /* do not alter*/
+.ddsmoothmenu							{width: 100%;}
+.ddsmoothmenu ul						{z-index:100;margin: 0;padding: 0;list-style-type: none;}
+.ddsmoothmenu ul li						{position: relative;display: inline;float: left;}
+.ddsmoothmenu ul li a					{display: block;}
+ /* do not alter*/
+
+* html .ddsmoothmenu ul li a			{/*IE6 hack to get sub menu links to behave correctly*/display: inline-block;}
+
+/*1st sub level menu*/
+.ddsmoothmenu ul li ul					{position: absolute;left: 0;display: none; /*collapse all sub menus to begin with*/visibility: hidden; }
+.ddsmoothmenu ul li ul					{-moz-border-radius: 10px; border-radius: 10px; margin:0px 0px 0px 0px; padding:5px; background:url('../graphics/sub_bg.png') no-repeat left top; border:0px solid #7EC0B2;}
+
+.ddsmoothmenu ul li ul li				{display: list-item;float: none;}
+.ddsmoothmenu ul li ul li ul			{top: 0;}
+
+/* set sub level width */
+.ddsmoothmenu ul li ul li a				{min-width:100px; white-space:nowrap;}
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu					{height: 1%;} /*Holly Hack for IE7 and below*/
+
+/* topmenu button background color */
+.ddsmoothmenu ul li a					{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top;}
+.ddsmoothmenu ul li a:link				{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top;}
+.ddsmoothmenu ul li a:visited			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top;}
+.ddsmoothmenu ul li a:hover				{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat -278px top;}
+.ddsmoothmenu ul li a:active			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top;}
+.ddsmoothmenu ul li a:selected			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top;}
+
+/* topmenu button background color 
+.ddsmoothmenu ul li a					{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat center -100px;}
+.ddsmoothmenu ul li a:link				{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat center -100px;}
+.ddsmoothmenu ul li a:visited			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat center -100px;}
+.ddsmoothmenu ul li a:hover				{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat center top;}
+.ddsmoothmenu ul li a:active			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat center -100px;}
+.ddsmoothmenu ul li a:selected			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat center -100px;}
+*/
+
+/* topmenu SUBMENU button background color */
+.ddsmoothmenu ul li ul li a:link		{background-color: transparent; background-image:none;}
+.ddsmoothmenu ul li ul li a:visited		{background-color: transparent; background-image:none;}
+.ddsmoothmenu ul li ul li a:active		{background-color: transparent; background-image:none;}
+.ddsmoothmenu ul li ul li a:selected	{background-color: transparent; background-image:none;}
+
+/* topmenu border color*/
+.ddsmoothmenu ul li a					{border-right: 0px solid #121867; border-left: 0px solid #121867;}
+
+/* topmenu SUBMENU borders */
+.ddsmoothmenu ul li ul li a				{border-right: 0px solid #330000; border-left: 0px solid #330000; border-top: 0px solid #330000; border-bottom: 0px solid #330000;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SIDE MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* set the main button width */
+.ddsmoothmenu-v ul						{border-top: 1px solid transparent}			/* top of all buttons - use dark color here */
+.ddsmoothmenu-v ul						{border-bottom: 1px solid transparent;}		/* bottom of all buttons - use light color here*/
+
+/* set the sub level button width  */
+.ddsmoothmenu-v ul li ul				{width: 170px; margin-top:-1px; -moz-border-radius: 10px; border-radius: 10px; background-color:#61789A; padding:10px 0px 10px 0px;}
+.ddsmoothmenu-v ul li ul a				{padding:5px 0px 5px 20px;}
+
+/* set the main button border color */
+.ddsmoothmenu-v ul li a					{border-top: 1px solid transparent;}		/* use light color here*/
+.ddsmoothmenu-v ul li a					{border-bottom: 1px solid transparent;}		/* use dark color here */
+
+.ddsmoothmenu-v ul						{margin: 0;padding: 0;list-style-type: none;}
+.ddsmoothmenu-v ul li					{position: relative;}
+
+/* Top level menu links style */
+.ddsmoothmenu-v ul li a					{display: block; overflow:hidden;} /*force hasLayout in IE7 */
+
+/*Sub level menu items */
+.ddsmoothmenu-v ul li ul				{position: absolute; top: 0; visibility: hidden;}  
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu-v ul li 			{float: left; height: 1%; }
+* html .ddsmoothmenu-v ul li a 			{height: 1%; }
+
+/* sidemenu button background color */
+.ddsmoothmenu-v ul li a:link 			{background-image:url('../graphics/sidemenu.png'); background-position:center top; 		background-color: transparent;/**/}
+.ddsmoothmenu-v ul li a:visited 		{background-image:url('../graphics/sidemenu.png'); background-position:center top; 		background-color: transparent;/**/}
+.ddsmoothmenu-v ul li a:hover			{background-image:url('../graphics/sidemenu.png'); background-position:center -53px;	background-color: transparent;/**/}
+.ddsmoothmenu-v ul li a:active 			{background-image:url('../graphics/sidemenu.png'); background-position:center -53px;	background-color: transparent;/**/}
+.ddsmoothmenu-v ul li a.selected		{background-image:url('../graphics/sidemenu.png'); background-position:center -53px;	background-color: transparent;/**/}
+
+/* sidemenu SUBMENU button background color */
+.ddsmoothmenu-v ul li ul a 				{background-color: transparent; background-image:none;}
+.ddsmoothmenu-v ul li ul a:link 		{background-color: transparent; background-image:none;}
+.ddsmoothmenu-v ul li ul a:visited 		{background-color: transparent; background-image:none;}
+.ddsmoothmenu-v ul li ul a:hover 		{background-color: #efefef; background-image:none;}
+.ddsmoothmenu-v ul li ul a:active 		{background-color: transparent; background-image:none;}
+.ddsmoothmenu-v ul li ul a:selected 	{background-color: transparent; background-image:none;}
+
+.ddsmoothmenu ul li ul li a:hover		{background-color:#000000}
+
+/* sidemenu border color 
+.ddsmoothmenu-v ul li ul a 				{border-left:1px #000000 solid ; border-right:1px #000000 solid ; margin-right:0px;}
+*/
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* CATALOG PAGE */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.catalog 								{}
+.product 								{border: 1px solid #cccccc; height: 200px; min-width: 100px; text-align: left; padding: 10px; vertical-align: top;}
+.paypalbtn								{height: 36px; border: 1px #f7f7f7 solid; text-align: center; width: auto; display: block; clear: both;padding: 2px;}
+
+input.button 							{width:auto !important; margin-right:2px; margin-left:3px; border:1px solid #1F2E19; padding:1px .5em; background:#1F2E19 url('../graphics/submit-button-bg.jpg') repeat-x left center; color:#FFFFFF;}
+button 									{width:auto !important; margin-right:2px; margin-left:3px; border:1px solid #28292D; padding:1px .5em; background:#28292D url('../graphics/submit-button-bg.jpg') repeat-x left center; color:#3D4026;}
+input.button:active 					{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D;}
+button:active 							{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D;}
+input.button:hover 						{cursor:pointer;}
+button:hover 							{cursor:pointer;}
+input.button.primary 					{border:0px solid #28292D; background:#28292D url('../graphics/submit-button-bg.jpg') repeat-x right center;}
+button.primary 							{border:0px solid #28292D; background:#28292D url('../graphics/submit-button-bg.jpg') repeat-x right center;}
+input.button.primary:active 			{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D;}
+
+#jquery-overlay 										{position: absolute;top: 0;left: 0;z-index: 100;width: 100%;height: 500px;}
+#jquery-lightbox 										{position: absolute;top: 0;left: 0;width: 100%;z-index: 101;text-align: center;line-height: 0;}
+#jquery-lightbox a img 									{border: none; }
+#lightbox-container-image-box 							{position: relative;background-color: transparent;width: 250px;height: 250px;margin: 0 auto;}
+#lightbox-container-image 								{padding: 10px; }
+#lightbox-loading 										{position: absolute;top: 40%;left: 0%;height: 25%;width: 100%;text-align: center;line-height: 0;}
+#lightbox-nav 											{position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 10;}
+#lightbox-container-image-box > #lightbox-nav 			{left: 0; }
+#lightbox-nav a 										{outline: none;}
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext 			{width: 49%;height: 100%;zoom: 1;display: block;}
+#lightbox-nav-btnPrev 									{left: 0; float: left;}
+#lightbox-nav-btnNext 									{right: 0; float: right;}
+#lightbox-container-image-data-box 						{font: 10px Verdana, Helvetica, sans-serif;background-color: transparent;margin: 0 auto;line-height: 1.4em;overflow: auto;width: 100%;padding: 0 10px 0;}
+#lightbox-container-image-data 							{padding: 0 10px; color: #666; }
+#lightbox-container-image-data #lightbox-image-details 	{width: 70%; float: left; text-align: left; }
+#lightbox-image-details-caption 						{font-weight: bold; }
+#lightbox-image-details-currentNumber 					{display: block; clear: left; padding-bottom: 1.0em;}		
+#lightbox-secNav-btnClose 								{width: 66px; float: right;padding-bottom: 0.7em;	}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ZOOM MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.demo img 								{border:0px none; padding:0px; width:48px; height:48px; vertical-align:top;}
+#zoom_menu img 							{padding:0px 4px;}
+#zoom_menu div.jqDock					{}
+div.jqDockLabel 						{border:0px none; padding:0px 4px; padding-bottom:50px; }
+div.jqDockLabelLink 					{cursor:pointer;}
+div.jqDockLabelImage 					{cursor:default;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* MAIN BACKGROUND *****************************************************************************************************************************/
+
+/* 
+.boxm-inner								{background: url('../graphics/boxm_0.jpg'); min-height:20px;}
+.boxm-2									{background: url('../graphics/boxm_2.jpg') repeat-x left top; 			vertical-align:top;}
+.boxm-6									{background: url('../graphics/boxm_6.jpg') repeat-x left bottom;}
+.boxm-4									{background: url('../graphics/boxm_4.jpg') repeat-y right top;}
+.boxm-8									{background: url('../graphics/boxm_8.jpg') repeat-y left top;}
+.boxm-5									{background: url('../graphics/boxm_5.jpg') no-repeat right bottom;}
+.boxm-7									{background: url('../graphics/boxm_7.jpg') no-repeat left bottom;}
+.boxm-3									{background: url('../graphics/boxm_3.jpg') no-repeat right top; 			vertical-align:top;}
+.boxm-1									{background: url('../graphics/boxm_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.boxm									{margin:0px;	padding:0px;}
+.boxm-content							{padding:0px 0px 0px 0px; margin:0px;}
+*/
+
+/* Top corners and border  
+.boxm_content							{position:relative;}
+.btm 									{height:0px; 	margin:0px 0px 0px 0px; 			background:url('../graphics/boxm.png') no-repeat 100% 0;}
+.btm div 								{height:0px; 	left:-0px; width:0px; 			background:url('../graphics/boxm.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+
+
+.bbm 									{height:0px; 	margin:0px 0px 0px 0px; 			background:url('../graphics/boxm.png') no-repeat 100% 100%;}
+.bbm div 								{height:0px; 	left:-0px; width:0px; 			background:url('../graphics/boxm.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+
+.i1m 									{padding:0px 0px 0px 27px;							background:url('../graphics/boxm_l.png') repeat-y 0 0;}
+
+.i2m 									{padding:0px 27px 0px 0px;							background:url('../graphics/boxm_r.png') repeat-y 100% 0;}
+
+.i3m 									{display:block;}
+.i3m 									{padding:0px 0px 0px 0px;	margin:0px 0px 0px 0px;}
+
+.i3m 									{background:url('../graphics/boxm_0.jpg');}
+
+.i3m:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3m 									{display:inline-block;}
+.i3m 									{display:block;}
+*/
+/*
+.menu_bg								{background: url('../graphics/menu_bg.png'); float:left; *min-width:400px; padding:0px 0px 0px 20px;}
+.menu_bg_right							{background: url('../graphics/menu_right.png'); width:20px; height:56px; float:left;}*/
+
+/* boxm *****************************************************************************************************************************/
