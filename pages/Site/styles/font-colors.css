@@ -1,0 +1,126 @@
+﻿/* colors=    bright green = color:#AED911; green = color:#AEBF2C; BASE = color:#F2F2F2; med grey = color:#353534; dark grey = color:#0D0D0D;*/
+
+
+/* TOP MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.ddsmoothmenu ul li a, .ddsmoothmenu ul li a:link, .ddsmoothmenu ul li a:visited, .ddsmoothmenu ul li a:active					
+										{color: #ffffff;	text-shadow: 1px 1px 1px #000000;}
+.ddsmoothmenu ul li a:hover				{color: #FEAF1F; 	text-shadow: 1px 1px 1px #000000;}
+
+/****** SUBMENU */
+.ddsmoothmenu ul li ul li a, .ddsmoothmenu ul li ul li a:link, .ddsmoothmenu ul li ul li a:visited, .ddsmoothmenu ul li ul li a:active				
+										{color: #FEAF1F; 	text-shadow: 1px 1px 1px #000000;}
+.ddsmoothmenu ul li ul li a:hover		{color: #ffffff; 	text-shadow: 1px 1px 1px #000000;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NEWS TICKER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.webwidget_slideshow_common, .webwidget_slideshow_common a:link, .webwidget_slideshow_common a:visited, .webwidget_slideshow_common a:active							
+										{color: #EFEFEF;}
+.webwidget_slideshow_common	a:hover		{color: #666666;}
+.webwidget_slideshow_common h4			{color: #CCCCCC;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SEO H1 AND H2 */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#seo_1 h1, #seo_1 h1 a, #seo_1 h1 p, #seo_1 h1 span								
+										{color:#FEAF1F;	text-shadow: 1px 1px 1px #000000;}
+#seo_2 h2, #seo_2 h2 a, #seo_2 h2 p, #seo_2 h2 span								
+										{color: #EFEFEF;	text-shadow: 1px 1px 1px #000000;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NON FLASH SLIDER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.nivo-caption p, .nivo-caption, .nivo-caption a  						
+										{color: #93999E;	text-shadow: 1px 1px 1px #0D0D0D;}
+.nivo-caption h3 						{color: #F2F2F2;	text-shadow: 1px 1px 1px #0D0D0D;}
+/****** CONTINUE BUTTON */
+.slider_readmore a:link, .slider_readmore a:visited, .slider_readmore a:active
+										{color:#334351; 	text-shadow: 1px 1px 1px #ffffff;}
+.slider_readmore a:hover				{color:#93999E; 	text-shadow: 1px 1px 1px #ffffff;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** HORIZONTAL BOXES --------------------- */
+.boxi-content, .boxi-content p, .boxi-content a, .boxi-content a:link, .boxi-content a:visited, .boxi-content a:active
+										{color: #CCCCCC;	}
+.boxi-content a:hover					{color: #FEAF1F; 	}
+.boxi-content h3						{color: #FFC937;	text-shadow: 1px 1px 1px #000000;}
+/****** LEFT/RIGHT COLUMN BOXES --------------------- */
+.box1-content, .box1-content p, .box1-content a:link, .box1-content a:visited, .box1-content a:active
+										{color: #CCCCCC; 	}
+.box1-content a:hover					{color: #FEAF1F;	}
+.box1-content h3						{color: #FFC937;	text-shadow: 1px 1px 1px #000000;}
+/****** CENTER COLUMN BOXES --------------------- */
+.box4-content, .box4-content p, .box4-content a:link, .box4-content a:visited, .box4-content a:active
+										{color: #CCCCCC; 	}
+.box4-content a:hover					{color: #FEAF1F;	}
+.box4-content h3						{color: #FFC937; 	text-shadow: 1px 1px 1px #000000;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SIDE MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.ddsmoothmenu-v ul li a, .ddsmoothmenu-v ul li a:link, .ddsmoothmenu-v ul li a:visited, .ddsmoothmenu-v ul li a:active					
+										{color: #999999;  	text-shadow: 1px 1px 1px #000000;}
+.ddsmoothmenu-v ul li a:hover			{color: #FEAF1F; 	text-shadow: 1px 1px 1px #000000;}
+
+/****** SUBMENU */
+.ddsmoothmenu-v ul li ul li a, .ddsmoothmenu-v ul li ul li a:link, .ddsmoothmenu-v ul li ul li a:visited, .ddsmoothmenu-v ul li ul li a:active				
+										{color: #444444;  	text-shadow: 0px 0px 0px #000000;}
+.ddsmoothmenu-v ul li ul a:hover 		{color: #333333;  	text-shadow: 0px 0px 0px #000000;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ADVERTISING */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#advertising, #advertising p, #advertising span, #advertising div, #advertising table
+										{color: #efefef; 	}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* FOOTER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#footer h3								{color: #FEAF1F;}
+#footer									{color: #CCCCCC;}
+#footer a:link, #footer a:visited, #footer a:active							
+										{color: #CCCCCC;}
+#footer a:hover							{color: #efefef;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ZOOM MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+div.jqDockLabel 						{color: #4C4F52;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* PRIVACY PAGE COMPANY NAME */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.redfont 								{color: #4C4F52;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+

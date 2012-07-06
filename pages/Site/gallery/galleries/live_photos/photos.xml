@@ -1,0 +1,27 @@
+<gallery base = "">
+
+<!-- EDIT Gallery Name -->
+<sitename>Solid Ball Of Rock - Live!</sitename>
+
+<!-- OPTIONAL SEO / RSS info -->
+<photographer></photographer>
+<contactinfo></contactinfo>
+<email></email><security>
+
+<!-- do not alter the following line -->
+<![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
+
+<!-- EDIT links to photos, [photo width and height-{for animation}] -->
+<photo path = "band_16.jpg" width = "700" height = "422"></photo>
+<photo path = "band_13.jpg" width = "500" height = "333"></photo>
+<photo path = "band_11.jpg" width = "500" height = "333"></photo>
+<photo path = "band_10.jpg" width = "500" height = "333"></photo>
+<photo path = "band_09.jpg" width = "500" height = "333"></photo>
+<photo path = "band_08.jpg" width = "267" height = "400"></photo>
+<photo path = "band_05.jpg" width = "600" height = "427"></photo>
+<photo path = "band_04.jpg" width = "399" height = "459"></photo>
+<photo path = "band_02.jpg" width = "600" height = "374"></photo>
+<photo path = "band_01.jpg" width = "600" height = "450"></photo>
+
+<!-- do not edit past this line -->
+</photos></gallery>

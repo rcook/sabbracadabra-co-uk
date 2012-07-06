@@ -1,0 +1,16 @@
+﻿#column1_wrapper 	{width:100%; 			border:0px;}
+#left1col 			{width:0px; 			float:left;}
+#left1pad 			{width:0px; 			float:left;}
+#right1col 			{width:248px; 			float:right; 		padding:0px 0px 0px 0px;}
+#right1pad 			{width:0px; 			float:right;}
+#center1col 		{margin-right:250px; 	margin-left:0px; 	padding:0px 0px 0px 0px;}
+
+#infoleft			{width:319px ;		float:left;  			margin:0px 0px 0px 0px; 		padding:0px 0px 0px 10px;	vertical-align:top; }
+#inforight			{width:319px ;		float:right;			margin:0px 0px 0px 0px; 		padding:0px 10px 0px 0px;	vertical-align:top; }
+#infocenter			{											margin:0px 335px 0px 335px; 	padding:0px 0px 0px 0px;	vertical-align:top; }
+#infocenter			{											*margin:0px 325px0px 325px; 	padding:0px 0px 0px 0px;	vertical-align:top; }
+
+#footerleft			{width:233px ;		float:left;  			margin:0px 0px 0px 0px; 		padding:0px 0px 0px 0px;	vertical-align:top;}
+#footerright		{width:303px ;		float:right;			margin:0px 0px 0px 0px; 		padding:0px 0px 0px 0px;	vertical-align:top;}
+#footercenter		{width:422px ;								margin:0px 303px 0px 243px; 	padding:0px 0px 0px 0px;	vertical-align:top;}
+#footercenter		{											*margin:0px 280px0px 200px; 	padding:0px 0px 0px 0px;	vertical-align:top;}
