@@ -1,0 +1,78 @@
+BODY {
+	margin: 30px solid #000000;
+	background: #000000 url("background_small.gif");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: 100% 0%;
+	font-family: garamond, times new roman, times, serif;
+	color: #DDDDDD;
+	text-align: justify;
+}
+
+H1 {
+	color: #FFFFFF;
+	font-family: cloister black bt, weddingtext bt, garamond, times new roman, times, serif;
+}
+
+H1.date {
+	font-family: garamond, times new roman, times, serif;
+	font-style: italic;
+	font-size: small;
+	margin-top: -20px;
+}
+
+H2 {
+	color: #FFFFFF;
+	font-family: cloister black bt, weddingtext bt, garamond, times new roman, times, serif;
+}
+
+A {
+	color: #FFFFC0;
+	text-decoration: none;
+}
+
+A:hover {
+	text-decoration: underline;
+}
+
+IMG.pagephoto {
+	border: 2px solid #888888;
+	color: #888888;
+	width: 200px;
+	height: 123px;
+}
+
+SPAN.sab {
+	font-variant: small-caps;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+DIV.footnote {
+	margin-top: 20px;
+	border-top: 1px solid #C0C0C0;
+	font-size: smaller;
+	background: #000000 url("horizontal_fade.gif") repeat-y;
+	padding: 5px;
+}
+
+DIV.footnote A {
+	color: #000000;
+}
+
+SPAN.listheading {
+	font-weight: bold;
+	font-style: italic;
+	color: #FFFFFF;
+}
+
+TABLE.thumbnails IMG {
+	border: 2px solid #888888;
+	color: #888888;
+}
+
+DIV.artcaption {
+	font-style: italic;
+	margin-bottom: 20pt;
+}
+
