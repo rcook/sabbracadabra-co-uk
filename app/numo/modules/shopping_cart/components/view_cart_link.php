@@ -16,4 +16,4 @@ if(isset($_SESSION['shopper_id'])) {
 	mysql_free_result($results);
 }
 ?>
-<a href="<?=str_replace('/numo/','',NUMO_FOLDER_PATH)?>/manage.numo?module=shopping_cart&component=catalog&view=cart"><?=NUMO_SYNTAX_SHOPPING_CART_VIEW_CART_LABEL?> (<?=$numoCartItemCount." ".NUMO_SYNTAX_SHOPPING_CART_ITEMS_IN_CART_LABEL?>)</a>
+<a class="numo_view_cart_link" href="<?=str_replace('/numo/','',NUMO_FOLDER_PATH)?>/manage.numo?module=shopping_cart&component=catalog&view=cart"><?=NUMO_SYNTAX_SHOPPING_CART_VIEW_CART_LABEL?> (<?=$numoCartItemCount." ".NUMO_SYNTAX_SHOPPING_CART_ITEMS_IN_CART_LABEL?>)</a>

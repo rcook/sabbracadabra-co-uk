@@ -11,8 +11,8 @@ if(!isset($_SESSION['account_id'])) {
 <style>
 #numo_account_update_account_details_component form { margin: 0px; padding: 0px}
 #numo_account_update_account_details_component form ul {list-style-type: none; margin: 0px; padding: 0px}
-#numo_account_update_account_details_component form ul li {margin: 0px; padding: 0px; color: #f00; font-size: 13px;}
-#numo_account_update_account_details_component form ul li label {font-size: 13px; width: 120px; display: inline-block; color: #000;}
+#numo_account_update_account_details_component form ul li {margin: 0px; padding: 0px; font-size: 13px;}
+#numo_account_update_account_details_component form ul li label {font-size: 13px; width: 120px; display: inline-block; font-weight: bold; }
 #numo_account_update_account_details_component p {color: #060; font-size: 12px; text-align: center; font-weight: bold; padding: 0px 0px 4px 0px; margin: 0px;}
 #numo_account_update_account_details_component p.error {color: #f00; font-size: 12px; text-align: center; font-weight: bold;}
 </style>

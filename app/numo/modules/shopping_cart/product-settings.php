@@ -38,14 +38,14 @@ if($_POST['cmd'] == "update") {
 	$exists = (mysql_num_rows($result))?TRUE:FALSE;
 	if (!$exists) {
 		$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `catalog_visibility` int(11) default 0");
-	    $dbObj->query("CREATE TABLE IF NOT EXISTS `shopping_cart_category_permissions` (`id` int(11) NOT NULL auto_increment,`account_type_id` int(11) NOT NULL, `category_id` int(11) NOT NULL, PRIMARY KEY  (`id`))");																																														
+	    $dbObj->query("CREATE TABLE IF NOT EXISTS `shopping_cart_category_permissions` (`id` int(11) NOT NULL auto_increment,`account_type_id` int(11) NOT NULL, `category_id` int(11) NOT NULL, PRIMARY KEY  (`id`))");
 	    $dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-RESTRICTED_MESSAGE', 1, 'We\'re sorry, this catalog is restricted.')");
 
 	}
 
 	//default update query
 	$sql = "UPDATE `shopping_cart_settings` SET `catalog_visibility`='".$_POST['catalog_visibility']."', `tax_display_preference`='".$_POST['tax_display_preference']."', `default_account_group`='".$_POST['default_account_group']."',`request_shipping_details`='".$_POST['request_shipping_details']."',`store_mode`='".str_replace("'","&#39;",$_POST['store_mode'])."',`company_name`='".str_replace("'","&#39;",$_POST['company_name'])."',`packing_slip_address`='".str_replace("'","&#39;",$_POST['packing_slip_address'])."',`paypal_email`='".str_replace("'","&#39;",$_POST['paypal_email'])."' WHERE `site_id`='".NUMO_SITE_ID."'";
-	
+
 
 
 	//print $sql."<br>";
@@ -57,20 +57,20 @@ if($_POST['cmd'] == "update") {
 		  $fieldName = $keyData[1];
 		  $key = $keyData[0];
 		  if (!$taxesComplete["$key"]) {
-		  
+
 			  $taxName = $_POST["{$key}__name"];
 			//  $taxType = $_POST["{$key}__type"];
 			  $taxRate = $_POST["{$key}__rate"];
 			  unset($_POST["{$key}__name"]);
 			 // unset($_POST["{$key}__type"]);
 			  unset($_POST["{$key}__rate"]);
-			  
+
 			  $sql = "INSERT INTO shopping_cart_taxes (site_id, rate_name, tax_rate) VALUES ('".NUMO_SITE_ID."', '{$taxName}', '{$taxRate}')";
 			  // print $sql;
 			   $dbObj->query($sql);
 			   $taxesComplete["$key"] = true;
 		  }
-		 
+
 		} else if (substr($x, 0, 3) == "tax") {
 		  $keyData = explode("__", $x);
 		  $fieldName = $keyData[1];
@@ -84,13 +84,13 @@ if($_POST['cmd'] == "update") {
 			  unset($_POST["{$key}__name"]);
 			  //unset($_POST["{$key}__type"]);
 			  unset($_POST["{$key}__rate"]);
-			  
+
 			  $sql = "UPDATE shopping_cart_taxes SET rate_name='{$taxName}', tax_rate='{$taxRate}' WHERE site_id='".NUMO_SITE_ID."' AND tax_rate_id='{$taxID}'";
 			 // print $sql."<br>";
 			  $dbObj->query($sql);
 			  $taxesComplete["$key"] = true;
 		  }
-			
+
 		}
 		//print $x."=".$y."<br>";
 	}
@@ -198,7 +198,7 @@ function addRateItem() {
 	ul.form_display li textarea {width: 400px; height: 50px;margin: 0px;}
 	ul.form_display li {margin: 3px; padding: 0px;}
 	input.tax_rate { width: 50px; text-align: right; }
-	
+
 	.bttm_submit_button {position: fixed; bottom: 0px; right: 0px; background: #779FE1; border-top: 1px solid #2A61BD; width: 100%; height: 50px; padding: 0px 20px; margin: 0px;}
 .bttm_submit_button input {background: #EEEEEE; color: #333; border: 1px solid #333; height: 30px; margin: 10px 0px 10px 210px;}
 .bttm_submit_button input:hover {background: #bbb; color: #333; border: 1px solid #333; cursor: pointer;}
@@ -214,7 +214,7 @@ ul.form_display li label { width: 175px !important; }
 		<fieldset>
 			<legend>Settings</legend>
 			<?php
-			
+
 			$sql = "SELECT * FROM `shopping_cart_settings` WHERE site_id='".NUMO_SITE_ID."'";
 			//print $sql."<br>";
 			$result = $dbObj->query($sql);
@@ -298,9 +298,10 @@ ul.form_display li label { width: 175px !important; }
 	<input type="hidden" name="cmd" value="update" />
 	<input type="hidden" name="field_order" id="field_order" value="" />
 	<input type="hidden" name="field_remove" id="field_remove" value="" />
+	<br /><br /><br />
 	<div class="bttm_submit_button">
 	<input type="button" name="nocmd" value="Save" onClick="getGroupOrder(this.form)" />
-	</div>    
+	</div>
 
 
 <?php
@@ -351,6 +352,7 @@ PRIMARY KEY ( `tax_rate_id` , `site_id` )
 		<input type="button" name="nocmd2" value="Add New Attribute" onClick="addRateItem()" />
 	</fieldset>
 </form>
+<br /><br /><br />
 <?php
 
 function display_yes_no_options($value) {

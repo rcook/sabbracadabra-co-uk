@@ -499,7 +499,7 @@ function addItem() {
 
 function checkFieldValue(field) {
   var id = field.id.replace("__name", "");
-  alert(id);
+//  alert(id);
 
 	if(field.value == "Enter Attribute Name") {
 		field.value = "";

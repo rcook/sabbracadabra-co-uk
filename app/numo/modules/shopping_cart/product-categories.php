@@ -361,7 +361,7 @@ function checkFieldValue(field) {
 	<input type="hidden" name="current_parent" id="current_parent" value="<?=$parentId?>" />
 	<input type="hidden" name="category_remove" id="category_remove" value="" />
 	<input type="hidden" name="cmd" id="submit_cmd" value="update" />
-
+<br /><br /><br /><br />
 	<div class="bttm_submit_button">
 	<input type="button" name="nocmd" value="Save" onClick="getGroupOrder(this.form)" />
 	</div>

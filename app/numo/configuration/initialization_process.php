@@ -53,6 +53,7 @@ if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
 	}
 
 	if($_POST['next_step'] == "done") {
+		//print "we are done";
 		// include database class
 		require("classes/Database.php");
 
@@ -73,6 +74,9 @@ if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
 		//save connection information and key codes to file
 		save_mysql_connection_information($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password'], $_POST['system_setting_ssl_url'], $_POST['system_setting_secure_backend_via_ssl'], $_POST['system_setting_secure_frontend_via_ssl']);
 		unset($_POST['next_step']);
+		$doneInstall = true;
+		require("configuration/database_connection_information.php");
+
 		//exit;
 	}
 } else if ($_POST['cmd'] == "activate" || $_POST['cmd'] == "activate-all") {
@@ -186,6 +190,9 @@ function setup_mysql_database($reinstall = false) {
 			//ingore if item named with periods or starts with an underscore
 			if($moduleFolderName == "." || $moduleFolderName == ".." || substr($moduleFolderName, 0, 1) == "_"){
 				continue;
+			} 
+			if ($_POST["product_key__{$moduleFolderName}"] == "" && $_POST['common_license_key'] != "") {
+				$_POST["product_key__{$moduleFolderName}"] = $_POST['common_license_key'];
 			}
 
 			run_sql_configuration($moduleFolderName, false, $_POST["product_key__{$moduleFolderName}"]);
@@ -196,7 +203,7 @@ function setup_mysql_database($reinstall = false) {
   //exit;
 }
 
-//run the sql configuration commands for a give module
+//run the sql configuration commands for a given module
 function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "") {
 	global $dbObj;
 	global $_SERVER;

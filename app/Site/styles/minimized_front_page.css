@@ -51,13 +51,13 @@ body						{}
 .header_bg					{width:100%;		padding:0px; border:0px; 	position:absolute; 	top:151px; 				left:0px;}
  
 #content1_bg				{width:100%;		margin:67px 0px 0px 0px;	padding:0px; 		border:0px;}
-#content1_wr				{width:990px;			min-height:350px;	margin-left:auto;		margin-right:auto;		position:relative;	padding:0px; border:0px;}
+#content1_wr				{width:970px;			min-height:350px;	margin-left:auto;		margin-right:auto;		position:relative;	padding:0px; border:0px;}
 #content1_l					{width:0px;			float:left;																						padding:0px; border:0px;}
 #content1_r					{width:0px;			float:right;																					padding:0px; border:0px;}
 #content1					{margin-left:0px; 	margin-right:0px; 			position:relative; 													padding:30px 0px 10px 0px; border:0px;}
 
 #content2_bg				{width:100%;		padding:0px; border:0px;}
-#content2_wr				{width:990px;			min-height:0px;		margin-left:auto;		margin-right:auto;		position:relative;	padding:0px; border:0px;}
+#content2_wr				{width:970px;			min-height:0px;		margin-left:auto;		margin-right:auto;		position:relative;	padding:0px; border:0px;}
 #content2_l					{width:0px;			float:left;																						padding:0px; border:0px;}
 #content2_r					{width:0px;			float:right;																					padding:0px; border:0px;}
 #content2					{margin-left:0px; 	margin-right:0px; 			position:relative; 													padding:0px; border:0px;}
@@ -102,3 +102,4 @@ body						{}
 #textlogo a:hover 						{color: #ff9900;}
 #textlogo a:active 						{color: #efefef;}
 
+.bb4 									{height:46px; 	margin:0px 0px 0px 10px !important; }

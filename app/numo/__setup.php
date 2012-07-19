@@ -37,15 +37,18 @@ $extensions = array();
 $modulesToInstall = array();
 $extensionsToInstall = array();
 
-
+//foreach ($_POST as $key => $value) {
+//	print $key."=".$value."<br>";
+//}
 
 //include initialization process code
 include("configuration/initialization_process.php");
 
 // database connection information has not been entered. Prompt to install module
-if ((!defined('DATABASE_HOST') || $_POST['next_step'] != "") && $_POST['next_step'] != "done") {
+if ((!defined('DATABASE_HOST') || $_POST['next_step'] != "") && !$doneInstall) {
 	// include initialization display
-	
+	//print DATABASE_HOST;
+	//print "<br> next step: ".$_POST['next_step'];
 	include('configuration/initialization.php');
 	exit();
 }
@@ -61,6 +64,7 @@ require("classes/Database.php");
 
 // check to database connection
 if(!$dbObj->valid_connection) {
+	//print "bad connection";
 	
 	$_POST['next_step'] = 2; //set script to jump to database connection information prompt
 	$installError = true; //flag error occured

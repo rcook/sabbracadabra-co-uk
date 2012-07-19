@@ -293,10 +293,11 @@ if($_GET['view'] == "cart" || $PARAMS['view'] == "cart") {
 ?>
 <script>
 function updatePayPalQuantity(elId,inpt) {
+	var myForm = document.cart_form;
 	var maxQuantity = document.getElementById("max_" + inpt.name).value;
 	//alert(maxQuantity + " > " + inpt.value);
 	if (maxQuantity < inpt.value) {
-		inpt.form.submit();
+		myForm.submit(); 
 	} else {
 	  document.getElementById("numo_paypal_quantity_"+elId).value = inpt.value;
 	}
@@ -495,7 +496,7 @@ function validateQuantities() {
 		//print $sql."<br>";
 		$stock_result = $dbObj->query($sql);
 
-		$unitsInStock = 0;
+		$unitsInStock = 999999;
 
 		if($stock = mysql_fetch_array($stock_result)) {
 			$unitsInStock = $stock['units'];
@@ -570,7 +571,10 @@ function validateQuantities() {
 			}
 
 			//by default do not include any information about shipping ... let payapl settings handle shipping
-			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$quantityAvailable.'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'"><input type="hidden" name="tax_'.$counter.'" value="'.$row['item_tax'].'">';
+			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$quantityAvailable.'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'">';
+			if ($row['item_tax'] > 0) {
+				$paypalItemInfo .= '<input type="hidden" name="tax_'.$counter.'" value="'.$row['item_tax'].'">';
+			}
             // print "bbb";
 			
 			 //exit;
@@ -651,7 +655,11 @@ $totalTax += $row['item_tax'];
 			//print $row['shipping'];
          
 			//by default do not include any information about shipping ... let payapl settings handle shipping
-			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')'.($row['slot_7'] != "" ? " SKU #".$row['slot_7'] : "").'"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$row['quantity'].'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'"><input type="hidden" name="tax_'.$counter.'" value="'.$row['item_tax'].'">';
+			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')'.($row['slot_7'] != "" ? " SKU #".$row['slot_7'] : "").'"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$row['quantity'].'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'">';
+			if ($row['item_tax'] > 0) {
+				$paypalItemInfo .= '<input type="hidden" name="tax_'.$counter.'" value="'.$row['item_tax'].'">';
+			}
+			
  
 			if($row['shipping'] > 0) {
 				if ($row['slot_5'] == 0) {
@@ -1039,7 +1047,7 @@ function validate(theForm) {
 			//$whereStr = "AND id=c.product_id AND c.category_id='".$_GET['cid']."'";
 			$whereStr = "AND p.id=(SELECT pc.product_id FROM `shopping_cart_product_categories` pc, `shopping_cart_category_permissions` cp  WHERE cp.category_id=pc.category_id AND cp.category_id='".$_GET['cid']."' AND product_id=p.id AND cp.account_type_id='".$_SESSION['type_id']."')";
 		} else if(isset($PARAMS['cid'])) {
-			$whereStr = "AND p.id=(SELECT pc.product_id FROM `shopping_cart_product_categories` pc, `shopping_cart_category_permissions` cp  WHERE cp.category_id=pc.category_id AND cp.category_id='".$PARAMS['cid']."'  AND product_id=p.id ANDcp. account_type_id='".$_SESSION['type_id']."')";
+			$whereStr = "AND p.id=(SELECT pc.product_id FROM `shopping_cart_product_categories` pc, `shopping_cart_category_permissions` cp  WHERE cp.category_id=pc.category_id AND cp.category_id='".$PARAMS['cid']."'  AND product_id=p.id AND cp. account_type_id='".$_SESSION['type_id']."')";
 		} else {
 			$whereStr = "AND p.id=(SELECT pc.product_id FROM `shopping_cart_product_categories` pc, `shopping_cart_category_permissions` cp WHERE cp.category_id=pc.category_id AND product_id=p.id AND cp.account_type_id='".$_SESSION['type_id']."')";
 		
@@ -1058,7 +1066,7 @@ function validate(theForm) {
 	
 		$sql = "SELECT p.*,(SELECT COUNT(*) FROM `shopping_cart_optional_product_attributes` WHERE `product_id`=p.`id`) as product_attrs FROM `shopping_cart_products` p  WHERE p.`status`=1 AND p.`site_id`='".NUMO_SITE_ID."' ".$whereStr." ORDER BY p.`slot_1` LIMIT ".$startPosition.",".$itemsPerPage;
 	   // SELECT p.*, i.file_name as 'image_name', i.description as 'image_description', (SELECT COUNT(*) FROM `shopping_cart_optional_product_attributes` WHERE `product_id`=p.`id`) as product_attrs FROM `shopping_cart_products` p LEFT JOIN (SELECT y.* FROM `shopping_cart_product_images` y INNER JOIN (SELECT * FROM shopping_cart_product_images ORDER BY id ASC) x ON (y.id=x.listing_id) GROUP BY y.listing_id) i ON (p.`id`=i.`listing_id`) WHERE p.`status`=1 AND p.`site_id`='1' ORDER BY p.`slot_1` LIMIT 0,10print $sql; 
-		//print $sql;
+		//print $sql; 
 		$results = $dbObj->query($sql);
 	
 		if(mysql_num_rows($results) > 0) {

@@ -1,9 +1,35 @@
 RewriteEngine on
+
+# SITE LOCATION
+# If you are running your site in a subfolder (for testing, or otherwise), you will need
+# to modify the following line to include the path to the root of this site. 
+# Example: /mysubfolder/
+
 RewriteBase /
-RewriteCond %{REQUEST_URI} !^.*/check.php
+
+
+# DIRECTORY LISTINGS
+# By default, Numo controls the directory listings by issuing a "File Not Found" page error.
+# To Enable server controlled directory listings by removing the # from the next line
+
+#RewriteCond %{SCRIPT_FILENAME} !-d
+
+
+# SCRIPT AND DIRECTORY EXLCUSIONS 
+# Below are a list of folders that, when called upon, Numo will either not parse, nor protect.
+# If you are running a third party application or script, you can add it to the following list.
+# Examples (the # character preceeding the example disables (comments-out) the directive):
+
+#RewriteCond %{REQUEST_URI} !^.*/subfolderofmyapplication/
+#RewriteCond %{REQUEST_URI} !^.*/myscript.php
+
+# DO NOT MODIFY ANYTHING BELOW THIS LINE
 RewriteCond %{REQUEST_URI} !^.*/numo/
 RewriteCond %{REQUEST_URI} !^.*/numo$
 RewriteCond %{REQUEST_URI} !^.*/dynamo/
 RewriteCond %{REQUEST_URI} !^.*/dynamo$
 RewriteCond %{REQUEST_URI} !^.*/Site/
+RewriteCond %{REQUEST_URI} !^.*/check.php
+
+# Final command issued to parse the location through the check.php controller script
 RewriteRule (.*) check.php?where=$1&%{QUERY_STRING} [L]

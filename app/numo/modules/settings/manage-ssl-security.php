@@ -116,7 +116,7 @@ html { padding-bottom: 50px; }
 <?php } ?>
 <?php if (!is_writable("configuration/database_connection_information.php")) { ?>
 <div class='module_pending_install' style='padding-top: 5px; padding-bottom: 10px;'><h2>Notice!</h2>
-<p>You must enable write permissions on the file "numo/configuration/database_connection_info.php" on your server in order to change these settings.</p></div>
+<p>You must enable write permissions on the file "numo/configuration/database_connection_information.php" on your server in order to change these settings.</p></div>
 <?php } ?>
 <form method="post">
 <ul>

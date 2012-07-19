@@ -18,12 +18,14 @@ if($_POST['cmd'] == "install_new_module") {
 		header('Location: '.NUMO_FOLDER_PATH);
 	}
 } else if ($_POST['cmd'] == "update_license_key") { 
+   // print "yup";
 	if(($licenseCheckResponse = check_license_key($_POST['license_key'],$_POST['module'])) == "") {
 		//print "inside if for ".$_POST['license_key']."-".$_POST['module'];
 		//run module initialization SQL code
 		$sql = "UPDATE modules SET license_key='{$_POST['license_key']}' WHERE license_key='' AND site_id='".NUMO_SITE_ID."' AND name='".$_POST['module']."'";
 		//print $sql;
-		$dbObj->query($sql);  
+		$dbObj->query($sql); 
+		//print mysql_error();
 		//print "done {$_POST['module']}-{$_POST['license_key']}";
 		//run_sql_configuration($_POST['module'], false, $_POST['license_key']);
 		//header('Location: '.NUMO_FOLDER_PATH); 
@@ -54,14 +56,20 @@ $exists = (mysql_num_rows($result))?TRUE:FALSE;
 if (!$exists) {
   $dbObj->query("ALTER TABLE `modules` ADD `status` tinyint(4) default 1");
 }
+
+$result = $dbObj->query("SHOW COLUMNS FROM `modules` LIKE 'license_key'");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
+  $dbObj->query("ALTER TABLE `modules` ADD `license_key` varchar(100) default ''");
+}
 //print mysql_error();
 
 foreach( $modules as $key => $module) {
 	$query = "SELECT * FROM modules WHERE name='{$module}' AND site_id='".NUMO_SITE_ID."'";
+	//print $query;
 	$moduleResult = $dbObj->query($query);
 	$moduleRecord = mysql_fetch_array($moduleResult);
 	if ($moduleRecord['license_key'] == "" && $moduleRecord['name'] != "accounts" && $moduleRecord['name'] != "settings") { ?>
-
 		<div class="module_install_completed">
 		 <h2><?=ucwords(str_replace("_", " ", $module))?></h2>
          <hr />

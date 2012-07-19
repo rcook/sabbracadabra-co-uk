@@ -10,7 +10,7 @@ if(isset($_SESSION['account_id'])) {
 global $HTTP_HOST;
 ?>
 <style>
-.login-box-right { clear: right; float: right; width: 34%; margin-right: -20px; }
+.login-box-right { clear: right; float: right; width: 290px; margin-right: -20px; }
 .login-box-right h3 { color: #ffffff; }
 #numo_account_login_component {text-align: center; margin-left: 0px;}
 #numo_account_login_component form {text-align: left; margin: 0px; padding: 10px 0px;}

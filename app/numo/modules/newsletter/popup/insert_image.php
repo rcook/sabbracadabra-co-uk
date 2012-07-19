@@ -7,7 +7,11 @@
 
 require('config.inc.php');
 error_reporting(0);
-session_start();
+require("../../../classes/functions.php");
+
+// start session
+numo_session_start();
+//session_start();
 
 if(!isset($_SESSION['account_id']) || $_SESSION['is_admin'] != "1") {
 	print "<p>Error: You are currently not logged into an account.  Please close this window and refresh your page to login again.</p>";
@@ -150,7 +154,7 @@ table tr td {padding-top: 0px;padding-bottom: 2px;font-family: arial, tahoma; fo
 				</tr>				
 				<tr>
 					<td style=" font-size: 11px;">&nbsp;</td>
-					<td><input type="submit" value="Insert" onclick="insertImage();return false;" style="font-size: 12px;"></td>
+					<td><input type="submit" value="Insert" onClick="insertImage();return false;" style="font-size: 12px;"></td>
 				</tr>	
 			</table>	
 			</td>

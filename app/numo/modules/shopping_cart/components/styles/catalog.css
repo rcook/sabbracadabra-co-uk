@@ -31,3 +31,5 @@ table.product_catalog_display td.numo_catalog_back_next { border: 0px;}
 table.product_catalog_display td.numo_catalog_back_next a { font-weight: normal; }
 div.product_catalog_display_section_break { border-top: 1px solid #333333; }
 h3.numo_shopping_cart_product_name { font-size: 14pt;  margin-top: 0px; margin-bottom: 0px;}
+a.numo_view_cart_link {  }
+a.numo_view_cart_link:hover {  }

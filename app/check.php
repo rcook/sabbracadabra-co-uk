@@ -6,7 +6,7 @@
 /* otherwise, display an error message page explaining the issue        */
 /************************************************************************/
 
-error_reporting (E_ALL ^ E_NOTICE); 
+  error_reporting (E_ALL ^ E_NOTICE && E_WARNING);
 
 // change headers so form information doesn't expire
 header("Expires: Sat, 01 Jan 2000 00:00:00 GMT");
@@ -219,14 +219,20 @@ function is_protected($file) {
 	global $permissionId;
 
 	//check to see if Access Control module installed
-	$sql = "SELECT name FROM modules where name='access_control'";
+	$sql = "SELECT name FROM modules where name='access_control' AND site_id='".NUMO_SITE_ID."'";
+	//print $sql;
 	$results = $dbObj->query($sql);
 
 	if($row = mysql_fetch_array($results)) {
 		//query the database to see if the document has been marked as protected
 		//$sqlQuery = "SELECT id FROM protected_files WHERE file_name='".$file."'";
-		$sql = "SELECT id FROM `protected_files` WHERE (SELECT '^".$file."' REGEXP protected_files.file_name)";
-		//print $sqlQuery;
+		//$file = str_replace('$', '\$', $file);
+		$file = str_replace("'", "", $file);
+		$file = str_replace('"', '', $file);
+		// this was changed march 13, 2012 as the regular expression was seemed unrequired and interfered with special characters
+		//$sql = "SELECT id FROM `protected_files` WHERE (SELECT '^".$file."' REGEXP protected_files.file_name)";
+		$sql = "SELECT id FROM `protected_files` WHERE file_name='{$file}'";
+		//print $sql;
 		$result = $dbObj->query($sql);
 
 		//if result found the document is protected
@@ -352,6 +358,7 @@ function display_file($file) {
 		$contentType['html'] = "text/html";
 		$contentType['txt']  = "text/plain";
 		$contentType['xml']  = "text/xml";
+		$contentType['vcf']  = "text/x-vcard";
 
 		//if extension is defined in $contentType array update content type for display
 		if (array_key_exists($extension, $contentType)) {

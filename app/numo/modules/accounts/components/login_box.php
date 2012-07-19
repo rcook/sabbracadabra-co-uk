@@ -18,8 +18,6 @@ global $HTTP_HOST;
 #numo_account_login_component a {font-size: 13px; text-align: center; color: #444;}
 #numo_account_login_component input { width: 125px; }
 </style>
-<div class="divider"></div>
-<div class="whatsnew"><div class="box1"><div class="box1_1"></div><div class="box1_3"></div><div class="box1_2"><div class="box1-content">
 <h3>Login</h3>
 <table id="numo_account_login_component"><tr><td>
 <?php
@@ -52,4 +50,3 @@ if($_POST['cmd'] == "login") {
 </form>
 <a href="forgot_password.htm">Forgot your password?</a>
 </td></tr></table>
-</div></div></div></div>

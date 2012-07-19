@@ -19,7 +19,8 @@ if(isset($_SESSION['account_id'])) {
 #numo_account_registration_box_component input { width: 105px; }
 </style>
 <div class="divider"></div>
-<div class="whatsnew"><div class="box3"><div class="box3_1"></div><div class="box3_3"></div><div class="box3_2"><div class="box3-content">
+<div class="whatsnew">
+<div class="box1"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3"><div class="box1-inner"><div class="box1-2"><div class="box1-6"><div class="box1-4"><div class="box1-8"><div class="box1-5"><div class="box1-7"><div class="box1-3"><div class="box1-1"><div class="box1-content">
 <h3>Register</h3>
 <table id="numo_account_registration_box_component"><tr><td>
 <?php
@@ -42,7 +43,7 @@ if($_POST['cmd'] == "create") {
 		require("numo/modules/".$matches[1]."/classes/Account.php");
 
 		$accountObj = new Account();
-		
+
 		//check to ensure email address unique
 		if($accountObj->email_in_use($_POST['slot_3'])) {
 			//print message alerting of un-unique email
@@ -50,32 +51,33 @@ if($_POST['cmd'] == "create") {
 		} else if(!isValidEmail($_POST['slot_3'])) {
 			$errors[3] = "* ".NUMO_SYNTAX_ACCOUNT_REGISTRATION_EMAIL_NOT_VALID;
 		}
-		
+
 		//check to ensure username unique
 		if($accountObj->username_in_use($_POST['slot_1'])) {
 			$proceed = false;
 			//print message alerting of un-unique username
 			$errors[1] = "* ".NUMO_SYNTAX_ACCOUNT_REGISTRATION_USERNAME_IN_USE;
 		}
-		
+
 		//load field information for accounts group
 		$sql = "SELECT `name`,`slot` FROM `fields` WHERE type_id=".$PARAMS['id']." AND show_on_registration=1 AND required=1";
 		//print $sql."<br>";
 		$results = $dbObj->query($sql);
-		
+
 		while($row = mysql_fetch_array($results)) {
 			if($_POST['slot_'.$row['slot']] == "") {
 				$errors[$row['slot']] = "* ".NUMO_SYNTAX_ACCOUNT_REGISTRATION_VALUE_REQUIRED;
 			}
 		}
-				
+
 		if(count($errors) == 0) {
 			$accountId = $accountObj->create($_POST);
 
 			if($accountId != null || $accountId != "") {
 				//redirect to edit page for new account group
 				//header('Location: '.NUMO_FOLDER_PATH.'/module/accounts/account-edit/?id='.$accountId);
-				print "<p>".NUMO_SYNTAX_ACCOUNT_REGISTRATION_ACCOUNT_CREATED."</p></td></tr></table>";
+				print "<p>".NUMO_SYNTAX_ACCOUNT_REGISTRATION_ACCOUNT_CREATED."</p></td></tr></table></div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
+</div>";
 				return;
 			} else {
 				print "<p class='error'>".NUMO_SYNTAX_ACCOUNT_REGISTRATION_UNABLE_TO_CREATE_ACCOUNT."</p>";
@@ -92,16 +94,16 @@ if($_POST['cmd'] == "create") {
 		$sql = "SELECT `name`,`slot`,`input_type`,`input_options` FROM `fields` WHERE type_id=".$PARAMS['id']." AND show_on_registration=1 ORDER BY `position`,`name`";
 		//print $sql."<br>";
 		$results = $dbObj->query($sql);
-		
+
 		while($field = mysql_fetch_array($results)) {
 			if($field['input_type'] == "password") {
 				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input type="password" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$_POST['slot_'.$field['slot']].'" autocomplete="off" /> '.$errors[$field['slot']].'</li>';
-			
+
 			} else if($field['input_type'] == "dropdown list") {
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.generate_list_options($field['input_options'],$_POST['slot_'.$field['slot']]).'</select> '.$errors[$field['slot']].'
-							</li>';						
+							</li>';
 			} else {
 				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input type="text" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$_POST['slot_'.$field['slot']].'" /> '.$errors[$field['slot']].'</li>';
 			}
@@ -113,4 +115,5 @@ if($_POST['cmd'] == "create") {
 	<input type="hidden" name="cmd" value="create" />
 </form>
 </td></tr></table>
-</div></div></div></div>
+</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
+</div>

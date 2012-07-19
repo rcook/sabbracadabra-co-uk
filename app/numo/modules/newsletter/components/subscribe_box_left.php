@@ -187,7 +187,8 @@ function numoNewsletter_unsubscribe(frm) {
 	if(mysql_num_rows($results) == 0) {
 	?>
 		<p>No subscription lists available</p></td></tr></table>
-</div></div></div></div>
+</div></div></div></div><div class="bb"><div></div></div></div>
+</div>
 
 
 

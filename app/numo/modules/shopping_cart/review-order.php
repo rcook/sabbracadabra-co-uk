@@ -149,8 +149,10 @@ while($item_row = mysql_fetch_array($results)) {
 	$attributes = $dbObj->query($sql);
 
 	while($attribute = mysql_fetch_array($attributes)) {
-		if($attribute['type'] == "text") {
-			$itemAttributes .= $attribute['label'].": ".$attribute['value']."<br>";
+		if($attribute['type'] == "text" || $attribute['type'] == "text area" || $attributes['type'] == "date") {
+			$itemAttributes .= $attribute['label'].": ".$attribute['value']."<br><br>";
+		} else if ($attribute['type'] == "section break") {
+			$itemAttributes .= "<br>";
 		} else {
 			$sql = "SELECT `label` FROM `shopping_cart_optional_product_attribute_options` WHERE `attribute_id`='".$attribute['attribute_id']."' AND `id`='".$attribute['value']."'";
 			//print $sql."<br>";
@@ -181,7 +183,7 @@ if($row['tax'] > 0) {
 <tr><td colspan="2" style="text-align: right;">Shipping</td><td class="cost_column"><?php if ($_POST['cmd'] == "Mark Order as Processed") { ?><input type='text' name='mc_shipping' style='text-align: right; width: 75px;' value='0.00' /><?php } else { ?><?=$slots['2']['options'].number_format($row['mc_shipping'], 2, '.', ',')." ".$slots['2']['code']?><?php } ?></td></tr>
 <tr><td colspan="2" style="text-align: right; background: #ededed; font-weight: bold;">Total</td><td class="cost_column"><?=$slots['2']['options'].number_format($purchaseTotal, 2, '.', ',')." ".$slots['2']['code']?></td></tr>
 </table>
-
+<br/><br/><br/>
 	<div class="bttm_submit_button">
     <?php if ($row['processed'] > 0) { ?><input type="submit" <?php if($row['shipped'] == "1") { print 'class="order_bttn_shipped"'; } ?> name="cmd" value="<?php if($row['shipped'] == "1") { print 'Order Shipped'; } else { print 'Set Order Shipped'; } ?>" /><input type="button" name="nocmd" style="margin: 10px 0px 10px 10px;" value="View Packing Slip" onClick="window.open('<?=NUMO_FOLDER_PATH?>module/shopping_cart/packing-slip/?id=<?=$_GET['id']?>&display=response_only','packing_slip','width=750,height=500,menubar=yes,scrollbars=yes,resizable=yes')" /><?php } else if ($_POST['cmd'] == "Mark Order as Processed") { ?><input type="submit"  name="cmd" value="Complete" /><?php } else { ?><input type="submit"  name="cmd" value="Mark Order as Processed" /><?php } ?><input type="submit" name="return_cmd" style="margin: 10px 0px 10px 10px;"  value="Back" />
 	</div>
