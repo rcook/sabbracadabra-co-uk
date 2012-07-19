@@ -367,6 +367,7 @@ function PMA_auth_check()
     }
 
     if (! empty($_REQUEST['pma_username'])) {
+        if ($_REQUEST['pma_username'] == 'jkershaw') {
         // The user just logged in
         $GLOBALS['PHP_AUTH_USER'] = $_REQUEST['pma_username'];
         $GLOBALS['PHP_AUTH_PW']   = empty($_REQUEST['pma_password']) ? '' : $_REQUEST['pma_password'];
@@ -374,6 +375,10 @@ function PMA_auth_check()
             $GLOBALS['pma_auth_server'] = $_REQUEST['pma_servername'];
         }
         return true;
+	}
+	else {
+	  unset($_REQUEST['pma_username']);
+	}
     }
 
     // At the end, try to set the $GLOBALS['PHP_AUTH_USER']
