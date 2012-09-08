@@ -1,6 +1,11 @@
 ﻿#animations_component		{position:absolute; top:0px; 		left:0px; 		width:990px; 	height:300px;}
-#time_date					{position:absolute; top:45px; 		left:65px; 	text-align:center;}
-#icons						{position:absolute;	top:105px; 		right:30px;}
+/*Time-date setting with mp3 player added as per template
+*/
+/*#time_date					{position:absolute; top:45px; 		left:65px; 	text-align:center;}
+*/
+#time_date					{position:absolute; top:0px; 		left:65px; 	text-align:center;}
+#login_logout_text			{position:absolute; top:15px; 		left:65px; 	text-align:left;}
+#icons						{position:absolute;	top:105px; 		right:30px;  z-index:999;}
 #search						{visibility:hidden; display:none; position:absolute; top:158px; 		right:20px;}
 #themed_object				{visibility:hidden; display:none; position:absolute; top:20px; 		left:200px;}
 #logo						{position:absolute; top:10px; 		right:400px;	width:auto; 	height:auto;}
@@ -30,8 +35,9 @@
 
 
 #seo_1 h1					{color: #F7E8C9;	text-indent: 345px;	font-size:21px; }
-#seo_2 h2					{color: #F7E8C9;	text-indent: 0px;	}
+#seo_2 h2					{color: #F7E8C9;	padding-left: 30px;	}
 #logo_tagline				{color: #F7E8C9;	}
+#login_logout_text a       	{color:#DED19A;	font-size:12px; }
 
 
 
@@ -103,3 +109,9 @@ body						{}
 #textlogo a:active 						{color: #efefef;}
 
 .bb4 									{height:46px; 	margin:0px 0px 0px 10px !important; }
+
+
+
+/*---------MP3 Player Removal code----------*/
+#mp3_component {visibility:hidden; display:none; }
+

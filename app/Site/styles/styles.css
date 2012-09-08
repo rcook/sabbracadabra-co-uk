@@ -1,4 +1,4 @@
-@import url("../logo/css/sifr.css");
+﻿@import url("../logo/css/sifr.css");
 @import url("../themed_images/theme.css");
 
 /* HEADER BG *****************************************************************************************************************************/
@@ -470,6 +470,7 @@
 
 /*clock*/
 #clock 									{color: #DED19A;  	text-align:right; 	font-size:10px; 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	font-weight:normal;	text-decoration:none; }  
+
 
 /* -------------------------- top menu styles--------------------- */
 
