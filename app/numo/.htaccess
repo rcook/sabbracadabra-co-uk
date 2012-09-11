@@ -1,3 +1,5 @@
+php_value upload_tmp_dir var/www/jkershaw/jonkershawmusic.com/numo/temp/
+
 RewriteEngine on
 RewriteBase /numo/
 RewriteRule ^module/(.*)/(.*)/$ index.php?m=$1&i=$2&%{QUERY_STRING} [L]

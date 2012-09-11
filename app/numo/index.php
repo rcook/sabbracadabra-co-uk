@@ -1,6 +1,7 @@
 <?php
   error_reporting (E_ALL ^ E_NOTICE && E_WARNING);
-  
+  ini_set ('upload_tmp_dir', '/var/www/jkershaw/jonkershawmusic.com/numo/temp/');
+
   include ("__preamble.php");
 
 
@@ -24,7 +25,7 @@ foreach($_POST as $key => $value) {
 	//print "p ". $key."=".$value."\n";
 	//if(is_string($value)) {
 	//	$_GET[$key] = htmlentities($value);
-	//} 
+	//}
 
 }
 ob_start();
@@ -39,7 +40,7 @@ require("__setup.php");
 	//while ($rec = mysql_fetch_array($result)) {
 	//	print $rec['Field']."<br>";
 	//}
-	
+
 	$query = "SELECT * FROM sites WHERE id='".NUMO_SITE_ID."'";
 	$siteResult = $dbObj->query($query);
     $siteData   = mysql_fetch_array($siteResult);
@@ -56,10 +57,10 @@ if($_GET['display'] == "response_only") {
 <head>
 	<title>Administrative Area</title>
         <?php if ($_SERVER['HTTPS'] == "on") { ?>
-		<base href="https://<?php echo NUMO_SECURE_ADDRESS."".NUMO_FOLDER_PATH; ?>" />	
+		<base href="https://<?php echo NUMO_SECURE_ADDRESS."".NUMO_FOLDER_PATH; ?>" />
         <?php } else { ?>
-		<base href="http://<?php echo NUMO_SERVER_ADDRESS."".NUMO_FOLDER_PATH; ?>" />	
-        <?php } ?>	
+		<base href="http://<?php echo NUMO_SERVER_ADDRESS."".NUMO_FOLDER_PATH; ?>" />
+        <?php } ?>
         <link rel="stylesheet" type="text/css" href="styles/template.css" />
 	<link rel="stylesheet" type="text/css" href="styles/menu-v.css" />
 <?php
@@ -102,7 +103,7 @@ if($_GET['display'] == "min") {
 	<div id="notice_bar">
 		<img src="images/configuration.png" style='float: left;' /><p>Warning!</p>
         <p>Your "<span class='file_name'>numo/configuration/database_connection_information.php</span>" file is currently writable.  To ensure that you do not lose your system connection settings, you should remove write permissions on this file immediately.</p>
-		
+
 	</div>
 <?php } ?>
 	<div id="top_bar">
@@ -115,7 +116,7 @@ if($_GET['display'] == "min") {
 		<li><a href="./">Home</a></li>
 		<?php
 		//print sizeof ($modules);
-		
+
 		foreach($modules as $key => $module) {
 			if ($_SERVER['HTTP_HOST'] != DEMO_SERVER || $numoModules["$module"]) {
 			  include(MODULES_FOLDER_NAME."/".$module."/configuration/menu.htm");
@@ -128,24 +129,24 @@ if($_GET['display'] == "min") {
 	<br style="clear: left" />
 	</div>
 	<div id="content">
-    
+
 	<?php
 		if ($REMOTE_ADDR == "xx.xx.xx.xx") {
 		  include(MODULES_FOLDER_NAME."/settings/classes/Updater.php");
-		  
+
 		  if ($updater->updatesAvailable()) {
-			print "<p class='notification'>There are ".$updater->getNumberOfUpdates()." updates available for this Numo installation.  <input style='float: right' name='cmd' type='submit' value='Install' /></p>";							 
+			print "<p class='notification'>There are ".$updater->getNumberOfUpdates()." updates available for this Numo installation.  <input style='float: right' name='cmd' type='submit' value='Install' /></p>";
 		  }
 		}
-		
+
 	    if ($_GET['m'] == "" || $access->hasAccess()) {
 			if(!(@include MODULES_FOLDER_NAME."/".$_GET['m']."/".$_GET['i'].".php")) {
 				include("landing.php");
 			}
 		} else {
-		  print "You do not have access to view this adminstrative function.";	
+		  print "You do not have access to view this adminstrative function.";
 		}
-		
+
 	?>
 	</div>
 	</div>
