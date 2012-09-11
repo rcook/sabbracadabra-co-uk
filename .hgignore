@@ -1,0 +1,3 @@
+syntax: regexp
+^app/numo/modules/shopping_cart/uploads/.+$
+
