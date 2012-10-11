@@ -98,6 +98,8 @@ require("configuration/syntax.php");
 
 if (defined('NUMO_SYNTAX_NUMO_TIMEZONE_CODE') && NUMO_SYNTAX_NUMO_TIMEZONE_CODE != "") {
   date_default_timezone_set(NUMO_SYNTAX_NUMO_TIMEZONE_CODE);
+} else {
+  date_default_timezone_set("America/Chicago");
 }
 
 // get a list

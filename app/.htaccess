@@ -1,3 +1,6 @@
+# attempt to turn on short open tags (disabled August 28/2012 as it was causing more issues than solving)
+# php_flag short_open_tag on
+
 RewriteEngine on
 
 # SITE LOCATION

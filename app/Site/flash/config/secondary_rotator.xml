@@ -7,31 +7,40 @@
 	
     <images>
     
-    
+ 
 		<pic>
-			<image>Site/themed_images/secondary_rotator1.jpg</image>
-			<link>index.htm</link>
+			<image>Site/themed_images/bizarre_tales_240x302.jpg</image>
+			<link>region_select.htm</link>
 			<target>_self</target>
-			<title>Caption</title>
-			<description>Short description goes here.</description>
+			<title>Jonathan Kershaw Music</title>
+			<description>Bizarre Tales - available now</description>
+			<frame>on</frame>
+		</pic>
+   
+		<pic>
+			<image>Site/themed_images/jk_002_240x302.jpg</image>
+			<link>home.htm</link>
+			<target>_self</target>
+			<title>Jonathan Kershaw Music</title>
+			<description>Photo by Tracey Swain</description>
 			<frame>on</frame>
 		</pic>
 
 		<pic>
-			<image>Site/themed_images/secondary_rotator2.jpg</image>
-			<link>index.htm</link>
+			<image>Site/themed_images/ts_004_240x302.jpg</image>
+			<link>photo_gallery.htm</link>
 			<target>_self</target>
-			<title>Caption</title>
-			<description>Short description goes here.</description>
+			<title>Jonathan Kershaw Music</title>
+			<description>All photography by Tracey Swain</description>
 			<frame>on</frame>
 		</pic>
 
 		<pic>
-			<image>Site/themed_images/secondary_rotator3.jpg</image>
-			<link>index.htm</link>
+			<image>Site/themed_images/Logo_240x302.jpg</image>
+			<link>home.htm</link>
 			<target>_self</target>
-			<title>Caption</title>
-			<description>Short description goes here.</description>
+			<title>Jonathan Kershaw Music</title>
+			<description>Jonathan Kershaw Music</description>
 			<frame>on</frame>
 		</pic>
 			

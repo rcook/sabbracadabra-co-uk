@@ -205,8 +205,8 @@ while($row = mysql_fetch_array($results)) {
 		}
 		if ($groupData["{$row['type_id']}"]['require_activation'] == 1) {
 			// pending == 3 == subscriber
-			if ($row['activated'] == 0 && $row['pending'] != 3) {
-				if ($groupData["{$row['type_id']}"]['require_approval'] == 1 && $row['pending'] == 1) {
+			if ($row['activated'] != 1 && $row['pending'] != 0) {
+				if ($groupData["{$row['type_id']}"]['require_approval'] == 1 && $row['pending'] != 0 ) {
 					print ",";
 				}
 				print "Pending Activation";

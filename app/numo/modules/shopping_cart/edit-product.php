@@ -18,7 +18,7 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 	while ($taxRateRecord = mysql_fetch_array($taxRatesResult)) {
 		$taxRateID = $taxRateRecord['tax_rate_id'];
 		$taxRates["$taxRateID"] = $taxRateRecord['rate_name']." @ ".$taxRateRecord['tax_rate']."%";
-
+		
 	}
 }
 
@@ -189,12 +189,8 @@ if($_POST['cmd'] == "update") {
 
 	//upload image files
 	foreach($_FILES as $fieldName => $fieldValue) {
-	print $fieldName."<br>";
 		//upload new listing image
 		if(substr($fieldName,0,11) == "new_image__") {
-		   foreach ($fieldValue as $x => $y) {
-		   //print $x."=".$y."<br>";
-		   }
 			if ($fieldValue['error'] == UPLOAD_ERR_OK) {
 				$newImageId = substr($fieldName,11);
 
@@ -338,7 +334,7 @@ table.egood_config th {
 	font-size: 9pt;
 	padding: 3px 10px;
 	border-bottom: 1px solid #cccccc;
-
+	
 }
 
 </style>
@@ -354,7 +350,7 @@ function change_egood_type(selectBox) {
   jQuery(".egood_settting_listing_service").css("display", "none");
   jQuery(".egood_config").css("display", "block");
 
-
+  
   if (selectedValue == "simple") {
 	  jQuery(".egood_config").css("display", "none");
   } else if (selectedValue == "accounts") {
@@ -364,12 +360,12 @@ function change_egood_type(selectBox) {
 	  jQuery(".egood_settting_newsletter").css("display", "block");
   } else if (selectedValue == "listing_service") {
     jQuery(".egood_settting_listing_service").css("display", "block");
-  }
+  } 	
 }
 
 function change_shipping_type(selectBox) {
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
+  
   if (selectedValue == 0) {
 	  jQuery(".shipping_weight_label").css("display", "none");
 	  jQuery("span.shipping_cost_label").css("display", "inline-block");
@@ -377,18 +373,18 @@ function change_shipping_type(selectBox) {
 	  jQuery(".shipping_cost_label_list_item").css("display", "block");
 	  jQuery("li.shipping_egood_config").css("display", "none");
   } else if (selectedValue == 1) {
-	  jQuery("li.shipping_cost_label_list_item").css("display", "block");
-	  jQuery("li.shipping_cost_label").css("display", "none");
+	  jQuery("li.shipping_cost_label_list_item").css("display", "block");	  
+	  jQuery("li.shipping_cost_label").css("display", "none");	  
 	  jQuery("span.shipping_cost_label").css("display", "none");
 	  jQuery("span.shipping_weight_label").css("display", "inline-block");
 	  jQuery("li.shipping_egood_config").css("display", "none");
   } else if (selectedValue == 2) {
-	  jQuery("li.shipping_cost_label_list_item").css("display", "none");
+	  jQuery("li.shipping_cost_label_list_item").css("display", "none");	  
 	  jQuery(".shipping_weight_label").css("display", "none");
 	  jQuery(".shipping_cost_label").css("display", "none");
 	  jQuery(".shipping_cost_label_list_item").css("display", "none");
 	  jQuery("li.shipping_egood_config").css("display", "block");
-  }
+  } 
 }
 function checkCaptionFieldValue(field) {
 	if(field.value == "Enter your image caption here") {
@@ -589,7 +585,7 @@ if($row = mysql_fetch_array($result)) {
 							</li>';
 			} else if($field['input_type'] == "tax rate") {
 				if (sizeof($taxRates) > 0) {
-
+									
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'[]">'.generate_list_options($taxRates, $fieldValue).'</select>
@@ -627,7 +623,7 @@ if($row = mysql_fetch_array($result)) {
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select onchange="change_shipping_type(this)" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.generate_list_options($fieldOptions ,$fieldValue).'</select>
-
+						
 
 							</li>';
 
@@ -645,32 +641,32 @@ if($row = mysql_fetch_array($result)) {
 				$fieldOptions = array();
 				$fieldOptions['simple'] = 'Simple Payment';
 				$fieldOptions['accounts'] = "Account Upgrade";
-
+				
 				$accountTypeOptions = array(0 => "** No Change **");
 				$result = $dbObj->query("SELECT * FROM `types` WHERE site_id='".NUMO_SITE_ID."' ORDER BY `id`");
 				while ($rec = mysql_fetch_array($result)) {
 					$accTypeId = $rec['id'];
-
+					
 					$accountTypeOptions["{$accTypeId}"] = $rec['name'];
 				}
 				mysql_free_result($result);
-
-
+				
+				
 				$query = "SELECT * FROM modules WHERE name='access_control' AND site_id='".NUMO_SITE_ID."'";
 				$result = $dbObj->query($query);
 				$exists = (mysql_num_rows($result))?TRUE:FALSE;
 				if ($exists) {
-				  $fieldOptions['access_control']  = "- Access Upgrade";
+				  $fieldOptions['access_control']  = "- Access Upgrade";	
 					$accessTypeOptions = array();
 					$result = $dbObj->query("SELECT * FROM `protected_files` WHERE site_id='".NUMO_SITE_ID."' ORDER BY `file_name`");
 					//print mysql_error();
 					while ($rec = mysql_fetch_array($result)) {
 						$accTypeId = $rec['id'];
-
+						
 						$accessTypeOptions["{$accTypeId}"] = $rec['file_name'];
-					}
-
-
+					}	
+				
+				
 				}
 				$query = "SELECT * FROM modules WHERE name='newsletter' AND site_id='".NUMO_SITE_ID."'";
 				$result = $dbObj->query($query);
@@ -685,20 +681,20 @@ if($row = mysql_fetch_array($result)) {
 					//print mysql_error();
 					while ($rec = mysql_fetch_array($result)) {
 						$accTypeId = $rec['id'];
-
+						
 						$newsletterListOptions["{$accTypeId}"] = $rec['name'];
-					}
+					}	
 
 
 				}
-
+				
 //								$query = "SELECT * FROM modules WHERE name='newsletter' AND site_id='".NUMO_SITE_ID."'";
 
 				$result = $dbObj->query("SHOW COLUMNS FROM `listing_contributors`");
 				$exists = (@mysql_num_rows($result))?TRUE:FALSE;
-
+				
 				if ($exists) {
-
+				
 				  $fieldOptions['listing_service'] = "- Listing Service Contributor";
 				  $query = "SELECT * FROM listing_types";
 				  $result = $dbObj->query($query);
@@ -709,7 +705,7 @@ if($row = mysql_fetch_array($result)) {
 					 $listingTypeOptions["$ltid"] = $listTypeRec['name'];
 				  }
 				}
-
+				
 				// will need to parse out the field value information
 				// $fieldValue example "accounts:2
 				//                      access_control:page1.htm,page2.htm
@@ -724,20 +720,20 @@ if($row = mysql_fetch_array($result)) {
 				}
 				if ($fValues["access_control"]) {
 					$fieldValue = "access_control";
-
+					
 				} else if ($fValues["newsletter"]) {
 					$fieldValue = "newsletter";
-
+					
 				} else if ($fValues["listing_service"]) {
 					$fieldValue = "listing_service";
-
+					
 				} else if ($fValues["accounts"]) {
 					$fieldValue = "accounts";
 
 				} else {
 					$fieldValue = "simple";
 				}
-
+				
 				print '<li '.($shippingType == 2 ? "" : 'style="display:none"').' class="shipping_egood_config"><label for="slot_'.$field['slot'].'"">eGood Configuration:</label>
 				<table>
 				  <tr>
@@ -764,8 +760,8 @@ if($row = mysql_fetch_array($result)) {
 					</td>
 			       </tr>
 				 </table>
-
-
+						
+							
 				</li>';
 
 			} else {

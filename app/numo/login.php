@@ -76,6 +76,7 @@ cursor: pointer;
 		.content_box a:hover { color: #F60; }
         </style>
 	</head>
+    <body>
             <div id="top_bar">
                 <p>Administrative Login</p>
                 <img src="images/logo.jpg" alt="NUMO" title="NUMO" />

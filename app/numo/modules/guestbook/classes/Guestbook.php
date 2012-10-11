@@ -71,7 +71,6 @@ class NumoGuestbook {
 
 		//insert account into database
 		$sql = "INSERT INTO `guestbook_responses` (`type_id`,`when_created`".$fieldsList.") VALUES ('".$info['guestbook_id']."','".date("y/m/d H:i:s")."'".$valuesList.")";
-		//print $sql."<br>";
 		$dbObj->query($sql);
   }
 
@@ -122,5 +121,14 @@ class NumoGuestbook {
 		//print $sql."<br>";
 		$dbObj->query($sql);
 	}
+
+	function approve() {
+		global $dbObj;
+
+		$sql = "UPDATE `guestbook_responses` SET pending=0 WHERE id='".$this->id."'";
+		//print $sql."<br>";
+		$dbObj->query($sql);
+	}
+
 }
 ?>

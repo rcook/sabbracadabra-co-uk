@@ -21,9 +21,9 @@
     <?php if ($access->hasAccess("shopping_cart", "daily-purchases")) { ?>
     <li><a href="module/shopping_cart/daily-purchases/">Shopping Cart Orders</a>
         <ul>    
-        <li><a href="module/shopping_cart/daily-purchases/">Daily Sales</a>
+        <li><a href="module/shopping_cart/daily-purchases/">Daily Sales</a></li>
         <?php if ($access->hasAccess("shopping_cart", "customer-orders")) { ?>
-        <li><a href="module/shopping_cart/customer-orders/">Order Lookup</a>
+        <li><a href="module/shopping_cart/customer-orders/">Order Lookup</a></li>
         <?php } ?>
         </ul>
     </li>

@@ -37,10 +37,14 @@
 
 <h2>Manage Account</h2>
 <?php
-if($_POST['cmd'] == "update") {
+if ($_POST['nocmd'] == "Resend Authorization Email") {
+	$accountObj = new Account($_POST['account_id']);
+	$accountObj->sendAuthorizationEmail();
+
+} else if($_POST['cmd'] == "update" && $_POST['nocmd'] != "Initialize Account") {
 	$proceed    = true;
 	$accountObj = new Account($_POST['account_id']);
-
+	
 	//check to ensure email address unique
 	if($accountObj->email_in_use($_POST['slot_3'])) {
 		$proceed = false;
@@ -51,19 +55,22 @@ if($_POST['cmd'] == "update") {
 		//print message alerting of invalid email
 		print "<p class='error'>Email address enter is not valid, please enter a valid email address.</p>";
 	}
-
-	//check to ensure username unique
-	if($accountObj->username_in_use($_POST['slot_1']) || $_POST['slot_1'] == "") {
-		$proceed = false;
-		//print message alerting of un-unique username
-		print "<p class='error'>Username already in use, please enter a different username.</p>";
-	}
-
-	//check to ensure username unique
-	if($_POST['slot_2'] == "" && $_POST['syscmd'] == "initialize") {
-		$proceed = false;
-		//print message alerting of un-unique username
-		print "<p class='error'>Password not provided, please enter a password.</p>";
+	if ($_POST['syscmd'] != "") {
+	
+	} else {
+		//check to ensure username unique
+		if($accountObj->username_in_use($_POST['slot_1']) || $_POST['slot_1'] == "") {
+			$proceed = false;
+			//print message alerting of un-unique username
+			print "<p class='error'>Username already in use, please enter a different username.</p>";
+		}
+	
+		//check to ensure username unique
+		if($_POST['slot_2'] == "" && $_POST['syscmd'] == "initialize") {
+			$proceed = false;
+			//print message alerting of un-unique username
+			print "<p class='error'>Password not provided, please enter a password.</p>";
+		}
 	}
 
 	if($proceed) {
@@ -113,6 +120,8 @@ if($row = mysql_fetch_array($result)) {
 							</select>
 						</li>';
 
+
+		}
 			print '<li>
 							<label for="activated">Activated:</label>
 							<select id="activated" name="activated">
@@ -120,8 +129,6 @@ if($row = mysql_fetch_array($result)) {
 							<option value="1" '.($row['activated'] == 1 ? 'selected="selected"' : '').'>Activated</option>
 							</select>
 						</li>';
-		}
-
 		//load field information for accounts group
 		$sql = "SELECT `name`,`slot`,`input_type`,`input_options` FROM `fields` WHERE type_id='".$row['type_id']."' ORDER BY `position`,`name`";
 
@@ -149,7 +156,12 @@ if($row = mysql_fetch_array($result)) {
 			}
 		}
 		?>
-		<li><label for="submit_cmd"></label><?php if($row['pending'] == "3") { ?><input type="submit" id="submit_cmd" name="nocmd" value="Initialize Account" /><input type="hidden" name="syscmd" value="initialize" /><?php } else { ?><input type="submit" id="submit_cmd" name="nocmd" value="Update" /><input type="hidden" name="cmd" value="update" /><?php } ?></li>
+		<li>
+        
+        <label for="submit_cmd"></label>
+		<?php if ($row['pending'] == "3") { ?><input type="submit" id="submit_cmd" name="nocmd" value="Initialize Account" /><input type="hidden" name="syscmd" value="initialize" /><?php } ?>
+        <?php if ($row['activated'] == 0) { ?><input type="submit" name="nocmd" value="Resend Authorization Email" /><?php } ?>
+        <input type="submit" id="submit_cmd" name="nocmd" value="Update" /><input type="hidden" name="cmd" value="update" /></li>
 	</ul>
 	</fieldset>
 	<input type="hidden" name="account_id" value="<?=$row['id']?>" />

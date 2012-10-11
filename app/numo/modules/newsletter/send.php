@@ -68,7 +68,7 @@ if($_POST['cmd'] == "send") {
 		$subscriptionWhere = substr($subscriptionWhere,0,-4);
 
 		//get email/name for subscribers
-		$sql = "SELECT DISTINCT a.slot_4, a.slot_3 FROM accounts a, newsletter_subscribers s WHERE (".$subscriptionWhere.") AND s.account_id=a.id ORDER BY a.slot_4";
+		$sql = "SELECT DISTINCT a.slot_4, a.slot_3 FROM accounts a, newsletter_subscribers s WHERE (".$subscriptionWhere.") AND a.activated=1 AND s.account_id=a.id ORDER BY a.slot_4";
 		//print $sql."<br>";
 		$results = $dbObj->query($sql);
 

@@ -26,50 +26,50 @@
 	
 <!-- 1st image -->		
 		<pic>
-			<image>Site/themed_images/portfolio1.jpg</image>
-			<link>index.htm</link>
-			<linkLabel>click me1</linkLabel>
+			<image>Site/themed_images/parchment_welcome_476x238.jpg</image>
+			<link>home.htm</link>
+			<linkLabel>click home</linkLabel>
 			<target>_self</target>
 			<title>First Topic</title>
-			<shortDescription>Short description goes here</shortDescription>
-			<description>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</description>
+			<shortDescription>Welcome text</shortDescription>
+			<description>Welcome to the website for Jonathan Kershaw music</description>
 		</pic>
 		
 <!-- 2nd image -->		
 		<pic>
-			<image>Site/themed_images/portfolio2.jpg</image>
-			<link>about.htm</link>
-			<linkLabel>click me2</linkLabel>
+			<image>Site/themed_images/ts_002_476x238.jpg</image>
+			<link>photo_gallery.htm</link>
+			<linkLabel>click photos</linkLabel>
 			<target>_self</target>
-			<title>Second Topic</title>
-			<shortDescription>Short description goes here</shortDescription>
-			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</description>
+			<title>Tracey Swain</title>
+			<shortDescription>Photography by Tracey Swain</shortDescription>
+			<description>Photography by Tracey Swain</description>
 		</pic>
 		
 <!-- 3rd image -->		
 		<pic>
-			<image>Site/themed_images/portfolio3.jpg</image>
-			<link>catalog.htm</link>
-			<linkLabel>click me3</linkLabel>
+			<image>Site/themed_images/portfolio4.jpg</image>
+			<link>region_select.htm</link>
+			<linkLabel>click store</linkLabel>
 			<target>_self</target>
-			<title>Third Topic</title>
-			<shortDescription>Short description goes here</shortDescription>
-			<description>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</description>
+			<title>Online Store</title>
+			<shortDescription>Music and merchandise</shortDescription>
+			<description>Music and merchandise</description>
 		</pic>
 		
 <!-- 4th image -->		
 		<pic>
-			<image>Site/themed_images/portfolio4.jpg</image>
-			<link>contact.htm</link>
-			<linkLabel>click me</linkLabel>
+			<image>Site/themed_images/portfolio7.jpg</image>
+			<link>region_select.htm</link>
+			<linkLabel>click download store</linkLabel>
 			<target>_self</target>
-			<title>Fourth Topic</title>
-			<shortDescription>Short description goes here</shortDescription>
-			<description>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</description>
+			<title>Music Downloads Store</title>
+			<shortDescription>Music and Merchandise</shortDescription>
+			<description>Music and Merchandise</description>
 		</pic>
 		
 <!-- 5th image -->		
-		<pic>
+<!--		<pic>
 			<image>Site/themed_images/portfolio5.jpg</image>
 			<link>privacy.htm</link>
 			<linkLabel>click me</linkLabel>
@@ -79,8 +79,8 @@
 			<description>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</description>
 		</pic>
 		
-<!-- 6th image -->		
-		<pic>
+--><!-- 6th image -->		
+<!--		<pic>
 			<image>Site/themed_images/portfolio6.jpg</image>
 			<link>faqs.htm</link>
 			<linkLabel>click me</linkLabel>
@@ -89,9 +89,9 @@
 			<shortDescription>This is the sixth short description</shortDescription>
 			<description>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</description>
 		</pic>
-				
+-->				
 <!-- 7th image -->		
-		<pic>
+<!--		<pic>
 			<image>Site/themed_images/portfolio7.jpg</image>
 			<link>faqs.htm</link>
 			<linkLabel>click me</linkLabel>
@@ -100,9 +100,9 @@
 			<shortDescription>This is the sixth short description</shortDescription>
 			<description>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</description>
 		</pic>
-
+-->
 <!-- 8th image -->		
-		<pic>
+<!--		<pic>
 			<image>Site/themed_images/portfolio8.jpg</image>
 			<link>faqs.htm</link>
 			<linkLabel>click me</linkLabel>
@@ -111,7 +111,7 @@
 			<shortDescription>This is the sixth short description</shortDescription>
 			<description>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</description>
 		</pic>
-				
+-->				
 				
 				
 <!-- copy new <pic>...</pic> here -->

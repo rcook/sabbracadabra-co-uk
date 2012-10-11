@@ -52,7 +52,7 @@ if($_POST['page']) {
 	$startPos = $_GET['page'];
 }
 
-$sql = "SELECT l.`status`, l.id, DATE_FORMAT(l.when_created,'%c/%e/%Y %l:%i %p') as 'when_created', (SELECT a.slot_4 FROM `accounts` a WHERE a.id=l.account_id) as 'responder', (SELECT COUNT(*) FROM `guestbook_responses`, `guestbook_types` WHERE `guestbook_responses`.type_id=`guestbook_types`.id AND `guestbook_types`.site_id='".NUMO_SITE_ID."') as 'max_rows' FROM `guestbook_responses` l, `guestbook_types` t WHERE l.type_id=t.id AND t.site_id='".NUMO_SITE_ID."' ORDER BY l.`when_created` desc LIMIT ".($startPos * $numPerPage).",".$numPerPage;
+$sql = "SELECT l.`pending`, l.`status`, l.id, DATE_FORMAT(l.when_created,'%c/%e/%Y %l:%i %p') as 'when_created', (SELECT a.slot_4 FROM `accounts` a WHERE a.id=l.account_id) as 'responder', (SELECT COUNT(*) FROM `guestbook_responses`, `guestbook_types` WHERE `guestbook_responses`.type_id=`guestbook_types`.id AND `guestbook_types`.site_id='".NUMO_SITE_ID."') as 'max_rows' FROM `guestbook_responses` l, `guestbook_types` t WHERE l.type_id=t.id AND t.site_id='".NUMO_SITE_ID."' ORDER BY l.`when_created` desc LIMIT ".($startPos * $numPerPage).",".$numPerPage;
 //print $sql."<br>";
 $results = $dbObj->query($sql);
 
@@ -60,7 +60,7 @@ if(mysql_num_rows($results) > 0) {
 	$moreRows = true;
 	$rowsDisplayed = (($startPos + 1) * $numPerPage);
 
-	echo '<table class="messages_received" cellpadding="0" cellspacing="0"><tr><th><a href="javascript:selectAll();"><img src="modules/guestbook/images/checkmark.jpg" border="0" /></a></th><th>&nbsp</th><th style="padding-right: 30px;">Submitted By</th><th>Recieved</th><th>&nbsp</th></tr>';
+	echo '<table class="messages_received" cellpadding="0" cellspacing="0"><tr><th><a href="javascript:selectAll();"><img src="modules/guestbook/images/checkmark.jpg" border="0" /></a></th><th>&nbsp</th><th style="padding-right: 30px;">Submitted By</th><th>Recieved</th><th>&nbsp</th><th>&nbsp;</th></tr>';
 
 	while($row = mysql_fetch_array($results)) {
 		if($rowsDisplayed >= $row['max_rows']) {
@@ -73,13 +73,13 @@ if(mysql_num_rows($results) > 0) {
 			$responderCell = '<td>'.$row['responder'].'</td>';
 		}
 		if($row['status'] == 1) {
-			echo '<tr class="new_message"><td><input type="checkbox" name="remove__'.$row['id'].'" value="0" /></td><td><img src="modules/'.$_GET['m'].'/images/new.jpg" alt="New" title="New" /></td>'.$responderCell.'<td class="spaced_col">'.$row['when_created'].'</td><td><a href="module/'.$_GET['m'].'/review-response/?id='.$row['id'].'">[Review]</a></td></tr>';
+			echo '<tr class="new_message"><td><input type="checkbox" name="remove__'.$row['id'].'" value="0" /></td><td><img src="modules/'.$_GET['m'].'/images/new.jpg" alt="New" title="New" /></td>'.$responderCell.'<td class="spaced_col">'.$row['when_created'].'</td><td><a href="module/'.$_GET['m'].'/review-response/?id='.$row['id'].'">[Review]</a></td><td>'.($row['pending'] == 1 ? ' Pending' : '').'</td></tr>';
 		} else {
-			echo '<tr><td><input type="checkbox" name="remove__'.$row['id'].'" value="0" /></td><td><img src="modules/'.$_GET['m'].'/images/read.jpg" alt="Read" title="Read" /></td>'.$responderCell.'<td class="spaced_col">'.$row['when_created'].'</td><td><a href="module/'.$_GET['m'].'/review-response/?id='.$row['id'].'">[Review]</a></td></tr>';
+			echo '<tr><td><input type="checkbox" name="remove__'.$row['id'].'" value="0" /></td><td><img src="modules/'.$_GET['m'].'/images/read.jpg" alt="Read" title="Read" /></td>'.$responderCell.'<td class="spaced_col">'.$row['when_created'].'</td><td><a href="module/'.$_GET['m'].'/review-response/?id='.$row['id'].'">[Review]</a></td><td>'.($row['pending'] == 1 ? ' Pending' : '').'</td></tr>';
 		}
 	}
 
-	echo '<tr class="button_row"><td colspan="4"><input type="submit" name="cmdb" value="Delete" class="submit_normal" onclick="return confirmRemove();" onfocus="this.className=\'submit_hover\'" onblur="this.className=\'submit_normal\'" onmouseover="this.className=\'submit_hover\'" onmouseout="this.className=\'submit_normal\'" /></td><td style="text-align: right;">'.($startPos > 0 ? '<a href="module/'.$_GET['m'].'/responses/?page='.($startPos - 1).'">Previous</a>' : '').($startPos > 0 && $moreRows ? ' | ' : '').($moreRows ? '<a href="module/'.$_GET['m'].'/responses/?page='.($startPos + 1).'">Next</a>' : '').'</td></tr>';
+	echo '<tr class="button_row"><td colspan="5"><input type="submit" name="cmdb" value="Delete" class="submit_normal" onclick="return confirmRemove();" onfocus="this.className=\'submit_hover\'" onblur="this.className=\'submit_normal\'" onmouseover="this.className=\'submit_hover\'" onmouseout="this.className=\'submit_normal\'" /></td><td style="text-align: right;">'.($startPos > 0 ? '<a href="module/'.$_GET['m'].'/responses/?page='.($startPos - 1).'">Previous</a>' : '').($startPos > 0 && $moreRows ? ' | ' : '').($moreRows ? '<a href="module/'.$_GET['m'].'/responses/?page='.($startPos + 1).'">Next</a>' : '').'</td></tr>';
 	echo '</table>';
 } else {
 	echo '<p style="font-style: italic; font-weight: bold;">No responses found.</p>';

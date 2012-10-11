@@ -1,5 +1,6 @@
 <h2>Manage Settings</h2>
 <p>Please choose from one of the following settings options</p>
+
 <div class="settings-option-box">
 <h2>Language Syntax</h2>
 <p>Change any configurable syntax element here.</p>

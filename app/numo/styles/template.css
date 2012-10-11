@@ -34,8 +34,8 @@ background-image: -webkit-gradient(
 #content { width:100%; margin-left:-190px; float: left; border-left:190px solid #fff; text-align: left; }
 #menu { width: 190px; float: left; margin-left: -190px; }
 h1 {color: #222; font-size: 1.2em; padding: 2px; margin: 0px;}
-h2 {color: #2A61BD; font-size: 1.1em; padding: 3px 0px 8px 0px; margin: 0px;text-transform:capitalize;font-variant:small-caps; text-decoration: underline;}
-h3 {color: #2A61BD; font-size: 1em; padding: 4px 0px 5px 0px; margin: 0px; text-decoration: underline; clear: both;}
+h2 {color: #2A61BD; font-size: 1.2em; padding: 3px 0px 0px 0px; margin: 0px; margin-bottom: 5px; text-transform:capitalize; /*font-variant:small-caps; text-decoration: underline; border-bottom: 1px solid #2a61bd; */  }
+h3 {color: #444444; font-size: 1em; padding: 4px 0px 0px 0px; margin: 0px; /*text-decoration: underline; */ clear: both;}
 h4 {color: #222; font-size: 0.9em; padding: 4px 0px 5px 0px; margin: 0px;}
 p {color: #333; font-size: 0.9em; padding: 2px 0px; margin: 0px;}
 a { color: #2A61BD; }

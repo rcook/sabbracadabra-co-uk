@@ -104,15 +104,22 @@ if($_POST['cmd'] == "submit_numo_form" && $_POST['guestbook_id'] == $PARAMS['id'
 			require("numo/modules/".$matches[1]."/classes/Guestbook.php");
 		}
 
-		$guestbookObj = new NumoGuestbook();
-		$guestbookObj->create($_POST);
 
-		$sql = "SELECT `confirmation_type`,`confirmation_value`,`notification_email`,`send_notification`,`include_form_info` FROM `guestbook_types` WHERE `id`='".$PARAMS['id']."'";
+		$sql = "SELECT * FROM `guestbook_types` WHERE `id`='".$PARAMS['id']."'";
 		//print $sql."<br>";
 		//exit;
 		$result = $dbObj->query($sql);
+		
+
 
 		if($row = mysql_fetch_array($result)) {
+			$guestbookObj = new NumoGuestbook();
+		    if ($row['require_review'] != "") {
+				$_POST['pending'] = $row['require_review'];
+				//print " yup ". $row['pending'];
+			}
+		    $guestbookObj->create($_POST);
+			
 			if($row['send_notification'] == "1") {
 				$to = $row['notification_email'];
 

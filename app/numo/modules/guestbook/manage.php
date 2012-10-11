@@ -66,6 +66,8 @@ function confirmRemove(groupId) {
 <style>
 table tr td {text-align: center;}
 table tr td.group_name {text-align: left;}
+form#remove_group { padding-top: 75px; } 
+
 </style>
 <h2>Manage Guestbooks</h2>
 <?php

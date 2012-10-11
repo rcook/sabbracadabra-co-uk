@@ -15,6 +15,9 @@ if($_POST['cmd'] == "Set Order Shipped") {
  // print mysql_error();
  // print $sql;
 }
+	$sql = "SELECT * FROM `shopping_cart_settings` WHERE `site_id`='".NUMO_SITE_ID."'";
+	$settings = $dbObj->query($sql);
+	$settings = mysql_fetch_array($settings);
 
 ?>
 <style>
@@ -172,11 +175,15 @@ while($item_row = mysql_fetch_array($results)) {
 	<tr><td class="qty_column"><?=$item_row['quantity']?></td><td><p class="product_item_name"><?=$item_row['slot_1']."</p>".$itemAttributes?></td><td class="cost_column"><?=$slots['2']['options'].number_format($itemCost, 2, '.', ',')." ".$slots['2']['code']?></td></tr>
 	<?php
 }
+if ($settings['tax_display_preference'] == 2) {
+$purchaseTotal += $row['mc_shipping'];
 
+} else {
 $purchaseTotal += $row['mc_shipping'] + $row['tax'];
+}
 if($row['tax'] > 0) {
 ?>
-<tr><td colspan="2" style="text-align: right;">Tax</td><td class="cost_column"><?=$slots['2']['options'].number_format($row['tax'], 2, '.', ',')." ".$slots['2']['code']?></td></tr>
+<tr><td colspan="2" style="text-align: right;">Tax <?php if ($settings['tax_display_preference'] == 2) { print "Included"; } ?></td><td class="cost_column"><?=$slots['2']['options'].number_format($row['tax'], 2, '.', ',')." ".$slots['2']['code']?></td></tr>
 <?php
 }
 ?>

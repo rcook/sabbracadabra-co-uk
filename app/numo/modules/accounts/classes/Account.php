@@ -2,14 +2,81 @@
 if(!class_exists('Account')) {
 class Account {
   var $id;
-
+  var $attributes;
+  
   function Account($id = 0) {
   	$this->id = $id;
+    if ($id != 0) {
+		$this->loadAttributes();
+	}
   }
 
+  function loadAttributes() {
+    global $dbObj;
+	
+	$query = "SELECT * FROM accounts WHERE id='{$this->id}'";
+	$result = $dbObj->query($query);
+	$this->attributes = mysql_fetch_array($result);
+
+  }
+  
+  function sendAuthorizationEmail() {
+	global $dbObj;
+	$requestId = $this->id.md5(time());
+
+	$sql = "INSERT INTO pending_requests (id, site_id, account_id, module, component) VALUES ('".$requestId."','".NUMO_SITE_ID."','".$this->id."','accounts','activate')";
+	$dbObj->query($sql);
+
+	$activationUrl = "http://".NUMO_SERVER_ADDRESS.str_replace('/numo/','/',NUMO_FOLDER_PATH)."process.numo?id=".$requestId;
+				
+
+	//send activation email message
+	$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1';
+		
+	$to = $this->attributes['slot_3']; // email address
+	$subject = NUMO_SYNTAX_ACCOUNT_WELCOME_EMAIL_SUBJECT;
+	$message = NUMO_SYNTAX_ACCOUNT_WELCOME_EMAIL;
+		
+	// clense the email
+	$message = str_replace("Below are your login details.", "", $message);
+	$message = str_replace("Username: [Username]", "", $message);
+	$message = str_replace("Password: [Password]", "", $message);
+	$message = nl2br($message);
+	$message = str_replace("<br><br><br>", "", $message);
+	$message = str_replace("<br/><br/><br/>", "", $message);
+					
+		
+	// replace the activation link tag with an actual link
+	$message = str_replace("[activation link]", "<a href='".$activationUrl."'>".$activationUrl."</a>", $message);
+
+	$message = $this->conditionAccountInformationInText($message);
+	$subject = $this->conditionAccountInformationInText($subject);
+//print "sent to $to";
+	mail($to, $subject, $message, $headers);
+	
+  }
+ 
+ 
+  
+  function conditionAccountInformationInText($message) {
+	global $dbObj;
+	
+	$sql = "SELECT name, slot FROM `fields` WHERE type_id='".$this->attributes['type_id']."'";
+	$results = $dbObj->query($sql);
+
+	//replace any tags set for accuont information fields
+	while($row = mysql_fetch_array($results)) {
+		$message = str_replace("[".$row['name']."]", $this->attributes['slot_'.$row['slot']], $message);
+	}
+	  
+	return $message;  
+  }
+  
   function create($info) {
   	global $_SERVER;
   	global $dbObj;
+	$this->attributes = $info;
 
 	$activationUrl = "N/A";
 	if ($info['activated'] == "") {
@@ -166,25 +233,15 @@ class Account {
 
 		}
 
-
-			$sql = "SELECT name, slot FROM `fields` WHERE type_id='".$info['type_id']."'";
-			$results = $dbObj->query($sql);
-
-			//replace any tags set for accuont information fields
-			while($row = mysql_fetch_array($results)) {
-				$subject = str_replace("[".$row['name']."]", $info['slot_'.$row['slot']], $subject);
-				$message = str_replace("[".$row['name']."]", $info['slot_'.$row['slot']], $message);
-
-				$adminNotificationSubject = str_replace("[".$row['name']."]", $info['slot_'.$row['slot']], $adminNotificationSubject);
-				$adminNotificationMessage = str_replace("[".$row['name']."]", $info['slot_'.$row['slot']], $adminNotificationMessage);
-			}
+		$message = $this->conditionAccountInformationInText($message);
+		$subject = $this->conditionAccountInformationInText($subject);
+		
+		$adminNotificationSubject = $this->conditionAccountInformationInText($adminNotificationSubject);
+		$adminNotificationMessage = $this->conditionAccountInformationInText($adminNotificationMessage);
 
 
-
-			// Mail it
-			mail($to, $subject, $message, $headers);
-			//print "mail sent";
-
+		// Mail it
+		mail($to, $subject, $message, $headers);
 
 		//alert administrator via email
 		$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\r\n";
@@ -205,7 +262,8 @@ class Account {
 
   function update($info) {
   	global $dbObj;
-
+	$this->attributes = $info;
+	$sendPasswordEmail = false;
   	  $query = "SELECT * FROM accounts WHERE id='{$this->id}'";
   	  $result = $dbObj->query($query);
   	  $rec   = mysql_fetch_array($result);
@@ -216,8 +274,9 @@ class Account {
 			if(substr($key,0,5) == "slot_") {
 				//if password field (slot_2) use special rules
 				if($key == "slot_2") {
-					//if a value for the password has been entered allow update. otherwise ignore field.
+					// if a value for the password has been entered allow update. otherwise ignore field.
 					if($value != "") {
+						$sendPasswordEmail = true;
 						$setString .= ",".$key."='".crypt($value)."'";
 					}
 				} else {
@@ -242,13 +301,29 @@ class Account {
 		$sql = "UPDATE accounts SET ".$setString." WHERE id='".$this->id."'";
 		$dbObj->query($sql);
 
+		$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1';
+
+		$to = $info['slot_3'];
+		if ($sendPasswordEmail) {
+			  $subject = NUMO_SYNTAX_ACCOUNT_WELCOME_EMAIL_SUBJECT;
+			  $message = nl2br(NUMO_SYNTAX_ACCOUNT_WELCOME_EMAIL);
+			
+			  //replace the activation link tag with an actual link
+			  $message = str_replace("To complete your account creation please activate you account: [activation link]", "Your account has now been activated.", $message);
+			 // $message = str_replace("Below are your login details.", "", $message);
+			 //$message = str_replace("Username: [Username]<br>", "", $message);
+			 // $message = str_replace("Password: [Password]<br><br>", "", $message);
+			$message = $this->conditionAccountInformationInText($message);
+			$subject = $this->conditionAccountInformationInText($subject);
+            if ($message != "") {
+			// Mail it
+			  mail($to, $subject, $message, $headers);
+			}
+			
+		}
 		if ($info['pending'] == 0 && $rec['pending'] == 1) {
 		    print "Approved email sent.<br>";
-			$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\r\n";
-			$headers .= 'Content-type: text/html; charset=iso-8859-1';
-
-
-			$to = $info['slot_3'];
 			
 			if (defined('NUMO_SYNTAX_ACCOUNT_APPROVED_EMAIL')) {
 			  $subject = NUMO_SYNTAX_ACCOUNT_APPROVED_EMAIL_SUBJECT;
@@ -258,7 +333,7 @@ class Account {
 			  $message = nl2br(NUMO_SYNTAX_ACCOUNT_WELCOME_EMAIL);
 			
 			  //replace the activation link tag with an actual link
-			  $message = str_replace("To complete your account creation please activate you account: [activation link]", "Your account has now been activated.", $message);
+			  $message = str_replace("To complete your account creation please activate you account: [activation link]", "", $message);
 			  $message = str_replace("Below are your login details.", "", $message);
 			  $message = str_replace("Username: [Username]<br>", "", $message);
 			  $message = str_replace("Password: [Password]<br><br>", "", $message);
@@ -268,7 +343,9 @@ class Account {
 			//$adminNotificationSubject = nl2br(NUMO_SYNTAX_ACCOUNT_NEW_ACCOUNT_NOTIFICATION_SUBJECT);
 			//$adminNotificationMessage = nl2br(NUMO_SYNTAX_ACCOUNT_NEW_ACCOUNT_NOTIFICATION);
 
-
+			$message = $this->conditionAccountInformationInText($message);
+			$subject = $this->conditionAccountInformationInText($subject);
+			/*
 			$sql = "SELECT name, slot FROM `fields` WHERE type_id='".$rec['type_id']."'";
 			$results = $dbObj->query($sql);
 
@@ -282,6 +359,7 @@ class Account {
 				//$adminNotificationSubject = str_replace("[".$row['name']."]", $info['slot_'.$row['slot']], $adminNotificationSubject);
 				//$adminNotificationMessage = str_replace("[".$row['name']."]", $info['slot_'.$row['slot']], $adminNotificationMessage);
 			}
+			*/
             if ($message != "") {
 			// Mail it
 			  mail($to, $subject, $message, $headers);

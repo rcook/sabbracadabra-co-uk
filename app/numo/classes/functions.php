@@ -1,4 +1,7 @@
 <?php
+$enqueuedJS = array();
+$enqueuedCSS = array();
+
 function moduleOffline($moduleName) {
   global $dbObj;
   $result = $dbObj->query("SELECT `status` FROM modules WHERE `status`=1 AND name='{$moduleName}' AND site_id='".NUMO_SITE_ID."'");
@@ -13,6 +16,119 @@ function numo_secure($region = "") {
 	  exit;
   }
 }
+
+function numo_enqueue_js($jsPath, $jsName = "", $jsVersion = "1") {
+	global $enqueuedJS;
+	if ($jsName == "") {
+		$jsName = mktime().rand(0, 1000);
+	}
+	$enqueuedJS["$jsName"]["$jsVersion"]["source"] = $jsPath;
+	$enqueuedJS["$jsName"]["$jsVersion"]["library"] = $jsName;
+	$enqueuedJS["$jsName"]["$jsVersion"]["version"] = $jsVersion;
+}
+
+function numo_enqueue_css($cssPath) {
+	global $enqueuedCSS;
+	$enqueuedCSS[] = $cssPath;	
+}
+
+function update_admin_header() {
+	update_check_header();
+}
+
+function update_check_header() {
+  global $enqueuedJS;
+  global $enqueuedCSS;
+  $existingJS = array();
+  $knownJSLibraries = array('jquery', 'jquery-ui', 'jquery.jqDock', 'jquery.nivo', 'pxgradient', 'jquery.lightbox');
+  
+  $page = ob_get_clean();
+  // print "page=[{$page}]";
+  $pattern = '/<script (.*)'.'><\/script>/i';
+  preg_match_all($pattern, $page, $matches, PREG_SET_ORDER);
+  
+  
+  //print sizeof ($matches);
+ 
+   foreach ($matches as $jsMatch) {
+	   $jsLibrary = "basic".mktime().rand(0, 1000);
+	   $jsNV = explode(" ", $jsMatch[1]);
+	  // print sizeof($jsNV);
+	   foreach ($jsNV as $nv) {
+		   if (strstr($nv, "src")) {
+			   $kv = explode("=", $nv);
+			   $jsSource = $kv[1];
+			   
+		   }
+	   }
+	 //  print $jsSource."<br>";
+	   foreach ($knownJSLibraries as $library) {
+		   if (strstr($jsMatch[0], $library)) {
+			   $jsLibrary = $library;
+			   preg_match('/([0-9]{1,2}?)(\.?[0-9]{1,3}?)?(\.?[0-9]{1,4}?)?/i', $jsSource, $sourceMatches);
+			   //print $sourceMatches[0];
+			   $jsVersion = $sourceMatches[0];
+		   } 
+	   }
+	   $existingJS["$jsLibrary"]["$jsVersion"]['source'] = $jsSource;
+	   $existingJS["$jsLibrary"]["$jsVersion"]['find'] = $jsMatch[0];
+	   $existingJS["$jsLibrary"]["$jsVersion"]['version'] = $jsVersion;
+	   
+	  // print htmlentities($x[0]);
+   }
+   
+   foreach ($existingJS as $jsLibrary => $jsVersions) {
+	   $existingJS["$jsLibrary"] = $jsVersions;
+	  	ksort($jsVersions);
+		for ($i = 1; $i < sizeof($jsVersions); $i++) {
+			$current = array_shift($jsVersions);
+			
+			$removeJS = $current['find'];
+			$page = str_replace($removeJS, "", $page);
+		}
+	   $existingJS["$jsLibrary"] = $jsVersions;
+		
+		$current = array_shift($jsVersions);
+		
+   }
+   /*
+    foreach ($existingJS as $jsLibrary => $jsVersions) {
+	  	ksort($jsVersions);
+		for ($i = 1; $i < sizeof($jsVersions); $i++) {
+			$current = array_shift($jsVersions);
+			print $current['version']."<br>";
+			//$removeJS = $current['find'];
+			//$page = str_replace($removeJS, "", $page);
+		}
+		
+		$current = array_shift($jsVersions);
+		print $current['version']."<br>";
+	
+  }  
+  */
+  foreach ($enqueuedJS as $jsName => $data) {
+	ksort($data);
+	$current = array_pop($data);
+	$javascriptSource = $current['source'];
+	$javascriptLibrary = $current['library'];
+	$javascriptVersion = $current['version'];
+	if ($existingJS["$javascriptLibrary"]) {
+		$existing = array_pop($existingJS["$javascriptLibrary"]);
+		if ($existing['version'] < $current['version']) {
+			$page = str_replace($existing['find'], "<script type='text/javascript' src='{$javascriptSource}'></script>", $page);
+		}		
+	} else {
+	  $page = str_replace("</head>", "<script type='text/javascript' src='{$javascriptSource}'></script></head>", $page);  
+	}
+  }
+  
+  foreach ($enqueuedCSS as $cssSource) {
+		$page = str_replace("</head>", "<link rel='stylesheet' href='{$cssSource}' type='txt/css' /></head>", $page);  
+
+  }
+  print $page;
+}
+
 
 function numo_session_start() {
   global $secondarySavePath;
@@ -117,10 +233,18 @@ function generate_list_options($options, $currentValue = "", $sep = "\r\n") {
 		$listOptions = explode($sep, trim($options));
 
 		foreach ($listOptions as $key => $value) {
-			if($currentValue == $value) {
-				$returnStr .= '<option value="'.$value.'" selected="selected">'.$value.'</option>';
+			if (strstr($value, "=")) {
+				$valueData = explode("=", $value, 2);
+				$key = $value;
+				$value = $valueData[1];
+			
 			} else {
-				$returnStr .= '<option value="'.$value.'">'.$value.'</option>';
+				$key = $value;
+			}
+			if($currentValue == $key) {
+				$returnStr .= '<option value="'.$key.'" selected="selected">'.$value.'</option>';
+			} else {
+				$returnStr .= '<option value="'.$key.'">'.$value.'</option>';
 			}
 		}
 	}
@@ -157,12 +281,12 @@ function check_license_key($productLicenseKey,$productName) {
 	//check to see if the curl request completed without error
 	if(curl_errno($ch)) {
 		//send email to luckymarble for manual confirmation
-		@mail("numo@luckymarble.com","NUMO License Check","Product License Key: ".$productLicenseKey."\nDomain: ".$_SERVER["HTTP_HOST"]."\nModule: ".$productName);
+		//@mail("numo@luckymarble.com","NUMO License Check","Product License Key: ".$productLicenseKey."\nDomain: ".$_SERVER["HTTP_HOST"]."\nModule: ".$productName);
 
 	//error with license key provided
 	} else if($response <= 0) {
 		curl_close($ch); //close curl connection
-
+		
 		if($response == -1) {
 			return " ** Product license key not valid for '".$productName."' module";
 
@@ -173,7 +297,7 @@ function check_license_key($productLicenseKey,$productName) {
 			return " ** Invalid product license key";
 		}
 	}
-
+	//print "response: ".$response;
 	curl_close($ch); //close curl connection
 	return ""; //success
 }

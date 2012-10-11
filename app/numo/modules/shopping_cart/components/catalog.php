@@ -1,5 +1,14 @@
-[NUMO.SHOPPING CART: BREADCRUMB]
+<!-- [NUMO.SHOPPING CART: BREADCRUMB] -->
 <?php
+
+ // print "<pre>";
+ // print var_dump($_POST);
+ // print "</pre>";
+
+  //print "<pre>";
+ // print var_dump($_GET);
+  //print "</pre>";
+
    //print $_SERVER['REQUEST_URI'];
    //phpinfo(); 
     $sql = "SELECT shopping_cart_discount, show_original_price FROM types WHERE site_id='".NUMO_SITE_ID."' AND id='{$_SESSION['type_id']}'";
@@ -12,7 +21,35 @@
 	$sql = "SELECT * FROM `shopping_cart_settings` WHERE `site_id`='".NUMO_SITE_ID."'";
 	$settings = $dbObj->query($sql);
 	$settings = mysql_fetch_array($settings);
+	//foreach ($_SERVER as $x => $y) {
+		//print "$x = $y <br>";
+	//}
+	//print "post<br>";
+	foreach ($_POST as $x => $y) {
+	//	print "P $x = $y <br>";
+	}	
 	
+		foreach ($_GET as $x => $y) { 
+	//	print "G $x = $y <br>";
+	}	
+	if ($_POST['return_page'] == "" && $_GET['return_page'] == "" && $_SERVER['HTTP_REFERER'] != $_SERVER['REQUEST_URI']) {
+	//	print "x";
+	    $settings['return_page'] = str_replace("&view=cart", "", $_SERVER['HTTP_REFERER']);
+		$settings['return_page'] = preg_replace('/&return_page=([^&]*?)/', '', $settings['return_page']);
+	} else if ($_POST['return_page'] != "") {
+//		print "y";
+		$settings['return_page'] =  htmlspecialchars_decode(urldecode($_POST['return_page']));
+	} else if ($_GET['return_page'] != "") {
+	//	print "z";
+	//	print $_GET['return_page']."<br>";
+		$settings['return_page'] = htmlspecialchars_decode(urldecode($_GET['return_page']));
+	//	print $settings['return_page']."<br>";
+	} else {
+	//  print "v";	
+	}
+					
+	//print "settings: ".$settings['return_page']."<br>";
+	//exit;
 	$sql = "SELECT * FROM `shopping_cart_taxes` WHERE `site_id`='".NUMO_SITE_ID."'";
 	$taxRates = array();
 	$taxRateResult = @$dbObj->query($sql);
@@ -69,11 +106,20 @@ if($_POST['cmd'] == "create" && !isset($_SESSION['account_id'])) {
 }
 
 if($_POST['numo_cmdc'] == NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_SHOPPING_LABEL) {
-	if (strstr($_SERVER['REQUEST_URI'], "manage.numo")) {
+	//ob_end_clean();
+	//print "yes";
+	//print "settings: ".$settings['return_page'];
+	//exit;
+	if ($settings['return_page'] != "") {
+		header("Location: ".$settings['return_page']);
+	} else if (strstr($_SERVER['REQUEST_URI'], "manage.numo")) {
+	//	print "ba";
 	  header('Location: '.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog');
 	} else {
+		//print "a";
 	  header('Location: ?');
 	}
+	return;
 }
 
 if($_POST['numo_cmdb'] == NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_BUTTON_LABEL && !isset($_SESSION['account_id'])) {
@@ -231,7 +277,19 @@ if($_POST['numo_cmd'] == "add_to_cart" || $_GET['numo_cmd'] == "add_to_cart") {
 				//exit;
 
 	//redirect to cart
-	header('Location: ?view=cart'.$getStringValues);
+	if ($settings['return_page'] != "") {
+		$getStringValues .= "&return_page=".urlencode($settings['return_page']);
+	}
+	//print "gsv: ".$getStringValues;
+	//exit;
+	if ($settings['view_cart_page'] != "") {
+		
+	  header('Location: '.$settings['view_cart_page']."?{$getStringValues}");
+		
+	} else {
+	  header('Location: ?view=cart'.$getStringValues);
+		
+	}
 } else if($_POST['numo_cmd'] == "update_cart_order") {
 	foreach($_POST as $key => $value) {
 		if(substr($key, 0, 11) == "cart_item__" && is_numeric($value)) {
@@ -260,13 +318,20 @@ if($_POST['numo_cmd'] == "add_to_cart" || $_GET['numo_cmd'] == "add_to_cart") {
 }*/
 
 
-$sql = "SELECT name, slot, input_options FROM shopping_cart_fields WHERE site_id='".NUMO_SITE_ID."'";
+$sql = "SELECT * FROM shopping_cart_fields WHERE site_id='".NUMO_SITE_ID."'";
 $results = $dbObj->query($sql);
 
 $slots = array();
 
 while($row = mysql_fetch_array($results)) {
+	
 	$slots[$row['slot']]['name'] = $row['name'];
+	$slots[$row['slot']]['position'] = $row['position'];
+	$slots[$row['slot']]['input_type'] = $row['input_type'];
+	if ($row['visibility'] == "") {
+		$row['visibility'] = 1;
+	}
+	$slots[$row['slot']]['visibility'] = $row['visibility'];
 
 	if($row['slot'] == "2") {
 		$slots[$row['slot']]['code'] = $row['input_options'];
@@ -540,7 +605,7 @@ function validateQuantities() {
 
 			$sql = "DELETE FROM `shopping_cart_order_item_attributes` WHERE `order_item_id`='".$row['id']."'";
 			$dbObj->query($sql);
-
+		
 			print '<tr><td class="view_cart_contents_item_quantity">&nbsp;</td><td class="view_cart_contents_item_info"><h4>'.$row['slot_1'].($row['slot_7'] != "" ? " #".$row['slot_7'] : "").'</h4><p class="shopping_cart_product_not_in_stock">'.NUMO_SYNTAX_SHOPPING_CART_NOT_IN_STOCK_LABEL.'</p></td><td class="view_cart_contents_item_cost">'.($slots['2']['options'].number_format("0", 2, '.', ',')).'</td>';
 			print '<td class="view_cart_contents_item_cost">'.($slots['2']['options'].number_format("0", 2, '.', ',')).'</td>';
 
@@ -571,7 +636,14 @@ function validateQuantities() {
 			}
 
 			//by default do not include any information about shipping ... let payapl settings handle shipping
-			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$quantityAvailable.'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'">';
+				  if ($settings['tax_display_preference'] == 2) {
+				    $itemAmount = $row['unit_cost'] - $row['item_tax'];
+				  } else {
+				    $itemAmount = $row['unit_cost'];
+				  }
+			
+			
+			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')"><input type="hidden" name="amount_'.$counter.'" value="'.$itemAmount.'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$quantityAvailable.'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'">';
 			if ($row['item_tax'] > 0) {
 				$paypalItemInfo .= '<input type="hidden" name="tax_'.$counter.'" value="'.$row['item_tax'].'">';
 			}
@@ -593,14 +665,17 @@ function validateQuantities() {
 			$sql = "UPDATE `shopping_cart_order_items` SET `item_cost`='".$row['unit_cost']."' WHERE id='".$row['id']."'";
 			//print $sql;
 			$dbObj->query($sql);
-
 			$unitCost = $row['unit_cost'];
 			$row['unit_cost'] = $row['unit_cost'] * $quantityAvailable;
 			$totalCost += $row['unit_cost'];
-			if ($settings['tax_display_preference'] == 1|| ($settings['tax_display_preference'] == 0 && sizeof($taxRates) > 0)) {
+			if ($settings['tax_display_preference'] == 1 || ($settings['tax_display_preference'] == 0 && sizeof($taxRates) > 0)) {
 				$row['item_tax'] = $row['item_tax'] * $quantityAvailable;
 				$totalCost += $row['item_tax'] * $quantityAvailable;
+			} else if ($settings['tax_display_preference'] == 2) {
+				$row['item_tax'] = $row['item_tax'] * $row['quantity'];
+				
 			}
+			
 $totalTax += $row['item_tax'];
 			//update units for item in database to match the available units
 			$sql = "UPDATE `shopping_cart_order_items` SET `quantity`='".$quantityAvailable."' WHERE `id`='".$row['id']."'";
@@ -630,38 +705,52 @@ $totalTax += $row['item_tax'];
 
 		//there is enough product to cover order request
 		} else {
+			$itemShippingCost = 0;
+			$itemShippingWeight = 0;
 			// if no stock used set shipping amount normally
 			//print $stockUsed["$stockKey"];
 			if($stockUsed[$stockKey] <= 1) {
 				
 				if ($row['slot_5'] == "0") {
-				  $shippingCost += $row['shipping'] + ($row['shipping2'] * ($row['quantity'] - 1));
+					$itemShippingCost = $row['shipping'] + ($row['shipping2'] * ($row['quantity'] - 1));
+				  $shippingCost += $itemShippingCost;
+				 // print "x".$shippingCost;
 				} else if ($row['slot_5'] == "1") {
-				  $shippingWeight += $row['shipping'] + ($row['shipping'] * ($row['quantity'] - 1));
+					//print "y";
+					$itemShippingWeight = $row['shipping'] + ($row['shipping'] * ($row['quantity'] - 1));
+				  $shippingWeight += $itemShippingWeight;
 				}
             //  print "shipping a";
 			// if 1 or more units have been shown in the cart adjust shipping cost
 			} else if ($row['slot_5'] == "0") {
-				$shippingCost += $row['shipping'] + ($row['shipping2'] * ($row['quantity'] - 1));
+			//	print "z";
+				$itemShippingCost = $row['shipping'] + ($row['shipping2'] * ($row['quantity'] - 1));
+				$shippingCost += $itemShippingCost;
 				
 				//$shippingCost += ($row['shipping2'] * $row['quantity']);
 				// disabled this december 29th as it is setting the main shipping amount to the secondary shipping amount if quantity is greater than 1
 				//$row['shipping'] = $row['shipping2'];
             //  print "shipping b";
 			} else if ($row['slot_5'] == "1") {
-				
-				$shippingWeight += $row['shipping'] + ($row['shipping'] * ($row['quantity'] - 1));
+				$itemShippingWeight = $row['shipping'] + ($row['shipping'] * ($row['quantity'] - 1));
+				$shippingWeight += $itemShippingWeight;
 			}
 			//print $row['shipping'];
-         
+  				  if ($settings['tax_display_preference'] == 2) {
+				    $itemAmount = $row['unit_cost'] - $row['item_tax'];
+				  } else {
+				    $itemAmount = $row['unit_cost'];
+				  }
+       
 			//by default do not include any information about shipping ... let payapl settings handle shipping
-			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')'.($row['slot_7'] != "" ? " SKU #".$row['slot_7'] : "").'"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$row['quantity'].'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'">';
+			$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')'.($row['slot_7'] != "" ? " SKU #".$row['slot_7'] : "").'"><input type="hidden" name="amount_'.$counter.'" value="'.$itemAmount.'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$row['quantity'].'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'">';
 			if ($row['item_tax'] > 0) {
 				$paypalItemInfo .= '<input type="hidden" name="tax_'.$counter.'" value="'.$row['item_tax'].'">';
 			}
 			
- 
-			if($row['shipping'] > 0) {
+ //print "b:".$row['shipping'];
+			if($itemShippingCost+$itemShippingWeight > 0) {
+				//print "a";
 				if ($row['slot_5'] == 0) {
 				  //$paypalItemInfo .= '<input type="hidden" name="item_name_'.$counter.'" value="'.htmlentities($row['slot_1'].' ('.str_replace("<br>",", ",substr($row['attributes'],0,-4))).')"><input type="hidden" name="amount_'.$counter.'" value="'.$row['unit_cost'].'"><input type="hidden" name="quantity_'.$counter.'" id="numo_paypal_quantity_'.$counter.'" value="'.$row['quantity'].'"><input type="hidden" name="item_number_'.$counter.'" value="'.$row['id'].'"><input type="hidden" name="shipping_'.$counter.'" value="'.$row['shipping'].'"><input type="hidden" name="shipping2_'.$counter.'" value="'.$row['shipping2'].'">';
 				  $paypalItemInfo .= '<input type="hidden" name="shipping_'.$counter.'" value="'.$row['shipping'].'"><input type="hidden" name="shipping2_'.$counter.'" value="'.$row['shipping2'].'">';
@@ -684,7 +773,12 @@ $totalTax += $row['item_tax'];
 				$row['item_tax'] = $row['item_tax'] * $row['quantity'];
 				$totalCost += $row['item_tax'] * $row['quantity'];
 				
+			} else if ($settings['tax_display_preference'] == 2) {
+				$row['item_tax'] = $row['item_tax'] * $row['quantity'];
+				
 			}
+			//print $settings['tax_display_preference'];
+			//print $row['item_tax'];
 			$totalTax += $row['item_tax'];
 
 			print '<tr><td class="view_cart_contents_item_quantity"><input type="hidden" id="max_cart_item__'.$row['id'].'" value="'.$unitsInStock.'" /><input type="text" id="cart_item__'.$row['id'].'" name="cart_item__'.$row['id'].'"  onblur="updatePayPalQuantity(\''.$counter.'\',this);" value="'.$row['quantity'].'" /><input type="submit" class="numo_submit_button" name="nonumo_cmd" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_UPDATE_BUTTON_LABEL.'" /></td>';
@@ -732,6 +826,7 @@ $totalTax += $row['item_tax'];
 
 
 	print '</table><input type="hidden" name="numo_cmd" value="update_cart_order" />';
+			print '<input type="hidden" name="return_page" value="'.urlencode($settings['return_page']).'" />';
 
 		$sql = "SELECT `id` FROM `shopping_cart_orders` WHERE `account_id`='".$_SESSION['shopper_id']."'";
 		$result = $dbObj->query($sql);
@@ -739,11 +834,41 @@ $totalTax += $row['item_tax'];
 	if($row = mysql_fetch_array($result)) {
 		//if not logged in allow to login
 		if(!isset($_SESSION['account_id'])) {
-			print '</form><form method="post" style="display: inline; margin: 0px; padding: 0px;"><input type="submit" name="numo_cmdc" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_SHOPPING_LABEL.'" /><input type="submit" name="numo_cmdb" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_BUTTON_LABEL.'" /></form>';
+			print '</form>';
+			
+			print '<form ';
+			
+			if ($settings['view_cart_page'] != "" && strstr($_SERVER['REQUEST_URI'],$settings['view_cart_page'])) {
+			//	print 'action="manage.numo?module=shopping_cart&component=catalog"';
+			}
+			//if ($settings['return_page'] == "") {
+			//if ($settings['view_cart_page'] != "" && strstr($_SERVER['REQUEST_URI'],$settings['view_cart_page'])) {
+			//	print 'action="manage.numo?module=shopping_cart&component=catalog"';
+			//} else {
+			//	print 'action="'.urlencode($settings['return_page']).'"';
+			//}			
+			print ' method="post" style="display: inline; margin: 0px; padding: 0px;">';
+			print '<input type="hidden" name="return_page" value="'.urlencode($settings['return_page']).'" />';
+			print '<input type="submit" name="numo_cmdc" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_SHOPPING_LABEL.'" /><input type="submit" name="numo_cmdb" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_BUTTON_LABEL.'" /></form>';
 
 		//if logged in create the paypal buy now button to checkout
 		} else {
-			print '</form><form method="post" style="display: inline; margin: 0px; padding: 0px;"><input type="submit" name="numo_cmdc" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_SHOPPING_LABEL.'" /></form>';
+			print '</form>';
+			//print $_SERVER['REQUEST_URI']."--".$settings['view_cart_page'];
+			print '<form ';
+			//if ($settings['return_page'] == "") {
+			//if ($settings['view_cart_page'] != "" && strstr($_SERVER['REQUEST_URI'],$settings['view_cart_page'])) {
+			//	print 'action="manage.numo?module=shopping_cart&component=catalog"';
+			//} else {
+			//	print 'action="'.$settings['return_page'].'"';
+			//}
+			if ($settings['view_cart_page'] != "" && strstr($_SERVER['REQUEST_URI'],$settings['view_cart_page'])) {
+			//	print 'action="manage.numo?module=shopping_cart&component=catalog"';
+			}		
+			print ' method="post" style="display: inline; margin: 0px; padding: 0px;">';
+			print '<input type="hidden" name="return_page" value="'.$settings['return_page'].'" />';
+
+			print '<input type="submit" name="numo_cmdc" value="'.NUMO_SYNTAX_SHOPPING_CART_CHECKOUT_CONTINUE_SHOPPING_LABEL.'" /></form>';
 
 			$sql = "SELECT `request_shipping_details`,`paypal_email`,`store_mode` FROM `shopping_cart_settings` WHERE `site_id`='".NUMO_SITE_ID."'";
 			$settings = $dbObj->query($sql);
@@ -924,6 +1049,8 @@ function validate(theForm) {
             </p>
 
 			<form method="post" onsubmit="return validate(this)">
+			<input type="hidden" name="return_page" value="<?php echo $settings['return_page']; ?>" />
+            
 			<?php
 			//load field information for accounts group
 			$sql = "SELECT * FROM `shopping_cart_optional_product_attributes` WHERE `product_id`='".$_GET['pid']."' ORDER BY `position`,`label`";
@@ -1002,16 +1129,50 @@ function validate(theForm) {
 			<input type="hidden" name="numo_cmd" value="add_to_cart" />
 			</form>
 			</td>
-		</tr>
+		</tr> 
+       <?php 
+	   $displayInfo = $slots;
+	   unset($displayInfo[8]);
+	   unset($displayInfo[7]);
+	   unset($displayInfo[6]);
+	   unset($displayInfo[5]);
+	   unset($displayInfo[2]);
+	   unset($displayInfo[1]);
+	   function sortSlots($a, $b) {
+		  // print $a["position"]." x? ".$b["position"]."<br>";
+		   //print $a." x? ".$b."<br>";
+		   //foreach ($a as $x => $y) {
+			//   print $x."=".$y."<br>";
+		   //}
+		   if ($a['position'] < $b['position']) {
+			   return -1;
+		   } else if ($a['position'] > $b['position']) {
+			   return 1;
+		   } else {
+			   return 0;
+		   }
+	   }
+	   uasort ($displayInfo, "sortSlots");
+	   
+	   foreach ($displayInfo as $slotNum => $slotData) {
+			   $fieldData = $row["slot_{$slotNum}"];
+			   if ($slotData['visibility'] == "1" && $fieldData != "" && $slotData["name"] != "") { 
+			    
+				if ($slotData["input_type"] == 'link') { ?>
 		<tr>
-			<td colspan="2"><h4><?=$slots['3']['name']?></h4><p><?php if (stristr($row['slot_3'], "<tabl")) { print $row['slot_3']; } else { print nl2br($row['slot_3']); } ?></p></td>
-		</tr>
-        <?php if ($row['slot_4'] != "") { ?>
+			<td colspan="2"><h4><?=$displayInfo["{$slotNum}"]['name']?></h4><p><a href="<?php if (!strstr($fieldData, "http://") && strstr($fieldData, "https://")) { print "http://"; } 
+			echo $fieldData; ?>" target="_blank"><?php echo $fieldData; ?></a></p></td>
+		</tr>					
+			<?php	} else if ($slotData['input_type'] == "money") { ?>
+					
+			<?php	} else { ?>
 		<tr>
-			<td colspan="2"><h4><?=$slots['4']['name']?></h4><p><?php if (stristr($row['slot_4'], "<tabl")) { print $row['slot_4']; } else { print nl2br($row['slot_4']); } ?></p></td>
+			<td colspan="2"><h4><?=$displayInfo["{$slotNum}"]['name']?></h4><p><?php if (stristr($fieldData, "<tabl")) { print $fieldData; } else { print nl2br($fieldData); } ?></p></td>
 		</tr>
-        
-        <?php } ?>
+        <?php }
+          }
+	   }
+	   ?>
 	</table>
 <?php
 	}

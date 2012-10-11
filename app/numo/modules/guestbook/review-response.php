@@ -24,6 +24,14 @@ if($_POST['cmdb'] == "Mark As Unread") {
 
 	header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/responses/');
 	exit();
+
+} else if($_POST['cmdb'] == "Approve") {
+	$guestbookObj = new NumoGuestbook($_POST['id']);
+	$guestbookObj->approve();
+
+	header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/responses/');
+	exit();
+
 } else if ($_POST['cmdb'] == "Save") {
 	$guestbookObj = new NumoGuestbook($_POST['id']);
 	$guestbookObj->update($_POST);
@@ -76,8 +84,16 @@ if($row = mysql_fetch_array($result)) {
 	if($_GET['display'] != "response_only") {
 	?>
 	<tr class="button_row">
-		<td colspan="2"><input type="submit" name="cmdb" value="Mark As Unread" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" /><input type="submit" name="cmdb" value="Print" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" onclick="return printResponse();" /><input type="submit" name="cmdb" value="Delete" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" onclick="return confirmRemove();" />
-        <input type="submit" name="cmdb" value="Save" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" /></td>
+		<td colspan="2"><input type="submit" name="cmdb" value="Mark As Unread" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" />
+        <input type="submit" name="cmdb" value="Print" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" onclick="return printResponse();" />
+        <input type="submit" name="cmdb" value="Delete" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" onclick="return confirmRemove();" />
+                <?php if ($row['pending'] == "1") { ?>
+        <input type='submit' name='cmdb' value='Approve' class='submit_normal' onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" />
+        <?php } ?>
+        
+        <input type="submit" name="cmdb" value="Save" class="submit_normal" onfocus="this.className='submit_hover'" onblur="this.className='submit_normal'" onmouseover="this.className='submit_hover'" onmouseout="this.className='submit_normal'" />
+
+        </td>
 	</tr>
 	<?php
 	}

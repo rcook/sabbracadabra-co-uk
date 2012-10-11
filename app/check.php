@@ -7,7 +7,8 @@
 /************************************************************************/
 
   error_reporting (E_ALL ^ E_NOTICE && E_WARNING);
-
+  error_reporting (E_ALL & ~E_NOTICE & ~E_WARNING);
+  //error_reporting(0);
 // change headers so form information doesn't expire
 header("Expires: Sat, 01 Jan 2000 00:00:00 GMT");
 header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
@@ -17,7 +18,7 @@ session_cache_limiter("must-revalidate");
 if ($_GET['cmd'] == "show_server_environment") {
   phpinfo();
   exit;
-} 
+}
 
 //Include helper function information
 require("numo/classes/functions.php");
@@ -32,6 +33,7 @@ if (function_exists("numo_session_start")) {
 //session_start();
 
 ob_start();
+
 // clean POST inputs
 foreach($_POST as $key => $value) {
 	if(is_string($value)) {
@@ -50,7 +52,6 @@ foreach($_GET as $key => $value) {
 // initialize error id variable
 $SYSTEM_ERROR_ID = 0;
 $installed = true;
-error_reporting (E_ALL ^ E_NOTICE);
 
 // if logout requested kill session information
 if($_GET['cmd'] == "exit") {
@@ -120,13 +121,16 @@ if(!$dbObj->valid_connection) {
 
 	exit();
 }
-
+$cache = "";
 //Include language syntax constant variables
 require("numo/configuration/syntax.php");
 
 if (defined('NUMO_SYNTAX_NUMO_TIMEZONE_CODE') && NUMO_SYNTAX_NUMO_TIMEZONE_CODE != "") {
   date_default_timezone_set(NUMO_SYNTAX_NUMO_TIMEZONE_CODE);
+} else {
+  date_default_timezone_set("America/Chicago");
 }
+
 
 //number of permission.  only used if the file is found to be protected by the "is_protected" function
 $permissionId = 0;
@@ -208,6 +212,8 @@ if($fileName == "process.numo") {
 		display_error_file();
 	}
 }
+ob_end_flush();
+update_check_header();
 
 /******************************************************/
 /*                 FUNCTIONS                          */
@@ -329,7 +335,7 @@ function display_file($file) {
 		$pageDisplay = ob_get_contents();
 
 		//clear buffered print text (start displaying output again)
-		ob_end_clean();
+		ob_clean();
 
 	//set header and print out file contents
 	} else {
@@ -343,6 +349,10 @@ function display_file($file) {
 		$contentType['swf']  = "application/x-shockwave-flash";
 		$contentType['wav']  = "audio/x-wav";
 		$contentType['mp3']  = "audio/mpeg";
+
+		$contentType['mp4']  = "video/mpeg";
+		$contentType['ogv']  = "video/ogg";
+		$contentType['ogg']  = "video/ogg";
 
 		$contentType['zip']  = "application/zip";
 		$contentType['doc']  = "application/msword";
@@ -387,7 +397,7 @@ function display_file($file) {
 			 foreach ($allSlashes as $folderName) {
 				 if ($folderName != "" && $folderName != $fileName) {
 					// print "folderName = $folderName";
-				 
+
 				   $baseLocation .= "../";
 				 }
 			 }
@@ -423,6 +433,9 @@ function display_file($file) {
 		//replace all component code tags and print page display
 		if ($_GET['cmd'] == "show_code") {
 			print $pageDisplay;
+
+		} else if (strstr($contentType["$extension"], "video") || strstr($contentType["$extension"], "application") || strstr($contentType["$extension"], "video")) {
+		  print $pageDisplay;
 		} else {
 			ob_start();
 			global $cache;
@@ -481,7 +494,7 @@ function display_file($file) {
 		print $pageDisplay;
 	}
 }
-$cache = "";
+
 //session_destroy();
 
 //callback function that replaces component tags with content
@@ -490,7 +503,7 @@ function replace_component_tags($matches) {
 	global $numo;
 	global $disableAll;
 	global $cache;
-	
+
 
 	//separate the component name from any parameters passed
 	list($componentName, $paramString) = explode("(", $matches[2]);
@@ -509,8 +522,18 @@ function replace_component_tags($matches) {
 	$matches[1] = strtolower(str_replace(" ", "_", $matches[1]));
     if  (!moduleOffline($matches[1])) {
 		//set page HTML contents
+
+		if ($PARAMS["wrap"] != "") {
+			print "<style>";
+			include_once("numo/modules/settings/configuration/wrappers/wrap-{$PARAMS[wrap]}.css");
+			print "</style>";
+			include("numo/modules/settings/configuration/wrappers/wrap-{$PARAMS[wrap]}-start.htm");
+			//print "<div style='background-color: #ff0000'>";
+		}
 		include("numo/modules/".$matches[1]."/components/".$componentName.".php");
-	
+		if ($PARAMS["wrap"] != "") {
+			include("numo/modules/settings/configuration/wrappers/wrap-{$PARAMS[wrap]}-end.htm");
+		}
 		//copy buffered print text
 		$componentDisplay = ob_get_contents();
 	}
@@ -556,13 +579,13 @@ function replace_extension_tags($matches) {
 		if (!file_exists($componentFileName)) {
 			print "<p><b>Numo Error:</b> No such component. {$matches[1]} -> {$componentName}</p>";
 		} else {
-		  
+
 		  //set page HTML contents
 		  include($componentFileName);
 		}
 		//copy buffered print text
 		$componentDisplay = ob_get_contents();
-	
+
 		//clear buffered print text (start displaying output again)
 		ob_end_clean();
 	}

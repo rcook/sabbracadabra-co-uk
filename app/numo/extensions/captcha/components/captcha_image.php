@@ -26,9 +26,15 @@
  * @version alpha 0.01;
  */
 
-//error_reporting(E_ALL);
+require("../../../configuration/database_connection_information.php");
+
+error_reporting(0);
+
+require("../../../classes/functions.php");
+
+// start session
+numo_session_start();
 //session_start();
-session_register(G0TCHA_CAPTCHA);
 //Please modify this file to match your environment.
 //mail ("brandon@luckymarble.com", "CAPTCHA session id", session_id()." - PHPSESSID = ".$_REQUEST[PHPSESSID], "From: admin@luckymarble.com");
 

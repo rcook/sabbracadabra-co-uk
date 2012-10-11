@@ -10,7 +10,7 @@ if($PARAMS['entry_saved'] == 1 || !($_POST['cmd'] == "submit_numo_form" && $_POS
 	$sql = "SELECT f.`slot`, f.`name`, f.`input_type` FROM `guestbook_fields` f, `guestbook_types` t where t.id=f.type_id AND f.`type_id`='".$PARAMS['id']."'";
 	$results = $dbObj->query($sql);
 
-	$sql = "SELECT *, DATE_FORMAT(when_created,'%c/%e/%Y %l:%i %p') as 'when_created_frmtd' FROM `guestbook_responses` where `type_id`='".$PARAMS['id']."' ORDER BY `when_created` desc";
+	$sql = "SELECT *, DATE_FORMAT(when_created,'%c/%e/%Y %l:%i %p') as 'when_created_frmtd' FROM `guestbook_responses` WHERE pending='0' AND `type_id`='".$PARAMS['id']."' ORDER BY `when_created` desc";
 	$responses = $dbObj->query($sql);
 	//print mysql_error();
     ?>

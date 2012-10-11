@@ -22,6 +22,8 @@
 </head>
 <body>
 <?php
+
+
 $sql = "SELECT *, DATE_FORMAT(`payment_date`,'%b %e, %Y') as 'payment_date' FROM `shopping_cart_orders` WHERE `id`='".$_GET['id']."' AND `site_id`='".NUMO_SITE_ID."'";
 //print $sql."<br>";
 $result = $dbObj->query($sql);
@@ -36,11 +38,11 @@ if($row = mysql_fetch_array($result)) {
 	//print $sql."<br>";
 	$settings = $dbObj->query($sql);
 
-	if($setting = mysql_fetch_array($settings)) {
+	if($settings = mysql_fetch_array($settings)) {
 	?>
-	<h1><?=$setting['company_name']?></h1>
+	<h1><?=$settings['company_name']?></h1>
 	<div id="company_address">
-	<p><?=nl2br($setting['packing_slip_address'])?></p>
+	<p><?=nl2br($settings['packing_slip_address'])?></p>
 	</div>
 	<?php
 	}
@@ -101,13 +103,18 @@ if($row = mysql_fetch_array($result)) {
 		<?php
 	}
 
-	$purchaseTotal += $row['mc_shipping'] + $row['tax'];
+if ($settings['tax_display_preference'] == 2) {
+$purchaseTotal += $row['mc_shipping'];
+
+} else {
+$purchaseTotal += $row['mc_shipping'] + $row['tax'];
+}
 	?>
 	<tr><td colspan="2" style="text-align: right;"><?=NUMO_SYNTAX_SHOPPING_CART_SHIPPING_LABEL?></td><td class="cost_column"><?=number_format($row['mc_shipping'], 2, '.', ',')?></td></tr>
 	<?php
 	if($row['tax'] > 0) {
 	?>
-	<tr><td colspan="2" style="text-align: right;"><?=NUMO_SYNTAX_SHOPPING_CART_PACKING_SLIP_TAX_LABEL?></td><td class="cost_column"><?=number_format($row['tax'], 2, '.', ',')?></td></tr>
+	<tr><td colspan="2" style="text-align: right;"><?=NUMO_SYNTAX_SHOPPING_CART_PACKING_SLIP_TAX_LABEL?> <?php if ($settings['tax_display_preference'] == 2) { print "Included"; } ?></td><td class="cost_column"><?=number_format($row['tax'], 2, '.', ',')?></td></tr>
 	<?php
 	}
 	?>

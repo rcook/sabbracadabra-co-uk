@@ -68,7 +68,14 @@ if($_POST['cmd'] == "update") {
 		$_POST['include_form_info'] = 0;
 	}
 
-	$sql = "UPDATE `guestbook_types` SET `name`='".$_POST['name']."',`include_form_info`='".$_POST['include_form_info']."',`restrict_access`='".$_POST['restrict_access']."',`show_registration`='".$_POST['show_registration']."',`default_group`='".$_POST['default_group']."',`confirmation_type`='".$_POST['confirmation_type']."',`send_notification`='".$_POST['send_notification']."',`notification_email`='".$_POST['notification_email']."',`confirmation_value`='".$_POST['confirmation_value']."' WHERE `id`='".$_GET['id']."' AND `site_id`='".NUMO_SITE_ID."'";
+	//if checkbox checked then set on
+	if(isset($_POST['require_review'])) {
+		$_POST['require_review'] = 1;
+	//uncheck, set off
+	} else {
+		$_POST['require_review'] = 0;
+	}
+	$sql = "UPDATE `guestbook_types` SET `name`='".$_POST['name']."',`include_form_info`='".$_POST['include_form_info']."',`restrict_access`='".$_POST['restrict_access']."',`show_registration`='".$_POST['show_registration']."',`default_group`='".$_POST['default_group']."',`confirmation_type`='".$_POST['confirmation_type']."',`send_notification`='".$_POST['send_notification']."',`notification_email`='".$_POST['notification_email']."',`confirmation_value`='".$_POST['confirmation_value']."',`require_review`='".$_POST['require_review']."' WHERE `id`='".$_GET['id']."' AND `site_id`='".NUMO_SITE_ID."'";
 	//print $sql."<br>";
 	//exit;
 	$dbObj->query($sql);
@@ -100,7 +107,7 @@ if($_POST['cmd'] == "update") {
 
 /************************************/
 /*         UPDATE FIELD(s)         */
-/**********************************/
+/***********************************/
 	//field order value will be IDs separated by a comma.  Use explode function to break value apart into array
 	$fieldOrderArr = explode(',', $_POST['field_order']);
 
@@ -450,6 +457,16 @@ if($row = mysql_fetch_array($result)) {
 				<label for="show_registration">Show registration component if the visitor is not logged in</label>
 			</li>
 			<li id="default_group_li" <?=($row['show_registration'] == '1' ? '' : 'style="display: none;"')?>><label style="margin-left: 30px; width: 50px; line-height: 30px; font-weight: bold;" for="default_group">Use:</label><select id="default_group" name="default_group" style="padding: 5px;"><?=list_account_group_move_options($row['default_group'])?></select></li>
+		</ul>
+		</div>
+        
+		<div class="form_setting">
+		<h3>Submission Review</h3>
+		<ul class="form_display">
+			<li class="checkbox">
+				<input type="checkbox" id="require_review" name="require_review" value="1" <?=($row['require_review'] == '1' ? 'checked="checked"' : '')?> />
+				<label for="restrict_access">Require submissions to be reviewed before being visible to public</label>
+			</li>
 		</ul>
 		</div>
 	</fieldset>
