@@ -1,8 +1,8 @@
 <?php
 $productKeyErrors = array();
-
 //save database connection information if submitted
 if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
+	
 	//confirm product key entered
 	if($_POST['next_step'] == "2") {
 		foreach($_POST as $key => $productLicenseKey) {
@@ -23,10 +23,10 @@ if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
 		require("classes/Database.php");
 
 		//re-init database class using the connection information provided by user
-		$dbObj = new Database($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
+		$dbObj = new NumoDatabase($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
 
         if (!$dbObj->valid_connection && $_POST['database_host'] != "localhost") {
-		  $dbObj = new Database("localhost", $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
+		  $dbObj = new NumoDatabase("localhost", $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
 		  if ($dbObj->valid_connection) {
 			  $_POST['database_host'] = "localhost";
 		  }
@@ -58,7 +58,7 @@ if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
 		require("classes/Database.php");
 
 		// re-init database class using the connection information provided by user
-		$dbObj = new Database($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
+		$dbObj = new NumoDatabase($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
 
 		// run SQL commands for each module to complete database initialization
 		setup_mysql_database($_POST['cmd'] == "numo_reinstall");
@@ -79,6 +79,56 @@ if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
 
 		//exit;
 	}
+} else if ($_POST['cmd'] == "numo-remote-init") {
+	require("classes/Database.php");
+
+		// re-init database class using the connection information provided by user
+	//	$dbObj = new NumoDatabase($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
+	//print "yup";
+	$sql = "INSERT INTO `sites` (`domain`,`name`) VALUES ('{$domain}','{$domain}')";
+//	print $sql;
+	$dbObj->query($sql);
+	$sql = "SELECT * FROM sites WHERE domain='{$domain}' and `name`='{$domain}'";
+	$result = $dbObj->query($sql);
+	$record = mysql_fetch_array($result);
+	$siteID = $record['id'];
+	
+	$sql    = "INSERT INTO `types` (`site_id`,`name`,`available_slots`) VALUES ({$siteID},'default','5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30')";
+	$dbObj->query($sql);
+	$sql    = "SELECT * FROM `types` WHERE site_id='{$siteID}' and `name`='default'";
+	$result = $dbObj->query($sql);
+	$record = mysql_fetch_array($result);
+	$typeID = $record['id'];
+	
+	$sql = "INSERT INTO `fields` (`type_id`,`name`,`slot`,`position`,`required`,`locked`,`show_on_registration`,`input_type`,`input_options`,`regex`) VALUES ('{$typeID}','Username',1,3,1,1,1,'text','',''),('{$typeID}','Password',2,4,1,1,1,'password','',''),('{$typeID}','Email Address',3,2,1,1,1,'text','','^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'),('{$typeID}','Name',4,1,1,1,1,'text','','')";
+	$dbObj->query($sql);
+	
+	$sql = "INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('NUMO-INVALID_REQUEST_CODE', '{$siteID}', 'Invalid request code. Please try again or contact your website administrator.'), ('NUMO-ADMINISTRATIVE_EMAIL_ADDRESS', '{$siteID}', '{$_POST[account_email]}'), ('NUMO-FILE_NOT_FOUND_TITLE', '{$siteID}', 'File Not Found'), ('NUMO-FILE_NOT_FOUND', '{$siteID}', 'Oops! We were unable to locate the file you requested.')";
+	$dbObj->query($sql);
+	
+	$sql = "INSERT INTO `accounts` (`type_id`,`is_admin`,`pending`,`activated`,`ip_address`,`when_created`,`slot_1`,`slot_2`,`slot_3`,`slot_4`) VALUES ('{$typeID}',1,0,1,'".$_SERVER['REMOTE_ADDR']."','".date("y/m/d H:i:s")."','".$_POST['account_username']."','".crypt($_POST['account_password'])."','".$_POST['account_email']."','".$_POST['account_name']."')";
+	$dbObj->query($sql);
+		
+	//run module initialization SQL code
+	run_sql_configuration("accounts", false, $_POST['license_key'], $siteID);
+	run_sql_configuration("settings", false, $_POST['license_key'], $siteID);
+} else if($_POST['cmd'] == "remote_install_new_module") {
+		require("classes/Database.php");
+
+	// if valid license key
+	//print "yup";
+	//foreach ($_POST as $key => $value) {
+	//	print $key."=".$value."<br>";
+	//}
+	//print check_license_key($_POST['license_key'],$_POST['module']);
+	//if(($licenseCheckResponse = check_license_key($_POST['license_key'],$_POST['module'])) == "") {
+		//print "inside if for ".$_POST['license_key']."-".$_POST['module'];
+		//run module initialization SQL code
+		run_sql_configuration($_POST['module'], false, $_POST['license_key'], $_POST['site_id']);
+		//header('Location: '.NUMO_FOLDER_PATH);
+	//} else {
+		//print "nope";
+	//}
 } else if ($_POST['cmd'] == "activate" || $_POST['cmd'] == "activate-all") {
   require("configuration/database_connection_information.php");
   require("classes/Database.php");
@@ -105,7 +155,7 @@ if($_POST['cmd'] == "numo_install" || $_POST['cmd'] == "numo_reinstall") {
 	require("classes/Database.php");
 
 	//re-init database class using the connection information provided by user
-	$dbObj = new Database($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
+	$dbObj = new NumoDatabase($_POST['database_host'], $_POST['database_name'], $_POST['database_username'], $_POST['database_password']);
 
 	//check to see if the database connection was setup (go into if condition if fail)
 	if($dbObj->valid_connection) {
@@ -157,8 +207,9 @@ function save_mysql_connection_information($host, $name, $username, $password, $
 	@chmod ("configuration/database_connection_information.php", 0444);
 }
 
+
 //run sql commands for the numo system and each of the modules
-function setup_mysql_database($reinstall = false) {
+function setup_mysql_database($reinstall = false, $siteID = 1) {
 	global $dbObj; //allow access to database class
     global $_SERVER;
 
@@ -170,6 +221,7 @@ function setup_mysql_database($reinstall = false) {
 
 	// Loop through our array, show HTML source as HTML source; and line numbers too.
 	foreach ($lines as $lineNum => $line) {
+		  $line = str_replace("NUMO_SITE_ID", $siteID, $line);
 	  if ($reinstall && strpos($line, "CREATE TABLE IF NOT EXISTS") !== false && $_SERVER['REMOTE_ADDR'] == $reinstallAllowedServerIP) {
 	    $matches = array();
 	    $pattern = '/CREATE TABLE IF NOT EXISTS `([^`]*?)`/';
@@ -180,33 +232,38 @@ function setup_mysql_database($reinstall = false) {
 	    $dbObj->query($drop);
 	    //print $drop."<br>";
 	  }
+	  //print $line."<br>";
 	  $dbObj->query($line); //run SQL query
 	}
-
-	//cycle through module folder and
-	if ($modulesFolder = @opendir(MODULES_FOLDER_NAME)){
-		//cycle thru each file in the MODULES folder
-		while ($moduleFolderName = readdir($modulesFolder)) {
-			//ingore if item named with periods or starts with an underscore
-			if($moduleFolderName == "." || $moduleFolderName == ".." || substr($moduleFolderName, 0, 1) == "_"){
-				continue;
-			} 
-			if ($_POST["product_key__{$moduleFolderName}"] == "" && $_POST['common_license_key'] != "") {
-				$_POST["product_key__{$moduleFolderName}"] = $_POST['common_license_key'];
+    
+		//cycle through module folder and
+		if ($modulesFolder = @opendir(MODULES_FOLDER_NAME)){
+			//cycle thru each file in the MODULES folder
+			while ($moduleFolderName = readdir($modulesFolder)) {
+				//ingore if item named with periods or starts with an underscore
+				if($moduleFolderName == "." || $moduleFolderName == ".." || substr($moduleFolderName, 0, 1) == "_"){
+					continue;
+				} 
+				if ($_POST["product_key__{$moduleFolderName}"] == "" && $_POST['common_license_key'] != "") {
+					$_POST["product_key__{$moduleFolderName}"] = $_POST['common_license_key'];
+				}
+	
+				run_sql_configuration($moduleFolderName, false, $_POST["product_key__{$moduleFolderName}"], $siteID);
 			}
-
-			run_sql_configuration($moduleFolderName, false, $_POST["product_key__{$moduleFolderName}"]);
+	
 		}
-
-	}
+	
   //  print $_SERVER['REMOTE_ADDR'];
   //exit;
 }
 
 //run the sql configuration commands for a given module
-function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "") {
+function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "", $siteID = 1) {
 	global $dbObj;
 	global $_SERVER;
+	if ($siteID == "") {
+		$siteID = 1;
+	} 
 
     // only allow reinstall if remote address matches secured Lucky Marble API server
     $reinstallAllowedServerIP = "216.139.217.104";
@@ -218,6 +275,7 @@ function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "")
 
 		// Loop through our array, show HTML source as HTML source; and line numbers too.
 		foreach ($lines as $lineNum => $line) {
+		  $line = str_replace("NUMO_SITE_ID", $siteID, $line);
 		  if ($reinstall && strpos($line, "CREATE TABLE IF NOT EXISTS") !== false && $_SERVER['REMOTE_ADDR'] == $reinstallAllowedServerIP) {
 			$matches = array();
 			$pattern = '/CREATE TABLE IF NOT EXISTS `([^`]*?)`/';
@@ -230,14 +288,21 @@ function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "")
 
 		  }
 
+		  if (strstr($line, 'LAST_INSERT_ID')) {
+			 $lastInsert = "SELECT LAST_INSERT_ID()";
+			 $res = $dbObj->query($lastInsert);
+			 $record = mysql_fetch_array($res);
+			 $lastInsertID = $record['LAST_INSERT_ID()'];
+			 $line = str_replace("LAST_INSERT_ID", $lastInsertID, $line);
+		  }
 
-		  //print ":SQL: ".$line."<br>";
+		  //print ":SQL: ".$line."<br>"; 
 		  $dbObj->query($line); //run SQL query
-		  if ($_SERVER['REMOTE_ADDR'] == $reinstallAllowedServerIP) {
+		  if ($_SERVER['REMOTE_ADDR'] == $reinstallAllowedServerIP || $siteID != 1) {
 			print $name.": ".$line."<br>".mysql_error()."<br>";
 		  }
 		}
-	  $update = "UPDATE modules SET license_key='{$licenseKey}' WHERE name='{$name}' AND site_id='1' AND license_key=''";
+	  $update = "UPDATE modules SET license_key='{$licenseKey}' WHERE name='{$name}' AND site_id='{$siteID}' AND license_key=''";
 	  //print $update;
 	  $dbObj->query($update);
 	}

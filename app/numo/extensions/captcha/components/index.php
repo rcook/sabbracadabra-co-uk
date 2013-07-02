@@ -24,7 +24,7 @@
  * @author Sol Toure <sol2ray at gmail dot com>
  * @version alpha 0.01;
  */
-
+session_set_cookie_params(3600, '/', str_replace("www.", "", $_SERVER['HTTP_HOST']));
 session_start();
 
 

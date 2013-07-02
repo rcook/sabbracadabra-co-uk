@@ -28,7 +28,7 @@ background-image: -webkit-gradient(
 #notice_bar img { padding-right: 10px; }
 #notice_bar p {  }
 #notice_bar span.file_name { color: #ffffff; font-family: "Courier New", Courier, monospace; }
-
+span.logged-in-username { display: none; }
 
 #container { padding-left:190px; }
 #content { width:100%; margin-left:-190px; float: left; border-left:190px solid #fff; text-align: left; }
@@ -86,7 +86,7 @@ table.table_data_layout {border: 1px solid #5184D9; border-radius: 3px; -moz-bor
 .module_install_summary a {color: #044493; font-size: 0.9em;}
 
 /** landing page: installed  module div block **/
-.module_install_completed, .module_install_settings { 
+.module_install_completed, .module_install_settings, .module_install_accounts { 
 border: 1px solid #cccccc;
 border-radius: 3px;
 -webkit-border-radius: 3px;
@@ -112,15 +112,21 @@ background-image: -webkit-gradient(
 
 padding: 10px;
 }
-.module_install_completed h2, .module_install_settings h2 { 	 font-size: 1em; text-transform:none;font-variant:normal; padding: 2px 0px; text-decoration: none;}
-.module_install_completed p, .module_install_settings p {color: #000; font-size: 11px; padding-left: 10px;}
+.module_install_completed h2, .module_install_settings h2, , .module_install_accounts h2 { 	 font-size: 1em; text-transform:none;font-variant:normal; padding: 2px 0px; text-decoration: none;}
+.module_install_completed p, .module_install_settings p, .module_install_accounts p {color: #000; font-size: 11px; padding-left: 7px;}
+.module_install_completed label, .module_install_settings label, .module_install_accounts label {color: #000; font-size: 11px; padding-left: 7px; font-weight: bold; padding-right: 5px;}
+.module_install_completed input[type=text], .module_install_settings input[type=text], .module_install_accounts input[type=text]
+{color: #000; font-size: 11px; width: 95px; margin-right: 7px;}
 
-.module_install_completed hr, .module_install_settings hr { padding: 0px; margin: 0px; border: 1px solid #336699; margin-bottom: 15px;}
-.module_install_completed img.icon, .module_install_settings img.icon { height: 35px; padding-right: 10px; float: left;}
-.module_install_completed img.help-icon, .module_install_settings img.help-icon  { float: right;}
-.module_install_completed h3, .module_install_settings h3{ font-size: 12px; padding: 4px 0px 0px 0px; text-decoration: none;}
-.module_install_completed ul, .module_install_settings ul {margin: 0px 0px 0px 10px; padding: 0px; list-style-type: none;}
-.module_install_completed li, .module_install_settings li {margin: 0px; padding: 0px;color: #000; font-size: 11px;}
+.module_install_completed input[type=submit], .module_install_settings input[type=submit], .module_install_accounts input[type=submit]
+{color: #000; font-size: 11px; float: right;}
+
+.module_install_completed hr, .module_install_settings hr, .module_install_accounts hr { padding: 0px; margin: 0px; border: 1px solid #336699; margin-bottom: 15px;}
+.module_install_completed img.icon, .module_install_settings img.icon, .module_install_accounts img.icon { height: 35px; padding-right: 10px; float: left;}
+.module_install_completed img.help-icon, .module_install_settings img.help-icon, .module_install_accounts img.help-icon  { float: right;}
+.module_install_completed h3, .module_install_settings h3, .module_install_accounts h3 { font-size: 12px; padding: 4px 0px 0px 0px; text-decoration: none;}
+.module_install_completed ul, .module_install_settings ul, .module_install_accounts ul {margin: 0px 0px 0px 10px; padding: 0px; list-style-type: none;}
+.module_install_completed li, .module_install_settings li, .module_install_accounts li {margin: 0px; padding: 0px;color: #000; font-size: 11px;}
 
 fieldset {border: 1px solid #2A61BD; padding: 5px; margin: 0px 0px 5px 0px;}
 fieldset legend {font-weight: bold; color: #2A61BD;}

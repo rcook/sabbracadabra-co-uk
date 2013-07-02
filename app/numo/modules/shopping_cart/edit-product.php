@@ -184,7 +184,12 @@ if($_POST['cmd'] == "update") {
 	/************************************/
 	/*         UPLOAD IMAGE(s)         */
 	/**********************************/
-	$uploadsDir = "modules/shopping_cart/uploads/";
+			if (REMOTE_SERVICE === true) {
+			  $uploadsDir = ABSOLUTE_ROOT_PATH."dashboard/uploads/modules/shopping_cart";
+			} else {
+			  $uploadsDir = "modules/shopping_cart/uploads";
+			}
+//	$uploadsDir = "modules/shopping_cart/uploads/";
 	$uploadPath = "";
 
 	//upload image files
@@ -286,7 +291,7 @@ if($_POST['cmd'] == "update") {
 		}*/
 	}
 
-	header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/manage-products/');
+	//header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/manage-products/');
 }
 ?>
 <style>
@@ -585,6 +590,7 @@ if($row = mysql_fetch_array($result)) {
 							</li>';
 			} else if($field['input_type'] == "tax rate") {
 				if (sizeof($taxRates) > 0) {
+				//	print sizeof($taxRates);
 									
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
@@ -855,7 +861,12 @@ if($row = mysql_fetch_array($result)) {
 			while($image = mysql_fetch_array($imgs_result)) {
 				$counter++;
 			?>
-			<table border="0"><tr><td valign="top"><image src="modules/<?=$_GET['m']?>/uploads/<?=$image['file_name']?>" class="listing_image_thumb" /></td><td valign="top"><table cellpadding="0" cellspacing="0"><tr><td><input type="hidden" name="existing_image_filename__<?=$image['id']?>" value="<?=$image['file_name']?>" /><textarea onblur="checkCaptionFieldValue(this)" onclick="checkCaptionFieldValue(this)" class="image_description_textarea" name="existing_image_description__<?=$image['id']?>"><?=$image['description']?></textarea></td></tr><tr><td>Change: <input type="file" name="existing_image__<?=$image['id']?>" value="" /><br /><br /></td></tr><tr><td style="background: #FBEADD; border: 1px solid #CBBAAD; font-weight: bold; padding: 2px;"><input type="checkbox" name="remove_existing_image__<?=$image['id']?>" id="remove_existing_image__<?=$image['id']?>" value="1" /> <label for="remove_existing_image__<?=$image['id']?>">Remove image</label></td></tr></table></td></tr></table><hr />
+			<table border="0"><tr><td valign="top"><image src="<?php if (REMOTE_SERVICE === true) {
+				print NUMO_FOLDER_PATH."uploads/modules/shopping_cart/";
+			} else {
+				print "modules/shopping_cart/uploads/";
+			}
+			?><?=$image['file_name']?>" class="listing_image_thumb" /></td><td valign="top"><table cellpadding="0" cellspacing="0"><tr><td><input type="hidden" name="existing_image_filename__<?=$image['id']?>" value="<?=$image['file_name']?>" /><textarea onblur="checkCaptionFieldValue(this)" onclick="checkCaptionFieldValue(this)" class="image_description_textarea" name="existing_image_description__<?=$image['id']?>"><?=$image['description']?></textarea></td></tr><tr><td>Change: <input type="file" name="existing_image__<?=$image['id']?>" value="" /><br /><br /></td></tr><tr><td style="background: #FBEADD; border: 1px solid #CBBAAD; font-weight: bold; padding: 2px;"><input type="checkbox" name="remove_existing_image__<?=$image['id']?>" id="remove_existing_image__<?=$image['id']?>" value="1" /> <label for="remove_existing_image__<?=$image['id']?>">Remove image</label></td></tr></table></td></tr></table><hr />
 			<?php
 			}
 

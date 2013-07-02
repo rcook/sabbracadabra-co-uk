@@ -11,17 +11,18 @@
     <?php if ($access->hasAccess("accounts", "account-create")) { ?>
 	<li><a href="module/accounts/account-create/">Create Account</a></li>
     <?php } ?>
-	</ul>
+<?php if ($adminVersion == "") { ?>	</ul><?php } ?>
 <?php } ?>
-</li>
+<?php if ($adminVersion == "") { ?>	</li><?php } ?>
 <?php } ?>
 <?php if ($access->hasAccess("accounts", "group-manage")) { ?>
 <li><a href="module/accounts/group-manage/">Account Groups</a>
 <?php if ($access->hasAccess("accounts", "group-create")) { ?>
-	<ul>
+<?php if ($adminVersion == "") { ?>	<ul> <?php } ?>
 	<li><a href="module/accounts/group-manage/">Manage Groups</a></li>
 	<li><a href="module/accounts/group-create/">Create Group</a></li>
-	</ul>
+<?php if ($adminVersion == "") { ?>	</ul> <?php } ?>
 <?php } ?>
+</ul>
 </li>
 <?php } ?>

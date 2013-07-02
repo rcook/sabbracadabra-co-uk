@@ -1,6 +1,13 @@
 <?php
-	numo_enqueue_js(NUMO_FOLDER_PATH."extensions/wysiwyg/jscripts/tiny_mce/tiny_mce.js", "tiny_mce", "3.5.4.1");
+    if (REMOTE_SERVICE === true) {
+	   print "<script type='text/javascript' src='//".NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH."extensions/wysiwyg/jscripts/tiny_mce/tiny_mce.js"."'></script>";
+		
+	} else {
+	  numo_enqueue_js(NUMO_FOLDER_PATH."extensions/wysiwyg/jscripts/tiny_mce/tiny_mce.js", "tiny_mce", "3.5.4.1");
+		 
+	}
 //	numo_enqueue_js(NUMO_FOLDER_PATH."extensions/wysiwyg/jscripts/tiny_mce/jquery-1.5.5.js", "jquery", "1.5.5");
+ // print "x.".$PARAMS['wysiwyg_name']; 
   if (!isset($PARAMS['wysiwyg_id'])) {
 	  $PARAMS['wysiwyg_id'] = "elm1";
   }
@@ -18,7 +25,8 @@
 <script type="text/javascript">
 	tinyMCE.init({
 		// General options
-		mode : "textareas",
+		mode : "exact",
+		elements: "<?php echo $PARAMS['wysiwyg_id']; ?>",
 		theme : "advanced",
 		skin : "o2k7",
 		plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups,autosave",
@@ -38,9 +46,9 @@
 
 		// Drop lists for link/image/media/template dialogs
 		template_external_list_url : "<?php echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/template_list.js",
-		external_link_list_url : "<?php echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/link_list_js.php",
-		external_image_list_url : "<?php echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/image_list_js.php",
-		media_external_list_url : "<?php echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/media_list_js.php",
+		external_link_list_url : "<?php  echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/link_list_js.php",
+		external_image_list_url : "<?php  echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/image_list_js.php",
+		media_external_list_url : "<?php   echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/components/lists/media_list_js.php",
 
 		// Replace values for the template plugin
 		template_replace_values : {

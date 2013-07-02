@@ -3,9 +3,12 @@ $result = $dbObj->query("SELECT * FROM `shopping_cart_fields` WHERE input_type='
 
 $exists = (mysql_num_rows($result))?TRUE:FALSE;
 if (!$exists) {
-  $dbObj->query("INSERT INTO shopping_cart_fields VALUES (4, ".NUMO_SITE_ID.", 'Technical Specs', 4, 8, 1, 1, 'text box', ''), (5, ".NUMO_SITE_ID.", 'Shipping Type', 5, 4, 1, 1, 'shipping type', '0'), (6, ".NUMO_SITE_ID.", 'Internal', 6, 5, 1, 1, 'upon completion action', ''),(7, ".NUMO_SITE_ID.", 'SKU/ID', 7, 2, 1, 1, 'text', ''),(8, ".NUMO_SITE_ID.", 'Tax Rate', 8, 6, 1, 1, 'tax rate', '')");
+  $dbObj->query("INSERT INTO shopping_cart_fields (id, site_id, name, slot, position, required, locked, input_type, input_options) VALUES (4, ".NUMO_SITE_ID.", 'Technical Specs', 4, 8, 1, 1, 'text box', ''), (5, ".NUMO_SITE_ID.", 'Shipping Type', 5, 4, 1, 1, 'shipping type', '0'), (6, ".NUMO_SITE_ID.", 'Internal', 6, 5, 1, 1, 'upon completion action', ''),(7, ".NUMO_SITE_ID.", 'SKU/ID', 7, 2, 1, 1, 'text', ''),(8, ".NUMO_SITE_ID.", 'Tax Rate', 8, 6, 1, 1, 'tax rate', '')");
   $dbObj->query("UPDATE shopping_cart_fields SET position=3 WHERE input_type='money' AND site_id=".NUMO_SITE_ID);
   $dbObj->query("UPDATE shopping_cart_fields SET position=7 WHERE input_type='text box' AND position='3' AND site_id=".NUMO_SITE_ID);
+  //print "done";
+} else {
+	//print "exists";
 }
 
 // 1 product name
@@ -41,7 +44,12 @@ if($_POST['cmd'] == "create") {
 	$productObj = new Product();
 	$listingId = $productObj->create($_POST);
 	if($listingId != null || $listingId != "") {
-		$uploadsDir = "modules/shopping_cart/uploads/";
+			if (REMOTE_SERVICE === true) {
+			  $uploadsDir = ABSOLUTE_ROOT_PATH."numo/uploads/modules/shopping_cart";
+			} else {
+			  $uploadsDir = "modules/shopping_cart/uploads";
+			}
+
 
 		//upload image files
 		foreach($_FILES as $fieldName => $fieldValue) {
@@ -549,13 +557,13 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'[]">'.generate_list_options($fieldOptions ,$fieldValue).'</select>
 							</li>';
 							
-			} else if($field['input_type'] == "tax rate" && sizeof($taxRates) > 0) {
-									
+			} else if($field['input_type'] == "tax rate" ) {
+				if (sizeof($taxRates) > 0) {
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'[]">'.generate_list_options($taxRates, $fieldValue).'</select>
 							</li>';
-
+				}
 			} else if($field['input_type'] == "multiple select") {
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
@@ -732,10 +740,10 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 		$sql = "SELECT * FROM `shopping_cart_optional_product_attributes` WHERE `product_id`='".$_POST['existing_product']."' ORDER BY `position`,`label`";
 		//print $sql."<br>";
 		$results = $dbObj->query($sql);
-
+ 
         $newCount = 0;
 		while($field = mysql_fetch_array($results)) {
-			$field['id'] = "new{$newCount}-".mktime();
+			$field['id'] = "new{$newCount}-".time();
 			$newCount++;
 		?>
 			<div id="item_<?=$field['id']?>" class="lineitem">

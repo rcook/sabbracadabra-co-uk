@@ -9,7 +9,7 @@
         <?php if ($access->hasAccess("guestbook", "manage")) { ?>
 		<li><a href="module/guestbook/manage/">Manage</a></li>
         <?php } ?>
-        <?php if ($access->hasAccess("guestbook", "configure-layout")) { ?>
+        <?php if ($access->hasAccess("guestbook", "configure-layout") && REMOTE_SERVICE !== true) { ?>
 		<li><a href="module/guestbook/configure-layout/">Layout</a></li>
         <?php } ?>
 	</ul>

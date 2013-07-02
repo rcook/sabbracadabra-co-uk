@@ -2,7 +2,7 @@
 if ($_POST['account_id'] == "") {
 	return false;
 }
-
+//error_reporting (E_ALL);
 // assert priviledge table here
 $result = $dbObj->query("CREATE TABLE IF NOT EXISTS `admin_privileges` (
 `account_id` INT( 11 ) NOT NULL ,
@@ -11,19 +11,27 @@ $result = $dbObj->query("CREATE TABLE IF NOT EXISTS `admin_privileges` (
 `site_id` INT( 11 ) NOT NULL,
 PRIMARY KEY ( `account_id` , `module` , `site_id` )
 )");
-
+foreach ($_POST as $x => $y) {
+	//print $x."=".$y."<br>";
+}
 if($_POST['cmd'] == "save") {
 	$changes = "";
+	//print "yes";
     $moduleComponents = array();
 	foreach($_POST['components'] as $key => $value) {
+	//	print "$key = $value <br>";
 		$keyData = explode("__", $value);
 		$module = $keyData[0];
 		$moduleComponents["{$module}"][] = $keyData[1];
 	}
+	$dbObj->query("DELETE FROM admin_privileges WHERE account_id='{$_POST['account_id']}' AND site_id='".NUMO_SITE_ID."'");
+
+	//print "DELETE FROM admin_privileges WHRE account_id='{$_POST['account_id']}' AND site_id='".NUMO_SITE_ID."'";
 	foreach ($moduleComponents as $moduleName => $components) {
 	  
 	  $componentsData =  implode(",", $components);
 	  $update = "REPLACE INTO admin_privileges SET account_id='{$_POST['account_id']}', site_id='".NUMO_SITE_ID."', module='{$moduleName}', components='{$componentsData}'";
+	//  print $update;
 	  $dbObj->query($update);
 	}
 		

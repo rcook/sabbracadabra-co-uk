@@ -1,5 +1,7 @@
-
-<div class="module_install_completed">
+<?php
+include("upgrade.php");
+?>
+<div class="module_install_accounts">
 <img class='icon' src="images/accounts.png" />
 <a href="http://www.i3dthemes.com/support/numo_accounts/" target="_blank"><img alt='Help' title='Help' class='help-icon' src="images/help.png" /></a>
 <?php if ($moduleRecord['status'] == 1) { ?>

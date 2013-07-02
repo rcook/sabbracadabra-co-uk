@@ -4,13 +4,15 @@ background: #414141; /*background of menu bar (default state)*/
 width: 100%;
 }
 
-.ddsmoothmenu ul{
+.ddsmoothmenu ul {
 z-index:100;
 margin: 0;
 padding: 0;
 list-style-type: none;
 }
 
+.ddsmoothmenu ul ul { margin: 0px !important; }
+.ddsmoothmenu ul ul ul  { margin: 0px !important; }
 /*Top level list items*/
 .ddsmoothmenu ul li{
 position: relative;

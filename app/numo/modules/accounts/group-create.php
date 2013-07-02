@@ -1,10 +1,15 @@
 <?php
+/*
 	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings");
 	$shoppingCartExists = (@mysql_num_rows($result))?TRUE:FALSE;
 	
 	$result = $dbObj->query("SHOW COLUMNS FROM `listing_contributors`");
 	$listingServiceExists = (@mysql_num_rows($result))?TRUE:FALSE; 
-	
+*/
+
+    $shoppingCartExists = moduleInstalled("SHOPPING_CART");
+	$listingServiceExists = moduleInstalled("LISTING_SERVICE") || moduleInstalled("LISTING_SERVICE_PRO"); 
+
 ?>
 <h2>Create Group</h2>
 <?php

@@ -19,8 +19,13 @@ if($row = mysql_fetch_array($result)) {
 <?php
 if($row['allow_registration'] == "1") {
 ?>
+<?php if (REMOTE_SERVICE === true) { ?>
 <h4>Registration Box</h4>
-<textarea cols="50" rows="1">[NUMO.ACCOUNTS: REGISTRATION BOX(id=<?=$_GET['id']?>)]</textarea>
+<textarea cols="50" rows="1" onfocus='this.select()'><numo module="accounts" component="registration_box" params="id=<?=$_GET['id']?>"></numo></textarea>
+<?php } else { ?>
+<h4>Registration Box</h4>
+<textarea cols="50" rows="1" onfocus='this.select()'>[NUMO.ACCOUNTS: REGISTRATION BOX(id=<?=$_GET['id']?>)]</textarea>
+<?php } ?>
 <?php
 } else {
 ?>
@@ -30,19 +35,37 @@ if($row['allow_registration'] == "1") {
 }
 ?>
 <h3>General Components</h3>
-
+<?php if (REMOTE_SERVICE === true) { ?>
 <h4>Login Box</h4>
-<textarea cols="50" rows="1">[NUMO.ACCOUNTS: LOGIN BOX]</textarea>
+<textarea cols="50" rows="1" onfocus='this.select()'><numo module="accounts" component="login_box"></numo></textarea>
 
 <h4>Forgot Password</h4>
-<textarea cols="50" rows="1">[NUMO.ACCOUNTS: FORGOT PASSWORD]</textarea>
+<textarea cols="50" rows="1" onfocus='this.select()'><numo module="accounts" component="forgot_password"></numo></textarea>
 
 <h4>Update Account Details</h4>
-<textarea cols="50" rows="1">[NUMO.ACCOUNTS: UPDATE ACCOUNT DETAILS]</textarea>
+<textarea cols="50" rows="1" onfocus='this.select()'><numo module="accounts" component="update_account_details"></numo></textarea>
 
 <h4>Update Account Password</h4>
-<textarea cols="50" rows="1">[NUMO.ACCOUNTS: UPDATE PASSWORD]</textarea>
+<textarea cols="50" rows="1" onfocus='this.select()'><numo module="accounts" component="update_password"></numo></textarea>
 
 <h4>Logout Link</h4>
-<textarea cols="50" rows="1">[NUMO.ACCOUNTS: LINKS]</textarea>
+<textarea cols="50" rows="1" onfocus='this.select()'><numo module="accounts" component="links"></numo></textarea>
 </div>
+
+<?php } else { ?>
+<h4>Login Box</h4>
+<textarea cols="50" rows="1" onfocus='this.select()'>[NUMO.ACCOUNTS: LOGIN BOX]</textarea>
+
+<h4>Forgot Password</h4>
+<textarea cols="50" rows="1" onfocus='this.select()'>[NUMO.ACCOUNTS: FORGOT PASSWORD]</textarea>
+
+<h4>Update Account Details</h4>
+<textarea cols="50" rows="1" onfocus='this.select()'>[NUMO.ACCOUNTS: UPDATE ACCOUNT DETAILS]</textarea>
+
+<h4>Update Account Password</h4>
+<textarea cols="50" rows="1" onfocus='this.select()'>[NUMO.ACCOUNTS: UPDATE PASSWORD]</textarea>
+
+<h4>Logout Link</h4>
+<textarea cols="50" rows="1" onfocus='this.select()'>[NUMO.ACCOUNTS: LINKS]</textarea>
+</div>
+<?php } ?>

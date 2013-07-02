@@ -1,10 +1,30 @@
 <?php
-	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings`");
-	$shoppingCartExists = (@mysql_num_rows($result))?TRUE:FALSE;
-	
-	$result = $dbObj->query("SHOW COLUMNS FROM `listing_contributors`");
-	$listingServiceExists = (@mysql_num_rows($result))?TRUE:FALSE; 
-	
+
+ if ($_GET['cmd'] == "fix") {
+	$sql = "SELECT f.* FROM `fields` f, `types` t WHERE f.type_id=t.id AND f.type_id='{$_GET['id']}' AND t.site_id='".NUMO_SITE_ID."'";
+	$result = $dbObj->query($sql);
+	$fieldsExist = array();
+    while ($rec = mysql_fetch_array($result)) {
+		$slot = $rec['slot'];
+		if ($fieldsExist["{$slot}"]) {
+			$sql = "DELETE FROM `fields` WHERE type_id='1' AND id='{$rec['id']}'";
+			$dbObj->query($sql);
+
+		}
+		$fieldsExist["{$slot}"] = true;
+	}
+
+
+}
+
+    $shoppingCartExists   = moduleInstalled("SHOPPING_CART");
+	$listingServiceExists = moduleInstalled("LISTING_SERVICE") || moduleInstalled("LISTING_SERVICE_PRO");
+	//$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings`");
+	//$shoppingCartExists = (@mysql_num_rows($result))?TRUE:FALSE;
+
+	//$result = $dbObj->query("SHOW COLUMNS FROM `listing_contributors`");
+	//$listingServiceExists = (@mysql_num_rows($result))?TRUE:FALSE;
+
 ?>
 <script language="JavaScript" src="javascript/prototype.js"></script>
 <script language="JavaScript" src="javascript/effects.js"></script>
@@ -122,12 +142,17 @@ function checkTypeSelection(value, id) {
 	.lineitem ul li div { height: 44px; display: table-cell; vertical-align: middle; width: 170px; font-size: 1em; text-align: center; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_field_background.jpg') no-repeat top right; }
 	.lineitem ul li input, .lineitem ul li select { font-size: 1em; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; width: 150px; padding: 2px; margin: 0px;}
 	.lineitem ul li a {line-height: 44px; text-align: center; width: 24px; color: #aaa; text-decoration: none; display: block;}
-	.lineitem label { margin: 0px; padding: 0px; vertical-align: top; display: inline-block; color: #333; font-size: 20px; font-weight: normal;}
+	.lineitem label {  margin: 0px; padding: 0px; vertical-align: top; display: inline-block; color: #333; font-size: 20px; font-weight: normal;}
 	.lineitem p { margin: 0px; padding: 5px 0px; color: #777; font-size: 12px; font-weight: normal;}
 	.lineitem textarea { vertical-align: top; width: 515px; margin: 0px; height: 70px;}
 	.lineitem div.field_optionals { padding: 10px; border-top: 1px solid #ccc;}
 	.lineitem div div { margin: 0px 0px 0px 30px; width: 175px; float: left;}
+	ul.form_display li label { text-align: right; width: 190px; margin-right: 10px; }
+    fieldset { clear: both; }
+    ul.form_display li input { float: none; }
+    ul.form_display li input.longfield { width: 250px; }
 </style><!--[if lte IE 8]>
+
 <style>
 	.lineitem ul li div { height: 34px; padding: 10px 0px 0px 0px; }
 </style>
@@ -138,15 +163,15 @@ if($_POST['cmd'] == "update") {
 
     if ($shoppingCartExists) {
 		  $setDiscount = ",shopping_cart_discount='{$_POST['shopping_cart_discount']}',show_original_price='{$_POST['show_original_price']}'";
-		
+
 	}
-	
+
     if ($listingServiceExists) {
 		  $setListingSettings = ",listing_override_post_life='{$_POST['listing_override_post_life']}',listing_override_require_approval='{$_POST['listing_override_require_approval']}',listing_override_max_posts='{$_POST['listing_override_max_posts']}'";
-		
-	}	
-	$sql = "UPDATE `types` SET name='".$_POST['name']."',allow_registration='".$_POST['allow_registration']."',require_approval='".$_POST['require_approval']."',require_activation='".$_POST['require_activation']."' {$setDiscount} {$setListingSettings} WHERE id='".$_GET['id']."' AND site_id='".NUMO_SITE_ID."'";
-	//print $sql."<br>";
+
+	}
+	$sql = "UPDATE `types` SET name='".$_POST['name']."',allow_registration='".$_POST['allow_registration']."',require_approval='".$_POST['require_approval']."',require_activation='".$_POST['require_activation']."',registration_completion_page='".$_POST['registration_completion_page']."',login_completion_page='".$_POST['login_completion_page']."' {$setDiscount} {$setListingSettings} WHERE id='".$_GET['id']."' AND site_id='".NUMO_SITE_ID."'";
+//	print $sql."<br>";
 	$dbObj->query($sql);
 
 /************************************/
@@ -257,12 +282,14 @@ if($row = mysql_fetch_array($result)) {
 			<ul class="form_display">
 				<li><label for="name">Name:</label><input type="text" name="name" id="name" value="<?=$row['name']?>" /></li>
 				<li><label for="allow_registration">Allow Registration:</label><select name="allow_registration" id="allow_registration"><?=display_yes_no_options($row['allow_registration'])?></select></li>
+				<li><label for="login_completion_page">Login Completion Page:</label><input type="text" class='longfield' name="login_completion_page" id="login_completion_page" value="<?=$row['login_completion_page']?>" /></li>
 			</ul>
 			<fieldset>
 				<legend>New Accounts</legend>
 					<ul class="form_display">
 						<li><label for="require_approval">Require Approval:</label><select name="require_approval" id="require_approval"><?=display_yes_no_options($row['require_approval'])?></select></li>
 						<li><label for="require_activation">Require Activation:</label><select name="require_activation" id="require_activation"><?=display_yes_no_options($row['require_activation'])?></select></li>
+						<li><label for="registration_completion_page">Registration Completion Page:</label><input class='longfield' type="text" name="registration_completion_page" id="registration_completion_page" value="<?=$row['registration_completion_page']?>" /></li>
 					</ul>
 			</fieldset>
 <?php if ($shoppingCartExists) { ?>
@@ -278,12 +305,12 @@ if($row = mysql_fetch_array($result)) {
 
 <?php } ?>
 <?php if ($listingServiceExists) { ?>
-			<fieldset> 
+			<fieldset>
 				<legend>Listing Service Contributors</legend>
 					<ul class="form_display">
 						<li><label style='width: 170px' for="listing_override_max_posts">Max Posts:</label><select name="listing_override_max_posts"><?=generate_list_options(array('-1' => 'Default Global Setting',
-																																									   '0' => 'Unlimited', 
-																																									   '1' => '1', 
+																																									   '0' => 'Unlimited',
+																																									   '1' => '1',
 																																									   '2' => '2',
 																																									   '3' => '3',
 																																									   '4' => '4',
@@ -306,7 +333,7 @@ if($row = mysql_fetch_array($result)) {
 					</ul>
 					<ul class="form_display">
 						<li><label style='width: 170px' for="listing_override_post_life">Listing Post Life:</label><select name="listing_override_post_life"><?=generate_list_options(array('-1' => 'Default Global Setting',
-																																									   '1' => '1', 
+																																									   '1' => '1',
 																																									   '2' => '2',
 																																									   '3' => '3',
 																																									   '4' => '4',
@@ -340,7 +367,7 @@ if($row = mysql_fetch_array($result)) {
 			</fieldset>
 
 <?php } ?>
-            
+
 		</fieldset>
 
 		<fieldset>

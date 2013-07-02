@@ -14,14 +14,14 @@ if($product = mysql_fetch_array($result)) {
 
 	while($row = mysql_fetch_array($results)) {
 		if($mainImage == "") {
-			$mainImage = '<img class="numo_product_main_image" id="product_main_image" src="'.NUMO_FOLDER_PATH.'modules/shopping_cart/uploads/'.$row['file_name'].'" />';
+			$mainImage = '<img class="numo_product_main_image" id="product_main_image" src="http://'.NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH.(REMOTE_SERVICE === true ? "uploads/modules/shopping_cart/" : "modules/shopping_cart/uploads/").$row['file_name'].'" />';
 		}
 
 		if(($columnCounter % 2) == 1) {
 			$productThumbnails .= "<tr>";
 		}
 
-		$productThumbnails .= '<td><img class="numo_product_thumbnail" onclick="document.getElementById(\'product_main_image\').src = \''.NUMO_FOLDER_PATH.'modules/shopping_cart/uploads/'.$row['file_name'].'\';" src="'.NUMO_FOLDER_PATH.'modules/shopping_cart/uploads/'.$row['file_name'].'" alt="'.$row['description'].'" title="'.$row['description'].'" /></td>';
+		$productThumbnails .= '<td><img class="numo_product_thumbnail" onclick="document.getElementById(\'product_main_image\').src = \'http://'.NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH.(REMOTE_SERVICE === true ? "uploads/modules/shopping_cart/" : "modules/shopping_cart/uploads/").$row['file_name'].'\';" src="'.NUMO_FOLDER_PATH.'modules/shopping_cart/uploads/'.$row['file_name'].'" alt="'.$row['description'].'" title="'.$row['description'].'" /></td>';
 
 		if(($columnCounter % 2) == 0) {
 			$productThumbnails .= "</tr>";
@@ -37,7 +37,7 @@ if($product = mysql_fetch_array($result)) {
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="<?php print NUMO_FOLDER_PATH; ?>modules/shopping_cart/components/styles/images.css" />
+	<link rel="stylesheet" type="text/css" href="http://<?php echo NUMO_SERVER_ADDRESS; ?><?php print NUMO_FOLDER_PATH; ?>modules/shopping_cart/components/styles/images.css" />
 
 </head>
 <body>

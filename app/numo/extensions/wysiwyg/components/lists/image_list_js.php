@@ -1,6 +1,8 @@
 <?php
 require("../../../../configuration/database_connection_information.php");
-
+if (NUMO_FOLDER_PATH == 'NUMO_FOLDER_PATH') {
+	require ("/var/www/vhosts/server-apps.com/subdomains/numo/httpdocs/remote/numo/configuration/database_connection_information.php");
+}
 
 require("../../../../classes/functions.php");
 
@@ -18,9 +20,9 @@ var tinyMCEImageList = new Array(
 <?php
 
 $supportedextentions = array(
-	'gif', 
-	'png', 
-	'jpeg', 
+	'gif',
+	'png',
+	'jpeg',
 	'jpg',
 	'bmp'
 );
@@ -35,7 +37,7 @@ if(!file_exists($opendir)) {
 } else {
 //	print "directory does exist";
 }
-\
+ 
 
 //define begin of file name for user account
 $userFileStart = "u.".$_SESSION['account_id'].".";
@@ -43,11 +45,11 @@ $userFileStart = "u.".$_SESSION['account_id'].".";
 clearstatcache();
 if ($handle = opendir($opendir)) {
 //	print "opened";
-	while (false !== ($file = readdir($handle))) { 
+	while (false !== ($file = readdir($handle))) {
 	//print $file."<br>";
 		//first see if this file is required in the listing
 		if ($file == "." || $file == "..")  continue;
-		
+
 		if (@filetype($leadon.$file) == "dir") {
 			continue;
 		}	else {
@@ -61,13 +63,13 @@ if ($handle = opendir($opendir)) {
 			else {
 				$key = $n;
 			}
-			
+
 			if(substr($file,0,(strlen($userFileStart))) == $userFileStart) {
 				$files[$key] = $file;
 			}
 		}
 	}
-	closedir($handle); 
+	closedir($handle);
 }
 //sort our files
 if($_GET['sort']=="date") {
@@ -75,11 +77,11 @@ if($_GET['sort']=="date") {
 	@ksort($files, SORT_NUMERIC);
 }
 elseif($_GET['sort']=="size") {
-	@natcasesort($dirs); 
+	@natcasesort($dirs);
 	@ksort($files, SORT_NUMERIC);
 }
 else {
-	@natcasesort($dirs); 
+	@natcasesort($dirs);
 	@natcasesort($files);
 }
 
@@ -89,18 +91,18 @@ if($_GET['order']=="desc") {$files = @array_reverse($files);}
 $dirs = @array_values($dirs); $files = @array_values($files);
 
 					$class = 'b';
-					
+
 					$arsize = sizeof($files);
 					for($i=0;$i<$arsize;$i++) {
 						$icon = 'unknown.png';
 						$ext = strtolower(substr($files[$i], strrpos($files[$i], '.')+1));
 						if(in_array($ext, $supportedextentions)) {
-							
+
 							$thumb = '';
 							if($filetypes[$ext]) {
 								$icon = $filetypes[$ext];
 							}
-							
+
 							$filename = $files[$i];
 							//if(strlen($filename)>43) {
 							//	$filename = substr($files[$i], 0, 40) . '...';
@@ -110,7 +112,7 @@ $dirs = @array_values($dirs); $files = @array_values($files);
 					if ($gotOne) { print ","; } ?>
 					["<?=$filename?>", "<?php echo NUMO_FOLDER_PATH; ?>extensions/wysiwyg/uploads/<?=$filename?>"]<?php
 							if($class=='b') $class='w';
-							else $class = 'b';	
+							else $class = 'b';
 													$gotOne = true;
 
 						}

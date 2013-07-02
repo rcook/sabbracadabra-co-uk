@@ -13,7 +13,7 @@ require("../../../classes/functions.php");
 numo_session_start();
 //session_start();
 
-if(!isset($_SESSION['account_id']) || $_SESSION['is_admin'] != "1") {
+if(!isset($_SESSION['account_id']) || $_SESSION['is_admin'] == 0 || $_SESSION['is_admin'] == "") {
 	print "<p>Error: You are currently not logged into an account.  Please close this window and refresh your page to login again.</p>";
 	exit;
 }
@@ -61,13 +61,16 @@ if($allowuploads && $_FILES['file']) {
 	if(!$overwrite) {
 		if(file_exists($leadon.$_FILES['file']['name'])) {
 			$upload = false;
+			
 		}
 	}
 	$ext = strtolower(substr($_FILES['file']['name'], strrpos($_FILES['file']['name'], '.')+1));
 	if(!in_array($ext, $supportedextentions)) {
+		//print "blah";
 		$upload = false;
 	}
 	if($upload) {
+		//print "should upload";
 		move_uploaded_file($_FILES['file']['tmp_name'], $leadon . "u.".$_SESSION['account_id'].".".$_FILES['file']['name']);
 		$updatePreviewImageStr = '<script>document.getElementById("src").value = "'.$imagebaseurl."u.".$_SESSION['account_id'].".".$_FILES['file']['name'].'"; document.getElementById("preview").src = "'.$imagebaseurl."u.".$_SESSION['account_id'].".".$_FILES['file']['name'].'";</script>';
 	}
@@ -135,7 +138,7 @@ table tr td {padding-top: 0px;padding-bottom: 2px;font-family: arial, tahoma; fo
 			</tr>
 			<tr>
 			<td class="selectedImagePreview">
-				<img src="/webs/NUMO_NEWSLETTER/numo/modules/newsletter/images/image_upload_preview_default.jpg" id="preview" /></td>
+				<img src="http://www.luckymarble.com/webs/NUMO_NEWSLETTER/numo/modules/newsletter/images/image_upload_preview_default.jpg" id="preview" /></td>
 			</tr>			
 			<tr>
 			<td>

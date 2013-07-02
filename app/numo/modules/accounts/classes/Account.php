@@ -421,6 +421,23 @@ class Account {
 
 
   }
+  function generateUnlockCode() {
+ 	global $dbObj;
+
+  		$requestId = $this->id.md5(time());
+
+		$sql = "INSERT INTO pending_requests (id, site_id, account_id, module, component) VALUES ('".$requestId."','".NUMO_SITE_ID."','{$this->id}','accounts','unlock frozen account')";
+		$dbObj->query($sql);	  
+		return "http://".NUMO_SERVER_ADDRESS.str_replace('/numo/','/',NUMO_FOLDER_PATH)."process.numo?id=".$requestId;
+}
+
+function unlock() {
+	global $dbObj;
+	$sql = "UPDATE accounts SET last_bad_access_attempt_time='0000-00-00 00:00:00' WHERE id='{$this->id}'";
+	$dbObj->query($sql);	  
+
+}
+  
   function retrieve_password($email) {
   	global $dbObj;
 

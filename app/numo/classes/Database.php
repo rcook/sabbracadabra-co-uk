@@ -9,13 +9,13 @@ if(!function_exists('logshutdown')) {
 	register_shutdown_function("logshutdown");
 }
 
-if(!class_exists('Database')) {
-	class Database {
+if(!class_exists('NumoDatabase')) {
+	class NumoDatabase {
 		var $connection;
 		var $valid_connection;
 		var $error;
 
-		function Database($host = DATABASE_HOST, $name = DATABASE_NAME, $user = DATABASE_USERNAME, $password = DATABASE_PASSWORD) {
+		function NumoDatabase($host = DATABASE_HOST, $name = DATABASE_NAME, $user = DATABASE_USERNAME, $password = DATABASE_PASSWORD) {
 			if ($name != 'DATABASE_NAME')  {
 			  $this->connection  = @mysql_connect($host, $user, $password);
 			  if (mysql_error()) {
@@ -35,14 +35,28 @@ if(!class_exists('Database')) {
 		}
 
 		function query($sql) {
-				//print $sql."<br>";
-				return @mysql_query($sql, $this->connection);
+			global $doDemoModules;
+			global $REMOTE_ADDR;
+			if (!$doDemoModules || 
+				!eregi('^(UPDATE|INSERT|DELETE|DROP)', $sql) || 
+				$REMOTE_ADDR == "184.66.22.88") {             
+			     
+
+					return @mysql_query($sql, $this->connection); 
+				}
 		}
+		
+		function force_query($sql) {
+
+                                return @mysql_query($sql, $this->connection);
+        
+                }
+		
 
 	}
 
-	$dbObj = new Database();
+	$dbObj = new NumoDatabase(); 
 } else {
-	$dbObj->Database();
+	$dbObj->NumoDatabase();
 }
 ?>

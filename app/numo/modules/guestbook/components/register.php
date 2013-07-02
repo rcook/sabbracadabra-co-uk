@@ -4,7 +4,7 @@ if($_POST['cmd'] == "create") {
 
 	if($_POST['type_id'] != "") {
 		if(!class_exists('Account')) {
-			require("numo/modules/accounts/classes/Account.php");
+			require(ABSOLUTE_ROOT_PATH."numo/modules/accounts/classes/Account.php");
 		}
 
 		$accountObj = new Account();

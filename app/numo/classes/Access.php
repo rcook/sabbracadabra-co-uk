@@ -6,6 +6,7 @@ class Access {
   }
   function hasAccess($module = "", $component = "", $accountID = "") {
 	global $dbObj;
+	//print "x";
 	global $_SESSION;
 	global $_GET;
 	
@@ -24,7 +25,7 @@ class Access {
 	} else {
 	
 	  $query = "SELECT * FROM admin_privileges WHERE account_id='{$accountID}' AND module='{$module}' AND site_id='".NUMO_SITE_ID."'";
-
+//print $query;
 	  $result = $dbObj->query($query);
 	  
 	  $record = mysql_fetch_array($result);

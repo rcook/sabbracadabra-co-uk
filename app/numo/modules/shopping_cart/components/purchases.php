@@ -80,7 +80,7 @@ if(isset($_GET['oid'])) {
 			<?php
 			}
 			?>
-			<tr><td colspan="2" style="text-align: right; background: #ededed; font-weight: bold;"><?=NUMO_SYNTAX_SHOPPING_CART_TOTAL_LABEL?></td><td class="numo_shopping_cart_product_order_cost_column"><?=number_format($purchaseTotal, 2, '.', ',')?></td></tr>
+			<tr><td colspan="2" style="text-align: right; font-weight: bold;"><?=NUMO_SYNTAX_SHOPPING_CART_TOTAL_LABEL?></td><td class="numo_shopping_cart_product_order_cost_column"><?=number_format($purchaseTotal, 2, '.', ',')?></td></tr>
 			</table>
 		</td>
 		</tr>

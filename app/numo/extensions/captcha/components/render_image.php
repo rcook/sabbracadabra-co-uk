@@ -1,1 +1,1 @@
-<img src="<?=NUMO_FOLDER_PATH?>extensions/captcha/components/captcha_image.php" alt="" title="" />
+<img src="http://<?php print NUMO_SERVER_ADDRESS; ?><? print NUMO_FOLDER_PATH;?>extensions/captcha/components/captcha_image.php" alt="" title="" />

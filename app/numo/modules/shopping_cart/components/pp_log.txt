@@ -269,3 +269,289 @@ Content-Length: 1317
 2012-10-01 19:36:12: 2012-10-01 19:36:12: End Event
 #
 #
+2012-11-12 01:37:16: Begin Event
+2012-11-12 01:37:16: Magic Quotes Function Found
+2012-11-12 01:37:16: Magic Quotes Off
+2012-11-12 01:37:16: POST['mc_gross']=10.00
+2012-11-12 01:37:16: POST['invoice']=1139
+2012-11-12 01:37:16: POST['protection_eligibility']=Eligible
+2012-11-12 01:37:16: POST['address_status']=confirmed
+2012-11-12 01:37:16: POST['item_number1']=1206
+2012-11-12 01:37:16: POST['payer_id']=ZKX5A7FT22NDW
+2012-11-12 01:37:16: POST['tax']=1.67
+2012-11-12 01:37:16: POST['address_street']=8 Spikes Bridge Moorings
+2012-11-12 01:37:16: POST['payment_date']=23:37:13 Nov 11, 2012 PST
+2012-11-12 01:37:16: POST['payment_status']=Completed
+2012-11-12 01:37:16: POST['charset']=windows-1252
+2012-11-12 01:37:16: POST['address_zip']=UB4 0NT
+2012-11-12 01:37:16: POST['mc_shipping']=0.00
+2012-11-12 01:37:16: POST['mc_handling']=0.00
+2012-11-12 01:37:16: POST['first_name']=Robert
+2012-11-12 01:37:16: POST['mc_fee']=0.54
+2012-11-12 01:37:16: POST['address_country_code']=GB
+2012-11-12 01:37:16: POST['address_name']=Robert Lane
+2012-11-12 01:37:16: POST['notify_version']=3.7
+2012-11-12 01:37:16: POST['custom']=
+2012-11-12 01:37:16: POST['payer_status']=unverified
+2012-11-12 01:37:16: POST['business']=jon@circusbizarre.co.uk
+2012-11-12 01:37:16: POST['address_country']=United Kingdom
+2012-11-12 01:37:16: POST['num_cart_items']=1
+2012-11-12 01:37:16: POST['mc_handling1']=0.00
+2012-11-12 01:37:16: POST['address_city']=Hayes
+2012-11-12 01:37:16: POST['verify_sign']=ADmhMw5gqASpvy.X38.nDdwooKz7AVF4l78UHvWskxJYR8erJngJBkzt
+2012-11-12 01:37:16: POST['payer_email']=roblane_21@yahoo.co.uk
+2012-11-12 01:37:16: POST['mc_shipping1']=0.00
+2012-11-12 01:37:16: POST['tax1']=1.67
+2012-11-12 01:37:16: POST['txn_id']=1LR99536M4691314C
+2012-11-12 01:37:16: POST['payment_type']=instant
+2012-11-12 01:37:16: POST['last_name']=Lane
+2012-11-12 01:37:16: POST['address_state']=Middlesex
+2012-11-12 01:37:16: POST['item_name1']=Bizarre Tales CD Digipack () SKU #CDCBZ001UK
+2012-11-12 01:37:16: POST['receiver_email']=jon@circusbizarre.co.uk
+2012-11-12 01:37:16: POST['payment_fee']=
+2012-11-12 01:37:16: POST['quantity1']=1
+2012-11-12 01:37:16: POST['receiver_id']=3QD82VQBA5A28
+2012-11-12 01:37:16: POST['txn_type']=cart
+2012-11-12 01:37:16: POST['mc_gross_1']=8.33
+2012-11-12 01:37:16: POST['mc_currency']=GBP
+2012-11-12 01:37:16: POST['residence_country']=GB
+2012-11-12 01:37:16: POST['receipt_id']=5370-9633-9690-4880
+2012-11-12 01:37:16: POST['transaction_subject']=Shopping CartBizarre Tales CD Digipack () SKU #CDCBZ001UK
+2012-11-12 01:37:16: POST['payment_gross']=
+2012-11-12 01:37:16: POST['ipn_track_id']=a6ace39b86e00
+2012-11-12 01:37:16: Putting Header
+POST /cgi-bin/webscr HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 1187
+2012-11-12 01:37:16: Putting Request: cmd=_notify-validate&mc_gross=10.00&invoice=1139&protection_eligibility=Eligible&address_status=confirmed&item_number1=1206&payer_id=ZKX5A7FT22NDW&tax=1.67&address_street=8+Spikes+Bridge+Moorings&payment_date=23%3A37%3A13+Nov+11%2C+2012+PST&payment_status=Completed&charset=windows-1252&address_zip=UB4+0NT&mc_shipping=0.00&mc_handling=0.00&first_name=Robert&mc_fee=0.54&address_country_code=GB&address_name=Robert+Lane&notify_version=3.7&custom=&payer_status=unverified&business=jon%40circusbizarre.co.uk&address_country=United+Kingdom&num_cart_items=1&mc_handling1=0.00&address_city=Hayes&verify_sign=ADmhMw5gqASpvy.X38.nDdwooKz7AVF4l78UHvWskxJYR8erJngJBkzt&payer_email=roblane_21%40yahoo.co.uk&mc_shipping1=0.00&tax1=1.67&txn_id=1LR99536M4691314C&payment_type=instant&last_name=Lane&address_state=Middlesex&item_name1=Bizarre+Tales+CD+Digipack+%28%29+SKU+%23CDCBZ001UK&receiver_email=jon%40circusbizarre.co.uk&payment_fee=&quantity1=1&receiver_id=3QD82VQBA5A28&txn_type=cart&mc_gross_1=8.33&mc_currency=GBP&residence_country=GB&receipt_id=5370-9633-9690-4880&transaction_subject=Shopping+CartBizarre+Tales+CD+Digipack+%28%29+SKU+%23CDCBZ001UK&payment_gross=&ipn_track_id=a6ace39b86e00
+2012-11-12 01:37:16: Response: HTTP/1.0 200 OK
+2012-11-12 01:37:16: Response: Server: Apache
+2012-11-12 01:37:16: Response: X-Frame-Options: SAMEORIGIN
+2012-11-12 01:37:16: Response: Content-Type: text/html; charset=UTF-8
+2012-11-12 01:37:16: Response: Date: Mon, 12 Nov 2012 07:37:16 GMT
+2012-11-12 01:37:16: Response: Content-Length: 8
+2012-11-12 01:37:16: Response: Connection: close
+2012-11-12 01:37:16: Response:
+2012-11-12 01:37:16: Response: VERIFIED
+2012-11-12 01:37:16: Response VERIFIED
+2012-11-12 01:37:16: SQL: SELECT `id`,`payment_status`,`account_id` FROM `shopping_cart_orders` WHERE `txn_id`='1LR99536M4691314C'
+2012-11-12 01:37:16: num rows: 0
+2012-11-12 01:37:16: isset(_POST[parent_txn_id]):
+2012-11-12 01:37:16: NEW ORDER
+2012-11-12 01:37:16: SQL: UPDATE `shopping_cart_orders` SET `processed`=1,`txn_id`='1LR99536M4691314C',`contact_phone`='',`first_name`='Robert',`last_name`='Lane',`address_street`='8 Spikes Bridge Moorings',`address_zip`='UB4 0NT',`address_city`='Hayes',`address_state`='Middlesex',`address_country`='United Kingdom',`address_country_code`='GB',`address_status`='confirmed',`mc_shipping`='0.00',`mc_handling`='0.00',`mc_currency`='GBP',`mc_fee`='0.54',`mc_gross`='10.00',`payment_type`='instant',`payment_status`='Completed',`payment_date`='2012-11-12 01:37:13',`tax`='1.67',`reason_code`='' WHERE `id`='1139'
+2012-11-12 01:37:16: SQL: DELETE FROM `shopping_cart_order_items` WHERE `order_id`='1139' AND (`id`<>1206)
+2012-11-12 01:37:16: SQL: SELECT `value` FROM `shopping_cart_order_item_attributes` WHERE `order_item_id`='1206'
+2012-11-12 01:37:16: SQL: SELECT `product_id` FROM `shopping_cart_order_items` WHERE `id`='1206'
+2012-11-12 01:37:16: SQL: UPDATE `shopping_cart_product_stock` SET `units`=`units` - 1 WHERE `key`='1'
+2012-11-12 01:37:16: SQL: SELECT * FROM shopping_cart_products WHERE `id`='1'
+2012-11-12 01:37:16: shipping method: 0
+2012-11-12 01:37:16: 2012-11-12 01:37:16: End Event
+#
+#
+2012-11-12 13:42:12: Begin Event
+2012-11-12 13:42:12: Magic Quotes Function Found
+2012-11-12 13:42:12: Magic Quotes Off
+2012-11-12 13:42:12: POST['transaction_subject']=CD Baby Artist Payment
+2012-11-12 13:42:12: POST['txn_type']=send_money
+2012-11-12 13:42:12: POST['payment_date']=11:42:06 Nov 12, 2012 PST
+2012-11-12 13:42:12: POST['last_name']=Matthews
+2012-11-12 13:42:12: POST['exchange_rate']=0.614035
+2012-11-12 13:42:12: POST['residence_country']=US
+2012-11-12 13:42:12: POST['payment_gross']=54.15
+2012-11-12 13:42:12: POST['mc_currency']=USD
+2012-11-12 13:42:12: POST['business']=jon@circusbizarre.co.uk
+2012-11-12 13:42:12: POST['payment_type']=instant
+2012-11-12 13:42:12: POST['protection_eligibility']=Ineligible
+2012-11-12 13:42:12: POST['verify_sign']=AKk5ACKE2ygpP.YPvs0Up-TKWiUZA3Clz5s-zL9AuUN3DBpJuiqKCqS9
+2012-11-12 13:42:12: POST['payer_status']=verified
+2012-11-12 13:42:12: POST['payer_email']=cdbaby@cdbaby.com
+2012-11-12 13:42:12: POST['txn_id']=70X42600FC8414638
+2012-11-12 13:42:12: POST['receiver_email']=jon@circusbizarre.co.uk
+2012-11-12 13:42:12: POST['first_name']=Barbara
+2012-11-12 13:42:12: POST['payer_id']=L2AL4QZKBKD6W
+2012-11-12 13:42:12: POST['receiver_id']=3QD82VQBA5A28
+2012-11-12 13:42:12: POST['settle_amount']=33.25
+2012-11-12 13:42:12: POST['payer_business_name']=Audio &amp; Video Labs, Inc DBA CD Baby
+2012-11-12 13:42:12: POST['settle_currency']=GBP
+2012-11-12 13:42:12: POST['payment_status']=Completed
+2012-11-12 13:42:12: POST['mc_gross']=54.15
+2012-11-12 13:42:12: POST['charset']=windows-1252
+2012-11-12 13:42:12: POST['notify_version']=3.7
+2012-11-12 13:42:12: POST['ipn_track_id']=52fad85f545d2
+2012-11-12 13:42:12: Putting Header
+POST /cgi-bin/webscr HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 787
+2012-11-12 13:42:12: Putting Request: cmd=_notify-validate&transaction_subject=CD+Baby+Artist+Payment&txn_type=send_money&payment_date=11%3A42%3A06+Nov+12%2C+2012+PST&last_name=Matthews&exchange_rate=0.614035&residence_country=US&payment_gross=54.15&mc_currency=USD&business=jon%40circusbizarre.co.uk&payment_type=instant&protection_eligibility=Ineligible&verify_sign=AKk5ACKE2ygpP.YPvs0Up-TKWiUZA3Clz5s-zL9AuUN3DBpJuiqKCqS9&payer_status=verified&payer_email=cdbaby%40cdbaby.com&txn_id=70X42600FC8414638&receiver_email=jon%40circusbizarre.co.uk&first_name=Barbara&payer_id=L2AL4QZKBKD6W&receiver_id=3QD82VQBA5A28&settle_amount=33.25&payer_business_name=Audio+%26amp%3B+Video+Labs%2C+Inc+DBA+CD+Baby&settle_currency=GBP&payment_status=Completed&mc_gross=54.15&charset=windows-1252&notify_version=3.7&ipn_track_id=52fad85f545d2
+2012-11-12 13:42:12: Response: HTTP/1.0 200 OK
+2012-11-12 13:42:12: Response: Server: Apache
+2012-11-12 13:42:12: Response: X-Frame-Options: SAMEORIGIN
+2012-11-12 13:42:12: Response: Content-Type: text/html; charset=UTF-8
+2012-11-12 13:42:12: Response: Date: Mon, 12 Nov 2012 19:42:12 GMT
+2012-11-12 13:42:12: Response: Content-Length: 7
+2012-11-12 13:42:12: Response: Connection: close
+2012-11-12 13:42:12: Response:
+2012-11-12 13:42:12: Response: INVALID
+2012-11-12 13:42:12: RESPONSE INVALID
+2012-11-12 13:42:12: 2012-11-12 13:42:12: End Event
+#
+#
+2012-12-04 10:31:27: Begin Event
+2012-12-04 10:31:27: Magic Quotes Function Found
+2012-12-04 10:31:27: Magic Quotes Off
+2012-12-04 10:31:27: POST['mc_gross']=10.00
+2012-12-04 10:31:27: POST['invoice']=1152
+2012-12-04 10:31:27: POST['protection_eligibility']=Eligible
+2012-12-04 10:31:27: POST['address_status']=confirmed
+2012-12-04 10:31:27: POST['item_number1']=1219
+2012-12-04 10:31:27: POST['payer_id']=MMCM4QMZ7YXDN
+2012-12-04 10:31:27: POST['tax']=1.67
+2012-12-04 10:31:27: POST['address_street']=Hebble Garage
+Providence Lane
+2012-12-04 10:31:27: POST['payment_date']=08:31:25 Dec 04, 2012 PST
+2012-12-04 10:31:27: POST['payment_status']=Completed
+2012-12-04 10:31:27: POST['charset']=windows-1252
+2012-12-04 10:31:27: POST['address_zip']=BD22 7QY
+2012-12-04 10:31:27: POST['mc_shipping']=0.00
+2012-12-04 10:31:27: POST['mc_handling']=0.00
+2012-12-04 10:31:27: POST['first_name']=david
+2012-12-04 10:31:27: POST['mc_fee']=0.54
+2012-12-04 10:31:27: POST['address_country_code']=GB
+2012-12-04 10:31:27: POST['address_name']=David Bosworth
+2012-12-04 10:31:27: POST['notify_version']=3.7
+2012-12-04 10:31:27: POST['custom']=
+2012-12-04 10:31:27: POST['payer_status']=verified
+2012-12-04 10:31:27: POST['business']=jon@circusbizarre.co.uk
+2012-12-04 10:31:27: POST['address_country']=United Kingdom
+2012-12-04 10:31:27: POST['num_cart_items']=1
+2012-12-04 10:31:27: POST['mc_handling1']=0.00
+2012-12-04 10:31:27: POST['address_city']=Oakworth Keighley
+2012-12-04 10:31:27: POST['verify_sign']=AakBe9lf5NIoUOeazZrq42ESo8z2ACGNJ7HhZDbEx.s4qu5.fvvhlFKq
+2012-12-04 10:31:27: POST['payer_email']=davidbosworth@talktalk.net
+2012-12-04 10:31:27: POST['mc_shipping1']=0.00
+2012-12-04 10:31:27: POST['tax1']=1.67
+2012-12-04 10:31:27: POST['txn_id']=4BG59396F73898805
+2012-12-04 10:31:27: POST['payment_type']=instant
+2012-12-04 10:31:27: POST['last_name']=bosworth
+2012-12-04 10:31:27: POST['address_state']=West Yorkshire
+2012-12-04 10:31:27: POST['item_name1']=Bizarre Tales CD Digipack () SKU #CDCBZ001UK
+2012-12-04 10:31:27: POST['receiver_email']=jon@circusbizarre.co.uk
+2012-12-04 10:31:27: POST['payment_fee']=
+2012-12-04 10:31:27: POST['quantity1']=1
+2012-12-04 10:31:27: POST['receiver_id']=3QD82VQBA5A28
+2012-12-04 10:31:27: POST['txn_type']=cart
+2012-12-04 10:31:27: POST['mc_gross_1']=8.33
+2012-12-04 10:31:27: POST['mc_currency']=GBP
+2012-12-04 10:31:27: POST['residence_country']=GB
+2012-12-04 10:31:27: POST['transaction_subject']=Shopping CartBizarre Tales CD Digipack () SKU #CDCBZ001UK
+2012-12-04 10:31:27: POST['payment_gross']=
+2012-12-04 10:31:27: POST['ipn_track_id']=dd024d5a64517
+2012-12-04 10:31:27: Putting Header
+POST /cgi-bin/webscr HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 1192
+2012-12-04 10:31:27: Putting Request: cmd=_notify-validate&mc_gross=10.00&invoice=1152&protection_eligibility=Eligible&address_status=confirmed&item_number1=1219&payer_id=MMCM4QMZ7YXDN&tax=1.67&address_street=Hebble+Garage%0D%0AProvidence+Lane&payment_date=08%3A31%3A25+Dec+04%2C+2012+PST&payment_status=Completed&charset=windows-1252&address_zip=BD22+7QY&mc_shipping=0.00&mc_handling=0.00&first_name=david&mc_fee=0.54&address_country_code=GB&address_name=David+Bosworth&notify_version=3.7&custom=&payer_status=verified&business=jon%40circusbizarre.co.uk&address_country=United+Kingdom&num_cart_items=1&mc_handling1=0.00&address_city=Oakworth+Keighley&verify_sign=AakBe9lf5NIoUOeazZrq42ESo8z2ACGNJ7HhZDbEx.s4qu5.fvvhlFKq&payer_email=davidbosworth%40talktalk.net&mc_shipping1=0.00&tax1=1.67&txn_id=4BG59396F73898805&payment_type=instant&last_name=bosworth&address_state=West+Yorkshire&item_name1=Bizarre+Tales+CD+Digipack+%28%29+SKU+%23CDCBZ001UK&receiver_email=jon%40circusbizarre.co.uk&payment_fee=&quantity1=1&receiver_id=3QD82VQBA5A28&txn_type=cart&mc_gross_1=8.33&mc_currency=GBP&residence_country=GB&transaction_subject=Shopping+CartBizarre+Tales+CD+Digipack+%28%29+SKU+%23CDCBZ001UK&payment_gross=&ipn_track_id=dd024d5a64517
+2012-12-04 10:31:27: Response: HTTP/1.0 200 OK
+2012-12-04 10:31:27: Response: Server: Apache
+2012-12-04 10:31:27: Response: X-Frame-Options: SAMEORIGIN
+2012-12-04 10:31:27: Response: Content-Type: text/html; charset=UTF-8
+2012-12-04 10:31:27: Response: Date: Tue, 04 Dec 2012 16:31:27 GMT
+2012-12-04 10:31:27: Response: Content-Length: 8
+2012-12-04 10:31:27: Response: Connection: close
+2012-12-04 10:31:27: Response:
+2012-12-04 10:31:27: Response: VERIFIED
+2012-12-04 10:31:27: Response VERIFIED
+2012-12-04 10:31:27: SQL: SELECT `id`,`payment_status`,`account_id` FROM `shopping_cart_orders` WHERE `txn_id`='4BG59396F73898805'
+2012-12-04 10:31:27: num rows: 0
+2012-12-04 10:31:27: isset(_POST[parent_txn_id]):
+2012-12-04 10:31:27: NEW ORDER
+2012-12-04 10:31:27: SQL: UPDATE `shopping_cart_orders` SET `processed`=1,`txn_id`='4BG59396F73898805',`contact_phone`='',`first_name`='david',`last_name`='bosworth',`address_street`='Hebble Garage
+Providence Lane',`address_zip`='BD22 7QY',`address_city`='Oakworth Keighley',`address_state`='West Yorkshire',`address_country`='United Kingdom',`address_country_code`='GB',`address_status`='confirmed',`mc_shipping`='0.00',`mc_handling`='0.00',`mc_currency`='GBP',`mc_fee`='0.54',`mc_gross`='10.00',`payment_type`='instant',`payment_status`='Completed',`payment_date`='2012-12-04 10:31:25',`tax`='1.67',`reason_code`='' WHERE `id`='1152'
+2012-12-04 10:31:27: SQL: DELETE FROM `shopping_cart_order_items` WHERE `order_id`='1152' AND (`id`<>1219)
+2012-12-04 10:31:27: SQL: SELECT `value` FROM `shopping_cart_order_item_attributes` WHERE `order_item_id`='1219'
+2012-12-04 10:31:27: SQL: SELECT `product_id` FROM `shopping_cart_order_items` WHERE `id`='1219'
+2012-12-04 10:31:27: SQL: UPDATE `shopping_cart_product_stock` SET `units`=`units` - 1 WHERE `key`='1'
+2012-12-04 10:31:27: SQL: SELECT * FROM shopping_cart_products WHERE `id`='1'
+2012-12-04 10:31:27: shipping method: 0
+2012-12-04 10:31:27: 2012-12-04 10:31:27: End Event
+#
+#
+2013-01-12 10:01:27: Begin Event
+2013-01-12 10:01:27: Magic Quotes Function Found
+2013-01-12 10:01:27: Magic Quotes Off
+2013-01-12 10:01:27: POST['mc_gross']=10.00
+2013-01-12 10:01:27: POST['invoice']=1221
+2013-01-12 10:01:27: POST['protection_eligibility']=Eligible
+2013-01-12 10:01:27: POST['address_status']=confirmed
+2013-01-12 10:01:27: POST['item_number1']=1289
+2013-01-12 10:01:27: POST['payer_id']=GNV2CXRGN47N2
+2013-01-12 10:01:27: POST['tax']=1.67
+2013-01-12 10:01:27: POST['address_street']=30 REDFORD RD
+2013-01-12 10:01:27: POST['payment_date']=08:01:24 Jan 12, 2013 PST
+2013-01-12 10:01:27: POST['payment_status']=Completed
+2013-01-12 10:01:27: POST['charset']=windows-1252
+2013-01-12 10:01:27: POST['address_zip']=SL45SS
+2013-01-12 10:01:27: POST['mc_shipping']=0.00
+2013-01-12 10:01:27: POST['mc_handling']=0.00
+2013-01-12 10:01:27: POST['first_name']=ALISON
+2013-01-12 10:01:27: POST['mc_fee']=0.54
+2013-01-12 10:01:27: POST['address_country_code']=GB
+2013-01-12 10:01:27: POST['address_name']=ALISON FENSOME
+2013-01-12 10:01:27: POST['notify_version']=3.7
+2013-01-12 10:01:27: POST['custom']=
+2013-01-12 10:01:27: POST['payer_status']=unverified
+2013-01-12 10:01:27: POST['business']=jon@circusbizarre.co.uk
+2013-01-12 10:01:27: POST['address_country']=United Kingdom
+2013-01-12 10:01:27: POST['num_cart_items']=1
+2013-01-12 10:01:27: POST['mc_handling1']=0.00
+2013-01-12 10:01:27: POST['address_city']=WINDSOR
+2013-01-12 10:01:27: POST['verify_sign']=AAjgpFMc22TbxGEPhBkTdDCfIdQ2A1PUSx637YatCrVPhUj466SpLgJa
+2013-01-12 10:01:27: POST['payer_email']=alisonfensome@hotmail.com
+2013-01-12 10:01:27: POST['mc_shipping1']=0.00
+2013-01-12 10:01:27: POST['tax1']=1.67
+2013-01-12 10:01:27: POST['txn_id']=5S956482PD905703R
+2013-01-12 10:01:27: POST['payment_type']=instant
+2013-01-12 10:01:27: POST['last_name']=FENSOME
+2013-01-12 10:01:27: POST['address_state']=Berkshire
+2013-01-12 10:01:27: POST['item_name1']=Bizarre Tales CD Digipack () SKU #CDCBZ001UK
+2013-01-12 10:01:27: POST['receiver_email']=jon@circusbizarre.co.uk
+2013-01-12 10:01:27: POST['payment_fee']=
+2013-01-12 10:01:27: POST['quantity1']=1
+2013-01-12 10:01:27: POST['receiver_id']=3QD82VQBA5A28
+2013-01-12 10:01:27: POST['txn_type']=cart
+2013-01-12 10:01:27: POST['mc_gross_1']=8.33
+2013-01-12 10:01:27: POST['mc_currency']=GBP
+2013-01-12 10:01:27: POST['residence_country']=GB
+2013-01-12 10:01:27: POST['receipt_id']=0629-3962-5500-2530
+2013-01-12 10:01:27: POST['transaction_subject']=Shopping CartBizarre Tales CD Digipack () SKU #CDCBZ001UK
+2013-01-12 10:01:27: POST['payment_gross']=
+2013-01-12 10:01:27: POST['ipn_track_id']=64cd3f43ae1c4
+2013-01-12 10:01:27: Putting Header
+POST /cgi-bin/webscr HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 1186
+2013-01-12 10:01:27: Putting Request: cmd=_notify-validate&mc_gross=10.00&invoice=1221&protection_eligibility=Eligible&address_status=confirmed&item_number1=1289&payer_id=GNV2CXRGN47N2&tax=1.67&address_street=30+REDFORD+RD&payment_date=08%3A01%3A24+Jan+12%2C+2013+PST&payment_status=Completed&charset=windows-1252&address_zip=SL45SS&mc_shipping=0.00&mc_handling=0.00&first_name=ALISON&mc_fee=0.54&address_country_code=GB&address_name=ALISON+FENSOME&notify_version=3.7&custom=&payer_status=unverified&business=jon%40circusbizarre.co.uk&address_country=United+Kingdom&num_cart_items=1&mc_handling1=0.00&address_city=WINDSOR&verify_sign=AAjgpFMc22TbxGEPhBkTdDCfIdQ2A1PUSx637YatCrVPhUj466SpLgJa&payer_email=alisonfensome%40hotmail.com&mc_shipping1=0.00&tax1=1.67&txn_id=5S956482PD905703R&payment_type=instant&last_name=FENSOME&address_state=Berkshire&item_name1=Bizarre+Tales+CD+Digipack+%28%29+SKU+%23CDCBZ001UK&receiver_email=jon%40circusbizarre.co.uk&payment_fee=&quantity1=1&receiver_id=3QD82VQBA5A28&txn_type=cart&mc_gross_1=8.33&mc_currency=GBP&residence_country=GB&receipt_id=0629-3962-5500-2530&transaction_subject=Shopping+CartBizarre+Tales+CD+Digipack+%28%29+SKU+%23CDCBZ001UK&payment_gross=&ipn_track_id=64cd3f43ae1c4
+2013-01-12 10:01:27: Response: HTTP/1.0 200 OK
+2013-01-12 10:01:27: Response: Server: Apache
+2013-01-12 10:01:27: Response: X-Frame-Options: SAMEORIGIN
+2013-01-12 10:01:27: Response: Content-Type: text/html; charset=UTF-8
+2013-01-12 10:01:27: Response: Date: Sat, 12 Jan 2013 16:01:27 GMT
+2013-01-12 10:01:27: Response: Content-Length: 8
+2013-01-12 10:01:27: Response: Connection: close
+2013-01-12 10:01:27: Response:
+2013-01-12 10:01:27: Response: VERIFIED
+2013-01-12 10:01:27: Response VERIFIED
+2013-01-12 10:01:27: SQL: SELECT `id`,`payment_status`,`account_id` FROM `shopping_cart_orders` WHERE `txn_id`='5S956482PD905703R'
+2013-01-12 10:01:27: num rows: 0
+2013-01-12 10:01:27: isset(_POST[parent_txn_id]):
+2013-01-12 10:01:27: NEW ORDER
+2013-01-12 10:01:27: SQL: UPDATE `shopping_cart_orders` SET `processed`=1,`txn_id`='5S956482PD905703R',`contact_phone`='',`first_name`='ALISON',`last_name`='FENSOME',`address_street`='30 REDFORD RD',`address_zip`='SL45SS',`address_city`='WINDSOR',`address_state`='Berkshire',`address_country`='United Kingdom',`address_country_code`='GB',`address_status`='confirmed',`mc_shipping`='0.00',`mc_handling`='0.00',`mc_currency`='GBP',`mc_fee`='0.54',`mc_gross`='10.00',`payment_type`='instant',`payment_status`='Completed',`payment_date`='2013-01-12 10:01:24',`tax`='1.67',`reason_code`='' WHERE `id`='1221'
+2013-01-12 10:01:27: SQL: DELETE FROM `shopping_cart_order_items` WHERE `order_id`='1221' AND (`id`<>1289)
+2013-01-12 10:01:27: SQL: SELECT `value` FROM `shopping_cart_order_item_attributes` WHERE `order_item_id`='1289'
+2013-01-12 10:01:27: SQL: SELECT `product_id` FROM `shopping_cart_order_items` WHERE `id`='1289'
+2013-01-12 10:01:27: SQL: UPDATE `shopping_cart_product_stock` SET `units`=`units` - 1 WHERE `key`='1'
+2013-01-12 10:01:27: SQL: SELECT * FROM shopping_cart_products WHERE `id`='1'
+2013-01-12 10:01:27: shipping method: 0
+2013-01-12 10:01:27: 2013-01-12 10:01:27: End Event
+#
+#

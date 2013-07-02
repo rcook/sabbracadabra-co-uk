@@ -28,7 +28,8 @@ while($row = mysql_fetch_array($results)) {
 //check to see if the function has already been declared by another instance of the component
 if(!function_exists('display_shopping_cart_category_links')) {
 	//recursive function that prints categories as a nested html unorderd list
-	function display_shopping_cart_category_links($parent,$categories) {
+	function display_shopping_cart_category_links($parent,$categories, $wrapWithUL = true) {
+		global $MANAGE_NUMO_LOCATION;
 		$hasChildren = false;
         //print "doing level";
 		foreach($categories as $key => $value) {
@@ -37,15 +38,15 @@ if(!function_exists('display_shopping_cart_category_links')) {
 			if($value['parent_id'] == $parent) {
 				//print "Yup". $value['parent_id'];
 				//if this is the first child print '<ul>'
-				if (!$hasChildren) {
+				if (!$hasChildren && $wrapWithUL) {
 					
-					//don't print '<ul>' multiple times
+					//don't print '<ul>' multiple times 
 					$hasChildren = true;
 
 					print '<ul>'."\r\n";
 				}
 
-				print '<li><a href="'.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog&cid=' . $key . '">' . $value['label'] . '</a>'."\r\n";
+				print '<li><a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid=' . $key . '">' . $value['label'] . '</a>'."\r\n";
 
 				display_shopping_cart_category_links($key,$categories);
 
@@ -54,10 +55,15 @@ if(!function_exists('display_shopping_cart_category_links')) {
 			}
 		}
 
-		if ($hasChildren) print '</ul>'."\r\n";
+		if ($hasChildren && $wrapWithUL) print '</ul>'."\r\n";
 	}
 }
 
 //generate starting with parent categories (that have a 0 parent)
-display_shopping_cart_category_links(0,$categories);
+if ($PARAMS['wrap_style'] == "no_ul") {
+	$wrapWithUL = false;
+} else {
+  $wrapWithUL = true;	 
+}
+display_shopping_cart_category_links(0,$categories, $wrapWithUL);
 ?>

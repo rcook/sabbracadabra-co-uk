@@ -7,6 +7,9 @@
 		<?php if ($access->hasAccess("shopping_cart", "create-product")) { ?>
 		<li><a href="module/shopping_cart/create-product/">Create</a></li>
         <?php } ?>
+		<?php if ($access->hasAccess("shopping_cart", "import")) { ?>
+		<li><a href="module/shopping_cart/import/">Import</a></li>
+        <?php } ?>
 		</ul>
 	</li>
     <?php if ($access->hasAccess("shopping_cart", "product-categories")) { ?>

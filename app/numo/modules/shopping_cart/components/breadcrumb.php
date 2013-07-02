@@ -8,15 +8,22 @@ if(is_numeric($_GET['pid'])) {
 
 	$lastParent = "";
 	$breadcrumbStr = "";
+	$orderString = "";
+	if ($_GET['ob'] != "") {
+		$orderString .= "&ob=".$_GET['ob'];
+	}
+	if ($_GET['obd'] != "") {
+		$orderString .= "&obd=".$_GET['obd'];
+	}
 
 	while($row = mysql_fetch_array($results)) {
 		if($lastParent == $row['parent_id']) {
 			continue;
 		}
-		if (strstr($_SERVER['REQUEST_URI'], "manage.numo")) {
-			$breadcrumbStr = htmlentities(' »').' <a href="'.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog&cid='.$row['id'].'">'.$row['label'].'</a>'.$breadcrumbStr;
+		if (strstr($_SERVER['REQUEST_URI'], "manage.numo") || (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true)) {
+			$breadcrumbStr = htmlentities(' »').' <a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid='.$row['id'].$orderString.'">'.$row['label'].'</a>'.$breadcrumbStr;
 		} else {
-			$breadcrumbStr = htmlentities(' »').' <a href="?cid='.$row['id'].'">'.$row['label'].'</a>'.$breadcrumbStr;
+			$breadcrumbStr = htmlentities(' »').' <a href="?cid='.$row['id'].$orderString.'">'.$row['label'].'</a>'.$breadcrumbStr;
 		}
 
 
@@ -26,10 +33,15 @@ if(is_numeric($_GET['pid'])) {
 
 		$lastParent = $row['parent_id'];
 	}
-	if (strstr($_SERVER['REQUEST_URI'], "manage.numo")) {
-		print '<a href="'.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
+	if (strstr($_SERVER['REQUEST_URI'], "manage.numo") || (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true)) {
+		print '<a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog'.$orderString.'">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
 	} else {
-		print '<a href="?">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
+		if (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true) {
+			  print '<a href="?module=shopping_cart&component=catalog'.$orderString.'">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
+		
+		} else {
+		  print '<a href="?{$orderString}">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
+		}
 	}
 	//print '<a href="'.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
 
@@ -57,8 +69,8 @@ if(is_numeric($_GET['pid'])) {
 	//loop thru the parents of the category and add them to the list of categories
 	while(isset($categories[$value])) {
 	
-		if (strstr($_SERVER['REQUEST_URI'], "manage.numo")) {
-			$breadcrumbStr = htmlentities(' »').' <a href="'.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog&cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
+		if (strstr($_SERVER['REQUEST_URI'], "manage.numo") || (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true)) {
+			$breadcrumbStr = htmlentities(' »').' <a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
 		} else {
 			$breadcrumbStr = htmlentities(' »').' <a href="?cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
 		}
@@ -67,8 +79,8 @@ if(is_numeric($_GET['pid'])) {
 		$value = $categories[$value]['parent_id'];
 	}
 	
-	if (strstr($_SERVER['REQUEST_URI'], "manage.numo")) {
-		print '<a href="'.str_replace('/numo/','',NUMO_FOLDER_PATH).'/manage.numo?module=shopping_cart&component=catalog">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
+	if (strstr($_SERVER['REQUEST_URI'], "manage.numo") || (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true)) {
+		print '<a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
 	} else {
 		print '<a href="?">'.NUMO_SYNTAX_SHOPPING_CART_BREADCRUMB_HOME_LABEL.'</a>'.$breadcrumbStr;
 	}

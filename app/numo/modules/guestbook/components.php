@@ -17,16 +17,28 @@ while($row = mysql_fetch_array($results)) {
 <h2><?=$row['name']?></h2>
 <div>
 <h3>Display Component</h3>
+<?php if (REMOTE_SERVICE === true) { ?>
+<textarea cols="50" rows="1"><numo module="guestbook" component="display" params="id=<?=$row['id']?>&entry_saved=1"></numo></textarea>
+<?php } else { ?>
 <textarea cols="50" rows="1">[NUMO.GUESTBOOK: DISPLAY(id=<?=$row['id']?>&entry_saved=1)]</textarea>
+<?php } ?>
 </div>
 <div>
 <h3>Submit Form Component</h3>
+<?php if (REMOTE_SERVICE === true) { ?>
+<textarea cols="50" rows="1"><numo module="guestbook" component="submit_form" params="id=<?=$row['id']?>"></numo></textarea>
+<?php } else { ?>
 <textarea cols="50" rows="1">[NUMO.GUESTBOOK: SUBMIT FORM(id=<?=$row['id']?>)]</textarea>
+<?php } ?>
 </div>
 <div>
-<h3>Combined Component</h3>
+<h3>Combined Component</h3> 
 <p style="font-style: italic;">Displays both components.  The 'submit form' component will be shown below the 'display' component.</p>
+<?php if (REMOTE_SERVICE === true) { ?>
+<textarea cols="50" rows="1"><numo module="guestbook" component="display" params="id=<?=$row['id']?>"></numo></textarea>
+<?php } else { ?>
 <textarea cols="50" rows="1">[NUMO.GUESTBOOK: DISPLAY(id=<?=$row['id']?>)]</textarea>
+<?php } ?>
 </div>
 <?php
 }

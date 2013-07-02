@@ -69,15 +69,17 @@ if($_POST['cmd'] == "update") {
 			if($category = mysql_fetch_array($result)) {
 				//assign ID to idNum variable to be used in update commands lower down
 				$idNum = $category['id'];
+			//	$id = $idNum;
 			}
 			$idData = explode("__", $id);
 			$newID = array_shift($idData);
 			$_POST["{$idNum}__allowed_user_groups"] = $_POST["{$newID}__allowed_user_groups"];
+			$_POST["{$id}__keywords"] = "[Product Names]";
 			//print "$idNum from $newID<br>";
 		}
 
 		//default update query
-		$sql = "UPDATE `shopping_cart_categories` SET position='".$position."',label='".$_POST[$id.'__label']."' WHERE id='".$idNum."'";
+		$sql = "UPDATE `shopping_cart_categories` SET description='".$_POST[$id.'__description']."', keywords='".$_POST[$id.'__keywords']."', position='".$position."',label='".$_POST[$id.'__label']."' WHERE id='".$idNum."'";
 		//print $sql."<br>";
 		$dbObj->query($sql);
  
@@ -106,19 +108,19 @@ if(is_numeric($_POST['parent_id'])) {
 html { padding: 0px; margin: 0px; }
 body { padding: 0px; margin: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; }
 div { padding: 0px; margin: 0px; }
-.headings{ padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; width: 750px;}
+.headings{ padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; auto;}
 .headings ul {height: 28px; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_fields_heading.jpg') repeat-x; list-style:none;}
 .headings ul li {display: inline; padding: 0px; margin: 0px; font-size: 1em; float: left; clear: none;}
 .headings ul li.movable { padding: 0px; margin: 0px; display: block; height: 28px; width: 8px;border-right: 1px solid #CCC; }
-.headings ul li h2 {line-height: 28px; display: inline-block; text-decoration: none; width: 370px; color: #333; font-size: 20px; font-weight: normal; text-align: center; padding: 0px; margin: 0px; border-right: 1px solid #CCC; }
-.headings ul li h3 {line-height: 28px; display: inline-block; text-decoration: none; width: 200px; color: #333; font-size: 20px; font-weight: normal; text-align: center; padding: 0px; margin: 0px; border-right: 1px solid #CCC; }
-.lineitem { padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; width: 750px; background: #EDEDED; cursor: move;}
+.headings ul li h2 {line-height: 28px; display: inline-block; text-decoration: none; width: 250px; color: #333; font-size: 16px; font-weight: normal; text-align: left; padding: 0px; margin: 0px; text-indent: 10px; border-right: 1px solid #CCC; }
+.headings ul li h3 {line-height: 28px; display: inline-block; text-decoration: none; width: 250px; color: #333; font-size: 16px; font-weight: normal; text-align: left; padding: 0px; margin: 0px; text-indent: 10px; border-right: 1px solid #CCC; }
+.lineitem { padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; width: auto; background: #EDEDED; cursor: move;}
 .lineitem ul {height: 44px; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_field.jpg') repeat-x;}
 .lineitem ul li {display: inline; padding: 0px; margin: 0px; font-size: 1em; float: left;}
 .lineitem ul li img { padding: 0px; margin: 0px; display: block;}
-.lineitem ul li div { height: 44px; display: table-cell; vertical-align: middle; width: 370px; font-size: 1em; text-align: center; padding: 0px; margin: 0px; border-right: 1px solid #CCC;}
+.lineitem ul li div { height: 44px; display: table-cell; vertical-align: middle; width: 250px; font-size: 1em; text-align: center; padding: 0px; margin: 0px; border-right: 1px solid #CCC;}
 .lineitem ul li div.permit { height: 44px; display: table-cell; vertical-align: middle; width: 200px; font-size: 1em; text-align: center; padding: 0px; margin: 0px; border-right: 1px solid #CCC;}
-.lineitem ul li input { font-size: 1em; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; width: 350px; padding: 2px; margin: 0px;}
+.lineitem ul li input { font-size: 1em; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; width: 220px; padding: 2px; margin: 0px;}
 .lineitem ul li a {line-height: 24px; text-align: center; color: #666; text-decoration: none; display: inline-block; border: 1px solid #999; margin: 5px 0px 5px 10px; padding: 5px; }
 .lineitem ul li a:hover {background: #333; color: #fff; border: 1px solid #000; }
 .lineitem label { margin: 0px; padding: 0px; vertical-align: top; display: inline-block; color: #333; font-size: 20px; font-weight: normal;}
@@ -306,6 +308,8 @@ function checkFieldValue(field) {
 			<li class="movable">&nbsp;</li>
 
 			<li><h2><?php if($parentId != 0) { print "Sub-"; } ?>Category Name</h2></li>
+			<li><h2><?php if($parentId != 0) { print "Sub-"; } ?>Category Meta-Description</h2></li>
+			<li><h2><?php if($parentId != 0) { print "Sub-"; } ?>Category Meta-Keywords</h2></li>
 <?php if ($settings['catalog_visibility'] == "1") { ?>
 			<li><h3>Permit Access To</h3></li>
 <?php } ?>			<li>&nbsp;</li>
@@ -325,6 +329,8 @@ function checkFieldValue(field) {
 			<ul>
 				<li><img src="modules/shopping_cart/images/moveable.jpg" /></li>
 				<li><div><input type="text" name="<?=$category['id']?>__label" value="<?=$category['label']?>" onblur="checkFieldValue(this)" onclick="checkFieldValue(this)" /></div></li>
+				<li><div><input type="text" name="<?=$category['id']?>__description" value="<?=$category['description']?>"  /></div></li>
+				<li><div><input type="text" name="<?=$category['id']?>__keywords" value="<?=$category['keywords']?>" /></div></li>
 <?php if ($settings['catalog_visibility'] == "1") { ?>
 		<li><div class='permit'><select name="<?=$category['id']?>__allowed_user_groups[]" multiple='multiple' size='2'>
         <?php

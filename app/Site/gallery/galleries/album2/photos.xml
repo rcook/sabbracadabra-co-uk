@@ -1,7 +1,7 @@
 <gallery base = "">
 
 <!-- EDIT Gallery Name -->
-<sitename>Images from the Bizarre Tales Digipack</sitename>
+<sitename>Publicity shoot, Shropshire, summer 2012 - I hate this kind of thing...</sitename>
 
 <!-- OPTIONAL SEO / RSS info -->
 <photographer>Tracey Swain</photographer>
@@ -12,16 +12,15 @@
 <![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
 
 <!-- EDIT links to photos, [photo width and height-{for animation}] -->
-<photo path = "ts_001_500x375.jpg" width = "500" height = "375"></photo>
-<photo path = "ts_002_500x375.jpg" width = "500" height = "375"></photo>
-<photo path = "ts_003_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "ts_004_500x375.jpg" width = "500" height = "375"></photo>
-<!--<photo path = "pic2.jpg" width = "500" height = "375"></photo>
-<photo path = "image7.jpg" width = "375" height = "500"></photo>
-<photo path = "image8.jpg" width = "500" height = "375"></photo>
-<photo path = "image9.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_001_375x500.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_002_375x500.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_003_375x500.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_004_375x500.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_005_375x500.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_006_375x500.jpg" width = "375" height = "500"></photo>
+<photo path = "jk_007_500x375.jpg" width = "500" height = "375"></photo>
+<!--<photo path = "image8.jpg" width = "500" height = "375"></photo>
 <photo path = "image10.jpg" width = "500" height = "375"></photo>
-<photo path = "image11.jpg" width = "375" height = "500"></photo>
 <photo path = "image12.jpg" width = "500" height = "375"></photo>
 -->
 <!-- do not edit past this line -->

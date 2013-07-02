@@ -3,13 +3,20 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 /* testing code */
 /*
-$_POST['invoice'] = 1000;
-$_POST['item_number1'] = 1000;
+$_POST['invoice'] = 1005;
+$_POST['item_number1'] = 1101;
 $_POST['quantity1'] = 1;
-$_POST['txn_id'] = "test".mktime();
+$_POST['txn_id'] = "test".time();
+$_POST['first_name'] = "test";
+$_POST['last_name'] = "user";
+$_POST['payer_email'] = "test@test.com";
 */
+ 
 global $testMode;
 $testMode = false;
+if (REMOTE_SERVICE === true) {
+$testMode = false;	
+} 
 require_once($_SERVER['DOCUMENT_ROOT'].NUMO_FOLDER_PATH."modules/accounts/classes/Account.php");
 
 
@@ -17,7 +24,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].NUMO_FOLDER_PATH."modules/accounts/classe
 $logging = false; // value may be false or true (set to true to turn logging on)
 $logFile = false; // do not modify
 global $_GET;
-$folder = str_replace("check.php", "", str_replace("numo/modules/shopping_cart/components/process.php", "", $_SERVER['SCRIPT_FILENAME']))."numo/modules/shopping_cart/components/";
+if (REMOTE_SERVICE === true) {
+  $folder = ABSOLUTE_ROOT_PATH."numo/modules/shopping_cart/components/";
+	
+} else {
+  $folder = str_replace("check.php", "", str_replace("numo/modules/shopping_cart/components/process.php", "", $_SERVER['SCRIPT_FILENAME']))."numo/modules/shopping_cart/components/";
+}
 $logFileName = "{$folder}pp_log.txt";
 
 if (!$logging) {
@@ -115,11 +127,15 @@ $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
 /* 1) TEST: www.sandbox.paypal.com   */
 /* 2) LIVE: www.paypal.com           */
 /*************************************/
-$sql = "SELECT `store_mode` FROM `shopping_cart_settings` WHERE `store_mode`=0 AND site_id='".NUMO_SITE_ID."'";
-//print $sql."<br>";
-$result = $dbObj->query($sql);
+$sql = "SELECT * FROM `shopping_cart_settings` WHERE site_id='".NUMO_SITE_ID."'";
+			logLine($logging, $logFile, "sql: ".$sql);
 
-if($row = mysql_fetch_array($result)) {
+if ($testMode) {
+  print $sql."<br>";
+}
+$result = $dbObj->query($sql);
+$storeSettings = mysql_fetch_array($result);
+if($storeSettings['store_mode'] == "0") {
 	$connectionPoint = 'www.sandbox.paypal.com';
 } else {
 	$connectionPoint = 'www.paypal.com';
@@ -189,6 +205,11 @@ if (!$fp) { // HTTP ERROR
 				$acctResult = $dbObj->query($sql);
 				$acctRecInfo = mysql_fetch_array($acctResult);
 				$accountID = $acctRecInfo['account_id'];
+				
+				// update the user's account if they are of "pending" type
+				$update = "UPDATE `accounts` SET activated=1, pending=0, type_id='{$storeSettings['default_account_group']}', slot_4='{$_POST['first_name']} {$_POST['last_name']}', slot_3='{$_POST['payer_email']}', slot_1='guest".time()."' WHERE pending=3 AND type_id=0 AND id='{$accountID}'";
+  				logLine($logging, $logFile, "SQL: {$update}");
+				$dbObj->query($update);
 				
 				$sql = "UPDATE `shopping_cart_orders` SET `processed`=1,`txn_id`='".$_POST['txn_id']."',`contact_phone`='".$_POST['contact_phone']."',`first_name`='".$_POST['first_name']."',`last_name`='".$_POST['last_name']."',`address_street`='".$_POST['address_street']."',`address_zip`='".$_POST['address_zip']."',`address_city`='".$_POST['address_city']."',`address_state`='".$_POST['address_state']."',`address_country`='".$_POST['address_country']."',`address_country_code`='".$_POST['address_country_code']."',`address_status`='".$_POST['address_status']."',`mc_shipping`='".$_POST['mc_shipping']."',`mc_handling`='".$_POST['mc_handling']."',`mc_currency`='".$_POST['mc_currency']."',`mc_fee`='".$_POST['mc_fee']."',`mc_gross`='".$_POST['mc_gross']."',`payment_type`='".$_POST['payment_type']."',`payment_status`='".$_POST['payment_status']."',`payment_date`='".date("Y-m-d H:i:s", strtotime($_POST['payment_date']))."',`tax`='".$_POST['tax']."',`reason_code`='".$_POST['reason_code']."' WHERE `id`='".$_POST['invoice']."'";
 

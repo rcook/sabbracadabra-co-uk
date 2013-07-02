@@ -11,10 +11,15 @@ if(isset($_POST['newsletter_id'])) {
 }
 
 if($_POST['cmd'] == "save") {
-	$sql = "UPDATE newsletter_messages SET status='".$_POST['numo_newsletter_status']."',message='".str_replace("'","&#39;",$_POST['numo_newsletter_message_content'])."',title='".str_replace("'","&#39;",$_POST['numo_newsletter_title'])."', summary='".str_replace("'","&#39;",$_POST['numo_newsletter_summary'])."' WHERE id='".$newsletterId."'";
+	$message = $_POST['numo_newsletter_message_content'];
+	$message = str_replace("'","&#39;",$message);
+	//$message = str_replace("&copy;", "X", $message);
+	$message = str_replace("©", "&copy;", $message);
+	//print $message;
+	$sql = "UPDATE newsletter_messages SET status='".$_POST['numo_newsletter_status']."',message='{$message}',title='".str_replace("'","&#39;",$_POST['numo_newsletter_title'])."', summary='".str_replace("'","&#39;",$_POST['numo_newsletter_summary'])."' WHERE id='".$newsletterId."'";
 	//print $sql;
 	$dbObj->query($sql);
-
+//exit;
 	//redirect to manage newsletters page
 	header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/manage/');
 }

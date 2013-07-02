@@ -30,7 +30,11 @@
 <h3>Cart Contents</h3>
 <textarea cols="50" rows="1">[NUMO.SHOPPING CART: CATALOG(view=cart)]</textarea>
 </div>
-
+<div>
+<h3>Manage Account Link</h3>
+<p>Displays a link to the "customer purchase list" dynamically rengered page.</p>
+<textarea cols="50" rows="1">[NUMO.SHOPPING CART: MANAGE ACCOUNT LINK]</textarea>
+</div>
 <div>
 <h3>Customer Purchase List</h3>
 <p>Displays a list of past purchases that allows a customer to review their previous orders.</p>

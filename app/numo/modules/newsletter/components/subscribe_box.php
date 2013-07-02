@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php print NUMO_FOLDER_PATH; ?>modules/newsletter/components/styles/subscribe_box.css" />
+
+<link rel="stylesheet" type="text/css" href="http://<?php print NUMO_SERVER_ADDRESS; ?><?php print NUMO_FOLDER_PATH; ?>modules/newsletter/components/styles/subscribe_box.css" />
 <?php if ($PARAMS['title'] != "") {?>
 <h3><?php echo $PARAMS['title']; ?></h3>
 <?php
@@ -68,7 +69,7 @@ if(isset($_SESSION['account_id'])) {
 <script>
 function numoNewsletter_unsubscribe(frm) {
 	var emailValue = document.getElementById("numo_newsletter_subscriber_email").value;
-	var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+	var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
 	if(filter.test(emailValue)) {
 		frm.cmd.value = "unsubscribe";
@@ -99,7 +100,7 @@ function numoNewsletter_unsubscribe(frm) {
 	} else if($_POST['cmd'] == "subscribe") {
 		if($_POST['name'] == "") {
 			print "<p class='error'>".NUMO_SYNTAX_NEWSLETTER_SUBCRIBER_NAME_REQUIRED."</p>";
-		} else if(!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $_POST['email'])) {
+		} else if(@!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $_POST['email'])) {
 			print "<p class='error'>".NUMO_SYNTAX_NEWSLETTER_VALID_SUBCRIBER_EMAIL_REQUIRED."</p>";
 		} else if(is_array($_POST['lists'])) {
 			$sql = "SELECT a.id FROM accounts a, `types` t WHERE a.type_id=t.id AND t.site_id=".NUMO_SITE_ID." AND a.slot_3='".$_POST['email']."'";

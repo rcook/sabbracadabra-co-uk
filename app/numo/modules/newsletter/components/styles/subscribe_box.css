@@ -1,8 +1,8 @@
 #numo_newsletter_subscription_component {border: 0px solid #666;}
 #numo_newsletter_subscription_component form { margin: 0px; padding: 0px}
 #numo_newsletter_subscription_component form ul {list-style-type: none; margin: 0px; padding: 0px}
-#numo_newsletter_subscription_component form ul li {margin: 0px; padding: 0px; color: #f00; font-size: 13px;}
-#numo_newsletter_subscription_component form ul li label {width: 100px; display: inline-block; color: #000;}
+#numo_newsletter_subscription_component form ul li {margin: 0px; padding: 0px; font-size: 13px;}
+#numo_newsletter_subscription_component form ul li label {width: 100px; display: inline-block; color: auto !important;}
 #numo_newsletter_subscription_component form ul li label.checkbox_label {width: auto;}
 #numo_newsletter_subscription_component p {color: #060; font-size: 12px; text-align: center; font-weight: bold; padding: 0px 0px 4px 0px; margin: 0px;}
 #numo_newsletter_subscription_component p.error {color: #f00;font-weight: bold;}

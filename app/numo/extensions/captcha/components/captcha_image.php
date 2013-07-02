@@ -34,6 +34,8 @@ require("../../../classes/functions.php");
 
 // start session
 numo_session_start();
+header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"');
+// exit;
 //session_start();
 //Please modify this file to match your environment.
 //mail ("brandon@luckymarble.com", "CAPTCHA session id", session_id()." - PHPSESSID = ".$_REQUEST[PHPSESSID], "From: admin@luckymarble.com");
@@ -53,7 +55,7 @@ $t =  md5(uniqid(rand(), 1));
 
 //$_SESSION[CAPTCHA_SESSION_KEY] =  $text = substr($t, rand(0, (strlen($t)-6)), rand(3,6));
 $_SESSION[CAPTCHA_SESSION_KEY] =  $text =  substr($t, rand(0, (strlen($t)-6)), rand(5,7));
-//mail ("brandon@luckymarble.com", "CAPTCHA id", $_SESSION[CAPTCHA_SESSION_KEY], "From: admin@luckymarble.com");
+//mail ("bdevnich@gmail.com", "CAPTCHA id", $_SESSION[CAPTCHA_SESSION_KEY]." - ".$_SERVER['HTTP_HOST'], "From: admin@luckymarble.com");
 
 $image_width = 150;
 $image_height = 22;

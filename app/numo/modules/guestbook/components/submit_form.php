@@ -56,7 +56,12 @@ if($_POST['cmd'] == "submit_numo_form" && $_POST['guestbook_id'] == $PARAMS['id'
 	$formDetails = "";
 
 	if ($numo->extensions['captcha']) {
-		require_once("numo/extensions/captcha/components/util.php");
+		if (REMOTE_SERVICE === true) { 
+		  require_once(ABSOLUTE_ROOT_PATH."dashboard/extensions/captcha/components/util.php");
+		
+		} else {
+		  require_once(ABSOLUTE_ROOT_PATH."numo/extensions/captcha/components/util.php");
+		}
 
 	}
 
@@ -101,9 +106,13 @@ if($_POST['cmd'] == "submit_numo_form" && $_POST['guestbook_id'] == $PARAMS['id'
 
 	if(count($numoFormErrors) == 0) {
 		if(!class_exists('NumoGuestbook')) {
-			require("numo/modules/".$matches[1]."/classes/Guestbook.php");
+		//if (REMOTE_SERVICE === true) { 
+		//  require_once(ABSOLUTE_ROOT_PATH."dashboard/extensions/captcha/components/util.php");
+		
+		//	} else {
+				require(ABSOLUTE_ROOT_PATH."numo/modules/".$matches[1]."/classes/Guestbook.php");
+		//	}
 		}
-
 
 		$sql = "SELECT * FROM `guestbook_types` WHERE `id`='".$PARAMS['id']."'";
 		//print $sql."<br>";
@@ -200,12 +209,12 @@ if($row = mysql_fetch_array($result)) {
 		}
 	//check if user account is pending their activation
 	} else if($_SESSION['activated'] == 0) {
-		echo '<h2>'.ACCOUNT_PENDING_ACTIVATION_ALERT_TITLE.'</h2>'.ACCOUNT_PENDING_ACTIVATION_ALERT;
+		echo '<h2>'.NUMO_SYNTAX_ACCOUNT_PENDING_ACTIVATION_ALERT_TITLE.'</h2>'.NUMO_SYNTAX_ACCOUNT_PENDING_ACTIVATION_ALERT;
 		return;
 
 	//check if user account is pending administrative review
 	} else if($_SESSION['pending'] == 1) {
-		echo '<h2>'.ACCOUNT_PENDING_REVIEW_TITLE.'</h2>'.ACCOUNT_PENDING_REVIEW;
+		echo '<h2>'.NUMO_SYNTAX_ACCOUNT_PENDING_REVIEW_TITLE.'</h2>'.NUMO_SYNTAX_ACCOUNT_PENDING_REVIEW;
 		return;
 	}
 
@@ -213,7 +222,7 @@ if($row = mysql_fetch_array($result)) {
 
 //***************************************************************************
 ?>
-<link rel="stylesheet" type="text/css" href="<?php print NUMO_FOLDER_PATH; ?>modules/guestbook/components/styles/submit_form.css" />
+<link rel="stylesheet" type="text/css" href="//<?php print NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH; ?>modules/guestbook/components/styles/submit_form.css" />
 <form method="post" class="numo_form_display" enctype="multipart/form-data">
 	<ul>
 		<?php
@@ -246,18 +255,26 @@ if($row = mysql_fetch_array($result)) {
 								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.generate_list_options($field['input_options'],$_POST['slot_'.$field['slot']]).'</select> '.$numoFormErrors[$field['slot']].'
 							<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
 
-			} else if($field['input_type'] == "multiple select") {
+			} else if ($field['input_type'] == "multiple select") {
 				print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select multiple="multiple" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'[]">'.generate_list_options($field['input_options'],$_POST['slot_'.$field['slot']]).'</select> '.$numoFormErrors[$field['slot']].'
 							<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
 			} else if($field['input_type'] == "captcha") {
+				if (FACEBOOK !== true) {
 				print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								[NUMO*CAPTCHA: RENDER IMAGE] <input class="numo_text_input_short" type="text"  id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" /> '.$numoFormErrors[$field['slot']].'
 							<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
+				}
 			} else {
-				print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input class="numo_text_input" type="text" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$_POST['slot_'.$field['slot']].'" /> '.$numoFormErrors[$field['slot']].'<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
+				if ($field['slot'] == "1" && FACEBOOK === true) {
+					global $user_profile;
+				  print '<li><label for="slot_1">'.$user_profile['name'].'</label></li>';
+					
+				} else {
+				  print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input class="numo_text_input" type="text" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$_POST['slot_'.$field['slot']].'" /> '.$numoFormErrors[$field['slot']].'<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
+				}
 			}
 		}
 		?>

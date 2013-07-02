@@ -1,34 +1,4 @@
 <?php
-
-	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_fields` LIKE 'visible'");
-	$exists = (mysql_num_rows($result))?TRUE:FALSE;
-	if (!$exists) {
-	  $dbObj->query("ALTER TABLE `shopping_cart_fields` ADD `visibility` tinyint(4) default 0");
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=1 WHERE id=1"); // product name
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=1 WHERE id=2"); // price
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=1 WHERE id=3"); // description
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=1 WHERE id=4"); // technical specs
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=0 WHERE id=5"); // shipping type
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=0 WHERE id=6"); // internal
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=1 WHERE id=7"); // sku/id
-	  $dbObj->query("UPDATE `shopping_cart_fields` SET visibility=0 WHERE id=8"); // tax rate
-	}
-	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'available_slots'");
-	$exists = (mysql_num_rows($result))?TRUE:FALSE;
-	if (!$exists) {
-	  $dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `available_slots` text");
-	
-	  $dbObj->query("UPDATE shopping_cart_settings SET available_slots='9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30' WHERE site_id='".NUMO_SITE_ID."'");
-	}
-	
-	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'view_cart_page'");
-	$exists = (mysql_num_rows($result))?TRUE:FALSE;
-	if (!$exists) {
-	  $dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `view_cart_page` text");
-	
-	  //$dbObj->query("UPDATE shopping_cart_settings SET available_slots='9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30' WHERE site_id='".NUMO_SITE_ID."'");
-	}
-	
 if($_POST['cmd'] == "update") {
 /************************************/
 /*         REMOVE FIELD(s)         */
@@ -40,39 +10,32 @@ if($_POST['cmd'] == "update") {
 	foreach($fieldRemoveArr as $key => $id) {
 		if($id != "") {
 			$sql = "SELECT slot FROM `shopping_cart_fields` WHERE id='".$id."'";
-			//print $sql."<br>";
 			$result = $dbObj->query($sql);
 
 			if($row = mysql_fetch_array($result)) {
 				$sql = "DELETE FROM `shopping_cart_fields` WHERE id='".$id."'";
-				//print $sql."<br>";
 				$dbObj->query($sql);
 
 				$sql = "UPDATE `shopping_cart_settings` SET available_slots=CONCAT('".$row['slot'].",',available_slots)  WHERE site_id='".NUMO_SITE_ID."'";
-				//print $sql."<br>";
 				$dbObj->query($sql);
 			}
 		}
 	}
 
-foreach ($_POST as $key => $value) {
-	//print $key."=".$value."<br>";
-}
 
 /************************************/
 /*         UPDATE FIELD(s)         */
 /**********************************/
-	//field order value will be IDs separated by a comma.  Use explode function to break value apart into array
+	// field order value will be IDs separated by a comma.  Use explode function to break value apart into array
 	$fieldOrderArr = explode(',', $_POST['field_order']);
 
-	//set starting position value
+	// set starting position value
 	$position = 1;
 
-	//loop thru field id and save order
+	// loop thru field id and save order
 	foreach($fieldOrderArr as $key => $id) {
-		//make copy of the id incase a new field is being created.
+		// make copy of the id in case a new field is being created.
 		$idNum = $id;
-	//	print $key."=".$id."<br>";
 
 		/************************************/
 		/*         CREATE FIELD(s)         */
@@ -120,36 +83,21 @@ foreach ($_POST as $key => $value) {
 		//}
 
 		//default update query
-		$sql = "UPDATE `shopping_cart_fields` SET visibility='".$_POST[$id.'__visible']."',input_type='".$_POST[$id.'__type']."',position=".$position.",name='".htmlentities($_POST[$id.'__name'])."',input_options='".htmlentities($_POST[$id.'__input_options'])."' WHERE id='".$idNum."'";
-		//print $sql."<br>";
+		$sql = "UPDATE `shopping_cart_fields` SET orderable='".$_POST[$id.'__orderable']."',visibility='".$_POST[$id.'__visible']."',input_type='".$_POST[$id.'__type']."',position=".$position.",name='".htmlentities($_POST[$id.'__name'])."',input_options='".htmlentities($_POST[$id.'__input_options'])."' WHERE id='".$idNum."'";
 		$dbObj->query($sql);
-        //print mysql_error()."<br>";a
-		//increase position by 1
+
+		// increase position by 1
 		$position++;
 	}
 	
 	
 	
-	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'tax_display_preference'");
-	$exists = (mysql_num_rows($result))?TRUE:FALSE;
-	if (!$exists) {
-	  $dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `tax_display_preference` tinyint(4) default 1");
-	}
-
-	$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'catalog_visibility'");
-	$exists = (mysql_num_rows($result))?TRUE:FALSE;
-	if (!$exists) {
-		$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `catalog_visibility` int(11) default 0");
-	    $dbObj->query("CREATE TABLE IF NOT EXISTS `shopping_cart_category_permissions` (`id` int(11) NOT NULL auto_increment,`account_type_id` int(11) NOT NULL, `category_id` int(11) NOT NULL, PRIMARY KEY  (`id`))");
-	    $dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-RESTRICTED_MESSAGE', 1, 'We\'re sorry, this catalog is restricted.')");
-
-	}
 
 	if ($_POST['view_cart_page'] == "special") {
 		$_POST['view_cart_page'] = $_POST['view_cart_page_special'];
 	}
 	//default update query
-	$sql = "UPDATE `shopping_cart_settings` SET `view_cart_page`='{$_POST['view_cart_page']}', `catalog_visibility`='".$_POST['catalog_visibility']."', `tax_display_preference`='".$_POST['tax_display_preference']."', `default_account_group`='".$_POST['default_account_group']."',`request_shipping_details`='".$_POST['request_shipping_details']."',`store_mode`='".str_replace("'","&#39;",$_POST['store_mode'])."',`company_name`='".str_replace("'","&#39;",$_POST['company_name'])."',`packing_slip_address`='".str_replace("'","&#39;",$_POST['packing_slip_address'])."',`paypal_email`='".str_replace("'","&#39;",$_POST['paypal_email'])."' WHERE `site_id`='".NUMO_SITE_ID."'";
+	$sql = "UPDATE `shopping_cart_settings` SET `require_account_at_checkout`='{$_POST['require_account_at_checkout']}', `show_breadcrumb`='{$_POST['show_breadcrumb']}', `show_order_chooser`='{$_POST['show_order_chooser']}', `order_by_field`='{$_POST['field_order_by']} {$_POST['field_order_by_direction']}', `view_cart_page`='{$_POST['view_cart_page']}', `catalog_visibility`='".$_POST['catalog_visibility']."', `tax_display_preference`='".$_POST['tax_display_preference']."', `default_account_group`='".$_POST['default_account_group']."',`request_shipping_details`='".$_POST['request_shipping_details']."',`store_mode`='".str_replace("'","&#39;",$_POST['store_mode'])."',`company_name`='".str_replace("'","&#39;",$_POST['company_name'])."',`packing_slip_address`='".str_replace("'","&#39;",$_POST['packing_slip_address'])."',`paypal_email`='".str_replace("'","&#39;",$_POST['paypal_email'])."' WHERE `site_id`='".NUMO_SITE_ID."'";
 
 
 
@@ -223,6 +171,14 @@ function list_account_group_move_options($currentId = 0) {
 	return $returnStr;
 }
 ?>
+<script type="text/javascript" src="javascript/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="javascript/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript">
+	jQuery(function(){
+		jQuery('#tabs').tabs();
+	});
+</script>
+
 <script language="JavaScript" src="javascript/prototype.js"></script>
 <script language="JavaScript" src="javascript/effects.js"></script>
 <script language="JavaScript" src="javascript/dragdrop.js"></script>
@@ -358,6 +314,7 @@ function addItem() {
 		newHTML = newHTML + '<li><div><input type="text" name="'+divIdName+'__name" value="Enter Field Name" onblur="checkFieldValue(this)" onclick="checkFieldValue(this)" /></div></li>';
 		newHTML = newHTML + '<li><div><select onchange="checkTypeSelection(this.value,\''+divIdName+'\')" name="'+divIdName+'__type" id="'+divIdName+'__type"><?=display_field_type_options("","")?></select></div></li>';
 		newHTML = newHTML + '<li><div><select name="'+divIdName+'__visible"><?=display_yes_no_options("")?></select></div></li>';
+		newHTML = newHTML + '<li><div><select name="'+divIdName+'__orderable"><?=display_yes_no_options("")?></select></div></li>';
 		newHTML = newHTML + '<li><a href="javascript:removeItem(\''+divIdName+'\')"><img src="images/close.jpg" alt="X" border="0" /></a></li>';
 		newHTML = newHTML + '</ul>';
 	//	newHTML = newHTML + '<div id="'+divIdName+'_field_input_options_display" class="field_optionals" style="display: none;">';
@@ -399,13 +356,25 @@ function changeViewCartPage(selectBox) {
 	html { padding: 0px; margin: 0px; }
 	body { padding: 0px; margin: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; }
 	div { padding: 0px; margin: 0px; }
-	.headings{ padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; width: 585px;}
-	.headings ul {height: 28px; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_fields_heading.jpg') repeat-x; list-style:none;}
+	.headings{ padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; }
+	.lineitem { padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc;  background: #EDEDED; cursor: move;}
+	#tabs-attributes .headings {
+		width: 760px;
+	}
+	#tabs-attributes .lineitem {
+		width: 760px;
+	}
+	#tabs-tax_rates .headings {
+		width: 340px;
+	}
+	#tabs-tax_rates .lineitem {
+		width: 340px;
+	}	
+	.headings ul { height: 28px; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_fields_heading.jpg') repeat-x; list-style:none;}
 	.headings ul li {display: inline; padding: 0px; margin: 0px; font-size: 1em; float: left; clear: none;}
 	.headings ul li img { padding: 0px; margin: 0px; display: block; height: 28px; }
 	.headings ul li h2 {line-height: 28px; display: inline-block; width: 170px; color: #333; font-size: 20px; font-weight: normal; text-align: center; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_fields_heading_background.jpg') top right; }
 
-	.lineitem { padding: 0px; margin: 0px 0px 5px 0px; border: 1px solid #ccc; width: 585px; background: #EDEDED; cursor: move;}
 	.lineitem ul {height: 44px; padding: 0px; margin: 0px; background: #E6E6E6 url('images/manage_field.jpg') repeat-x;}
 	.lineitem ul li {display: inline; padding: 0px; margin: 0px; font-size: 1em; float: left;}
 	.lineitem ul li img { padding: 0px; margin: 0px; display: block;}
@@ -426,14 +395,68 @@ function changeViewCartPage(selectBox) {
 .bttm_submit_button input {background: #EEEEEE; color: #333; border: 1px solid #333; height: 30px; margin: 10px 0px 10px 210px;}
 .bttm_submit_button input:hover {background: #bbb; color: #333; border: 1px solid #333; cursor: pointer;}
 html {padding-bottom: 50px;}
-ul.form_display li label { width: 175px !important; }
+ul.form_display li label { width: 205px !important; }
+
+.ui-corner-top {
+-webkit-border-top-left-radius: 3px;
+-webkit-border-top-right-radius: 3px;
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-topright: 3px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+}
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute; left: -99999999px; }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 12px; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+
+.ui-widget-content { border: 0px solid #ccc; background: #F9F9F9; color: #333333; }
+.ui-widget-content a { color: #333333; }
+.ui-widget-header { border: 0px solid #2A61B3; background-color: #F9F9F9 !important; color: #ffffff; font-weight: bold; border-bottom: 1px solid #cccccc;}
+.ui-widget-header a { color: #ffffff; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #cccccc; background: #eee; font-weight: bold; color: #3473D1; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #3473D1; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #3473D1; background: #DBE6F7; font-weight: bold; color: #3473D1; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #3473D1; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #cccccc; background: #F9F9F9; font-weight: bold; color: #2A61B3; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #2A61B3; text-decoration: none; }
+.ui-widget :active { outline: none; }
+.ui-tabs { position: relative; padding: 0em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 0em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+
+.bttm_submit_button {position: fixed; bottom: 0px; right: 0px; background: #779FE1; border-top: 1px solid #2A61BD; width: 100%; height: 50px; padding: 0px 20px; margin: 0px;}
+.bttm_submit_button input {background: #EEEEEE; color: #333; border: 1px solid #333; height: 30px; margin: 10px 0px 10px 210px;}
+.bttm_submit_button input:hover {background: #bbb; color: #333; border: 1px solid #333; cursor: pointer;}
 </style><!--[if lte IE 8]>
 <style>
 	.lineitem ul li div { height: 34px; padding: 10px 0px 0px 0px; }
 </style>
 <![endif]-->
 <h2>Store Settings</h2>
+<div id="tabs">
+<ul>
+  <li><a href="#tabs-store">General</a></li>
+  <li><a href="#tabs-catalog">Catalog</a></li>
+  <li><a href="#tabs-checkout">Checkout</a></li>
+  <li><a href="#tabs-attributes">Product Attributes</a></li>
+  <li><a href="#tabs-tax_rates">Tax Rates</a></li>
+</ul>
+
 <form method="post">
+<div id="tabs-store">
 		<fieldset>
 			<legend>Settings</legend>
 			<?php
@@ -443,13 +466,31 @@ ul.form_display li label { width: 175px !important; }
 			$result = $dbObj->query($sql);
 
 			if($row = mysql_fetch_array($result)) {
+				
 			?>
 			<ul class="form_display">
-				<li><label for="packing_slip_company_name">Company Name:</label><input type="text" name="company_name" id="packing_slip_company_name" value="<?=$row['company_name']?>" /></li>
-				<li><label for="packing_slip_address">Company Address:</label><textarea name="packing_slip_address" id="packing_slip_address"><?=$row['packing_slip_address']?></textarea></li>
-				<li><label for="paypal_email">PayPal Account:</label><input type="text" name="paypal_email" id="paypal_email" value="<?=$row['paypal_email']?>" /></li>
-				<li><label for="request_shipping_details">Shipping Details:</label><select name="request_shipping_details" id="request_shipping_details"><option value="1">Require Shipping Information</option><option value="0" <?php if($row['request_shipping_details'] == 0) { print 'selected="selected"'; } ?>>Do Not Request</option></select></li>
 				<li><label for="paypal_store_mode">Store Mode:</label><select name="store_mode" id="paypal_store_mode"><option value="1">Live</option><option value="0" <?php if($row['store_mode'] == 0) { print 'selected="selected"'; } ?>>Testing (PayPal Sandbox)</option></select></li>
+				<li><label for="catalog_visibility">Store Visibility:</label><select name="catalog_visibility" id="catalog_visibility"><option value="0">Public (anyone can view)</option>
+                	<option value="1" <?php if($row['catalog_visibility'] == 1) { print 'selected="selected"'; } ?>>Restricted</option>
+                </select></li>			
+                <li><label for="packing_slip_company_name">Company Name:</label><input type="text" name="company_name" id="packing_slip_company_name" value="<?=$row['company_name']?>" /></li>
+				<li><label for="packing_slip_address">Company Address:</label><textarea name="packing_slip_address" id="packing_slip_address"><?=$row['packing_slip_address']?></textarea></li>
+
+				</ul>
+			<?php
+			}
+			?>
+			<h2>Default Account Group for Checkout</h2>
+			<p style='font-style: italic; color: #444;'>Please select the account group you would like new subscribers to be added to if they do not already have an account.</p>
+			<ul class="form_display">
+				<li><label for="default_account_group">Account Group:</label><select id="default_account_group" name="default_account_group"><option value="0">- SELECT -</option><?=list_account_group_move_options($row['default_account_group'])?></select></li>
+			</ul>
+		</fieldset>
+</div>
+<div id="tabs-catalog">
+		<fieldset>
+			<legend>Catalog</legend>
+			<ul class="form_display">
 				<li><label for="paypal_store_mode">View Cart Page:</label>
                 <select style='float: left' onchange='changeViewCartPage(this)' name="view_cart_page" id="view_cart_page"><option value="">Default</option><option value="special" <?php if($row['view_cart_page'] != "") { print 'selected="selected"'; } ?>>Use Specific Page</option></select>
                 <input <?php if ($row['view_cart_page'] == "") { ?>style='display: none;'<?php } ?> type="text" name="view_cart_page_special" id="view_cart_page_special" value="<?=$row['view_cart_page']?>" />
@@ -458,19 +499,63 @@ ul.form_display li label { width: 175px !important; }
                 <option value="1" <?php if($row['tax_display_preference'] == 1) { print 'selected="selected"'; } ?>>Show NET Price and TAX value</option>
                 <option value="2" <?php if($row['tax_display_preference'] == 2) { print 'selected="selected"'; } ?>>Show GROSS Price followed by 'Including TAX'</option>
                 </select></li>
-				<li><label for="catalog_visibility">Store Visibility:</label><select name="catalog_visibility" id="catalog_visibility"><option value="0">Public (anyone can view)</option>
-                	<option value="1" <?php if($row['catalog_visibility'] == 1) { print 'selected="selected"'; } ?>>Restricted</option>
-                </select></li>			</ul>
-			<?php
+				<li><label for="field_order_by">Default Catalog Sort Order:</label><select name="field_order_by" id="field_order_by">
+                <option value="when_created">When Created</option>
+<?php
+			$sql = "SELECT * FROM `shopping_cart_fields` WHERE site_id='".NUMO_SITE_ID."' AND orderable='1' ORDER BY `position`,`name`";
+			$fieldResults = $dbObj->query($sql);
+			$orderByField = array_shift(explode(" ", $row['order_by_field']));
+			if ($orderByField == "") {
+				$orderByField = "slot_1";
 			}
-			?>
-			<h2>Default Account Group</h2>
-			<p style='font-style: italic; color: #444;'>Please select the account group you would like new subscribers to be added to if they do not already have an account.</p>
-			<ul class="form_display">
-				<li><label for="default_account_group">Account Group:</label><select id="default_account_group" name="default_account_group"><option value="0">- SELECT -</option><?=list_account_group_move_options($row['default_account_group'])?></select></li>
-			</ul>
-		</fieldset>
+			$orderByDirection = array_pop(explode(" ", $row['order_by_field']));
+			if ($orderByDirection == "") {
+				$orderByDirection = "ASC";
+			}
 
+			while ($fieldRecord = mysql_fetch_array($fieldResults)) { 
+			if ($fieldRecord['orderable'] == "1") { 
+			?>
+			<option <?php if ($orderByField == "slot_".$fieldRecord['slot']) { print "selected"; } ?> value="slot_<?php echo $fieldRecord['slot']; ?>"><?php echo $fieldRecord['name']; ?></option>
+			<?php	
+			}
+			} ?>
+                </select>
+                <select name="field_order_by_direction" id="field_order_by_direction">
+                  <option <? if ($orderByDirection == "ASC") { print "selected"; } ?> value='ASC'>Ascending</option>
+                  <option <? if ($orderByDirection == "DESC") { print "selected"; } ?> value='DESC'>Descending</option>
+                </select>
+                </li>
+				<li><label for="field_order_by">Show Catalog Breadcrumb:</label>
+                <select name="show_breadcrumb" id="show_breadcrumb">
+			<?=display_yes_no_options($row['show_breadcrumb'])?>
+            </select>
+
+                </li>
+				<li><label for="field_order_by" style='white-space: nowrap'>Show Catalog Order By Chooser:</label>
+                <select name="show_order_chooser" id="show_order_chooser">
+			<?=display_yes_no_options($row['show_order_chooser'])?>
+            </select>
+
+                </li>
+
+                </ul>
+				</fieldset>
+</div>
+<div id="tabs-checkout">
+		<fieldset>
+			<legend>Checkout</legend>
+			<ul class="form_display">
+				<li><label for="paypal_email">PayPal Account:</label><input type="text" name="paypal_email" id="paypal_email" value="<?=$row['paypal_email']?>" /></li>
+				<li><label for="request_shipping_details">Shipping Details:</label><select name="request_shipping_details" id="request_shipping_details"><option value="1">Require Shipping Information</option><option value="0" <?php if($row['request_shipping_details'] == 0) { print 'selected="selected"'; } ?>>Do Not Request</option></select></li>
+				<li><label for="paypal_store_ipn">PayPal IPN URL:</label><?php if (REMOTE_SERVICE === true) { ?>http://numo.server-apps.com/remote/component.numo?module=shopping_cart&component=process&nsid=<?php print $numo->strToHex(NUMO_SITE_ID); ?><?php } else { ?>http://<?php print $numo->getRootFolder(); ?>/component.numo?module=shopping_cart&component=process<? } ?></li>
+				<li><label for="require_account_at_checkout">Require Account At Checkout:</label><select name="require_account_at_checkout" id="require_account_at_checkout"><option value="1">Yes</option><option value="0" <?php if($row['require_account_at_checkout'] == 0) { print 'selected="selected"'; } ?>>No</option></select></li>
+</ul>	
+</fieldset>			
+</div>
+
+
+<div id="tabs-attributes">
 		<fieldset>
 			<legend>Standard Product Attributes</legend>
 			<div class="headings">
@@ -479,6 +564,7 @@ ul.form_display li label { width: 175px !important; }
 					<li><h2>Name</h2></li>
 					<li><h2>Type</h2></li>
 					<li><h2>Visible</h2></li>
+					<li><h2>Orderable</h2></li>
 					<li>&nbsp;</li>
 				</ul>
 			</div>
@@ -498,6 +584,7 @@ ul.form_display li label { width: 175px !important; }
 						<li><div><input type="text" name="<?=$field['id']?>__name" value="<?=$field['name']?>" /></div></li>
 						<li><div><select <? if ($field['locked'] == "1") { print "disabled='disabled'"; } ?> id="<?=$field['id']?>__type" name="<?=$field['id']?>__type"><?=display_field_type_options($field['input_type'],$field['locked'])?></select></div></li>
                         <li><div><select <? if ($field['locked'] == "1") { print "disabled='disabled'"; } ?> name="<?=$field['id']?>__visible"><?=display_yes_no_options($field['visibility'])?></select></div></li>
+                        <li><div><select name="<?=$field['id']?>__orderable"><?=display_yes_no_options($field['orderable'])?></select></div></li>
                         <li><?php if($field['locked'] == "0") { print '<a href="javascript:removeItem(\''.$field['id'].'\')"><img src="images/close.jpg" alt="X" border="0" /></a>'; } else { ?><input type='hidden' name='<?php echo $field['id']; ?>__type' value='<?php echo $field['input_type']; ?>' /><input type='hidden' name='<?php echo $field['id']; ?>__visible' value='<?php echo $field['visibility']; ?>' /><? } ?></li>
                     </ul>
 					<?php
@@ -530,9 +617,6 @@ ul.form_display li label { width: 175px !important; }
 	<input type="hidden" name="cmd" value="update" />
 	<input type="hidden" name="field_order" id="field_order" value="" />
 	<input type="hidden" name="field_remove" id="field_remove" value="" />
-	<br /><br /><br />
-	<div class="bttm_submit_button">
-	<input type="button" name="nocmd" value="Save" onClick="getGroupOrder(this.form)" />
 	</div>
 
 
@@ -552,7 +636,9 @@ PRIMARY KEY ( `tax_rate_id` , `site_id` )
 }
 
 ?>
+<div id="tabs-tax_rates">
 	<fieldset>
+    
 		<legend>Tax Rates</legend>
 		<div class="headings">
 			<ul>
@@ -583,7 +669,15 @@ PRIMARY KEY ( `tax_rate_id` , `site_id` )
 		?>
 		<input type="button" name="nocmd2" value="Add New Attribute" onClick="addRateItem()" />
 	</fieldset>
+    </div>
+        <br /><br /><br />
+    
+	<div class="bttm_submit_button">
+	<input type="button" name="nocmd" value="Save" onClick="getGroupOrder(this.form)" />
+	</div>
+
 </form>
+  </div>
 <br /><br /><br />
 <?php
 

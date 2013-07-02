@@ -1,4 +1,5 @@
 <?php
+//error_reporting(E_ALL);
 if($_POST['cmd'] == "Set Order Shipped") {
 	$sql = "UPDATE `shopping_cart_orders` SET `shipped`=1 WHERE `id`='".$_GET['id']."'";
 	//print $sql."<br>";
@@ -14,6 +15,36 @@ if($_POST['cmd'] == "Set Order Shipped") {
   $dbObj->query($sql);
  // print mysql_error();
  // print $sql;
+} else if (stripslashes($_POST['cmd']) == "Send Customer 'Order Has Been Shipped' Email") {
+	$sql = "SELECT *, o.`id` as order_id, DATE_FORMAT(`payment_date`,'%b %e, %Y') as 'payment_date', DATE_FORMAT(`payment_date`,'%l:%i %p') as 'payment_time' FROM `shopping_cart_orders` o, `accounts` a WHERE o.account_id=a.`id` AND o.`id`='".$_GET['id']."' AND o.`site_id`='".NUMO_SITE_ID."'";
+    //print $sql;
+    $orderResult = $dbObj->query($sql);
+	$orderInfo = mysql_fetch_array($orderResult);
+	
+	//send activation email message
+	$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1';
+		
+	$to = $orderInfo['slot_3']; // email address
+	$subject = NUMO_SYNTAX_SHOPPING_CART_ORDER_SHIPPED_SUBJECT;
+	$message = NUMO_SYNTAX_SHOPPING_CART_ORDER_SHIPPED_EMAIL_MESSAGE;
+		
+	// clense the email
+	$subject = str_replace("[Order ID]", $orderInfo['order_id'], $subject);
+	
+	$message = str_replace("[Name]", $orderInfo['slot_4'], $message);
+	$message = str_replace("[Order ID]", $orderInfo['order_id'], $message);
+	$message = nl2br($message);
+					
+
+//print "To: $to<br>";
+//print "subject: $subject<br>";
+//print "$headers<br>";
+//print "Message: $message<br>";
+	mail($to, $subject, $message, $headers);
+	print "<div class='notification_message'>Email to {$orderInfo['slot_3']} has been sent.</div>"; 
+} else {
+ // print "Not implemented:".$_POST['cmd'];
 }
 	$sql = "SELECT * FROM `shopping_cart_settings` WHERE `site_id`='".NUMO_SITE_ID."'";
 	$settings = $dbObj->query($sql);
@@ -36,6 +67,7 @@ if($_POST['cmd'] == "Set Order Shipped") {
 input.order_bttn_shipped {background: #2A61BD; color: #779FE1; border: 1px solid #1A51AD; height: 30px; margin: 10px 0px 10px 210px;}
 .bttm_submit_button input:hover {background: #bbb; color: #333; border: 1px solid #333; cursor: pointer;}
 html {padding-bottom: 50px;}
+.notification_message { border: 1px solid #090; padding: 10px; margin: auto; width: 500px; text-align: center; margin-top: 20px; margin-bottom: 20px; color: #090; font-weight: bold; background-color: #E7FBE1;}
 </style>
 <h2>Review Order</h2>
 <?php
@@ -192,7 +224,7 @@ if($row['tax'] > 0) {
 </table>
 <br/><br/><br/>
 	<div class="bttm_submit_button">
-    <?php if ($row['processed'] > 0) { ?><input type="submit" <?php if($row['shipped'] == "1") { print 'class="order_bttn_shipped"'; } ?> name="cmd" value="<?php if($row['shipped'] == "1") { print 'Order Shipped'; } else { print 'Set Order Shipped'; } ?>" /><input type="button" name="nocmd" style="margin: 10px 0px 10px 10px;" value="View Packing Slip" onClick="window.open('<?=NUMO_FOLDER_PATH?>module/shopping_cart/packing-slip/?id=<?=$_GET['id']?>&display=response_only','packing_slip','width=750,height=500,menubar=yes,scrollbars=yes,resizable=yes')" /><?php } else if ($_POST['cmd'] == "Mark Order as Processed") { ?><input type="submit"  name="cmd" value="Complete" /><?php } else { ?><input type="submit"  name="cmd" value="Mark Order as Processed" /><?php } ?><input type="submit" name="return_cmd" style="margin: 10px 0px 10px 10px;"  value="Back" />
+    <?php if ($row['processed'] > 0) { ?><input type="submit" <?php if($row['shipped'] == "1") { print 'class="order_bttn_shipped"'; } ?> name="cmd" value="<?php if($row['shipped'] == "1") { print 'Order Shipped'; } else { print 'Set Order Shipped'; } ?>" /><?php if($row['shipped'] == "1") { ?><input style='margin: 10px 0px 10px 10px;' type="submit" name="cmd" value="Send Customer 'Order Has Been Shipped' Email" /><? } ?><input type="button" name="nocmd" style="margin: 10px 0px 10px 10px;" value="View Packing Slip" onClick="window.open('<?=NUMO_FOLDER_PATH?>module/shopping_cart/packing-slip/?id=<?=$_GET['id']?>&display=response_only','packing_slip','width=750,height=500,menubar=yes,scrollbars=yes,resizable=yes')" /><?php } else if ($_POST['cmd'] == "Mark Order as Processed") { ?><input type="submit"  name="cmd" value="Complete" /><?php } else { ?><input type="submit"  name="cmd" value="Mark Order as Processed" /><?php } ?><input type="submit" name="return_cmd" style="margin: 10px 0px 10px 10px;"  value="Back" />
 	</div>
 </form>
 

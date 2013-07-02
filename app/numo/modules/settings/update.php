@@ -36,7 +36,7 @@ if ($lastUpdateTime == "0000-00-00 00:00:00") {
 ?></p>
 
 <form method="get" id='check-for-updates-form'>
-<center>
+<center> 
 <input class='form-submit' id='update-submit' type='submit' value='Check For Updates' />
 <? if ($lastUpdateTime != "0000-00-00 00:00:00") { ?>
 <br/>
@@ -49,14 +49,21 @@ or
 </form>
 </div> 
 <script> 
+
+jQuery("form#check-for-updates-form input[type=submit]").click(function() {
+    jQuery("input[type=submit]", jQuery(this).parents("form")).removeAttr("clicked");
+    jQuery(this).attr("clicked", "true");
+});
 jQuery("form#check-for-updates-form").submit(function(event) {
 													var the_form = $(this);
 													var data = the_form.serialize();
 													var url = the_form.attr( 'action' );
 													var button = event.originalEvent.explicitOriginalTarget;
-													//alert(button.value);
+													//alert(button);
+													var value = jQuery("input[type=submit][clicked=true]").val();
+													//alert(value);
 												    $('input[type=submit]', this).attr('disabled', 'disabled');
-													checkForUpdates(button.value);
+													checkForUpdates(value); 
 
 												  return false;
 												  });

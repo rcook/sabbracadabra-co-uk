@@ -1,5 +1,9 @@
 <?php
 require('../../../configuration/database_connection_information.php');
+if (NUMO_SERVER_ADDRESS == 'NUMO_SERVER_ADDRESS') {
+	require($_SERVER['DOCUMENT_ROOT']."/remote/numo/configuration/database_connection_information.php");
+}
+//print NUMO_SERVER_ADDRESS;
 /********************************************************************
  * openImageLibrary addon v0.2.2 Copyright (c) 2006 openWebWare.com
  * Contact us at devs@openwebware.com
@@ -19,13 +23,20 @@ require('../../../configuration/database_connection_information.php');
 /*
  * Path to a directory which holds the images.
  */
-$imagebasedir = '../uploads/';
+ 
+ 			if (REMOTE_SERVICE === true) {
+			  $imagebaseurl = "http://".NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH.'uploads/modules/newsletter/';
+			  $imagebasedir = '/var/www/vhosts/server-apps.com/subdomains/numo/httpdocs/remote/numo/uploads/modules/newsletter';
+			} else {
+			  $imagebasedir = '../uploads/';
+			  $imagebaseurl = "http://".NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH.'modules/newsletter/uploads/';
+			}
+
 
 /*
  * An absolute or relative URL to the image folder.
  * This url is used to generate the source of the image.
  */
-$imagebaseurl = "http://".NUMO_SERVER_ADDRESS.NUMO_FOLDER_PATH.'modules/newsletter/uploads/';
 
 /*
  * Allow your users to browse the subdir of the defined basedir.

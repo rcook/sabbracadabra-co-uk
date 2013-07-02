@@ -5,7 +5,7 @@
 
 <head>
 <!-- #BeginEditable "meta" -->
-<title>JONATHAN KERSHAW MUSIC - LIVE EVENTS | acoustic guitar guitarist | Weddings, Functions and Events guitarist | Live acoustic guitar guitarist | Celtic folk acoustic music guitar guitarist | classical guitar guitarist | renaissance event music guitar guitarist</title>
+<title>JONATHAN KERSHAW MUSIC - LIVE EVENTS | Music based on the sound of the acoustic guitar featuring a blend of traditional, Celtic, folk and classical styles with a slight rock edge | acoustic guitar guitarist | Weddings, Functions and Events guitarist | Live acoustic guitar guitarist | Celtic folk acoustic music guitar guitarist | classical guitar guitarist | renaissance event music guitar guitarist</title>
 <meta name="Keywords" content="jonathan kershaw,jon kershaw,loreena mckennitt,ritchie blackmore,blackmore's night,blackmores night, blackmore night,acoustic guitar,acoustic guitarist,function guitarist,celtic folk,traditional guitar,guitarist for events,guitarist for functions,guitarist for weddings,renaissance music,celtic guitar,celtic guitarist, folk guitar, folk guitarist,classical guitarist" />
 <meta name="Description" content="JONATHAN KERSHAW MUSIC - acoustic guitar blending elements of Celtic folk, traditional, classical and rock music. Perfect for fans of LOREENA MCKENNITT or RITCHIE BLACKMORE, BLACKMORES NIGHT. Available for functions, weddings, events or any party. Live performances
 can be solo or accompanied including music from the acclaimed album Bizarre Tales" />
@@ -35,6 +35,37 @@ can be solo or accompanied including music from the acclaimed album Bizarre Tale
 #right2col			{width:33%;			float:right;}
 #right2pad			{width:0px;			float:right;}
 #center2col			{margin-left:33%; 	margin-right:33%;}
+.auto-style2 {
+	text-align: left;
+}
+.auto-style3 {
+	font-size: small;
+}
+.auto-style4 {
+	background-color: #BC9A4A;
+}
+.auto-style5 {
+	font-size: small;
+	background-color: #BC9A4A;
+}
+.auto-style6 {
+	text-align: center;
+}
+.auto-style7 {
+	font-size: small;
+	background-color: #82AD82;
+	text-align: center;
+	color: #FFFFFF;
+}
+.auto-style8 {
+	font-size: small;
+	background-color: #BC9A4A;
+	text-align: center;
+	color: #FFFFFF;
+}
+.auto-style9 {
+	background-color: #82AD82;
+}
 </style>
 
 <!-- #EndEditable -->
@@ -49,6 +80,26 @@ can be solo or accompanied including music from the acclaimed album Bizarre Tale
 var flashRootLocation = "./";
 var flashConfigLocation = "config";
 var flashConfigType = "xml"; // either xml or php
+
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
 </script>
 
 <!-- #EndEditable -->
@@ -158,23 +209,29 @@ var flashConfigType = "xml"; // either xml or php
 	</ul>
 	</li>
 	<li><a href="photo_gallery.htm">Gallery</a></li>
-	<li><a href="biog.htm">Biography</a></li>
+	<li><a href="biog.htm">Background</a><ul>
+		<li><a href="biog.htm">Biography</a></li>
+		<li><a href="influences.htm">Musical Influences</a></li>
+	</ul>
+	</li>
 	<li><a href="guestbook.htm">Guest Book</a></li>
 	<li><a href="contact.htm">Contact</a>
 	<ul>
 		<li><a href="contact.htm#1">Email</a></li>
 		<li><a href="contact.htm#3">Telephone</a></li>
 <!--		<li><a href="../../contact.htm#4">Fax</a></li>
--->		<li><a href="contact.htm#2">Web Form</a></li>
+-->		
+		<li><a href="contact.htm#2">Web Form</a></li>
 		<li><a href="contact.htm#5">Address</a></li>
 <!--		<li><a href="../../contact.htm#6">Directions</a></li>
--->	</ul>
+-->	
+	</ul>
 	</li>
 	<li><a href="faqs.htm">FAQs</a></ul>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="62559" -->
+<!--webbot bot="Include" endspan i-checksum="55655" -->
 							<br style="clear: left" /></div>
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
@@ -192,24 +249,31 @@ var flashConfigType = "xml"; // either xml or php
 
 <h3>Latest News:</h3>
 	
-<h4>Album release in August</h4>
+<h4 class="auto-style1"><a href="news.htm#tour01">Beautiful Ghosts &amp; Bizarre Tales Tour 2013-2014 
+announced</a></h4>
 
-<h5>19 August 2012</h5>
+<h5>28 May 2013</h5>
 	
 <p>
-The new album from Jonathan Kershaw is set for release on 31st August and will be 
-available on CD and for download from the online store. Find out more
-<a href="news.htm#CD_Release_2">here</a>.</p>
-<p><a href="news.htm">
-<img src="Site/images/music_thumbnail_80x50.jpg" width="80" height="50" class="auto-style1" alt="demo" style="float: left" /></a></p>
-<p>
-All the latest news can be found on the News page - click
-<a href="news.htm">here</a>.&nbsp;
+<table style="width: 100%">
+	<tr>
+		<td style="width: 105px">
+		<a href="live.htm" target="_blank">
+		<img alt="Beck Siàn" height="100" src="Site/images/beck_02_100x100.jpg" width="100" class="auto-style2"></a></td>
+		<td>Joint <a href="news.htm#tour01">UK tour</a> with singer/songwriter 
+		<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> to begin in July.
+		</td>
+	</tr>
+</table>
 </p>
 
 
+
+
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="31171" -->	
+<p>Find out more about this and other recent news by clicking
+<a href="news.htm#review_1">here</a>.</p>
+<!--webbot bot="Include" endspan i-checksum="41189" -->	
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /currentnews -->
@@ -223,20 +287,25 @@ All the latest news can be found on the News page - click
 
 <h3>Live Performances</h3>
 	
-<h4>Catch Jonathan Kershaw Live at Gigs and Events</h4>
+<h4>The Elemental Ball, Bingley, West Yorkshire</h4>
 
-<h5>21 May 2012</h5>
+<h5>20th July 2013</h5>
 	
 <p>
-The next live performance will appear here.</p>
+Jonathan will be performing at the Elemental Ball, in 
+Bingley, West Yorkshire together with acclaimed singer/songwriter 
+<a href="news.htm#tour_01">Beck Siàn</a> and headlined by 
+<a href="http://inkubussukkubus.com/" target="_blank">Inkubus Sukkubus</a>. Also 
+perfoming are The Silvertrees and The Soul Takers.</p>
+
 <p>
 <a href="live.htm">
-<img src="Site/images/jk_live_50x50.jpg" width="50" height="50" style="float: left; margin:2px 5px 2px 5px;" alt="demo" class="auto-style1" /></a>Find 
-out all the upcoming live events on the <a href="live.htm">Live</a> page.</p>
+<img src="Site/images/jk_live_75x50.jpg" width="75" height="50" style="float: left; margin:2px 5px 2px 5px;" alt="demo" class="auto-style1" /></a>See the <a href="live.htm">Live</a> 
+page for more details of this and all other gigs.</p>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="22262" -->
+<!--webbot bot="Include" endspan i-checksum="57114" -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /recentevents -->
@@ -284,6 +353,35 @@ store.</p>
 
 [NUMO.NEWSLETTER: SUBSCRIBE BOX LEFT]
 				
+					<!-- advert_1 -->
+						<div class="advert_1">
+							<div class="box1"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3"><div class="box1-inner"><div class="box1-2"><div class="box1-6"><div class="box1-4"><div class="box1-8"><div class="box1-5"><div class="box1-7"><div class="box1-3"><div class="box1-1"><div class="box1-content">
+							<!--webbot bot="Include" U-Include="Library/expression-fp/$_advert_1.htm" TAG="BODY" startspan -->
+<!-- #BeginLibraryItem "/Library/dreamweaver/$_whats_new.lbi" -->
+
+
+<!--<h3>Advert_1</h3>
+-->
+<p>&nbsp;</p>
+<h4>Listen online:</h4>
+
+<table style="width: 100%">
+	<tr>
+		<td style="width: 147px">
+	<div align="center">
+	<a href="http://www.celticradio.net" target="_blank"><img vpsace="5" src="http://www.celtichearts.com/images/green_triangle.gif"
+	alt="Visit Celtic Radio for the best in Celtic Music!" border="0" width="85" height="83"><br>Celtic Music</a></div>	</td>	
+		<td>Songs from the new album BIZARRE TALES are playing now on 
+		celticradio.net</td>
+	</tr>
+</table>
+
+
+<!-- #EndLibraryItem -->
+<!--webbot bot="Include" endspan i-checksum="8811" -->
+							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
+						</div>
+					<!-- /advert_1 -->
 				
 				
 				<!-- #EndEditable -->
@@ -300,11 +398,269 @@ store.</p>
 
 
 <!-- contentbox box4 -->
-<h3>Upcoming live events:</h3>
+
+<iframe width="373" height="211" src="http://www.youtube.com/embed/4E8kxs42Lrg?rel=0" frameborder="0" allowfullscreen></iframe>	<h3>Upcoming live events:</h3>
+	<p>*TBA = To Be Announced</p>
 	
-<h4>Album release event</h4>
+	<table style="width: 100%">
+		
+		<tr>
+			<td class="auto-style4" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 111px" class="auto-style2"><span class="auto-style3">
+			</span><strong>20th June 2013</strong></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px"><strong>
+			<a href="http://freyjafiresprite.wordpress.com/2013/06/21/the-elemental-ball-bingley-20th-july-2013/" target="_blank">
+			Elemental Ball</a></strong></td>
+			<td style="width: 99px">Keighley,<br />
+			W. Yorkshire</td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">
+			<a href="http://www.freewebstore.org/Dark-Fae-Festivals/Elemental_Ball/cat1800596_1993406.aspx" target="_blank">
+			<img id="img2" alt="Tickets" height="18" onmousedown="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1F.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1D1.jpg')" onmouseover="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1E.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1E.jpg')" src="button1D1.jpg" style="border: 0" width="54" /><!-- MSComment="ibutton" fp-style="fp-btn: Glass Capsule 4; fp-font-size: 9; fp-font-color-hover: #C0C0C0; fp-font-color-press: #800000; fp-preload: 0; fp-bgcolor: #EFD195; fp-proportional: 0" fp-title="Tickets" --></a></td>
+		</tr>
+		<tr>
+			<td class="auto-style2" colspan="6">
+			<span itemprop="description"><span class="fsl">Calling all Elemental 
+			beings for an evening of enchantment and delight. Music, dance and 
+			meriiment with a fantastic line up of bands from all over the UK. 
+			Jonathan will be joining the acclaimed
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> 
+			for this event.</span></span><br />
+			Please note that tickets for this event are sold by an external 
+			site.</td>
+		</tr>		
+		<tr>
+			<td class="auto-style5" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>25th July 
+			2013</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px"><strong>
+			Bistro 7</strong></td>
+			<td class="auto-style2" style="width: 99px">Welshpool, <br />
+			Powys</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td class="auto-style6" style="width: 20px">FREE</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> 
+			for the <strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour. Acoustic performance.</td>
+		</tr>
+		<tr>
+			<td class="auto-style5" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>26th July 
+			2013</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px"><strong>
+			<a href="http://www.theloggerheads.co.uk" target="_blank">The Loggerheads</a></strong></td>
+			<td class="auto-style2" style="width: 99px">Shrewsbury, <br />
+			Shropshire</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td class="auto-style6" style="width: 20px">FREE</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> 
+			for the <strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour.</td>
+		</tr>
+		
+		<tr>
+			<td class="auto-style5" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 111px" class="auto-style2"><span class="auto-style3">
+			</span><strong>27th July 2013</strong></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px"><strong>
+			<a href="http://www.oakandivy.moonfruit.com" target="_blank">Oak &amp; 
+			Ivy Faery Festival</a></strong></td>
+			<td style="width: 99px">Newtown,<br />
+			Powys</td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">
+			<a href="http://oakandivy.webs.com/apps/webstore/products/show/3672629" target="_blank">
+			<img id="img2" alt="Tickets" height="18" onmousedown="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1F.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1D1.jpg')" onmouseover="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1E.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1E.jpg')" src="button1D1.jpg" style="border: 0" width="54" /><!-- MSComment="ibutton" fp-style="fp-btn: Glass Capsule 4; fp-font-size: 9; fp-font-color-hover: #C0C0C0; fp-font-color-press: #800000; fp-preload: 0; fp-bgcolor: #EFD195; fp-proportional: 0" fp-title="Tickets" --></a></td>
+		</tr>
+		<tr>
+			<td class="auto-style2" colspan="6">A mystical faery ball with live 
+			music and buffet...<br />
+			Please note that tickets for this event are sold by an external 
+			site.</td>
+		</tr>
+		<tr>
+			<td class="auto-style5" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>27th October 
+			2013</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px"><strong>
+			Olde Silent Inn</strong></td>
+			<td class="auto-style2" style="width: 99px">Stanbury, <br />
+			West Yorkshire</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td class="auto-style6" style="width: 20px">FREE</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> 
+			for the <strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour.</td>
+		</tr>
+		<tr>
+			<td class="auto-style5" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>29th October 
+			2013</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px"><strong>
+			The Wuthering Heights</strong></td>
+			<td class="auto-style2" style="width: 99px">Stanbury, <br />
+			West Yorkshire</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td class="auto-style6" style="width: 20px">FREE</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> 
+			for the <strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour.</td>
+		</tr>
+
+<tr>
+			<td class="auto-style5" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>3rd November 
+			2013</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px"><strong>
+			Hole Note Acoustic Club, Admiral Lord Rodney</strong></td>
+			<td class="auto-style2" style="width: 99px">Colne, <br />
+			Lancashire</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td class="auto-style6" style="width: 20px">FREE</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> for the 
+			<strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour.</td>
+		</tr>
+		<tr>
+			<td class="auto-style7" colspan="6"><strong>2014</strong></td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>24th October 2014</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px" class="auto-style6"><strong>
+			<a href="http://www.therock.org.uk/" target="_blank">The Rock, The Wesley Centre</a></strong></td>
+			<td class="auto-style2" style="width: 99px">Maltby, Rotherham,<br />
+			S.Yorkshire</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">
+			<a href="mailto:tickets@therock.org.uk?subject=Beck Sian and Jonathan Kershaw At The Rock, 24 October 2014" target="_blank">
+			<img id="img2" alt="Tickets" height="18" onmousedown="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1F.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1D1.jpg')" onmouseover="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1E.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'button1E.jpg')" src="button1D1.jpg" style="border: 0" width="54" /><!-- MSComment="ibutton" fp-style="fp-btn: Glass Capsule 4; fp-font-size: 9; fp-font-color-hover: #C0C0C0; fp-font-color-press: #800000; fp-preload: 0; fp-bgcolor: #EFD195; fp-proportional: 0" fp-title="Tickets" --></a></td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> for the 
+			<strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour. Please note that tickets for this 
+			event are sold by an external site.</td>
+		</tr>		
+		
+		<tr>
+			<td class="auto-style9" colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" style="width: 111px"><strong>13th November 2014</strong></td>
+			<td class="auto-style3" style="width: 3px">
+			&nbsp;</td>
+			<td style="width: 242px" class="auto-style6"><strong>
+			<a href="http://www.topic-folk-club.org.uk/" target="_blank">The Topic, The Bradford Irish Club</a></strong></td>
+			<td class="auto-style2" style="width: 99px">Bradford,<br />
+			W.Yorkshire</td>
+			<td class="auto-style2" style="width: 3px">&nbsp;</td>
+			<td class="auto-style6" style="width: 20px">Tickets TBA</td>
+		</tr>
+		<tr>
+			<td class="auto-style3" colspan="6">Performing jointly with
+			the phenomenal
+			<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> for the 
+			<strong>Beautiful Ghosts 
+			&amp; Bizarre Tales</strong> tour.</td>
+		</tr>			
+		<tr>
+			<td class="auto-style9" colspan="6">&nbsp;</td>
+		</tr>
+		
+			
+		<tr>
+			<td style="width: 111px"><span class="auto-style3"></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px">&nbsp;</td>
+			<td style="width: 99px"></span></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 111px"><span class="auto-style3"></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px">&nbsp;</td>
+			<td style="width: 99px"></span></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 111px"><span class="auto-style3"></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px">&nbsp;</td>
+			<td style="width: 99px"></span></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 111px"><span class="auto-style3"></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px">&nbsp;</td>
+			<td style="width: 99px"></span></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 111px"><span class="auto-style3"></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 242px">&nbsp;</td>
+			<td style="width: 99px"></span></td>
+			<td style="width: 3px">&nbsp;</td>
+			<td style="width: 20px">&nbsp;</td>
+		</tr>
+	</table>
 	
-<p>TBD</p>
+<p>&nbsp;</p>
 <!-- contentbox /box4 -->
 				
 <p>&nbsp;</p>
@@ -734,12 +1090,13 @@ curobj.q.value="site:"+domainroot+" "+curobj.qfront.value
 
 
 <!-- add logo graphic here -->
+<img alt="" src="Site/logo/secondary_logo.png" width="417" height="56">
 
 <!-- add logo graphic here -->
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="26000" --></div>
+<!--webbot bot="Include" endspan i-checksum="10400" --></div>
 				<!--/logo graphic-->
 				
 				<!--logo website name-->
@@ -748,11 +1105,10 @@ curobj.q.value="site:"+domainroot+" "+curobj.qfront.value
 <!-- #BeginLibraryItem "/Library/dreamweaver/logo.lbi" -->
 		
 	
-<a href="home.htm">Jonathan Kershaw</a>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="4629" --></div>      
+<!--webbot bot="Include" endspan i-checksum="18419" --></div>      
 				<!--/logo website name-->
 
 				<!--logo tagline-->
@@ -828,10 +1184,12 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 <div>
 	<a href="http://www.facebook.com/jonkershawmusic/" target="_blank">	<img alt="follow me on facebook" 	title="Facebook" 	src="Site/themed_images/facebook_badge.png" 		width="36" height="36" style="border:0px;" /></a>
 	<a href="http://www.myspace.com/jonkershawmusic/" target="_blank">	<img alt="follow me on myspace" 	title="Myspace" 	src="Site/themed_images/myspace_button.png" 			width="36" height="36" style="border:0px;" /></a>
+	<a href="http://www.youtube.com/jonathankershawmusic/" target="_blank">	<img alt="follow Jonathan Kershaw on YouTube" 	title="YouTube" 	src="Site/themed_images/youtube_button_36x36.png" 		width="36" height="36" style="border:0px;" /></a>
+	<a href="http://www.twitter.com/jon_kershaw/" target="_blank">	<img alt="tweet me" 				title="Twitter" 	src="Site/themed_images/t_logo-a.png" 			width="36" height="36" style="border:0px;" /></a>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="6524" --></div>
+<!--webbot bot="Include" endspan i-checksum="7516" --></div>
 				<!--/twitter-facebook-->	
 				
 				<!--zoom menu
@@ -873,14 +1231,15 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 	<a href="contact.htm">Contact</a> | 
 	<a href="faqs.htm">FAQs</a> | 
 	<a href="label.htm">About the Label</a> | 
-	<a href="privacy.htm">Privacy</a> | 
+	<a href="privacy.htm">Privacy &amp; Cookies</a> | 
 	<a href="sitemap.htm">Sitemap</a> |
-	<a href="shipping.htm">Shipping &amp; Payment</a>
+	<a href="press.htm">Press</a> |
+	<a href="venue_data.htm">Venue info</a>
 	</p>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="46353" -->
+<!--webbot bot="Include" endspan i-checksum="63756" -->
 			<!-- #EndEditable -->
 
 </div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bbf"><div></div></div></div></div>

@@ -20,7 +20,7 @@ if($_POST['cmd'] == "remove") {
 	// remove group
 	$sql = "DELETE FROM `types` WHERE id='".$_POST['type_id']."' AND site_id='".NUMO_SITE_ID."'";
 	$dbObj->query($sql);
-}
+} 
 ?>
 <script>
 var currentUsersGroup = <?php if($row = mysql_fetch_array($dbObj->query("SELECT `type_id` FROM `accounts` WHERE `id`='".$_SESSION['account_id']."'"))) { echo $row['type_id']; } else { echo $_SESSION['type_id']; } ?>;

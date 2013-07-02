@@ -1,26 +1,35 @@
 <gallery base = "">
 
 <!-- EDIT Gallery Name -->
-<sitename>Publicity shoot, Shropshire, summer 2012 - I hate this kind of thing...</sitename>
+<sitename>Live images from 2013</sitename>
 
 <!-- OPTIONAL SEO / RSS info -->
-<photographer>Tracey Swain</photographer>
-<contactinfo>http://www.shropshirepostcards.co.uk</contactinfo>
-<email>tracey.swain@gmail.com</email><security>
+<photographer>Liz Boyd</photographer>
+<contactinfo>http://www.lbphotographic.co.uk</contactinfo>
+<email>lillybet1@msn.com</email><security>
 
 <!-- do not alter the following line -->
 <![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
 
 <!-- EDIT links to photos, [photo width and height-{for animation}] -->
-<photo path = "jk_001_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "jk_002_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "jk_003_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "jk_004_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "jk_005_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "jk_006_375x500.jpg" width = "375" height = "500"></photo>
-<photo path = "jk_007_500x375.jpg" width = "500" height = "375"></photo>
-<!--<photo path = "image8.jpg" width = "500" height = "375"></photo>
+<photo path = "live_003_500x334.jpg" width = "500" height = "334"></photo>
+<photo path = "live_011_410x614.jpg" width = "410" height = "614"></photo>
+<photo path = "live_012_410x614.jpg" width = "410" height = "614"></photo>
+<photo path = "live_007_500x334.jpg" width = "500" height = "334"></photo>
+<photo path = "live_002_410x614.jpg" width = "410" height = "614"></photo>
+<photo path = "live_001_410x614.jpg" width = "410" height = "614"></photo>
+<photo path = "live_008_500x334.jpg" width = "500" height = "334"></photo>
+<photo path = "live_009_410x614.jpg" width = "410" height = "614"></photo>
+<photo path = "live_004_473x614.jpg" width = "473" height = "614"></photo>
+<photo path = "live_010_500x334.jpg" width = "500" height = "334"></photo>
+<photo path = "lunaesque_001e_500x387.jpg" width = "500" height = "387"></photo>
+<photo path = "lunaesque_002e_500x746.jpg" width = "500" height = "746"></photo>
+<!--<photo path = "pic2.jpg" width = "500" height = "375"></photo>
+<photo path = "image7.jpg" width = "375" height = "500"></photo>
+<photo path = "image8.jpg" width = "500" height = "375"></photo>
+<photo path = "image9.jpg" width = "375" height = "500"></photo>
 <photo path = "image10.jpg" width = "500" height = "375"></photo>
+<photo path = "image11.jpg" width = "375" height = "500"></photo>
 <photo path = "image12.jpg" width = "500" height = "375"></photo>
 -->
 <!-- do not edit past this line -->

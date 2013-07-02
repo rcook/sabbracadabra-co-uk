@@ -1,3 +1,6 @@
+<?php 
+  include("../configuration/database_connection_information.php");
+?>
 /***********************************************
  Fool-Proof Date Input Script with DHTML Calendar
  by Jason Moon - http://calendar.moonscript.com/dateinput.cfm
@@ -12,9 +15,9 @@ var FontSize = 9; // In pixels
 var FontFamily = '';
 var CellWidth = 18;
 var CellHeight = 16;
-var ImageURL = '<?=$_GET['numo_folder_path']?>images/calendar.jpg';
-var NextURL = '<?=$_GET['numo_folder_path']?>images/next.gif';
-var PrevURL = '<?=$_GET['numo_folder_path']?>images/prev.gif';
+var ImageURL = '<?=NUMO_FOLDER_PATH?>images/calendar.jpg';
+var NextURL = '<?=NUMO_FOLDER_PATH?>images/next.gif';
+var PrevURL = '<?=NUMO_FOLDER_PATH?>images/prev.gif';
 var CalBGColor = 'white';
 var TopRowBGColor = 'buttonface';
 var DayBGColor = 'lightgrey';

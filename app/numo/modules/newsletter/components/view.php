@@ -20,7 +20,8 @@ if($newsletterInfo = mysql_fetch_array($result)) {
 
 	// escape & symbol in text
 	$newsletterMessage = str_replace("&", "%26", $newsletterInfo['message']);
-
+	//$newsletterMessage = str_replace("&amp;", "v%26v", $newsletterInfo['message']);
+  //  print $newsletterMessage;
 	//replace end of section code with & for parsing
 	$newsletterMessage = str_replace("[NUMO|END]", "&", $newsletterMessage);
 

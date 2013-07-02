@@ -32,7 +32,7 @@ if($_POST['cmd'] == "search" && ($_POST['order_id'] != "" || $_POST['order_shipp
 ?>
 	<h2>Results</h2>
 <?php
-	$sql = "SELECT o.`id`, o.`first_name`, o.`last_name`,DATE_FORMAT(o.`payment_date`,'%b %e, %Y') as payment_date,o.`mc_gross`, o.`payment_status`, o.`shipped` FROM `shopping_cart_orders` o WHERE o.`processed`=1 AND o.`id` LIKE '%".$_POST['order_id']."%' AND o.`shipped` LIKE '%".$_POST['order_shipped']."%' AND o.`payment_status` LIKE '%".$_POST['order_status']."%' AND o.`site_id`='".NUMO_SITE_ID."' ORDER BY o.`payment_date` desc";
+	$sql = "SELECT o.`id`, o.`first_name`, o.`last_name`, DATE_FORMAT(o.`payment_date`,'%b %e, %Y') as payment_date,o.`mc_gross`, o.`payment_status`, o.`shipped` FROM `shopping_cart_orders` o WHERE o.`processed`=1 AND o.`id` LIKE '%".$_POST['order_id']."%' AND o.`shipped` LIKE '%".$_POST['order_shipped']."%' AND o.`payment_status` LIKE '%".$_POST['order_status']."%' AND o.`site_id`='".NUMO_SITE_ID."' ORDER BY o.`payment_date` desc";
 	//print $sql."<br>";
 	$results = $dbObj->query($sql);
 
@@ -60,8 +60,8 @@ if($_POST['cmd'] == "search" && ($_POST['order_id'] != "" || $_POST['order_shipp
 ?>
 	<h2>Orders</h2>
 	<?php
-	$sql = "SELECT o.`id`, o.`first_name`, o.`last_name`, DATE_FORMAT(o.`payment_date`,'%b %e, %Y') as payment_date,o.`mc_gross`, o.`payment_status`, o.`shipped` FROM `shopping_cart_orders` o WHERE o.`processed`=1 AND (UPPER(o.`payment_status`)='COMPLETED' OR UPPER(o.`payment_status`)='PROCESSED' OR UPPER(o.`payment_status`)='CANCELED_REVERSAL' OR UPPER(o.`payment_status`)='PENDING') AND o.`site_id`='".NUMO_SITE_ID."' ORDER BY o.`payment_date` desc LIMIT 100";
-	
+	$sql = "SELECT o.`id`, o.`first_name`, o.`last_name`, DATE_FORMAT(o.`payment_date`,'%b %e, %Y') as payment_date, DATE_FORMAT(o.`order_date`,'%b %e, %Y') as order_date,o.`mc_gross`, o.`payment_status`, o.`shipped` FROM `shopping_cart_orders` o WHERE o.`processed`=1 AND (UPPER(o.`payment_status`)='COMPLETED' OR UPPER(o.`payment_status`)='PROCESSED' OR UPPER(o.`payment_status`)='CANCELED_REVERSAL' OR UPPER(o.`payment_status`)='PENDING') AND o.`site_id`='".NUMO_SITE_ID."' ORDER BY o.`payment_date` desc LIMIT 100";
+	//print $sql;
 	$results = $dbObj->query($sql);
 
 	//counter for odd/even styling

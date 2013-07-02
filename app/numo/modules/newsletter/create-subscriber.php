@@ -99,7 +99,7 @@ ul.form_display li label{width:100px;}
 	<?=$displayMessage?>
 	<ul class="form_display">
 		<li><label for="subscriber_email">Email:</label><input type="text" name="email" id="subscriber_email" value="<?=$_POST['email']?>" /></li>
-		<li><label for="submit_input">&nbsp;</label><input type="submit" name="nocmd" id="submit_input" value="Next" /></li>
+		<li><label for="submit_input">&nbsp;</label><input onclick="history.go(-1)" type="button" value="Back" /> <input style='margin-left: 35px;' type="submit" name="nocmd" id="submit_input" value="Next" /></li>
 	</ul>
 	</fieldset>
 	<input type="hidden" name="cmd" value="step2" />

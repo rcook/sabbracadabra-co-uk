@@ -8,10 +8,10 @@
 #icons						{position:absolute;	top:105px; 		right:30px;  z-index:99;}
 #search						{position:absolute; top:480px; 		right:20px;}
 #themed_object				{position:absolute; top:20px; 		left:200px;		}
-#logo						{position:absolute; top:10px; 		right:400px;	width:auto; 	height:auto;}
+#logo						{position:absolute; top:314px; 		left:14px;	width:auto; 	height:auto;}
 #textlogo					{position:absolute; top:274px; 		left:5px;		width:600px; 	height:auto;}
 #logo_tagline				{position:absolute; top:358px; 		left:50px;		width:420px; 	height:auto;}
-				#scroll_menu				{visibility:hidden; display:none; 	position:absolute; top:200px; 		left:0px; 	width:252px; 	height:200px;}
+#scroll_menu				{visibility:hidden; display:none; 	position:absolute; top:200px; 		left:0px; 	width:252px; 	height:200px;}
 #portfolio_component		{position:absolute; top:110px; 		right:10px;		width:520px;	height:380px; }
 #zoom_menu_component		{position:absolute; top:400px; 		left:0px;		width:500px; 	height:auto;}
 	#zoom_menu				{margin-left:auto; 	margin-right:auto;				width:500px;}

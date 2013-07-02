@@ -48,7 +48,7 @@
 		
 <!-- 3rd image -->		
 		<pic>
-			<image>Site/themed_images/portfolio4.jpg</image>
+			<image>Site/themed_images/guitar_001_476x238.jpg</image>
 			<link>region_select.htm</link>
 			<linkLabel>click store</linkLabel>
 			<target>_self</target>
