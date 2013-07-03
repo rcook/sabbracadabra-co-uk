@@ -333,9 +333,9 @@
 		this.each( function() {			
 			
 			options = $.extend({}, {
-							   reflHeight:0,
+							   reflHeight:60,
 							   reflOpacity:0.5,
-							   reflGap:0,
+							   reflGap:5,
 							   minScale:0.5,
 							   xPos:0,
 							   yPos:0,
@@ -344,11 +344,11 @@
 							   altBox:null,
 							   titleBox:null,
 							   FPS: 30,
-							   autoRotate: 'no',
-							   autoRotateDelay: 1500,
-							   speed:0.2,
+							   autoRotate: 'right',
+							   autoRotateDelay: 6000,
+							   speed:0.08,
 							   mouseWheel: false,
-								 bringToFront: false
+								 bringToFront: true
 			},options );									
 			// Create a Controller for each carousel.		
 			$(this).data('cloudcarousel', new Controller( this, $('.cloudcarousel',$(this)), options) );

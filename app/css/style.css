@@ -222,11 +222,11 @@ footer puts in otherwise */
 }
 
 /*video box and "about" picture border*/
-#body .content > a img {
+/*#body .content > a img {
 	border: 1px solid #180048;
 	display: block;
 }
-#body .content p {
+*/#body .content p {
 	line-height: 18px;
 	margin: 0;
 	padding: 0 0 20px;
@@ -351,8 +351,8 @@ footer puts in otherwise */
 #body .content > ul li a b {
 	display: inline-block;
 	font-size: 16px;
-	padding: 0 46px 0 0;
-}
+/*	padding: 0 46px 0 0;
+*/}
 /*this is the "Shows" page "Book Now" text*/
 #body .content > ul li a i {
 	color: #9c83a4;
@@ -479,17 +479,17 @@ footer puts in otherwise */
 	margin: 15px auto;
 	padding: 0;
 }
-#body .sidebar .album a:hover {
+/*#body .sidebar .album a:hover {
 	opacity: 0.8;
 }
 #body .sidebar .album a img {
 	border: 3px solid #fff;
-	border-radius: 4px;
+	border-radius: 0px;
 	display: block;
 	margin: 0;
 	padding: 0;
 }
-
+*/
 /*right hand column album box lower text*/
 #body .sidebar .album span {
 	color: #5a5f8e;
