@@ -9,7 +9,7 @@ body {
 	background: #000 url(../images/bg-body1.jpg) no-repeat top center;
 	color: #716076;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 1;
 	margin: 0;
 	padding: 0;
@@ -25,6 +25,11 @@ body {
 	overflow: hidden;
 	padding: 5px 0 98px;
 }
+
+#header .righthead {
+	margin:416px;
+	width: 430px;
+}
 #header .header ul {
 	display: inline-block;
 	float: left;
@@ -35,7 +40,7 @@ body {
 #header .header ul li {
 	float: left;
 	list-style: none;
-	margin: 0 12px 0 0;
+	margin: 0 0px 0 0;
 	padding: 0;
 }
 /*Main menu text*/
@@ -47,7 +52,7 @@ body {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	width: 126px;
+	width: 95px;
 }
 /*main menu text on hover*/
 #header .header ul li a:hover {
@@ -95,6 +100,8 @@ by altering them in the joint interface png file using an artwork editor ie pain
 #header .header form #submit:hover {
 	background-position: -153px -104px;
 }
+
+
 #header .body, #header .footer {
 	margin: 0 0 0 41px;
 	padding: 0;
@@ -117,6 +124,7 @@ by altering them in the joint interface png file using an artwork editor ie pain
 	line-height: 18px;
 	margin: 0;
 	padding: 12px 20px 12px 75px;
+	font-size:16px;
 }
 /*header text link colour*/
 #header .body p a {
@@ -126,6 +134,7 @@ by altering them in the joint interface png file using an artwork editor ie pain
 #header .body p a:hover {
 	color: #95d8c3;
 }
+
 /*header main download line text (next to download button)*/
 #header .body a.download {
 	background: url(../images/interface.png) no-repeat 233px -43px;
@@ -239,7 +248,7 @@ footer puts in otherwise */
 
 /*bulk text link colour on hover*/
 #body .content p a:hover {
-	color: #c396d0;
+	color: #a7051a;
 }
 #body .content > b {
 	display: block;
@@ -323,6 +332,44 @@ footer puts in otherwise */
 /*blog "read more" link text colour on hover*/
 #body .content div a.more:hover {
 	color: #c4a2ce;
+}
+
+#body .content ul li a {
+	color: #b8b6b6;
+}
+
+#body .content ul li a:hover {
+	color: #726177;
+}
+
+#body .store {
+	float: left;
+	margin: 0 0 0 37px;
+	padding: 0;
+	width: 444px;
+}
+#body .store h2 {
+	background: #240E35;
+	color: #f3f3f3;
+	font-family: 'NixieOne-Regular';
+	font-size: 26px;
+	font-style: italic;
+	font-weight: normal;
+	height: 48px;
+	letter-spacing: 0.2em;
+	line-height: 48px;
+	margin: 0;
+	padding: 0 0 0 12px;
+	text-transform: uppercase;
+}
+
+#body .store > a {
+	display: block;
+	margin: 0 0 25px;
+	padding: 0;
+}
+#body .store > a:hover {
+	opacity: 0.9;
 }
 
 /*shows page left hand main box area*/
@@ -463,7 +510,7 @@ footer puts in otherwise */
 	background: #4A1B24;
 }
 #body .sidebar div ul li a b {
-	font-size: 16px;
+	font-size: 14px;
 }
 
 /*right hand column album box*/
@@ -501,16 +548,20 @@ footer puts in otherwise */
 
 /*right hand column social media lnks box*/
 #body .sidebar .connect {
-	background: #240E35;
+	background: #3F4040;
 	height: 48px;
 	overflow: hidden;
+
 }
 #body .sidebar .connect h3 {
+	background: #3F4040;
 	display: inline-block;
 	float: left;
+	font-size: 18px;
+	padding: 0 0 0 4px;
 }
 #body .sidebar .connect a {
-	background: url(../images/icons.png) no-repeat;
+	background: url(../images/icons1.png) no-repeat;
 	display: inline-block;
 	float: right;
 	height: 30px;
@@ -519,7 +570,7 @@ footer puts in otherwise */
 	text-indent: -99999px;
 	width: 34px;
 }
-#body .sidebar .connect #googleplus {
+#body .sidebar .connect #youtube {
 	background-position: 0 -80px;
 }
 #body .sidebar .connect #facebook {
@@ -538,7 +589,7 @@ footer puts in otherwise */
 /*footer box text*/
 #footer p {
 	color: #726177;
-	font-size: 10px;
+	font-size: 12px;
 	margin: 0;
 	padding: 0;
 	text-align: center;
