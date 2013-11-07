@@ -145,26 +145,38 @@ var flashConfigType = "xml"; // either xml or php
 	<li><a href="../home.htm">Home</a></li>
 	<li><a href="../news.htm">News</a></li>
 	<li><a href="../live.htm">Live</a></li>
-	<li><a href="../manage.numo?module=shopping_cart&amp;component=catalog">
-	Purchase</a>[NUMO.SHOPPING CART: LIST]
+	<li><a href="../region_select.htm">Purchase</a>
+	<ul>
+		<li><a href="../mp3_shop.htm">Music Download Store</a></li>
+		<li><a href="../region_select.htm">CD Music Store</a>[NUMO.SHOPPING CART: LIST]</li>
+		<li><a href="../purchase_history.htm">View Your Purchases</a></li>
+		<li><a href="../shipping.htm">Shipping &amp; Payment Info</a></li>		
+	</ul>
 	</li>
 	<li><a href="../photo_gallery.htm">Gallery</a></li>
-	<li><a href="../biog.htm">Biography</a></li>
+	<li><a href="../biog.htm">Background</a><ul>
+		<li><a href="../biog.htm">Biography</a></li>
+		<li><a href="../influences.htm">Musical Influences</a></li>
+	</ul>
+	</li>
+	<li><a href="../guestbook.htm">Guest Book</a></li>
 	<li><a href="../contact.htm">Contact</a>
 	<ul>
 		<li><a href="../contact.htm#1">Email</a></li>
 		<li><a href="../contact.htm#3">Telephone</a></li>
-		<li><a href="../contact.htm#4">Fax</a></li>
+<!--		<li><a href="../../contact.htm#4">Fax</a></li>
+-->		
 		<li><a href="../contact.htm#2">Web Form</a></li>
 		<li><a href="../contact.htm#5">Address</a></li>
-		<li><a href="../contact.htm#6">Directions</a></li>
+<!--		<li><a href="../../contact.htm#6">Directions</a></li>
+-->	
 	</ul>
 	</li>
-</ul>
+	<li><a href="../faqs.htm">FAQs</a></ul>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="57435" endspan -->
+<!--webbot bot="Include" i-checksum="54692" endspan -->
 							<br style="clear: left" /></div>
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
@@ -182,21 +194,27 @@ var flashConfigType = "xml"; // either xml or php
 
 
 <h3>Online Store:</h3>
-	
+<!--	
 <h4>All the latest music and releases</h4>
-
+-->
 <p>
 All the latest music and releases are available to purchase from the online 
 store.</p>
+<table style="width: 100%">
+	<tr>
+		<td style="width: 67px">
+		<a href="../region_select.htm">
+<img src="../Site/images/bizarretales_tn_50x50.jpg" width="50" height="50" style="float: left" alt="New album &quot;Andrasta&quot;" class="auto-style1" longdesc="../Library/expression-fp/Available to purchase from the online store" /></a></td>
+		<td style="width: 424px">"Bizarre Tales" is now available on CD or download from the online
+		<a href="../region_select.htm">store</a></td>
+	</tr>
+</table>
 <p>
-<a href="../manage.numo?module=shopping_cart&amp;component=catalog">
-<img src="../Site/images/andrasta_tn_50x50.jpg" width="50" height="50" style="float: left" alt="New album &quot;Andrasta&quot;" class="auto-style1" longdesc="../Library/expression-fp/Available to purchase from the online store" /></a>The 
-new album "Bizarre Tales" now available on CD or download from the online
-<a href="../manage.numo?module=shopping_cart&amp;component=catalog">store</a></p>
+&nbsp;</p>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="19728" endspan -->
+<!--webbot bot="Include" i-checksum="15411" endspan -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /whatsnew -->
@@ -210,24 +228,31 @@ new album "Bizarre Tales" now available on CD or download from the online
 
 <h3>Latest News:</h3>
 	
-<h4>Album Release set for June</h4>
+<h4 class="auto-style1"><a href="../news.htm#tour01">Beautiful Ghosts &amp; Bizarre Tales Tour 2013-2014 
+announced</a></h4>
 
-<h5>19 May 2012</h5>
+<h5>28 May 2013</h5>
 	
 <p>
-The new album from Jonathan Kershaw is set for release in June and will be 
-available on CD and for download from the online store. Find out more
-<a href="../news.htm#Album_Release">here</a>.</p>
-<p><a href="../news.htm">
-<img src="../Site/images/music_thumbnail_80x50.jpg" width="80" height="50" class="auto-style1" alt="demo" style="float: left" /></a></p>
-<p>
-All the latest news can be found on the News page - click
-<a href="../news.htm">here</a>.&nbsp;
+<table style="width: 100%">
+	<tr>
+		<td style="width: 105px">
+		<a href="../live.htm" target="_blank">
+		<img alt="Beck Siàn" height="100" src="../Site/images/beck_02_100x100.jpg" width="100" class="auto-style2"></a></td>
+		<td>Joint <a href="../news.htm#tour01">UK tour</a> with singer/songwriter 
+		<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> to begin in July.
+		</td>
+	</tr>
+</table>
 </p>
 
 
+
+
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="65490" endspan -->
+<p>Find out more about this and other recent news by clicking
+<a href="../news.htm#review_1">here</a>.</p>
+<!--webbot bot="Include" i-checksum="20162" endspan -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /currentnews -->
@@ -241,20 +266,24 @@ All the latest news can be found on the News page - click
 
 <h3>Live Performances</h3>
 	
-<h4>Catch Jonathan Kershaw Live at Gigs and Events</h4>
+<h4>Ye Olde House At Home, Worthing, West Sussex</h4>
 
-<h5>21 May 2012</h5>
+<h5>14th September 2013</h5>
 	
 <p>
-The next live performance will appear here.</p>
+Jonathan will be performing at the 
+<a href="http://yeoldehouseathomeworthing.co.uk/" target="_blank">Ye Olde House At Home,</a> in 
+Worthing, West Sussex together with acclaimed singer/songwriter 
+<a href="../news.htm#tour_01">Beck Siàn</a>.</p>
+
 <p>
 <a href="../live.htm">
-<img src="../Site/images/demo2.jpg" width="50" height="50" style="float: left; margin:2px 5px 2px 5px;" alt="demo" class="auto-style1" /></a>Find 
-out all the upcoming live events on the <a href="../live.htm">Live</a> page.</p>
+<img src="../Site/images/jk_live_75x50.jpg" width="75" height="50" style="float: left; margin:2px 5px 2px 5px;" alt="demo" class="auto-style1" /></a>See the <a href="../live.htm">Live</a> 
+page for more details of this and all other gigs.</p>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="23970" endspan -->
+<!--webbot bot="Include" i-checksum="32868" endspan -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /recentevents -->
@@ -632,12 +661,13 @@ curobj.q.value="site:"+domainroot+" "+curobj.qfront.value
 
 
 <!-- add logo graphic here -->
+<img alt="" src="../Site/logo/secondary_logo.png" width="417" height="56">
 
 <!-- add logo graphic here -->
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="26000" endspan --></div>
+<!--webbot bot="Include" i-checksum="54" endspan --></div>
 				<!--/logo graphic-->
 
 				<!--logo website name-->
@@ -646,11 +676,10 @@ curobj.q.value="site:"+domainroot+" "+curobj.qfront.value
 <!-- #BeginLibraryItem "/Library/dreamweaver/logo.lbi" -->
 		
 	
-<a href="../home.htm">Jonathan Kershaw</a>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="5124" endspan --></div>
+<!--webbot bot="Include" i-checksum="18419" endspan --></div>
 				<!--/logo website name-->
 
 				<!--logo tagline-->
@@ -675,14 +704,14 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 	
 <!-- AddThis Button BEGIN -->
 
-<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4b992dbc452dd75b"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4b992dbc452dd75b"></script>
+<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=ra-505b37961adef600"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=ra-505b37961adef600"></script>
 
 <!-- AddThis Button END -->
 
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="64095" endspan --></div>
+<!--webbot bot="Include" i-checksum="62541" endspan --></div>
 				<!--/bookmark-->
 
 				<!-- menu top -->
@@ -696,16 +725,21 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 	<li><a href="../home.htm">Home</a></li>
 	<li><a href="../news.htm">News</a></li>
 	<li><a href="../live.htm">Live</a></li>
-	<li><a href="../manage.numo?module=shopping_cart&amp;component=catalog">
-	Purchase</a>[NUMO.SHOPPING CART: LIST]
+	<li><a href="../region_select.htm">Purchase</a>
+	<ul>
+		<li><a href="../mp3_shop.htm">Music Download Store</a></li>
+		<li><a href="../region_select.htm">CD Music Store</a>[NUMO.SHOPPING CART: LIST]</li>
+		<li><a href="../purchase_history.htm">View Your Purchases</a></li>
+		<li><a href="../shipping.htm">Shipping &amp; Payment Info</a></li>		
+	</ul>
 	</li>
 	<li><a href="../photo_gallery.htm">Gallery</a></li>
-	<li><a href="../biog.htm">Biography</a></li>
+	<li><a href="../guestbook.htm">Guest Book</a></li>
 </ul>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="8040" endspan --><br style="clear: left" /></div></div><div class="menu_bg_right"></div></div>
+<!--webbot bot="Include" i-checksum="33245" endspan --><br style="clear: left" /></div></div><div class="menu_bg_right"></div></div>
 				<!-- /menu top -->
 
 				<!--twitter-facebook-->
@@ -714,12 +748,14 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 <!-- #BeginLibraryItem "/Library/dreamweaver/twitter-facebook.lbi" -->
 
 <div>
-<a href="http://www.facebook.com/jonkershawmusic/">	<img alt="follow me on facebook" 	title="Facebook" 	src="../Site/themed_images/facebook_badge.png" 		width="36" height="36" style="border:0px;" /></a>
-<a href="http://www.myspace.com/jonkershawmusic/">	<img alt="follow me on myspace" 	title="Myspace" 	src="../Site/themed_images/myspace_button.png" 			width="36" height="36" style="border:0px;" /></a>
+	<a href="http://www.facebook.com/jonkershawmusic/" target="_blank">	<img alt="follow me on facebook" 	title="Facebook" 	src="../Site/themed_images/facebook_badge.png" 		width="36" height="36" style="border:0px;" /></a>
+	<a href="http://www.myspace.com/jonkershawmusic/" target="_blank">	<img alt="follow me on myspace" 	title="Myspace" 	src="../Site/themed_images/myspace_button.png" 			width="36" height="36" style="border:0px;" /></a>
+	<a href="http://www.youtube.com/jonathankershawmusic/" target="_blank">	<img alt="follow Jonathan Kershaw on YouTube" 	title="YouTube" 	src="../Site/themed_images/youtube_button_36x36.png" 		width="36" height="36" style="border:0px;" /></a>
+	<a href="http://www.twitter.com/jon_kershaw/" target="_blank">	<img alt="tweet me" 				title="Twitter" 	src="../Site/themed_images/t_logo-a.png" 			width="36" height="36" style="border:0px;" /></a>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="30441" endspan --></div>
+<!--webbot bot="Include" i-checksum="60023" endspan --></div>
 				<!--/twitter-facebook-->
 
 				<!--zoom menu
@@ -751,21 +787,23 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 <div class="footer_wrapper" style="width:100%; text-align:center;">
 <p>&nbsp;</p>
 	
-<p>Copyright 2012. Jonathan Kershaw Music. All Rights Reserved.</p>
+<p>Copyright 2012. Circus Bizarre Music. All Rights Reserved.</p>
 
 <p>
 	<a href="../index.htm">Front Page</a> | 
 	<a href="../home.htm">Home</a> | 
 	<a href="../contact.htm">Contact</a> | 
 	<a href="../faqs.htm">FAQs</a> | 
-	<a href="../credits.htm">Credits</a> | 
-	<a href="../privacy.htm">Privacy</a> | 
-	<a href="../sitemap.htm">Sitemap</a>
-</p>
+	<a href="../label.htm">About the Label</a> | 
+	<a href="../privacy.htm">Privacy &amp; Cookies</a> | 
+	<a href="../sitemap.htm">Sitemap</a> |
+	<a href="../press.htm">Press</a> |
+	<a href="../venue_data.htm">Venue info</a>
+	</p>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="25088" endspan -->
+<!--webbot bot="Include" i-checksum="39760" endspan -->
 			<!-- #EndEditable -->
 
 </div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bbf"><div></div></div></div></div>

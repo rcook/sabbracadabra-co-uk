@@ -1,3 +1,3 @@
-<?php
-print constant('SYSTEM_META_DESCRIPTION');
+<?php
+print @constant('SYSTEM_META_DESCRIPTION');
 ?>

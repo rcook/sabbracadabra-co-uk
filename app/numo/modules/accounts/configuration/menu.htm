@@ -1,28 +1,29 @@
-<?php if ($access->hasAccess("accounts", "account-manage")) { ?>
-<li class='menu-separator'><a href="module/accounts/account-manage/">Accounts</a>
-<?php if ($access->hasAccess("accounts", "account-pending") || $access->hasAccess("accounts", "account-create")) { ?>
-	<ul>
-    <?php if ($access->hasAccess("accounts", "account-manage")) { ?>
-	<li><a href="module/accounts/account-manage/">Manage Accounts</a></li>
-    <?php } ?>
-    <?php if ($access->hasAccess("accounts", "account-pending")) { ?>
-	<li><a href="module/accounts/account-pending/">Pending Accounts</a></li>
-    <?php } ?>
-    <?php if ($access->hasAccess("accounts", "account-create")) { ?>
-	<li><a href="module/accounts/account-create/">Create Account</a></li>
-    <?php } ?>
-<?php if ($adminVersion == "") { ?>	</ul><?php } ?>
-<?php } ?>
-<?php if ($adminVersion == "") { ?>	</li><?php } ?>
-<?php } ?>
-<?php if ($access->hasAccess("accounts", "group-manage")) { ?>
-<li><a href="module/accounts/group-manage/">Account Groups</a>
-<?php if ($access->hasAccess("accounts", "group-create")) { ?>
-<?php if ($adminVersion == "") { ?>	<ul> <?php } ?>
-	<li><a href="module/accounts/group-manage/">Manage Groups</a></li>
-	<li><a href="module/accounts/group-create/">Create Group</a></li>
-<?php if ($adminVersion == "") { ?>	</ul> <?php } ?>
-<?php } ?>
-</ul>
-</li>
+<?php if ($access->hasAccess("accounts", "account-manage")) { ?>
+<li class="dropdown<?php if ($_GET['m'] == "accounts") { print " active"; } ?>"><a class="dropdown-toggle" data-toggle="dropdown" href="module/accounts/account-manage/"><i class='icon-user'></i> Accounts <b class="caret"></b></a>
+<?php if ($access->hasAccess("accounts", "account-pending") || $access->hasAccess("accounts", "account-create")) { ?>
+	<ul class="dropdown-menu">
+    <?php if ($access->hasAccess("accounts", "account-manage")) { ?>
+	<li><a href="module/accounts/account-manage/"><i class='icon-edit'></i> Manage Accounts</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("accounts", "account-pending")) { ?>
+	<li><a href="module/accounts/account-pending/"><i class='icon-flag'></i> Pending Accounts</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("accounts", "account-create")) { ?>
+	<li><a href="module/accounts/account-create/"><i class='icon-asterisk'></i> Create New Account</a></li>
+    <?php } ?>
+<?php if ($adminVersion == "") { ?>	</ul><?php } ?>
+<?php } ?>
+<?php if ($adminVersion == "") { ?>	</li><?php } ?>
+<?php } ?>
+<?php if ($access->hasAccess("accounts", "group-manage")) { ?>
+<li class="dropdown-submenu"><a class='dropdown-toggle' href="module/accounts/group-manage/"><i class='icon-group'></i> Account Groups</a>
+
+<?php if ($access->hasAccess("accounts", "group-create")) { ?>
+<ul class='dropdown-menu'>
+	<li><a href="module/accounts/group-manage/"><i class='icon-edit'></i> Manage Groups</a></li>
+	<li><a href="module/accounts/group-create/"><i class='icon-asterisk'></i> Create New Group</a></li>
+</ul>
+<?php } ?>
+</ul>
+</li>
 <?php } ?>

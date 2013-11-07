@@ -1,78 +1,78 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
-<html>
-<head>
-	<title>Create Link</title>
-</head>
-<script type="text/javascript">
-
-/* ---------------------------------------------------------------------- *\
-  Function    : insertHyperLink() (changed)
-  Description : Insert the link into the iframe html area
-\* ---------------------------------------------------------------------- */
-function insertHyperLink() {
-	// get values from form fields
-	var href = document.getElementById('linkUrl').value;
-	var target = document.getElementById('linkTarget').value;
-	var styleClass = document.getElementById('linkClass').value;
-	var name = document.getElementById('linkName').value;
-
-  // insert link
-	window.opener.insert_link(href, target, styleClass, name);
-	window.close();
-}
-/* ---------------------------------------------------------------------- *\
-  Function    : updateTarget() (new)
-  Description : Updates the target text field
-  Arguments   : value - Value to be set
-\* ---------------------------------------------------------------------- */
-function updateTarget(value) {
-	document.getElementById('linkTarget').value = value;
-}
-</script>
-<body bgcolor="#EEEEEE" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
-
-<table border="0" cellpadding="0" cellspacing="0" style="padding: 10px;"><tr><td>
-
-<span style="font-family: arial, verdana, helvetica; font-size: 11px; font-weight: bold;">Insert Hyperlink:</span>
-	<table width="330" border="0" cellpadding="1" cellspacing="0" style="background-color: #F7F7F7; border: 2px solid #FFFFFF; padding: 5px;">
-	<tr>
-		<td style="padding-bottom: 2px; padding-top: 0px; font-family: arial, verdana, helvetica; font-size: 11px;">URL:</td>
-		<td style="padding-bottom: 2px; padding-top: 0px;" colspan="3">
-			<input type="text" name="linkUrl" id="linkUrl" value="http://" style="font-size: 10px; width: 100%;">
-		</td>
-	</tr>
-	<tr>
-		<td style="padding-bottom: 2px; width: 50px; font-family: arial, verdana, helvetica; font-size: 11px;">Target:</td>
-		<td style="padding-bottom: 2px;" colspan="3">
-			<input type="text" name="linkTarget" id="linkTarget" value="" style="font-size: 10px; width: 65%;">
-			&nbsp;
-			<select name="linkTargetChooser" id="linkTargetChooser" style="font-size: 10px; width: 30%;" onchange="updateTarget(this.value);">
-				<option value="" selected>no target</option>
-				<option value="_blank">_blank</option>
-				<option value="_self">_self</option>
-				<option value="_parent">_parent</option>
-				<option value="_top">_top</option>
-				<option value="">custom</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td style="padding-bottom: 2px; width: 50px; font-family: arial, verdana, helvetica; font-size: 11px;">Class:</td>
-		<td style="padding-bottom: 2px;">
-			<input type="text" name="linkClass" id="linkClass" value="" style="font-size: 10px; width: 90%;">
-		</td>
-		<td style="padding-bottom: 2px; width: 30px; font-family: arial, verdana, helvetica; font-size: 11px;">Name:</td>
-		<td style="padding-bottom: 2px; width: 120px;">
-			<input type="text" name="linkName" id="linkName" value="" style="font-size: 10px; width: 100%;">
-		</td>
-	</tr>
-
-</table>
-
-<div align="right" style="padding-top: 5px;"><input type="submit" value="  Submit  " onClick="insertHyperLink();" style="font-size: 12px;" >&nbsp;<input type="submit" value="  Cancel  " onClick="window.close();" style="font-size: 12px;" ></div>
-
-</td></tr></table>
-
-</body>
-</html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Create Link</title>
+</head>
+<script type="text/javascript">
+
+/* ---------------------------------------------------------------------- *\
+  Function    : insertHyperLink() (changed)
+  Description : Insert the link into the iframe html area
+\* ---------------------------------------------------------------------- */
+function insertHyperLink() {
+	// get values from form fields
+	var href = document.getElementById('linkUrl').value;
+	var target = document.getElementById('linkTarget').value;
+	var styleClass = document.getElementById('linkClass').value;
+	var name = document.getElementById('linkName').value;
+
+  // insert link
+	window.opener.insert_link(href, target, styleClass, name);
+	window.close();
+}
+/* ---------------------------------------------------------------------- *\
+  Function    : updateTarget() (new)
+  Description : Updates the target text field
+  Arguments   : value - Value to be set
+\* ---------------------------------------------------------------------- */
+function updateTarget(value) {
+	document.getElementById('linkTarget').value = value;
+}
+</script>
+<body bgcolor="#EEEEEE" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+
+<table border="0" cellpadding="0" cellspacing="0" style="padding: 10px;"><tr><td>
+
+<span style="font-family: arial, verdana, helvetica; font-size: 11px; font-weight: bold;">Insert Hyperlink:</span>
+	<table width="330" border="0" cellpadding="1" cellspacing="0" style="background-color: #F7F7F7; border: 2px solid #FFFFFF; padding: 5px;">
+	<tr>
+		<td style="padding-bottom: 2px; padding-top: 0px; font-family: arial, verdana, helvetica; font-size: 11px;">URL:</td>
+		<td style="padding-bottom: 2px; padding-top: 0px;" colspan="3">
+			<input type="text" name="linkUrl" id="linkUrl" value="http://" style="font-size: 10px; width: 100%;">
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 2px; width: 50px; font-family: arial, verdana, helvetica; font-size: 11px;">Target:</td>
+		<td style="padding-bottom: 2px;" colspan="3">
+			<input type="text" name="linkTarget" id="linkTarget" value="" style="font-size: 10px; width: 65%;">
+			&nbsp;
+			<select name="linkTargetChooser" id="linkTargetChooser" style="font-size: 10px; width: 30%;" onchange="updateTarget(this.value);">
+				<option value="" selected>no target</option>
+				<option value="_blank">_blank</option>
+				<option value="_self">_self</option>
+				<option value="_parent">_parent</option>
+				<option value="_top">_top</option>
+				<option value="">custom</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 2px; width: 50px; font-family: arial, verdana, helvetica; font-size: 11px;">Class:</td>
+		<td style="padding-bottom: 2px;">
+			<input type="text" name="linkClass" id="linkClass" value="" style="font-size: 10px; width: 90%;">
+		</td>
+		<td style="padding-bottom: 2px; width: 30px; font-family: arial, verdana, helvetica; font-size: 11px;">Name:</td>
+		<td style="padding-bottom: 2px; width: 120px;">
+			<input type="text" name="linkName" id="linkName" value="" style="font-size: 10px; width: 100%;">
+		</td>
+	</tr>
+
+</table>
+
+<div align="right" style="padding-top: 5px;"><input type="submit" value="  Submit  " onClick="insertHyperLink();" style="font-size: 12px;" >&nbsp;<input type="submit" value="  Cancel  " onClick="window.close();" style="font-size: 12px;" ></div>
+
+</td></tr></table>
+
+</body>
+</html>

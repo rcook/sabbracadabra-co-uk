@@ -1,198 +1,198 @@
-body { padding: 0px; margin: 0px; font-family: Arial, sans-serif; color: #333; font-size: 0.9em;}
-div { padding: 0px; margin: 0px; }
-/** TOP BAR ** */
-#top_bar {background: #E4E4E4 url('../images/bar_bg.jpg') repeat-x; height: 40px; text-align: left; color: #2C62B4;}
-#top_bar img { float: right; }
-#top_bar p { margin: 0px; padding: 0px 5px; line-height: 40px;}
-
-/** NOTICE BAR **/
-#notice_bar {
-background-image: linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
-background-image: -o-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(255,83,3)),
-	color-stop(1, rgb(255,132,0))
-);	
-    min-height: 40px;
-	 text-align: left; 
-	color: #ffffff !important;
-	font-weight: bold;
-	padding-left: 10px;
-}
-#notice_bar img { padding-right: 10px; }
-#notice_bar p {  }
-#notice_bar span.file_name { color: #ffffff; font-family: "Courier New", Courier, monospace; }
-span.logged-in-username { display: none; }
-
-#container { padding-left:190px; }
-#content { width:100%; margin-left:-190px; float: left; border-left:190px solid #fff; text-align: left; }
-#menu { width: 190px; float: left; margin-left: -190px; }
-h1 {color: #222; font-size: 1.2em; padding: 2px; margin: 0px;}
-h2 {color: #2A61BD; font-size: 1.2em; padding: 3px 0px 0px 0px; margin: 0px; margin-bottom: 5px; text-transform:capitalize; /*font-variant:small-caps; text-decoration: underline; border-bottom: 1px solid #2a61bd; */  }
-h3 {color: #444444; font-size: 1em; padding: 4px 0px 0px 0px; margin: 0px; /*text-decoration: underline; */ clear: both;}
-h4 {color: #222; font-size: 0.9em; padding: 4px 0px 5px 0px; margin: 0px;}
-p {color: #333; font-size: 0.9em; padding: 2px 0px; margin: 0px;}
-a { color: #2A61BD; }
-form { padding: 2px 0px 6px 0px; margin: 0px;}
-ul.form_display { border:0; margin:0; padding:0; list-style:none; }
-ul.form_display li {clear:both; list-style:none; padding-bottom:10px; }
-ul.form_display li input{float:left;}
-ul.form_display li label{width:140px;float:left;}
-ul.form_display li.checkbox label { width: auto;}
-.protected_files_list {}
-.protected_files_list td {font-size: 14px;}
-.protected_files_list th {background: #5184D9; color: #fff; width: 150px; text-align: left; font-size: 16px;}
-.protected_files_list th.name_label {background: #2A61BD; width: 400px;}
-.protected_files_list tr {background-color: #EEE; color: #000;}
-.protected_files_list tr.even {background-color: #F9F9F9;}
-.protected_files_list tr td p,.protected_files_list tr td p a { font-size: 9px; padding: 0px 3px; margin: 0px; color: #000;}
-.protected_files_list tr td p.protected_file_access_everyone { color: #999;}
-.protected_files_list tr td p.protected_file_access_none { color: #900;}
-.protected_files_list tr td img { padding-right: 5px; }
-#permissions_screen_layer {display: none; padding: 0px 0px 5px 0px; margin: 0px; position: fixed; top: 20px; left: 50%; margin: auto; margin-left: -350px; width: 700px; z-index: 101; text-align: center; background: #2A61BD; border: 1px solid #2A61BD;}
-#permissions_screen_layer a { color: #fff; }
-
-
-#permissions_screen_layer iframe {width: 700px; height: 400px; padding: 0px; margin: 0px; border: 0px; }
-table.table_data_layout {border: 1px solid #5184D9; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
-.table_data_layout td { font-size: 14px; padding: 0px 5px 0px 5px;}
-.table_data_layout th { cursor: pointer; background: #5184D9; color: #fff; text-align: left; font-size: 16px; padding: 5px 20px 5px 5px; }
-.table_data_layout th.nosort { cursor: default; background: #C6D8F4; color: #2A61BD; text-align: left; font-size: 16px; padding: 5px 20px 5px 5px; }
-.table_data_layout th.highlight_label {background: #2A61BD; padding: 5px 20px 5px 5px; }
-.table_data_layout tr {background-color: #EEE; color: #000;}
-.table_data_layout tr.even {background-color: #F9F9F9;}
-.table_data_layout tr td p,.protected_files_list tr td p a { font-size: 9px; padding: 0px 3px; margin: 0px; color: #000;}
-.table_data_layout tr td p.protected_file_access_everyone { color: #999;}
-.table_data_layout tr td p.protected_file_access_none { color: #900;}
-.table_data_layout tr td img { padding-right: 5px; }
-.table_data_layout tr td a { color: #0A419D; text-decoration: none; font-size: 12px; width: 130px; text-align: center; display: inline-block; border-right: 1px solid #fff; line-height: 30px; }
-.table_data_layout tr td a:hover {color: #222; text-decoration: underline;}
-.table_data_layout tr td textarea { width: 400px; height: 50px; }
-.module_pending_install { background: #FBEADD url('../images/install_key_error_icon.jpg') no-repeat; margin: 10px 10px 10px 0px; padding: 3px;}
-.module_pending_install h2 {color: #C02A05; padding: 2px 0px; margin-left: 70px;}
-.module_pending_install p {color: #666;font-style: italic; font-size: 0.8em; margin-left: 70px;}
-.module_pending_install p.error {color: #691703;font-style: normal; font-weight: bold; font-size: 0.9em; margin-left: 70px; padding: 5px 0px;}
-.module_pending_install label {padding-right: 5px; color: #111; margin-left: 70px;}
-/** landing page: install summary module div block **/
-.module_install_summary { background: #EBF7FE; margin: 10px 10px 10px 0px; padding: 3px 10px;}
-.module_install_summary h2 {color: #044493; padding: 2px 0px;}
-.module_install_summary p {color: #333; font-size: 0.9em;}
-.module_install_summary a {color: #044493; font-size: 0.9em;}
-
-/** landing page: installed  module div block **/
-.module_install_completed, .module_install_settings, .module_install_accounts { 
-border: 1px solid #cccccc;
-border-radius: 3px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-margin: 4px;
-width: 250px;
-min-height: 100px;
-display: inline-block;
-vertical-align: top;
-background-image: linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -o-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(153,153,153)),
-	color-stop(1, rgb(252,252,252))
-);
-
-padding: 10px;
-}
-.module_install_completed h2, .module_install_settings h2, , .module_install_accounts h2 { 	 font-size: 1em; text-transform:none;font-variant:normal; padding: 2px 0px; text-decoration: none;}
-.module_install_completed p, .module_install_settings p, .module_install_accounts p {color: #000; font-size: 11px; padding-left: 7px;}
-.module_install_completed label, .module_install_settings label, .module_install_accounts label {color: #000; font-size: 11px; padding-left: 7px; font-weight: bold; padding-right: 5px;}
-.module_install_completed input[type=text], .module_install_settings input[type=text], .module_install_accounts input[type=text]
-{color: #000; font-size: 11px; width: 95px; margin-right: 7px;}
-
-.module_install_completed input[type=submit], .module_install_settings input[type=submit], .module_install_accounts input[type=submit]
-{color: #000; font-size: 11px; float: right;}
-
-.module_install_completed hr, .module_install_settings hr, .module_install_accounts hr { padding: 0px; margin: 0px; border: 1px solid #336699; margin-bottom: 15px;}
-.module_install_completed img.icon, .module_install_settings img.icon, .module_install_accounts img.icon { height: 35px; padding-right: 10px; float: left;}
-.module_install_completed img.help-icon, .module_install_settings img.help-icon, .module_install_accounts img.help-icon  { float: right;}
-.module_install_completed h3, .module_install_settings h3, .module_install_accounts h3 { font-size: 12px; padding: 4px 0px 0px 0px; text-decoration: none;}
-.module_install_completed ul, .module_install_settings ul, .module_install_accounts ul {margin: 0px 0px 0px 10px; padding: 0px; list-style-type: none;}
-.module_install_completed li, .module_install_settings li, .module_install_accounts li {margin: 0px; padding: 0px;color: #000; font-size: 11px;}
-
-fieldset {border: 1px solid #2A61BD; padding: 5px; margin: 0px 0px 5px 0px;}
-fieldset legend {font-weight: bold; color: #2A61BD;}
-p.notification {
-	        line-height: 24px;
-		    background: #E4E4E4 url('../images/bar_bg.jpg') repeat-x; 
-			border-radius: 5px; 
-			-moz-border-radius: 5px; 
-			-webkit-border-radius: 5px;
-			border: 1px solid #cccccc;
-			margin-top: 5px;
-			margin-right: 5px;
-			padding-left: 10px;
-			padding-right: 10px;
-			
-		}
-.settings-option-box, div.settings-update-info-box { 
-border: 1px solid #cccccc;
-border-radius: 3px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-margin: 4px;
-width: 250px;
-min-height: 100px;
-display: inline-block;
-vertical-align: top;
-background-image: linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -o-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(153,153,153)),
-	color-stop(1, rgb(252,252,252))
-);
-
-padding: 10px;
-}
-.settings-option-box h2, div.settings-update-info-box h2 {
-	 font-size: 1em; text-transform:none;font-variant:normal; 
-}
-.settings-update-info-box p {  
-	font-size: 8pt;
-}
-.settings-option-box input[type=submit] { float: right; }
-.settings-update-info-box input[type=submit] { float: right; } 
-
-a.status-online {
-	float: right;
-    color: #669900;
-	text-transform:uppercase;
-	font-variant: small-caps;
-	font-size: 8pt;
-	margin-right: 10px;
-}
-a.status-offline {
-	float: right;
-    color: #990000;
-	text-transform:uppercase;
-	font-variant: small-caps;
-	font-size: 8pt;
-
-	margin-right: 10px;
-
+body { padding: 0px; margin: 0px; font-family: Arial, sans-serif; color: #333; font-size: 0.9em;}
+div { padding: 0px; margin: 0px; }
+/** TOP BAR ** */
+#top_bar {background: #E4E4E4 url('../images/bar_bg.jpg') repeat-x; height: 40px; text-align: left; color: #2C62B4;}
+#top_bar img { float: right; }
+#top_bar p { margin: 0px; padding: 0px 5px; line-height: 40px;}
+
+/** NOTICE BAR **/
+#notice_bar {
+background-image: linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
+background-image: -o-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(255,83,3) 0%, rgb(255,132,0) 100%);
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(255,83,3)),
+	color-stop(1, rgb(255,132,0))
+);	
+    min-height: 40px;
+	 text-align: left; 
+	color: #ffffff !important;
+	font-weight: bold;
+	padding-left: 10px;
+}
+#notice_bar img { padding-right: 10px; }
+#notice_bar p {  }
+#notice_bar span.file_name { color: #ffffff; font-family: "Courier New", Courier, monospace; }
+span.logged-in-username { display: none; }
+
+#container { padding-left:190px; }
+#content { width:100%; margin-left:-190px; float: left; border-left:190px solid #fff; text-align: left; }
+#menu { width: 190px; float: left; margin-left: -190px; }
+h1 {color: #222; font-size: 1.2em; padding: 2px; margin: 0px;}
+h2 {color: #2A61BD; font-size: 1.2em; padding: 3px 0px 0px 0px; margin: 0px; margin-bottom: 5px; text-transform:capitalize; /*font-variant:small-caps; text-decoration: underline; border-bottom: 1px solid #2a61bd; */  }
+h3 {color: #444444; font-size: 1em; padding: 4px 0px 0px 0px; margin: 0px; /*text-decoration: underline; */ clear: both;}
+h4 {color: #222; font-size: 0.9em; padding: 4px 0px 5px 0px; margin: 0px;}
+p {color: #333; font-size: 0.9em; padding: 2px 0px; margin: 0px;}
+a { color: #2A61BD; }
+form { padding: 2px 0px 6px 0px; margin: 0px;}
+ul.form_display { border:0; margin:0; padding:0; list-style:none; }
+ul.form_display li {clear:both; list-style:none; padding-bottom:10px; }
+ul.form_display li input{float:left;}
+ul.form_display li label{width:140px;float:left;}
+ul.form_display li.checkbox label { width: auto;}
+.protected_files_list {}
+.protected_files_list td {font-size: 14px;}
+.protected_files_list th {background: #5184D9; color: #fff; width: 150px; text-align: left; font-size: 16px;}
+.protected_files_list th.name_label {background: #2A61BD; width: 400px;}
+.protected_files_list tr {background-color: #EEE; color: #000;}
+.protected_files_list tr.even {background-color: #F9F9F9;}
+.protected_files_list tr td p,.protected_files_list tr td p a { font-size: 9px; padding: 0px 3px; margin: 0px; color: #000;}
+.protected_files_list tr td p.protected_file_access_everyone { color: #999;}
+.protected_files_list tr td p.protected_file_access_none { color: #900;}
+.protected_files_list tr td img { padding-right: 5px; }
+#permissions_screen_layer {display: none; padding: 0px 0px 5px 0px; margin: 0px; position: fixed; top: 20px; left: 50%; margin: auto; margin-left: -350px; width: 700px; z-index: 101; text-align: center; background: #2A61BD; border: 1px solid #2A61BD;}
+#permissions_screen_layer a { color: #fff; }
+
+
+#permissions_screen_layer iframe {width: 700px; height: 400px; padding: 0px; margin: 0px; border: 0px; }
+table.table_data_layout {border: 1px solid #5184D9; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.table_data_layout td { font-size: 14px; padding: 0px 5px 0px 5px;}
+.table_data_layout th { cursor: pointer; background: #5184D9; color: #fff; text-align: left; font-size: 16px; padding: 5px 20px 5px 5px; }
+.table_data_layout th.nosort { cursor: default; background: #C6D8F4; color: #2A61BD; text-align: left; font-size: 16px; padding: 5px 20px 5px 5px; }
+.table_data_layout th.highlight_label {background: #2A61BD; padding: 5px 20px 5px 5px; }
+.table_data_layout tr {background-color: #EEE; color: #000;}
+.table_data_layout tr.even {background-color: #F9F9F9;}
+.table_data_layout tr td p,.protected_files_list tr td p a { font-size: 9px; padding: 0px 3px; margin: 0px; color: #000;}
+.table_data_layout tr td p.protected_file_access_everyone { color: #999;}
+.table_data_layout tr td p.protected_file_access_none { color: #900;}
+.table_data_layout tr td img { padding-right: 5px; }
+.table_data_layout tr td a { color: #0A419D; text-decoration: none; font-size: 12px; width: 130px; text-align: center; display: inline-block; border-right: 1px solid #fff; line-height: 30px; }
+.table_data_layout tr td a:hover {color: #222; text-decoration: underline;}
+.table_data_layout tr td textarea { width: 400px; height: 50px; }
+.module_pending_install { background: #FBEADD url('../images/install_key_error_icon.jpg') no-repeat; margin: 10px 10px 10px 0px; padding: 3px;}
+.module_pending_install h2 {color: #C02A05; padding: 2px 0px; margin-left: 70px;}
+.module_pending_install p {color: #666;font-style: italic; font-size: 0.8em; margin-left: 70px;}
+.module_pending_install p.error {color: #691703;font-style: normal; font-weight: bold; font-size: 0.9em; margin-left: 70px; padding: 5px 0px;}
+.module_pending_install label {padding-right: 5px; color: #111; margin-left: 70px;}
+/** landing page: install summary module div block **/
+.module_install_summary { background: #EBF7FE; margin: 10px 10px 10px 0px; padding: 3px 10px;}
+.module_install_summary h2 {color: #044493; padding: 2px 0px;}
+.module_install_summary p {color: #333; font-size: 0.9em;}
+.module_install_summary a {color: #044493; font-size: 0.9em;}
+
+/** landing page: installed  module div block **/
+.module_install_completed, .module_install_settings, .module_install_accounts { 
+border: 1px solid #cccccc;
+border-radius: 3px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+margin: 4px;
+width: 250px;
+min-height: 100px;
+display: inline-block;
+vertical-align: top;
+background-image: linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -o-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(153,153,153)),
+	color-stop(1, rgb(252,252,252))
+);
+
+padding: 10px;
+}
+.module_install_completed h2, .module_install_settings h2, , .module_install_accounts h2 { 	 font-size: 1em; text-transform:none;font-variant:normal; padding: 2px 0px; text-decoration: none;}
+.module_install_completed p, .module_install_settings p, .module_install_accounts p {color: #000; font-size: 11px; padding-left: 7px;}
+.module_install_completed label, .module_install_settings label, .module_install_accounts label {color: #000; font-size: 11px; padding-left: 7px; font-weight: bold; padding-right: 5px;}
+.module_install_completed input[type=text], .module_install_settings input[type=text], .module_install_accounts input[type=text]
+{color: #000; font-size: 11px; width: 95px; margin-right: 7px;}
+
+.module_install_completed input[type=submit], .module_install_settings input[type=submit], .module_install_accounts input[type=submit]
+{color: #000; font-size: 11px; float: right;}
+
+.module_install_completed hr, .module_install_settings hr, .module_install_accounts hr { padding: 0px; margin: 0px; border: 1px solid #336699; margin-bottom: 15px;}
+.module_install_completed img.icon, .module_install_settings img.icon, .module_install_accounts img.icon { height: 35px; padding-right: 10px; float: left;}
+.module_install_completed img.help-icon, .module_install_settings img.help-icon, .module_install_accounts img.help-icon  { float: right;}
+.module_install_completed h3, .module_install_settings h3, .module_install_accounts h3 { font-size: 12px; padding: 4px 0px 0px 0px; text-decoration: none;}
+.module_install_completed ul, .module_install_settings ul, .module_install_accounts ul {margin: 0px 0px 0px 10px; padding: 0px; list-style-type: none;}
+.module_install_completed li, .module_install_settings li, .module_install_accounts li {margin: 0px; padding: 0px;color: #000; font-size: 11px;}
+
+fieldset {border: 1px solid #2A61BD; padding: 5px; margin: 0px 0px 5px 0px;}
+fieldset legend {font-weight: bold; color: #2A61BD;}
+p.notification {
+	        line-height: 24px;
+		    background: #E4E4E4 url('../images/bar_bg.jpg') repeat-x; 
+			border-radius: 5px; 
+			-moz-border-radius: 5px; 
+			-webkit-border-radius: 5px;
+			border: 1px solid #cccccc;
+			margin-top: 5px;
+			margin-right: 5px;
+			padding-left: 10px;
+			padding-right: 10px;
+			
+		}
+.settings-option-box, div.settings-update-info-box { 
+border: 1px solid #cccccc;
+border-radius: 3px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+margin: 4px;
+width: 250px;
+min-height: 100px;
+display: inline-block;
+vertical-align: top;
+background-image: linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -o-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(153,153,153) 0%, rgb(252,252,252) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(153,153,153)),
+	color-stop(1, rgb(252,252,252))
+);
+
+padding: 10px;
+}
+.settings-option-box h2, div.settings-update-info-box h2 {
+	 font-size: 1em; text-transform:none;font-variant:normal; 
+}
+.settings-update-info-box p {  
+	font-size: 8pt;
+}
+.settings-option-box input[type=submit] { float: right; }
+.settings-update-info-box input[type=submit] { float: right; } 
+
+a.status-online {
+	float: right;
+    color: #669900;
+	text-transform:uppercase;
+	font-variant: small-caps;
+	font-size: 8pt;
+	margin-right: 10px;
+}
+a.status-offline {
+	float: right;
+    color: #990000;
+	text-transform:uppercase;
+	font-variant: small-caps;
+	font-size: 8pt;
+
+	margin-right: 10px;
+
 }
