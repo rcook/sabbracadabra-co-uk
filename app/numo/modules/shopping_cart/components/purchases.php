@@ -1,6 +1,7 @@
 <?php
 if(!isset($_SESSION['account_id'])) {
-	print "[NUMO.ACCOUNTS: LOGIN BOX]";
+		print "[NUMO.ACCOUNTS: LOGIN BOX(title={$PARAMS['login_title']})]";
+
 	return;
 }
 

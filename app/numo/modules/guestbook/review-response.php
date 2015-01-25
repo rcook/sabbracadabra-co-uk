@@ -148,6 +148,9 @@ if($row = mysql_fetch_array($result)) {
 				} else if ($field['input_type'] == "textarea") {
 				print '<tr><th width="200px">'.$field['name'].':</th><td><textarea style="width: 99%; height: 100px; " name="slot_'.$field['slot'].'">'.stripslashes($fieldValue).'</textarea></td></tr>';
 					
+				} else {
+					print '<tr><th width="200px">'.$field['name'].':</th><td><input style="width: 99%;" name="slot_'.$field['slot'].'" value="'.addslashes(nl2br($fieldValue)).'" /></td></tr>';
+					
 				}
 			}
 		}

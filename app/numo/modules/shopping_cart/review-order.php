@@ -11,7 +11,7 @@ if ($_POST['cmd'] == "Cancel Order") {
 } else if ($_POST['cmd'] == "Mark As Paid") { 
 	$sql = "UPDATE `shopping_cart_orders` SET `payment_status`='Completed', payment_date='".date("Y-m-d H:i:s")."' WHERE `id`='".$_GET['id']."'";
 	$dbObj->query($sql);
-	
+	$order->sendAdminNotificationOfCompletedOrder();
 } else if ($_POST['cmd'] == "Unmark As Paid") { 
 	$sql = "UPDATE `shopping_cart_orders` SET `payment_status`='Pending' WHERE `id`='".$_GET['id']."'";
 	$dbObj->query($sql);

@@ -3,6 +3,14 @@
 /*    PRODUCT SELECTED    */
 /**************************/
 if(is_numeric($_GET['pid'])) {
+		global $productDisplayed;
+	if ($productDisplayed == true) {
+		//print "displayed";
+		return; 
+	} else {
+		//print "shoulddisplay";
+	} 
+	//$productDisplayed = true;
 	$sql = "SELECT c.id, c.label, c.`parent_id` FROM `shopping_cart_product_categories` pc, `shopping_cart_categories` c WHERE pc.`product_id`='".$_GET['pid']."' AND c.`site_id`='".NUMO_SITE_ID."' AND c.id=pc.`category_id` ORDER BY pc.`id` desc";
 	$results = $dbObj->query($sql);
 
@@ -21,9 +29,9 @@ if(is_numeric($_GET['pid'])) {
 			continue;
 		}
 		if (strstr($_SERVER['REQUEST_URI'], "manage.numo") || (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true)) {
-			$breadcrumbStr = htmlentities(' »').' <a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid='.$row['id'].$orderString.'">'.$row['label'].'</a>'.$breadcrumbStr;
+			$breadcrumbStr = ' &raquo; <a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid='.$row['id'].$orderString.'">'.$row['label'].'</a>'.$breadcrumbStr;
 		} else {
-			$breadcrumbStr = htmlentities(' »').' <a href="?cid='.$row['id'].$orderString.'">'.$row['label'].'</a>'.$breadcrumbStr;
+			$breadcrumbStr = ' &raquo; <a href="?cid='.$row['id'].$orderString.'">'.$row['label'].'</a>'.$breadcrumbStr;
 		}
 
 
@@ -70,9 +78,9 @@ if(is_numeric($_GET['pid'])) {
 	while(isset($categories[$value])) {
 	
 		if (strstr($_SERVER['REQUEST_URI'], "manage.numo") || (REMOTE_SERVICE === true && DIRECT_PROCESSING !== true)) {
-			$breadcrumbStr = htmlentities(' »').' <a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
+			$breadcrumbStr = ' &raquo;  <a href="'.$MANAGE_NUMO_LOCATION.'?module=shopping_cart&component=catalog&cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
 		} else {
-			$breadcrumbStr = htmlentities(' »').' <a href="?cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
+			$breadcrumbStr = ' &raquo;  <a href="?cid='.$value.'">'.$categories[$value]['label'].'</a>'.$breadcrumbStr;
 		}
 
 		

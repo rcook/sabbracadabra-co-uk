@@ -1,11 +1,12 @@
-body { margin: 10px; padding: 0px; background: #fff; font-family: Arial, sans-serif; color: #333;}
-#header {border-bottom: 1px solid #CCC;}
-ul#navigation {list-style:none; margin: 5px 0px; padding: 0px; position: absolute; left: 10px;}
-ul#navigation li a {background: #CCC; padding: 5px 0px; margin: 1px 0px; color: #2B62B4; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; display: block; width: 200px;}
-ul#navigation li a:hover {color: #333;}
-#content {background: none; margin: 0px; margin-left: 230px; padding: 0px;}
-#content h2 {padding: 0px; margin: 12px 0px; color: #2B62B4; font-weight: bold; font-size: 1.2em; text-decoration: underline;}
-#content h3 {padding: 0px; margin: 10px 0px; color: #000; font-weight: bold; font-size: 1.1em;}
-#content p {padding: 0px; margin: 10px 0px;}
-#content a {color: #000; text-decoration: underline;}
-#content a:hover {text-decoration: none;}
+body { margin: 10px; padding: 0px; background: #fff; font-family: Arial, sans-serif; color: #333;}
+#header {border-bottom: 1px solid #CCC;}
+ul#navigation {list-style:none; margin: 5px 0px; padding: 0px; position: absolute; left: 10px;}
+ul#navigation li a {background: #CCC; padding: 5px 0px; margin: 1px 0px; color: #2B62B4; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; display: block; width: 200px;}
+ul#navigation li a:hover {color: #333;}
+#content {background: none; margin: 0px; margin-left: 230px; padding: 0px;}
+#content h2 {padding: 0px; margin: 12px 0px; color: #2B62B4; font-weight: bold; text-decoration: underline;}
+#content h3 {padding: 0px; margin: 10px 0px; color: #000; font-weight: bold; }
+#content p {padding: 0px; margin: 10px 0px;}
+#content a {color: #000; text-decoration: underline;}
+#content a:hover {text-decoration: none;}
+

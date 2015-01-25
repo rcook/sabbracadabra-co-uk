@@ -28,6 +28,9 @@ if($_POST['process'] == "csv_file" && $_FILES['file']) {
 	move_uploaded_file($_FILES['file']['tmp_name'], $csvFileName);
 
 	$csvContents = file($csvFileName,FILE_SKIP_EMPTY_LINES);
+	if (sizeof($csvContents) == 1) {
+	  $csvContents = explode("\r", $csvContents[0]);
+	}
 
 	$fileHeadings = explode(",",$csvContents[0]);
 
@@ -39,6 +42,9 @@ if($_POST['process'] == "csv_file" && $_FILES['file']) {
 } else if($_POST['cmd'] == "import") {
 	//load in csv file
 	$csvContents = file($_POST['csv_file_name'],FILE_SKIP_EMPTY_LINES);
+	if (sizeof($csvContents) == 1) {
+	  $csvContents = explode("\r", $csvContents[0]);
+	}
 
 	$sql = "SELECT default_account_group FROM newsletter_settings WHERE site_id='".NUMO_SITE_ID."'";
 	$result = $dbObj->query($sql);

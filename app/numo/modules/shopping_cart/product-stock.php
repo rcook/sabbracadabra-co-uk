@@ -1,8 +1,22 @@
 <?php
 
 if ($_POST['cmd'] == "enable") {
-  $sql = "INSERT INTO `shopping_cart_product_stock` (`key`,`units`,`site_id`) VALUES ('".$_POST['id']."','0',".NUMO_SITE_ID.")";
-  $dbObj->query($sql);
+  $sql = "SELECT a.`id`, a.`label` FROM `shopping_cart_optional_product_attributes` a, `shopping_cart_products` p WHERE a.`type`='dropdown list' AND a.`product_id`='".$_GET['id']."' AND a.`product_id`=p.`id` AND p.`site_id`='".NUMO_SITE_ID."' ORDER BY a.`position` asc";
+  //print $sql;
+  $results = $dbObj->query($sql);
+
+
+
+  if (mysql_num_rows($results) == 0) {
+
+	  $sql = "INSERT INTO `shopping_cart_product_stock` (`key`,`units`,`site_id`) VALUES ('".$_POST['id']."','0',".NUMO_SITE_ID.")";
+	  $dbObj->query($sql);
+	  print "old";
+  } else {
+	init_optional_stock();
+
+  }
+
 
 } else if ($_POST['nocmd'] == "Disable Stock on this Item") {
 	//print "x";
@@ -11,8 +25,21 @@ if ($_POST['cmd'] == "enable") {
 			if(!is_numeric($value)) {
 				$value = 0;
 			}
+			$keyData = explode("-", substr($key,7));
+
+			if (sizeof($keyData) > 1) {
+			  //array_pop($keyData);
+			  $shortedKey = $keyData[0];
+ 			  $sql = "DELETE FROM `shopping_cart_product_stock` WHERE site_id='".NUMO_SITE_ID."' AND `key`='{$shortedKey}'";
+    		  $dbObj->query($sql);
+    		  //print $sql;
+			  //print "new key: $key";
+			}
+
   $sql = "DELETE FROM `shopping_cart_product_stock` WHERE site_id='".NUMO_SITE_ID."' AND `key`='".substr($key,7)."'";
     $dbObj->query($sql);
+  //  print mysql_error();
+   // print $sql."<br>";
 
  // print $sql;
 /*
@@ -32,7 +59,7 @@ if ($_POST['cmd'] == "enable") {
 			*/
 		}
 	}
-	header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/manage-products/');
+	//header('Location: '.NUMO_FOLDER_PATH.'module/'.$_GET['m'].'/manage-products/');
 
 
 } else if($_POST['cmd'] == "update") {
@@ -91,7 +118,7 @@ if(mysql_num_rows($results) > 0) {
 		$attributes[$counter]['id'] = $row['id'];
 		$attributeOptions = array();
 
-		//get all options for product attribute
+		// get all options for product attribute
 		$sql = "SELECT `id`, `label` FROM `shopping_cart_optional_product_attribute_options` WHERE `attribute_id`='".$row['id']."' AND `status`=1 ORDER BY `id`";
 		$options = $dbObj->query($sql);
 
@@ -103,14 +130,36 @@ if(mysql_num_rows($results) > 0) {
 
 		$counter++;
 	}
+	/*
+	$sql = "SELECT `units` FROM `shopping_cart_product_stock` WHERE `key`='".$_GET['id']."'";
+	$countResult = $dbObj->query($sql);
+	if ($countRow = mysql_fetch_array($countResult)) {
+	  $haveUnits = true;
+	} else {
+	  $haveUnits = false;
+	}
+	*/
 
-	print "<table class='table table-bordered' style='width: 400px;'>".get_optional_stock_options($attributes,$_GET['id'],0,"")."</table>";
+	$echo = "<table class='table table-bordered' style='width: 400px;'>".get_optional_stock_options($attributes,$_GET['id'],0,"")."</table>";
+	if ($haveUnits) {
+
+	echo $echo;
+	} else {
+	//print "don't have any units";
+	}
 ?>
 <input type="hidden" name="cmd" value="update" />
+<?php if ($haveUnits) { ?>
 <input type="submit" name="nocmd" class='btn btn-success' value="Update" />
 <input type="submit" name="nocmd" class='btn btn-warning' value="Disable Stock on this Item" />
+<?php } else {
+print "Stock is not yet enabled on this item.<br><br/>";
+print '<input type="hidden" name="cmd" value="enable" />';
+print '<input type="hidden" name="id" value="'.$_GET['id'].'" />';
+		print '<input type="submit"  class="btn btn-success" name="nocmd" value="Enable" /> ';
+ } ?>
 <a href="module/shopping_cart/manage-products/" class='btn'>Cancel</a>
-<?php	
+<?php
 } else {
 	$sql = "SELECT `units` FROM `shopping_cart_product_stock` WHERE `key`='".$_GET['id']."'";
 	//print $sql."<br>";
@@ -124,7 +173,7 @@ if(mysql_num_rows($results) > 0) {
 <input type="submit" name="nocmd"  class='btn btn-warning' value="Disable Stock on this Item" />
 <a href="module/shopping_cart/manage-products/" class='btn'>Cancel</a>
 <?php
-	//no stock record found
+	// no stock record found
 	} else {
 		print '<table class="table table-bordered" style="width: 400px;"><tr><td><label for="stock">Stock:</label></td><td>';
 		print '<input type="submit"  class="btn btn-success" name="nocmd" value="Enable" />';
@@ -133,14 +182,16 @@ if(mysql_num_rows($results) > 0) {
 ?>
 <input type="hidden" name="cmd" value="enable" />
 <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
-<?php		
-		
+<?php
+
 	}
 }
 ?>
 </form>
 <?php
 function get_optional_stock_options($attributes,$key, $pos, $str) {
+    global $haveUnits;
+
 	foreach($attributes[$pos]['options'] as $id => $option) {
 		//no more options, show stock input
 		if(($pos+1) == count($attributes)) {
@@ -151,9 +202,11 @@ function get_optional_stock_options($attributes,$key, $pos, $str) {
 			$result = $dbObj->query($sql);
 
 			if($row = mysql_fetch_array($result)) {
+			    $haveUnits = true;
 				$str .= '<tr><td><label for="stock__'.$key."-".$id.'">'.$option.':</label></td><td><input class="stock_amount" type="text" name="stock__'.$key."-".$id.'" id="stock__'.$key."-".$id.'" value="'.$row['units'].'" />&nbsp;units</td></tr>';
 			} else {
-				$str .= '<tr><td><label for="stock__'.$key."-".$id.'">'.$option.':</label></td><td><input class="stock_amount" type="text" name="stock__'.$key."-".$id.'" id="stock__'.$key."-".$id.'" value="0" />&nbsp;units</td></tr>';
+			    $haveUnits = false;
+			  $str .= '<tr><td><label for="stock__'.$key."-".$id.'">'.$option.':</label></td><td><input class="stock_amount" type="text" name="stock__'.$key."-".$id.'" id="stock__'.$key."-".$id.'" value="0" />&nbsp;units</td></tr>';
 			}
 
 			mysql_free_result($result);
@@ -169,5 +222,71 @@ function get_optional_stock_options($attributes,$key, $pos, $str) {
 	}
 
 	return $str;
+}
+
+
+function init_optional_stock() {
+	global $dbObj;
+	$sql = "SELECT a.`id`, a.`label` FROM `shopping_cart_optional_product_attributes` a, `shopping_cart_products` p WHERE a.`type`='dropdown list' AND a.`product_id`='".$_GET['id']."' AND a.`product_id`=p.`id` AND p.`site_id`='".NUMO_SITE_ID."' ORDER BY a.`position` asc";
+	//print $sql;
+	$results = $dbObj->query($sql);
+
+$counter = 0;
+
+if(mysql_num_rows($results) > 0) {
+	while($row = mysql_fetch_array($results)) {
+		$attributes[$counter]['label'] = $row['label'];
+		$attributes[$counter]['id'] = $row['id'];
+		$attributeOptions = array();
+
+		// get all options for product attribute
+		$sql = "SELECT `id`, `label` FROM `shopping_cart_optional_product_attribute_options` WHERE `attribute_id`='".$row['id']."' AND `status`=1 ORDER BY `id`";
+		$options = $dbObj->query($sql);
+
+		while($option = mysql_fetch_array($options)) {
+			$attributeOptions[$option['id']] = $option['label'];
+		}
+
+		$attributes[$counter]['options'] = $attributeOptions;
+
+		$counter++;
+	}
+//print "<pre>";
+//	var_dump($attributes);
+//print "</pre>";
+	init_optional_stock_options($attributes, $_GET['id'], 0);
+	}
+
+}
+
+function init_optional_stock_options($attributes, $key, $pos = 0) {
+	global $dbObj;
+
+
+	foreach($attributes[$pos]['options'] as $id => $option) {
+		//no more options, show stock input
+		if(($pos+1) == count($attributes)) {
+			global $dbObj;
+
+			$sql = "SELECT `units` FROM `shopping_cart_product_stock` WHERE `key`='".$key."-".$id."'";
+			//print $sql."<br>";
+			$result = $dbObj->query($sql);
+
+			$sql = "INSERT INTO shopping_cart_product_stock (site_id, `key`, units) VALUES ('".NUMO_SITE_ID."', '{$key}-{$id}', 0)";
+			//print $sql."<br>";
+			$dbObj->query($sql);
+			print mysql_error()."<br>";
+
+			mysql_free_result($result);
+		//get the next level of options
+		} else if($pos < count($attributes)) {
+
+				init_optional_stock_options($attributes,$key."-".$id,($pos+1));
+
+
+		}
+	}
+
+	//return $str;
 }
 ?>

@@ -2,6 +2,7 @@
 //***************************************************************************
 // check to see if visitor is logged in already
 //***************************************************************************
+//print "c";
 if(isset($_SESSION['account_id'])) {
 	//don't show component when the visitor is already logged into an account
 	return;
@@ -12,6 +13,9 @@ if(isset($_SESSION['account_id'])) {
 
 <style>
 </style>
+<?php if ($PARAMS['title'] != "") { ?>
+<h3><?php echo $PARAMS['title']; ?></h3>
+<?php } ?>
 <table id="numo_account_forgot_password_component"><tr><td>
 <?php
 if($_POST['cmd'] == "forgot password") {

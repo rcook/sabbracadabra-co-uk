@@ -463,8 +463,8 @@
 
 
  /* seo h1/h2 */										
-#seo_1 h1								{color: #F7E8C9;	text-indent: 0px;	font-size: 28px;	font-family: "Book Antiqua",  "Trebuchet MS", Palatino, serif;	padding: 0px 20px 0px 20px;	 margin: 0px 0px 0px 0px;	text-align:left; font-style:italic;}
-#seo_2 h2								{color: #BC9A4A;	text-indent: 0px;	font-size: 14px;	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	padding: 10px 20px 0px 30px;	margin: 0px 0px 0px 0px;	letter-spacing: 3px; text-align:left;}
+#seo_1 h1								{color: #F7E8C9;    text-align: left;	text-indent: 0px; 	font-size: 28px;  line-height: 28px;	  font-family: "Book Antiqua",  "Trebuchet MS", Palatino, serif;	padding: 20px 20px 0px 20px;	 margin: 0px 0px 0px 0px;  font-style:italic;}
+#seo_2 h2								{color: #BC9A4A;	text-indent: 0px;	font-size: 14px;	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	padding: 0px 20px 10px 30px;	margin: 0px 0px 0px 0px;	letter-spacing: 3px; text-align:left;}
 
 #logo_tagline							{color: #470602;	font-size: 14px;	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
 

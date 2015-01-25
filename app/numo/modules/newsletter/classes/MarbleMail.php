@@ -73,7 +73,10 @@ class MarbleMail {
 
 	//construct headers
 	$headers = "MIME-Version: 1.0" . $this->newLine;
-	$headers .= "Content-type: text/html; charset=iso-8859-1" . $this->newLine;
+
+    // changed from iso-8859-1 to UTF-8 on April 22, 2014
+	//$headers .= "Content-type: text/html; charset=iso-8859-1" . $this->newLine;
+	$headers .= "Content-type: text/html; charset=UTF-8" . $this->newLine;
 	//$headers .= "To: $toName <$to>" . $this->newLine;
 	//$headers .= "From: $fromName <$from>" . $this->newLine;
 

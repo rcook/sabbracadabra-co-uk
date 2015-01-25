@@ -145,38 +145,28 @@ var flashConfigType = "xml"; // either xml or php
 	<li><a href="../home.htm">Home</a></li>
 	<li><a href="../news.htm">News</a></li>
 	<li><a href="../live.htm">Live</a></li>
-	<li><a href="../region_select.htm">Purchase</a>
-	<ul>
-		<li><a href="../mp3_shop.htm">Music Download Store</a></li>
-		<li><a href="../region_select.htm">CD Music Store</a>[NUMO.SHOPPING CART: LIST]</li>
-		<li><a href="../purchase_history.htm">View Your Purchases</a></li>
-		<li><a href="../shipping.htm">Shipping &amp; Payment Info</a></li>		
-	</ul>
-	</li>
 	<li><a href="../photo_gallery.htm">Gallery</a></li>
-	<li><a href="../biog.htm">Background</a><ul>
-		<li><a href="../biog.htm">Biography</a></li>
-		<li><a href="../influences.htm">Musical Influences</a></li>
-	</ul>
+	<li><a href="http://www.freewebstore.org/jonathankershawmusic" target="_blank">Store</a>
+	<li><a href="../mp3_shop.htm">Download</a></li>
+	<li><a href="../biog.htm">Background</a>
+		<ul>
+			<li><a href="../biog.htm">Biography</a></li>
+			<li><a href="../influences.htm">Musical Influences</a></li>
+		</ul>
 	</li>
-	<li><a href="../guestbook.htm">Guest Book</a></li>
 	<li><a href="../contact.htm">Contact</a>
-	<ul>
-		<li><a href="../contact.htm#1">Email</a></li>
-		<li><a href="../contact.htm#3">Telephone</a></li>
-<!--		<li><a href="../../contact.htm#4">Fax</a></li>
--->		
-		<li><a href="../contact.htm#2">Web Form</a></li>
-		<li><a href="../contact.htm#5">Address</a></li>
-<!--		<li><a href="../../contact.htm#6">Directions</a></li>
--->	
-	</ul>
+		<ul>
+			<li><a href="../contact.htm#1">Email</a></li>
+			<li><a href="../contact.htm#3">Telephone</a></li>
+			<li><a href="../contact.htm#2">Web Form</a></li>
+			<li><a href="../contact.htm#5">Address</a></li>
+		</ul>
 	</li>
 	<li><a href="../faqs.htm">FAQs</a></ul>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="54692" endspan -->
+<!--webbot bot="Include" i-checksum="64993" endspan -->
 							<br style="clear: left" /></div>
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
@@ -203,10 +193,10 @@ store.</p>
 <table style="width: 100%">
 	<tr>
 		<td style="width: 67px">
-		<a href="../region_select.htm">
+		<a href="http://www.freewebstore.org/jonathankershawmusic" target="_blank">
 <img src="../Site/images/bizarretales_tn_50x50.jpg" width="50" height="50" style="float: left" alt="New album &quot;Andrasta&quot;" class="auto-style1" longdesc="../Library/expression-fp/Available to purchase from the online store" /></a></td>
 		<td style="width: 424px">"Bizarre Tales" is now available on CD or download from the online
-		<a href="../region_select.htm">store</a></td>
+		<a href="http://www.freewebstore.org/jonathankershawmusic" target="_blank">store</a></td>
 	</tr>
 </table>
 <p>
@@ -214,7 +204,7 @@ store.</p>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="15411" endspan -->
+<!--webbot bot="Include" i-checksum="6910" endspan -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /whatsnew -->
@@ -228,20 +218,19 @@ store.</p>
 
 <h3>Latest News:</h3>
 	
-<h4 class="auto-style1"><a href="../news.htm#tour01">Beautiful Ghosts &amp; Bizarre Tales Tour 2013-2014 
-announced</a></h4>
+<h4 class="auto-style1"><a href="../news.htm#video_02">New Video release for 
+"Crossing The Third Sea"</a></h4>
 
-<h5>28 May 2013</h5>
+<h5>30 July 2014</h5>
 	
 <p>
 <table style="width: 100%">
 	<tr>
 		<td style="width: 105px">
-		<a href="../live.htm" target="_blank">
-		<img alt="Beck Siàn" height="100" src="../Site/images/beck_02_100x100.jpg" width="100" class="auto-style2"></a></td>
-		<td>Joint <a href="../news.htm#tour01">UK tour</a> with singer/songwriter 
-		<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> to begin in July.
-		</td>
+		<a href="../news.htm#video_02">
+		<img alt="Video for Crossing the Third Sea by Jonathan Kershaw" class="auto-style2" height="100" longdesc="../Library/expression-fp/New video for the song Crossing the Third Sea by Jonathan Kershaw from the album Bizarre Tales" src="../Site/themed_images/ship_shot_100x100.jpg" width="100"></a>&nbsp;</td>
+		<td>The official video for Jonathan's song "<a href="../news.htm#video_02">Crossing 
+		the Third Sea</a>" has been released.</td>
 	</tr>
 </table>
 </p>
@@ -252,7 +241,7 @@ announced</a></h4>
 <!-- #EndLibraryItem -->
 <p>Find out more about this and other recent news by clicking
 <a href="../news.htm#review_1">here</a>.</p>
-<!--webbot bot="Include" i-checksum="20162" endspan -->
+<!--webbot bot="Include" i-checksum="47764" endspan -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /currentnews -->
@@ -266,24 +255,27 @@ announced</a></h4>
 
 <h3>Live Performances</h3>
 	
-<h4>Ye Olde House At Home, Worthing, West Sussex</h4>
+<h4>Arts4Every1 Centre, High Wycombe, Bucks.</h4>
 
-<h5>14th September 2013</h5>
+<h5>23rd August 2014</h5>
 	
-<p>
-Jonathan will be performing at the 
-<a href="http://yeoldehouseathomeworthing.co.uk/" target="_blank">Ye Olde House At Home,</a> in 
-Worthing, West Sussex together with acclaimed singer/songwriter 
-<a href="../news.htm#tour_01">Beck Siàn</a>.</p>
+<table style="width: 100%">
+	<tr>
+		<td style="width: 105" valign="top">
+		<img alt="Jonathan Kershaw Live" height="100" src="../Site/images/jk_live_100x100.jpg" width="100"></td>
+		<td>Jonathan will be performing at the Arts4Every1 Centre, in 
+		High Wycombe, Buckinghamshire together with acclaimed singer/songwriter 
+<a href="../news.htm#tour_01">Beck Siàn</a>.</td>
+	</tr>
+</table>
 
 <p>
-<a href="../live.htm">
-<img src="../Site/images/jk_live_75x50.jpg" width="75" height="50" style="float: left; margin:2px 5px 2px 5px;" alt="demo" class="auto-style1" /></a>See the <a href="../live.htm">Live</a> 
+See the <a href="../live.htm">Live</a> 
 page for more details of this and all other gigs.</p>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="32868" endspan -->
+<!--webbot bot="Include" i-checksum="3712" endspan -->
 							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
 						</div>
 					<!-- /recentevents -->
@@ -725,21 +717,17 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 	<li><a href="../home.htm">Home</a></li>
 	<li><a href="../news.htm">News</a></li>
 	<li><a href="../live.htm">Live</a></li>
-	<li><a href="../region_select.htm">Purchase</a>
-	<ul>
-		<li><a href="../mp3_shop.htm">Music Download Store</a></li>
-		<li><a href="../region_select.htm">CD Music Store</a>[NUMO.SHOPPING CART: LIST]</li>
-		<li><a href="../purchase_history.htm">View Your Purchases</a></li>
-		<li><a href="../shipping.htm">Shipping &amp; Payment Info</a></li>		
-	</ul>
-	</li>
+<!--	<li><a href="../../music.htm">Music</a></li>
+-->
 	<li><a href="../photo_gallery.htm">Gallery</a></li>
-	<li><a href="../guestbook.htm">Guest Book</a></li>
+	<li><a href="http://www.freewebstore.org/jonathankershawmusic" target="_blank">Store</a>
+	<li><a href="../mp3_shop.htm">Downloads</a></li>
+
 </ul>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="33245" endspan --><br style="clear: left" /></div></div><div class="menu_bg_right"></div></div>
+<!--webbot bot="Include" i-checksum="13357" endspan --><br style="clear: left" /></div></div><div class="menu_bg_right"></div></div>
 				<!-- /menu top -->
 
 				<!--twitter-facebook-->
@@ -749,13 +737,12 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 
 <div>
 	<a href="http://www.facebook.com/jonkershawmusic/" target="_blank">	<img alt="follow me on facebook" 	title="Facebook" 	src="../Site/themed_images/facebook_badge.png" 		width="36" height="36" style="border:0px;" /></a>
-	<a href="http://www.myspace.com/jonkershawmusic/" target="_blank">	<img alt="follow me on myspace" 	title="Myspace" 	src="../Site/themed_images/myspace_button.png" 			width="36" height="36" style="border:0px;" /></a>
 	<a href="http://www.youtube.com/jonathankershawmusic/" target="_blank">	<img alt="follow Jonathan Kershaw on YouTube" 	title="YouTube" 	src="../Site/themed_images/youtube_button_36x36.png" 		width="36" height="36" style="border:0px;" /></a>
 	<a href="http://www.twitter.com/jon_kershaw/" target="_blank">	<img alt="tweet me" 				title="Twitter" 	src="../Site/themed_images/t_logo-a.png" 			width="36" height="36" style="border:0px;" /></a>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="60023" endspan --></div>
+<!--webbot bot="Include" i-checksum="13716" endspan --></div>
 				<!--/twitter-facebook-->
 
 				<!--zoom menu
@@ -800,10 +787,18 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 	<a href="../press.htm">Press</a> |
 	<a href="../venue_data.htm">Venue info</a>
 	</p>
+	<p>
+	&nbsp;</p>
+	<p>
+	Related Sites:&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="http://www.acousticgoth.com" target="_blank">Acousticgoth.com</a> | 
+	<a href="http://www.circusbizarre.co.uk" target="_blank">Circus Bizarre 
+	Guitar Tuition</a> | 
+	<a href="http://www.worthingguitar.com" target="_blank">Worthing Guitar</a></p>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" i-checksum="39760" endspan -->
+<!--webbot bot="Include" i-checksum="29269" endspan -->
 			<!-- #EndEditable -->
 
 </div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bbf"><div></div></div></div></div>

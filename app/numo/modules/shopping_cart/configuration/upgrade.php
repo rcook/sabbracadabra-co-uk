@@ -90,7 +90,12 @@ if (!$exists) {
 	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `order_by_field` varchar(255) default ''");
 	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `show_breadcrumb` tinyint(4) default '1'");
 	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `show_order_chooser` tinyint(4) default '1'");
+}
 
+// add in the ability to save a default "order by" field (2012-11-22)
+$result = $dbObj->query("SELECT * FROM language_syntax WHERE site_id='".NUMO_SITE_ID."' AND id='SHOPPING_CART-ORDER_BY'");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_BY', '".NUMO_SITE_ID."', 'Order By')");
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_BY_DIRECTION', '".NUMO_SITE_ID."', 'Direction')");
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_BY_DIRECTION_ASCENDING', '".NUMO_SITE_ID."', 'Ascending')");
@@ -265,9 +270,9 @@ $result = $dbObj->query("SELECT * FROM language_syntax WHERE site_id='".NUMO_SIT
 $exists = (mysql_num_rows($result))?TRUE:FALSE;
 if (!$exists) {
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_COMPLETED_ADMIN_EMAIL_SUBJECT', '".NUMO_SITE_ID."', 'Completed Sale Notification Order #[Order ID] from YOUR SITE NAME')");
-	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_COMPLETED_ADMIN_EMAIL_MESSAGE', '".NUMO_SITE_ID."', 'This is a notification of a COMPLETED order for [Customer Name] of [Order Total].<br/><br/>[Order Items]')");
+	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_COMPLETED_ADMIN_EMAIL_MESSAGE', '".NUMO_SITE_ID."', 'This is a notification of a COMPLETED order for [Customer Name] of [Order Total].<br/><br/>[Customer Invoice Info]<br/><br/>[Order Items]')");
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_PENDING_ADMIN_EMAIL_SUBJECT', '".NUMO_SITE_ID."', 'Pending Order Notification from YOUR SITE NAME')");
-	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_PENDING_ADMIN_EMAIL_MESSAGE', '".NUMO_SITE_ID."', 'This is a notification of a PENDING order via [Payment Method] for [Customer Name] of [Order Total].<br/><br/>[Order Items]')");
+	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_PENDING_ADMIN_EMAIL_MESSAGE', '".NUMO_SITE_ID."', 'This is a notification of a PENDING order via [Payment Method] for [Customer Name] of [Order Total].<br/><br/>[Customer Invoice Info]<br/><br/>[Order Items]')");
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_RECEIVED_EMAIL_SUBJECT', '".NUMO_SITE_ID."', 'Your Order Has Been Received at YOUR SITE NAME')");
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-ORDER_RECEIVED_EMAIL_MESSAGE', '".NUMO_SITE_ID."', 'Hello [Customer Name],<br><br>Greetings from YOUR SITE NAME and thank you for your order!  It has been received and will be shipped once payment can be confirmed.  Please review your order details below:<br><br>[Order Items]<br/><br/>If you have any questions about your order, please contact us at 1-800-555-1234.<br/><br/>[Payment Type Instructions]')");
 }
@@ -300,4 +305,56 @@ if (!$exists) {
 	$dbObj->query("INSERT INTO `language_syntax` (`id`, `site_id`, `value`) VALUES ('SHOPPING_CART-BREADCRUMB_HOME_LABEL', '".NUMO_SITE_ID."', 'Catalog')");
 }
 
+// add support for lightbox product image viewing (July 16 2013)
+$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'product_details_use_lightbox'");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
+	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `product_details_use_lightbox` tinyint(4) default '1'");
+}
+
+$result = $dbObj->query("SELECT * FROM shopping_cart_discount LIMIT 1");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
+	$dbObj->query("CREATE TABLE IF NOT EXISTS `shopping_cart_discount` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `discount_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0 = total, 1 = quantity',
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `visibility` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0 = pending, 1 = global, 3 = coupon',
+  `amount_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0 = $, 1 = %',
+  `qualifier_scope` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0 = order, 1 = product, 4 = product category',
+  `amount` double(10,2) NOT NULL DEFAULT '0.00',
+  `scope_extension_id` text NOT NULL,
+  `discount_scope` tinyint(4) NOT NULL COMMENT '0 = rebate, 1 = shipping',
+  `discount_name` varchar(50) NOT NULL,
+  `when_created` datetime NOT NULL,
+  `created_by` bigint(20) NOT NULL,
+  `site_id` bigint(20) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `scope_quantifier` double(10,2) NOT NULL DEFAULT '0.00',
+  `access_qualifier` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8");
+}
+
+// add support for row vs grid display
+$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'catalog_display'");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
+	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `catalog_display` tinyint(4) default 0");
+}
+
+// add ability to direct the user to a thank you page
+$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'paypal_return_url'");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
+	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `paypal_return_url` text");
+}
+
+// add ability to direct the user to a cancel page
+$result = $dbObj->query("SHOW COLUMNS FROM `shopping_cart_settings` LIKE 'paypal_cancel_url'");
+$exists = (mysql_num_rows($result))?TRUE:FALSE;
+if (!$exists) {
+	$dbObj->query("ALTER TABLE `shopping_cart_settings` ADD `paypal_cancel_url` text");
+}
 ?>

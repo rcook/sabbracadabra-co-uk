@@ -31,6 +31,11 @@ ul.licensed-modules { font-size: 8pt; }
 <h3>Update System</h3>  
 <div class="well">
 <h4>System Update Status</h4>
+<?php if ($_GET['fetch'] == "upgrades") { ?>
+<div class='alert alert-success'><h4>Your upgrade is nearly complete!</h4>
+<p>All you need to do now is run an update to grab the latest files from our server.</p>
+</div>
+<?php } ?>
 <p>
 <?php
 if ($lastUpdateTime == "0000-00-00 00:00:00") { 
@@ -52,7 +57,8 @@ or
 <? } ?>
 </center>
 </form>
-</div> 
+</div>
+
 <script> 
 
 jQuery("form#check-for-updates-form input[type=submit]").click(function() {
@@ -78,23 +84,35 @@ function checkForUpdates(submitValue) {
 		var lastUpdateTime = "";
 	} else {
 		var lastUpdateTime = "<?php print $lastUpdateTime; ?>";
-	}
-		$.get("<?php print NUMO_FOLDER_PATH; ?>?display=response_only&m=settings&i=update", args + "last_update_time=" + lastUpdateTime, 
+	} 
+		$.get("<?php print NUMO_FOLDER_PATH; ?>?display=response_only&m=settings&i=update", args + "updater_version=1&last_update_time=" + lastUpdateTime, 
 					function(data) {			
-						$("#progress-data").html(data);		
-		  			    $(".form-submit").attr("disabled", false); 
+					//alert("done");
+					//alert(data);
+		  			    jQuery("#update-submit").attr("disabled", false); 
+						//alert("x");
+		  			    jQuery("#update-submit-all").attr("disabled", false); 
+						//alert("y");
+						
+						jQuery("#progress-data").html(data);		
+//alert("next");
+/*
+					alert("done2"); 
 
-						   $(".settings-update-info-box").each(function() {
-																		if ($(this).height() > maxDivHeight) {
-																			maxDivHeight = $(this).height();
+						   jQuery(".settings-update-info-box").each(function() {
+																		if (jQuery(this).height() > maxDivHeight) {
+																			maxDivHeight = jQuery(this).height();
 																			//alert($(this).height());
 																		}
 						  
 						   });
-						    $(".settings-update-info-box").height(maxDivHeight);
+					alert("done3"); 
+						    jQuery(".settings-update-info-box").height(maxDivHeight);
+					alert("done4"); 
 						  				
+										*/
                        // alert(data);
-
+//alert("x");  
 					}
 					);
 }
@@ -107,33 +125,64 @@ $(document).ready(function() {
 																		}
 						  
 						   });
+						   $(".settings-update-info-box-new").each(function() {
+																		if ($(this).height() > maxDivHeight) {
+																			maxDivHeight = $(this).height();
+																		}
+						  
+						   });						   
 						    $(".settings-update-info-box").height(maxDivHeight);
+						    $(".settings-update-info-box-new").height(maxDivHeight);
 						   });
 </script>
+
 <br/>
 <div id='progress-data' style='display: inline-block; vertical-align: top;'></div>
 <div id='progress-data-2' style='display: inline-block; vertical-align: top;'></div>
 
 <?php
 function callUpdateServer($data) {
+	//var_dump($data); 
 	global $dbObj; 
-	
+
+	  $useFopen = false;
+	  $testFile = 'test-'.time();
+	  $testFp = @fopen($testFile, 'w');
+	  if ($testFp) {
+		if (getmyuid() == @fileowner($testFile)) {
+			$useFopen = true;
+		}
+		@fclose($testFp);
+		@unlink($testFile);
+	  }
+
+
 	$query = "SELECT * FROM modules WHERE site_id='".NUMO_SITE_ID."'";
 	$moduleKeyResponse = $dbObj->query($query);
 	$licenseKeys = "";
 	$modules = "";
+	$pendingModules = "";
 	while ($moduleKeyRecord = mysql_fetch_array($moduleKeyResponse)) { 
-	    $licenseKeys .= ($moduleKeyRecord['license_key'] != "" && !strstr($licenseKeys, $moduleKeyRecord['license_key']) ? $moduleKeyRecord['license_key']."," : "");	  
-	    $modules     .= (!strstr($modules, $moduleKeyRecord['name']) ? $moduleKeyRecord['name']."," : "");	  
-	
+
+	   $licenseKeys .= ($moduleKeyRecord['license_key'] != "" && !strstr($licenseKeys, $moduleKeyRecord['license_key']) ? $moduleKeyRecord['license_key']."," : "");	  
+
+		$modules     .= (!strstr($modules, $moduleKeyRecord['name']) ? $moduleKeyRecord['name']."," : "");
+		if ($moduleKeyRecord['status'] == 2) {
+	      $pendingModules .= (!strstr($pendingModules, $moduleKeyRecord['name']) ? $moduleKeyRecord['name']."," : "");	  
+		}
+		//print $moduleKeyRecord['name']."-".$moduleKeyRecord['status']."<br>";
 	}
 	$licenseKeys = rtrim($licenseKeys, ",");
 	$modules = rtrim($modules, ",");
+	$pendingModules = rtrim($pendingModules, ",");
+	
 	if ($_GET['cmd2'] == "Update All Files") {
 		//print "x";
 		$_GET['last_update_time'] = "";
 	}
 	if ($_GET['cmd'] == "install") {
+		
+		
 	  $args = "&cmd=install"; 
 	 // $args .= "&; 
 	  if ($_GET['step'] != "") {
@@ -145,6 +194,7 @@ function callUpdateServer($data) {
 		  $args .= "&lpk_v=2";  
 		  $args .= "&document_root=".$_GET["document_root"]; 
 		  $args .= "&numo_folder_path=".$_GET["numo_folder_path"]; 
+		  
 	  } 
 	} 
 	
@@ -153,13 +203,85 @@ function callUpdateServer($data) {
 	curl_setopt($ch, CURLOPT_URL, 'http://numo.server-apps.com/update/'); //setup request to website to check license key
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  // return the response
 	curl_setopt($ch, CURLOPT_POST, 1); //transfer information as a POST request
-	curl_setopt($ch, CURLOPT_POSTFIELDS, 'lpk='.urlencode($licenseKeys).'&modules='.urlencode($modules).'&domain='.urlencode($_SERVER["HTTP_HOST"])."&last_update_time=".$_GET["last_update_time"].$args); //pass product license key and domain name along to be checked
+	curl_setopt($ch, CURLOPT_POSTFIELDS, 'lpk='.urlencode($licenseKeys).'&method='.($useFopen ? "direct" : "ftp").'&pending_modules='.urlencode($pendingModules).'&modules='.urlencode($modules).'&domain='.urlencode($_SERVER["HTTP_HOST"])."&updater_version=1&last_update_time=".$_GET["last_update_time"].$args); //pass product license key and domain name along to be checked
 
 	//send request and save response to variable
 	$response = @curl_exec($ch);
-	$response = str_replace('NUMO_FOLDER_PATH', NUMO_FOLDER_PATH, $response);  
-	$response = str_replace('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'], $response);  
+	//print "test";
+	if ($useFopen && $_GET['cmd'] == "install") {
+	//print $response; 
+		//print strlen($response)."<br>";
+		//print $response;  
+	$saveFileName = "update-".time().".zip"; 
+	//print realpath("../../".$saveFileName)."<br>";
+	$fp = fopen("../{$saveFileName}", 'w'); 
+	//if ($fp) { 
+	//	print "file was succesfully opened<br>";
+	//}
+	fwrite($fp, $response);
+	fclose($fp); 
 
+    // $newFileName = $_GET['mod']."_completed.zip";
+	//print "trying to rename {$saveFileName} to {$newFileName}<br/>";
+    // rename("modules/{$saveFileName}", "modules/{$newFileName}");
+	//sleep(1);
+    // unzip
+	$zip = new ZipArchive;
+	$res = $zip->open("../".$saveFileName);
+	$path = pathinfo(realpath("../".$saveFileName), PATHINFO_DIRNAME);
+	//print $path."<br>";
+	//print $res."<br>";
+    if ($res === TRUE) {
+      $zip->extractTo($path."/");
+      $zip->close();
+    //  echo 'woot!';
+    } else {
+    //  echo 'doh!';
+    }
+  // do cleanup
+  @unlink("../{$saveFileName}");
+
+  $pending = explode(",", $pendingModules);
+  //var_dump($pending);
+  // run install
+  foreach ($pending as $pendingMod) {
+	  $sqlLines = file("modules/{$pendingMod}/configuration/initialization.sql");
+	  foreach ($sqlLines as $line) {
+		  
+		  if (!strstr($line, "INSERT INTO `modules`")) {
+			  $line = str_replace("NUMO_SITE_ID", NUMO_SITE_ID, $line);
+			// print $line.'<br>';
+			$dbObj->query($line);	  
+		  }
+	  }
+	  
+	    // change status
+	  $update = "UPDATE modules SET status=1 WHERE name='{$pendingMod}' AND site_id='".NUMO_SITE_ID."'";
+	  //print $update;
+	  $dbObj->query($update);
+	  
+  }
+  
+  print '<div class="settings-update-info-box-new well span4">
+  <i class="fa fa-check-circle"></i>
+  
+  Done!</div>
+  
+  <script>
+    function goreload() {
+    document.location.href="'.NUMO_FOLDER_PATH.'";
+	}
+	setTimeout("goreload()", 2000); 
+  </script>
+  ';
+  
+  
+		  $update = "UPDATE sites SET last_updated='".date("Y-m-d H:i:s")."' WHERE id='".NUMO_SITE_ID."'";
+		 // print $update;
+		  $dbObj->query($update);
+
+
+	} else {
 	/*
 
 	------------------------
@@ -177,9 +299,15 @@ function callUpdateServer($data) {
 
 	//check to see if the curl request completed without error
 	if(curl_errno($ch)) {
+	  print curl_error($ch);
 
 	//error with license key provided 
 	} else {
+		
+	  $response = str_replace('NUMO_FOLDER_PATH', NUMO_FOLDER_PATH, $response);  
+	  $response = str_replace('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'], $response);  
+		
+		
 		print $response;
 		//print "step:".$_GET['step'];
 		if ($_GET['step'] == 6) {
@@ -190,6 +318,7 @@ function callUpdateServer($data) {
 		}
 		//curl_close($ch); //close curl connection
 
+	}		
 	}
 
 	curl_close($ch); //close curl connection

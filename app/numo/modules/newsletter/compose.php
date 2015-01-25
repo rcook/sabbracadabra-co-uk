@@ -40,7 +40,7 @@ td#compose_toolbar img:hover {cursor: pointer;}
 
 <ul class="breadcrumb">
   <li><a href="./">Home</a> <span class="divider">/</span></li>
-  <li class="active"><a href="modules/newsletter/manage/">Manage Newsletters</a>  <span class="divider">/</span></li>
+  <li class="active"><a href="module/newsletter/manage/">Manage Newsletters</a>  <span class="divider">/</span></li>
   <li class="active">Compose</li>
 </ul>
 <h2>Compose Message</h2>

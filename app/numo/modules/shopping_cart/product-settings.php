@@ -1,8 +1,8 @@
 <?php
 
-$currencyOptions = array("AUD" => "Australian Dollar ($)","CAD" => "Canadian Dollar ($)","EUR" => "Euro (&#128;)","NZD" => "New Zealand Dollar ($)","GBP" => "Pound Sterling (&#163;)","USD" => "U.S. Dollar ($)");
-$currencyOptionsShort = array("AUD" => "$","CAD" => "$","EUR" => "&#128;","NZD" => "$","GBP" => "&#163;","USD" => "$");
-
+$currencyOptions = array("AUD" => "Australian Dollar ($)","BRL" => "Brazillian Real (R$)","CAD" => "Canadian Dollar ($)","EUR" => "Euro (&#128;)","NZD" => "New Zealand Dollar ($)","GBP" => "Pound Sterling (&#163;)","USD" => "U.S. Dollar ($)");
+$currencyOptionsShort = array("AUD" => "$","BRL" => "R$", "CAD" => "$","EUR" => "&#128;","NZD" => "$","GBP" => "&#163;","USD" => "$");
+ 
 if($_POST['cmd'] == "update") {
 /************************************/
 /*         REMOVE FIELD(s)         */
@@ -122,6 +122,10 @@ if($_POST['cmd'] == "update") {
 	$offlineCollectShippingAddressStr = ",offline_collect_shipping_address='{$_POST['offline_collect_shipping_address']}'";
 	$zeroPricedProductPreferenceStr = ",zero_priced_display='{$_POST['zero_priced_display']}'";
 	$zeroPricedProductPreference2Str = ",zero_priced_display_when_attributes='{$_POST['zero_priced_display_when_attributes']}'";
+	$productDetailsLightbox = ",product_details_use_lightbox='{$_POST['product_details_use_lightbox']}'";
+	$catalogDisplay = ",catalog_display='{$_POST['catalog_display']}'";
+	$payPalReturnURL = ",paypal_return_url='{$_POST['paypal_return_url']}'";
+	$payPalCancelURL = ",paypal_cancel_url='{$_POST['paypal_cancel_url']}'";
 
 	//default update query
 	$sql = "UPDATE `shopping_cart_settings` SET 
@@ -146,7 +150,11 @@ if($_POST['cmd'] == "update") {
 	{$offlineCollectShippingAddressStr}
 	{$zeroPricedProductPreferenceStr}
 	{$zeroPricedProductPreference2Str}
+	{$productDetailsLightbox}
 	{$sendAdminNotifications}
+	{$catalogDisplay}
+	{$payPalReturnURL}
+	{$payPalCancelURL}
 	WHERE `site_id`='".NUMO_SITE_ID."'";
 
 
@@ -542,6 +550,19 @@ ul.form_display li label { width: 205px; }
 
                 </ul>
          </fieldset>
+ 
+ 		<fieldset>
+			<legend>Product Details</legend>
+			<ul class="form_display">
+				<li><label for="product_details_use_lightbox" style='width: 190px;'>Use Lightbox Image Viewer:</label>
+                <select style='float: left' name="product_details_use_lightbox" id="product_details_use_lightbox">
+                <?=display_yes_no_options($row['product_details_use_lightbox'])?>
+                </select>
+              
+                </li>
+				
+                </ul>
+         </fieldset>
  		<fieldset>
 			<legend>Catalog</legend>
                 
@@ -592,9 +613,14 @@ ul.form_display li label { width: 205px; }
                 </li>                   
  				<li><label for="zero_priced_display_when_attributes" style='width: 330px;'>Show ZERO priced Products (with paid attributes) as:</label>
                 <select name="zero_priced_display_when_attributes" id="zero_priced_display_when_attributes">
-				<?php echo generate_list_options(array("0" => "{$currencySymbol}0", "1" => "Don't display any price", "2" => NUMO_SYNTAX_SHOPPING_CART_FROM_PRICE), $row['zero_priced_display_when_attributes']);?>
+				<?php echo generate_list_options(array("0" => "{$currencySymbol}0", "1" => "Do not display any price", "2" => NUMO_SYNTAX_SHOPPING_CART_FROM_PRICE), $row['zero_priced_display_when_attributes']);?>
             	</select>
                 </li> 
+ 				<li><label for="catalog_display"style='width: 330px;'>Display Catalog As:</label>
+                <select name="catalog_display" id="catalog_display">
+				<?php echo generate_list_options(array("0" => "Rows (default)", "1" => "Grid"), $row['catalog_display']);?>
+            	</select>
+                </li>                 
               </ul>
         </fieldset> 
 		<fieldset>
@@ -615,7 +641,7 @@ ul.form_display li label { width: 205px; }
 <li><b>NET</b>: This is when you have defined your product price, and as such, that price is what is displayed in the catalog.  At time of checkout, any taxes for this product are shown after the subtotal.</li>
 <li><b>NET+</b>: This is when you have defined your product price, and as such, that price is what is displayed in the catalog, as well as any taxes for that product.  At time of checkout, any taxes for this product are shown after the subtotal.</li>
 <li><b>GROSS</b> (tax on top): This is when you have defined your product price and the taxes are caculated <b>on top</b> of this price, yet the price that is displayed to the customer is still including taxes.  Example product of $10 with 10% taxes would be displayed as: $10.10 -- this is recommended for businesses in the EU</li>
-<li><b>GROSS</b> (tax included): This is when you hae defined your product price and the taxes are <b>fully included</b> in that price.  Example product of $10 with 10% is actually displayed to the customer as $10, and later on the view cart page the "included taxes" would show, $0.09 -- this is recommended for businesses in the EU</li>
+<li><b>GROSS</b> (tax included): This is when you have defined your product price and the taxes are <b>fully included</b> in that price.  Example product of $10 with 10% is actually displayed to the customer as $10, and later on the view cart page the "included taxes" would show, $0.09 -- this is recommended for businesses in the EU</li>
 </ul> 
  <h5><i class='icon-warning-sign'></i> Recommendations about Taxation</h5>
 <ul style='list-style-type: none; font-size: 9pt;'> <li>The Taxation settings are recommended only for European users who MUST have the VAT tax displayed for the user (usually GROSS-GROSS or GROSS-NET).  It is not normally recommended that non-European users use
@@ -626,6 +652,7 @@ ul.form_display li label { width: 205px; }
 </div>
 				</fieldset>
 </div>
+
 <div class='tab-pane' id="tabs-checkout">
             <fieldset>
               <legend>PayPal</legend>
@@ -633,6 +660,8 @@ ul.form_display li label { width: 205px; }
                     <li><label for="paypal_email">PayPal Account:</label><input type="text" name="paypal_email" id="paypal_email" value="<?=$row['paypal_email']?>" /></li>
                     <li><label for="request_shipping_details">Shipping Details:</label><select name="request_shipping_details" id="request_shipping_details"><option value="1">Require Shipping Information</option><option value="0" <?php if($row['request_shipping_details'] == 0) { print 'selected="selected"'; } ?>>Do Not Request</option></select></li>
                     <li><label for="paypal_store_ipn">PayPal IPN URL:</label><?php if (REMOTE_SERVICE === true) { ?>http://numo.server-apps.com/remote/component.numo?module=shopping_cart&component=process&nsid=<?php print $numo->strToHex(NUMO_SITE_ID); ?><?php } else { ?>http://<?php print $numo->getRootFolder(); ?>/component.numo?module=shopping_cart&component=process<? } ?></li>
+                    <li><label for="paypal_return_url">Return URL:</label><input type="text" name="paypal_return_url" id="paypal_return_url" value="<?=$row['paypal_return_url']?>" /> <i class='icon-info-sign tt' title='This is the full URL (example: http://<?php print $numo->getRootFolder(); ?>/thank-you.htm) that the user will be directed to upon completion of their order.  Leave this blank if you do not need the user to return to your site.'></i></li>
+                    <li><label for="paypal_cancel_url">Cancel URL:</label><input type="text" name="paypal_cancel_url" id="paypal_cancel_url" value="<?=$row['paypal_cancel_url']?>" /> <i class='icon-info-sign tt' title='This is the full URL (example: http://<?php print $numo->getRootFolder(); ?>/uh-oh.htm) that your visitor will be directed to should they "Cancel" while at PayPal.  Leave this blank if you do not want to give the user this option.'></i></li>
                 </ul>	
               
             </fieldset>
@@ -791,7 +820,12 @@ mysql_free_result($results);
 	<input type="button" name="nocmd" class='btn btn-success btn-large' value="Save" onClick="getGroupOrder(this.form)" />
 	</div>
  </form>
-
+<script>
+jQuery(document).ready(function() {
+jQuery(".tt").tooltip();			
+jQuery(".tt").on("hidden.bs.tooltip", function() { jQuery(this).css("display", ""); });
+								});
+</script>
 <br /><br /><br />
 <?php
 

@@ -7,8 +7,7 @@
 /* otherwise, display an error message page explaining the issue        */
 /************************************************************************/
 
-  error_reporting (E_ALL ^ E_NOTICE && E_WARNING);
-  error_reporting (E_ALL & ~E_NOTICE & ~E_WARNING);
+  error_reporting (E_ALL & ~E_NOTICE & ~E_WARNING & ~E_STRICT & ~E_DEPRECATED);
  // error_reporting(E_ALL);
   //error_reporting(0);
 // change headers so form information doesn't expire
@@ -19,6 +18,7 @@ session_cache_limiter("must-revalidate");
 if ($_GET['subfolder'] != "") {
 	//print "subfolder = {$subfolder}";
 }
+//var_dump($_GET);
 if ($_GET['cmd'] == "show_server_environment") {
   phpinfo();
   exit;
@@ -35,6 +35,10 @@ if (defined("DB_CONNECTION_INFO_LOCATION")) {
 // start session
 if (function_exists("numo_session_start")) {
   numo_session_start();
+  if ($_SESSION['account_id'] != 0 && $_SESSION['account_id'] != "") {
+		$_SESSION['last_active'] = date("Y-m-d H:i:s");
+  }
+  //print $_SESSION['last_active'];
 }
 //session_start();
 
@@ -209,7 +213,7 @@ if (defined('NUMO_SYNTAX_NUMO_TIMEZONE_CODE') && NUMO_SYNTAX_NUMO_TIMEZONE_CODE 
   date_default_timezone_set("America/Chicago");
 }
 
-//number of permission.  only used if the file is found to be protected by the "is_protected" function
+//number of permission.  only used if the file is found to be protected by the "is_protected" function 
 $permissionId = 0;
 
 
@@ -256,6 +260,7 @@ if(strstr($fileName,"process.numo")) {
 			//clear session information so that next they will be prompted next time they wish to see a protected file
 			session_unset();
 		} else if ((REMOTE_SERVICE === true && DIRECT_PROCESSING === true) && $numo->remoteFileExists($fileName)) {
+			//print "yup";
 			display_file($fileName);
 
 		//check if file exists on the server
@@ -499,6 +504,7 @@ function display_file($file) {
 		$contentType['mp4']  = "video/mpeg";
 		$contentType['ogv']  = "video/ogg";
 		$contentType['ogg']  = "video/ogg";
+		$contentType['webm']  = "video/webm";
 
 		$contentType['zip']  = "application/zip";
 		$contentType['doc']  = "application/msword";
@@ -523,7 +529,11 @@ function display_file($file) {
 			  header('Content-type: '.$contentType[$extension]);
 		} else {
 		}
-
+		// if the file is not text based, then just simply output the file
+		if (!strstr($contentType[$extension], "text")) {
+		  readfile($file);
+		  exit;
+		}
 		//print $file;
 		//print "donex";
 		//exit;
@@ -566,7 +576,11 @@ function display_file($file) {
 <base href="'.$baseLocation.'" />',$pageDisplay);
 		 }
 	   }
-
+	   if (strstr($pageDisplay, "col-lg") || strstr($pageDisplay, "col-sm") || strstr($pageDisplay, "col-xs") || strstr($pageDisplay, "col-md")) {
+		 global $bootstrapVersion;
+		 $bootstrapVersion = 3;   
+		// print "yup, have version 3";
+	   }
 		//replace all component code tags and print page display
 		if ($_GET['cmd'] == "show_code") {
   		  print $pageDisplay;
@@ -576,19 +590,37 @@ function display_file($file) {
 
 		} else {
 
+
+			if (strstr($pageDisplay, "bootstrap.min.css") || strstr($pageDisplay, "bootstrap.css")) {
+				global $bsStyling;
+				$bsStyling = true;
+				
+				//print "yup";
+			} else {
+				//print "nope";
+			}
+
 			ob_start();
 			global $cache;
 			$pattern = "/<script type='text\\/javascript' src='(\\.\\.\\/)*?Site\\/javascript\\/jquery-1.3.2.min.js'><\\/script>\r?\n?[\\s]*?(<script type='text\\/javascript' src='(\\.\\.\\/)*?Site\\/javascript\\/jquery.jqDock.min.js'><\\/script>)/";
 			$replace = '$2';
 			$pageDisplay = preg_replace($pattern, $replace, $pageDisplay);
 
+			$pattern = '/\$\(/';
+			$replace = 'jQuery(';
+			$pageDisplay = preg_replace($pattern, $replace, $pageDisplay);
+
+
+
 			$pattern = '/code.jquery.com\/jquery-latest.min.js/';
 			$replace = 'ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js';
 			$pageDisplay = preg_replace($pattern, $replace, $pageDisplay);
 
 			$cache = $pageDisplay;
-
+//print "okay";
 			$finalDisplay =  preg_replace_callback('/\[NUMO\.(.*?): (.*?)\]/i',"replace_component_tags",$pageDisplay);
+			//print "fd:$finalDisplay";
+			
 			$finalDisplay =  preg_replace_callback('/\<numo module=[\'"](.*?)[\'"] component=[\'"](.*?)[\'"]( params=[\'"](.*?)[\'"])?><\/numo>/i',"replace_component_tags",$finalDisplay);
 
 			$finalDisplay =  preg_replace_callback('/\[NUMO\*(.*?): (.*?)\]/i',"replace_extension_tags",$finalDisplay);
@@ -654,26 +686,35 @@ function display_file($file) {
 function conditionMetaTags($pageDisplay) {
 	global $metaDescription;
 	global $metaKeywords;
-
-    $newDisplay = preg_replace('/<meta name=[\'"]Keywords[\'"] content=[\'"](.*)?[\'"]/i',"<meta name='keywords' content=\"[NUMO.SETTINGS: META KEYWORDS]\"",$pageDisplay);
+	//print "Meta discription: $metaDescription<br>";
+	//print "meta keywrods: $metaKeywords<br>";
+        $newDisplay = preg_replace('/<meta name=[\'"]Keywords[\'"] content=[\'"](.*)?[\'"]/i',"<meta name='keywords' content=\"[NUMO.SETTINGS: META KEYWORDS]\"",$pageDisplay);
 
 	if (strlen($newDisplay) == 0 || $newDisplay == $pageDisplay) {
-		//print "y";
+	//	print "y";
 	  $pageDisplay = str_replace("</title>", " [NUMO.SETTINGS: META TITLE]</title>\n<meta name='keywords' content=\"[NUMO.SETTINGS: META KEYWORDS]\" />", $pageDisplay);
 	} else {
-	  print "";
+	 // print "n";
+	}
+	
+	// in the even that there is no title tag, then we add one.
+	if ($newDisplay == $pageDisplay) {
+	  $pageDisplay = str_replace("<head>", "<head>\n<title>[NUMO.SETTINGS: META TITLE]</title>\n<meta name='keywords' content=\"[NUMO.SETTINGS: META KEYWORDS]\" />\n", $pageDisplay);
 	}
     $newDisplay = preg_replace('/<meta name=[\'"]Description[\'"] content=[\'"](.*)?[\'"]/i',"<meta name='deywords' content=\"[NUMO.SETTINGS: META DESCRIPTION]\"",$pageDisplay);
 	if (strlen($newDisplay) == 0 || $newDisplay == $pageDisplay) {
 		$pageDisplay = str_replace("</title>", "</title>\n<meta name='description' content=\"[NUMO.SETTINGS: META DESCRIPTION]\" />", $pageDisplay);
 	} else {
-	  print "";
+	 // print "";
 
 	}
+	
+	
 
 	return $pageDisplay;
 
 }
+
 
 //callback function that replaces component tags with content
 function replace_component_tags($matches) {
@@ -684,8 +725,11 @@ function replace_component_tags($matches) {
 	global $MANAGE_NUMO_LOCATION;
 	global $fileName;
 	global $PARAMS;
+	global $bsStyling;
+	global $bootstrapVersion;
+	$bootstrapStyling = $bsStyling;
 	$PARAMS = array();
-
+  // var_dump($matches);
 	//print $matches[0]."x<br>";
 			// global $SYSTEM_ERROR_ID;
             // 		print $SYSTEM_ERROR_ID;
@@ -721,7 +765,7 @@ function replace_component_tags($matches) {
 	//remove spaces from component name and replace with underscores and convert to lower case
 	$componentName = strtolower(str_replace(" ", "_", $componentName));
 
-
+  //  print $componentName."<br>";
 	//remove spaces from module name and replace with underscores and convert to lower case
 
 	$matches[1] = strtolower(str_replace(" ", "_", $matches[1]));

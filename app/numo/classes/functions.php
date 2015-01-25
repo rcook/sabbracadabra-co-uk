@@ -4,12 +4,16 @@ $enqueuedCSS = array();
 
 function moduleOffline($moduleName) {
   global $dbObj;
+  global $numo;
+
   $result = $dbObj->query("SELECT `status` FROM modules WHERE `status`=1 AND name='{$moduleName}' AND site_id='".NUMO_SITE_ID."'");
+  //print "SELECT `status` FROM modules WHERE `status`=1 AND name='{$moduleName}' AND site_id='".NUMO_SITE_ID."'";
  // print "SELECT `status` FROM modules WHERE `status`=1 AND name='{$moduleName}' AND site_id='".NUMO_SITE_ID."'";
 	//				  print "<br>".!(mysql_num_rows($result) == 0)."<br>";
 //					  print mysql_error();
   return mysql_num_rows($result) == 0;
 }
+
 function moduleInstalled($moduleName) {
   global $dbObj;
   $result = $dbObj->query("SELECT `status` FROM modules WHERE name='{$moduleName}' AND site_id='".NUMO_SITE_ID."'");
@@ -39,7 +43,7 @@ function numo_secure($region = "") {
 function get_avatar($email, $size = 30, $rating = "G") {
 
 	$default = "mystery";
-	
+
 
 	if ( !empty($email) )
 		$email_hash = md5( strtolower( $email ) );
@@ -51,7 +55,7 @@ function get_avatar($email, $size = 30, $rating = "G") {
 			$host = sprintf( "http://%d.gravatar.com", ( hexdec( $email_hash{0} ) % 2 ) );
 		else
 			$host = 'http://0.gravatar.com';
-	}	
+	}
 
 	if ( !empty($email) ) {
 		$out = "$host/avatar/";
@@ -59,7 +63,7 @@ function get_avatar($email, $size = 30, $rating = "G") {
 		$out .= '?s='.$size;
 		$out .= '&amp;d=' . urlencode( $default );
 
-	
+
 		if ( !empty( $rating ) )
 			$out .= "&amp;r={$rating}";
 
@@ -67,11 +71,11 @@ function get_avatar($email, $size = 30, $rating = "G") {
 	} else {
 		$avatar = "<img alt='{$safe_alt}' src='{$default}' class='numo_avatar numo_avatar_{$size} avatar-default' height='{$size}' width='{$size}' />";
 	}
-	
+
 	return $avatar;
 
 }
-function numo_enqueue_js($jsPath, $jsName = "", $jsVersion = "1") {
+function numo_enqueue_js($jsPath, $jsName = "", $jsVersion = "1", $deferred = false) {
 	global $enqueuedJS;
 	if ($jsName == "") {
 		$jsName = time().rand(0, 1000);
@@ -79,6 +83,7 @@ function numo_enqueue_js($jsPath, $jsName = "", $jsVersion = "1") {
 	$enqueuedJS["$jsName"]["$jsVersion"]["source"] = $jsPath;
 	$enqueuedJS["$jsName"]["$jsVersion"]["library"] = $jsName;
 	$enqueuedJS["$jsName"]["$jsVersion"]["version"] = $jsVersion;
+	$enqueuedJS["$jsName"]["$jsVersion"]["deferred"] = $deferred;
 
 }
 
@@ -95,29 +100,42 @@ function update_check_header() {
   global $enqueuedJS;
   global $enqueuedCSS;
   $existingJS = array();
-  $knownJSLibraries = array('jquery', 
-							'jquery-ui', 
-							'jquery.jqDock', 
-							'jquery.nivo', 
-							'pxgradient', 
-							'jquery.lightbox', 
-							'jquery.watch', 
-							'jquery.musemenu', 
-							'jquery.museoverlay', 
-							'jquery.musepolyfill', 
-							'jquery.cookie', 
+  $knownJSLibraries = array('jquery',
+							'jquery-ui',
+							'jquery.jqDock',
+							'jquery.nivo',
+							'jquery.mini.slider',
+							'jquery.video',
+							'pxgradient',
+							'jquery.lightbox',
+							'jquery.watch',
+							'jquery.musemenu',
+							'jquery.museoverlay',
+							'jquery.musepolyfill',
+							'jquery.cookie',
 							'jquery.cook',
 							'jquery.cslider',
-							'jquery.cslider',
+							'jquery.mmenu',
+							'jquery.transit',
 							'jquery.prettyPhoto',
-							'jquery.quotator'
+							'jquery.quotator',
+							'jquery.ba-cond',
+							'jquery.fancybox',
+							'jquery.fs-slider',
+							'jquery.waitforimages',
+							'jquery.isotope',
+							'jquery.ui.totop',
+							'jquery.quovolver',
+							'jquery.testimonials.slider',
+							'jquery-migrate'
+
 							);
 
   $page = ob_get_clean();
   // print "page=[{$page}]";
   $pattern = '/<script (.*)'.'><\/script>/i';
   preg_match_all($pattern, $page, $matches, PREG_SET_ORDER);
-
+//print "yes";
 
   //print sizeof ($matches);
 
@@ -139,8 +157,9 @@ function update_check_header() {
 			   $jsLibrary = $library;
 			   //preg_match('/([0-9]{1,2}?)(\.?[0-9]{1,3}?)?(\.?[0-9]{1,4}?)?/i', $jsSource, $sourceMatches);
 			   preg_match('/[\-\/]([0-9]{1,2}?)(\.?[0-9]{1,3}?)?(\.?[0-9]{1,4}?)?/i', $jsSource, $sourceMatches); // updated june 7, 2013
-			   //print $sourceMatches[0];
-			   $jsVersion = $sourceMatches[0];
+			   //print $sourceMatches[0]."<br>";
+			   $jsVersion = trim($sourceMatches[0], "-/");
+		      // print $jsVersion." is it now <br>";
 		   }
 	   }
 	   $existingJS["$jsLibrary"]["$jsVersion"]['source'] = $jsSource;
@@ -152,7 +171,9 @@ function update_check_header() {
 
    foreach ($existingJS as $jsLibrary => $jsVersions) {
 	   $existingJS["$jsLibrary"] = $jsVersions;
-	  	ksort($jsVersions);
+	  	uksort($jsVersions, jsVersionCompare);
+	  	//var_dump($jsVersions);
+	  	//print "<br>";
 		for ($i = 1; $i < sizeof($jsVersions); $i++) {
 			$current = array_shift($jsVersions);
 
@@ -162,49 +183,97 @@ function update_check_header() {
 	   $existingJS["$jsLibrary"] = $jsVersions;
 
 		$current = array_shift($jsVersions);
-
+		//print "current = ".$current['version']."<br>";
    }
+   
+   //print "test";
    /*
     foreach ($existingJS as $jsLibrary => $jsVersions) {
 	  	ksort($jsVersions);
 		for ($i = 1; $i < sizeof($jsVersions); $i++) {
 			$current = array_shift($jsVersions);
-			print $current['version']."<br>";
+			//print $current['version']."<br>";
 			//$removeJS = $current['find'];
 			//$page = str_replace($removeJS, "", $page);
 		}
 
 		$current = array_shift($jsVersions);
-		print $current['version']."<br>";
+		//print $current['version']."<br>";
 
   }
   */
   foreach ($enqueuedJS as $jsName => $data) {
-	 
+
 	ksort($data);
 	$current = array_pop($data);
 	$javascriptSource = $current['source'];
 	$javascriptLibrary = $current['library'];
 	$javascriptVersion = $current['version'];
 	if ($existingJS["$javascriptLibrary"]) {
-		
+
 		$existing = array_pop($existingJS["$javascriptLibrary"]);
 		if ($existing['version'] < $current['version']) {
 			$page = str_replace($existing['find'], "<script type='text/javascript' src='{$javascriptSource}'></script>", $page);
 		}
 	} else {
 		//print "should be adding";
-	  $page = str_replace("</head>", "<script type='text/javascript' src='{$javascriptSource}'></script></head>", $page);
+	  if ($data['deferred']) {
+	    $page = str_replace("</body>", "<script type='text/javascript' src='{$javascriptSource}'></script></body>", $page);
+		  
+	  } else {
+	    $page = str_replace("</head>", "<script type='text/javascript' src='{$javascriptSource}'></script></head>", $page);
+	  }
 	}
   }
 
   foreach ($enqueuedCSS as $cssSource) {
-		$page = str_replace("</head>", "<link rel='stylesheet' href='{$cssSource}' type='txt/css' /></head>", $page);
+		$page = str_replace("</head>", "<link rel='stylesheet' href='{$cssSource}' type='text/css' /></head>", $page);
 
   }
   print $page;
 }
 
+function jsVersionCompare($aIn, $bIn) {
+  $a = explode(".", $aIn);
+  $b = explode(".", $bIn);
+
+  if ($a[0] != $b[0]) {
+    if ($a[0] < $b[0]) {
+//    print "{$a[0]} is < {$b[0]}<br>";
+
+      return -1;
+    } else {
+      return 1;
+    }
+  } else {
+//    print "primary versio is the same<br>";
+    if ($a[1] != $b[1]) {
+		if ($a[1] < $b[1]) {
+//    print "{$a[1]} is < {$b[1]}<br>";
+
+		  return -1;
+		} else {
+//		    print "{$a[1]} is > {$b[1]}<br>";
+
+		  return 1;
+		}
+    } else {
+//    print "secondary version {$a[1]} and {$a[1]} is the same<br>";
+
+		if ($a[2] != $b[2]) {
+			if ($a[2] < $b[2]) {
+			  return -1;
+			} else {
+			  return 1;
+			}
+		} else {
+		  return 0;
+		}
+
+  	}
+
+  }
+}
 
 function numo_session_start() {
   global $secondarySavePath;
@@ -231,7 +300,7 @@ function numo_session_start() {
   } else {
 	 @session_start();
   }
- 
+  setcookie(session_name(), session_id(), time()+3600);
 }
 
 
@@ -244,8 +313,8 @@ function login($username, $password, $registration = false, $maxAttempts = 0, $l
 
 
 	$sql = "SELECT a.id, a.type_id, a.is_admin, a.pending, a.activated, a.slot_1, a.slot_2, a.slot_4 FROM accounts a, `types` t WHERE a.slot_1='".$username."' AND a.type_id=t.id AND a.pending<>'3' AND t.site_id='".NUMO_SITE_ID."'";
-	
-	if ($registration) { 
+
+	if ($registration) {
 	  $sql = "SELECT a.* FROM accounts a, `types` t WHERE a.id='".$username."' AND a.type_id=t.id AND t.site_id='".NUMO_SITE_ID."'";
 	} else {
 	  $sql = "SELECT a.* FROM accounts a, `types` t WHERE a.slot_1='".$username."' AND a.type_id=t.id AND a.pending<>'3' AND t.site_id='".NUMO_SITE_ID."'";
@@ -254,12 +323,12 @@ function login($username, $password, $registration = false, $maxAttempts = 0, $l
 	$result = $dbObj->query($sql);
     // if we have a match to the username or account id then proceed
 	if($row = mysql_fetch_array($result)) {
-	
+
 		// if the password matches, or if we are going through the registration process
 		if((crypt($password,$row['slot_2']) == $row['slot_2'] || $registration) &&
 		   !($maxAttempts > 0 && $row['current_bad_access_attempts'] >= $maxAttempts && (strtotime($row['last_bad_access_attempt_time']) + $lockoutPeriod * 60 > time()))) {
-			
-			$_SESSION['account_id'] = $row['id'];
+
+			$_SESSION['account_id'] = $row['id']; 
 			$_SESSION['login_id']   = $row['slot_1'];
 			$_SESSION['type_id']    = $row['type_id'];
 			$_SESSION['pending']    = $row['pending'];
@@ -267,15 +336,49 @@ function login($username, $password, $registration = false, $maxAttempts = 0, $l
 			$_SESSION['is_admin']   = $row['is_admin'];
 			$_SESSION['full_name']  = $row['slot_4'];
 			$_SESSION['numo_site_id'] = NUMO_SITE_ID;
-			
+
+			// added march 26, 2014, so that items from the users cart get merged
+			if ($_SESSION['shopper_id'] != "" && $_SESSION['shopper_id'] != $row['id']) {
+				$sql = "SELECT `id` FROM `shopping_cart_orders` WHERE `processed`=0 AND `account_id`='".$_SESSION['shopper_id']."'";
+				$results = $dbObj->query($sql);
+
+				// if existing pending order for previous SHOPPER ID merge temp account pending order items
+				if($orderRow = mysql_fetch_array($results)) {
+					$sql = "SELECT `id` FROM `shopping_cart_orders` WHERE `processed`=0 AND `account_id`='".$_SESSION['account_id']."'";
+					$orders = $dbObj->query($sql);
+
+					// account has a order pending purchase, add to order
+					if($order = mysql_fetch_array($orders)) {
+						$sql = "UPDATE `shopping_cart_order_items` SET `order_id`='".$order['id']."' WHERE `order_id`='".$orderRow['id']."'";
+						$dbObj->query($sql);
+
+						$sql = "DELETE FROM `shopping_cart_orders` WHERE `processed`=0 AND `account_id`='".$_SESSION['shopper_id']."'";
+						$dbObj->query($sql);
+
+					
+					} else {
+						  $sql = "UPDATE shopping_cart_orders SET account_id='{$_SESSION['account_id']}' WHERE id='{$orderRow['id']}'";
+						  $dbObj->query($sql);
+					}
+
+				} else {
+				}
+				$sql = "DELETE FROM `accounts` WHERE `pending`=3 AND `id`='".$_SESSION['shopper_id']."'";
+				$dbObj->query($sql);
+				
+			}
+
+			// added February 11, 2014 so that the user's cart can populate prior to going to the view cart page
+  		    $_SESSION['shopper_id'] = $row['id'];
+
 			$sql = "SELECT t.* FROM `types` t WHERE t.id='{$row['type_id']}' AND t.site_id='".NUMO_SITE_ID."'";
 			$res = $dbObj->query($sql);
 			$typeRow = mysql_fetch_array($res);
 			mysql_free_result($res);
-			
+
 			$_SESSION['type_name'] = $typeRow['name'];
-			
-			if ($PARAMS['redirect'] == "") {
+
+			if ($PARAMS['redirect'] == "" && $PARAMS['force_reload'] == "") {
 				if ($registration) {
 					$PARAMS['redirect'] = $typeRow['registration_completion_page'];
 				} else {
@@ -294,12 +397,12 @@ function login($username, $password, $registration = false, $maxAttempts = 0, $l
 			}
 
 			return true;
-		
+
 		// otherwise we need to check to see if we need to log this bad login attempt
 		} else {
 			if ($maxAttempts > 0) {
 			  $previousAttempts = $row['current_bad_access_attempts'];
-				  
+
 			  if (++$previousAttempts == $maxAttempts) {
 				  	  // send warning email to account holder
 					  	require_once("modules/accounts/classes/Account.php");
@@ -308,11 +411,11 @@ function login($username, $password, $registration = false, $maxAttempts = 0, $l
 					  $unlockURL = $account->generateUnlockCode();
 				  mail($row['slot_3'], "{$row['slot_4']}, Your account at ".$_SERVER['HTTP_HOST']." has been frozen", "{$row['slot_4']},\n\nOur system has recorded {$previousAttempts} bad login attempts on your account (username: {$row['slot_1']}) and has subsquently suspended it.\n\nAccess to the account will be automatically re-activated {$lockoutPeriod} minutes from the time of the last bad login attempt.
 \nYou will not be notified of any further incursion attempts.\n\nIf you wish to gain immediate access to your account, please contact the website administrator and have them unlock your account or click on the following link to unlock the account yourself:
-										
+
 {$unlockURL}
-										
+
 Please note, this is an automated message.", "From: ".NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS);
-			
+
 				 // print "sent email to {$row['slot_3']}";
 			  }
 			  if ($previousAttempts >= $maxAttempts) {
@@ -322,20 +425,20 @@ Please note, this is an automated message.", "From: ".NUMO_SYNTAX_NUMO_ADMINISTR
 				//  print "<br>";
 				////  print $row['last_bad_access_attempt_time']."<br>";
 				//  print $lockoutPeriod;
-				  
+
 			  } else {
-				  $badLoginError = "The information provided does not match our records.  After {$maxAttempts} failed attempts, your account is protected from further access for an period of time.";
+				  $badLoginError = "The information provided does not match our records.  After {$maxAttempts} failed attempts, your account is protected from further access for a period of time.";
 			  }
 			  // if valid login, don't change the bad access attempt information
 			  if (crypt($password,$row['slot_2']) == $row['slot_2']) {
 
 			  } else {
-			  	$update = "UPDATE `accounts` SET last_bad_access_attempt_time='".date("Y-m-d H:i:s", time())."', current_bad_access_attempts='{$previousAttempts}' WHERE id='{$row['id']}'"; 
+			  	$update = "UPDATE `accounts` SET last_bad_access_attempt_time='".date("Y-m-d H:i:s", time())."', current_bad_access_attempts='{$previousAttempts}' WHERE id='{$row['id']}'";
 				$dbObj->query($update);
 				//print mysql_error();
 
 			  }
-			  
+
 			}
 		}
 	}
@@ -389,9 +492,9 @@ function generate_state_province_options($label, $fieldValue = "") {
 		$value = $countryData[1];
 		$countries["$key"] = $value;
 	}
-	
-	
-	
+
+
+
     ob_start();
 	print "<option value=''>-- Select {$label} --</option>";
 	if (in_array("United States", $countries)) {
@@ -399,20 +502,20 @@ function generate_state_province_options($label, $fieldValue = "") {
 
 
 		print "<option class='us-state' value='' disabled>-------- United States --------</option>";
-		print generate_list_options($states,$fieldValue, '\r\n', 'us-state');			
-	}			
-					
+		print generate_list_options($states,$fieldValue, '\r\n', 'us-state');
+	}
+
 	if (in_array("Canada", $countries)) {
 		$states = getCanadianProvincesArray();
 		print "<option class='cad-prov' value='' disabled>-------- Canada --------</option>";
-		print generate_list_options($states,$fieldValue, '\r\n', 'cad-prov');			
-	}			
+		print generate_list_options($states,$fieldValue, '\r\n', 'cad-prov');
+	}
 
 	if (in_array("Australia", $countries)) {
 		print "<option class='aus-prov' value='' disabled>-------- Australia --------</option>";
 		$states = getAustralianProvincesArray();
-		print generate_list_options($states,$fieldValue, '\r\n', 'aus-prov');			
-	}				
+		print generate_list_options($states,$fieldValue, '\r\n', 'aus-prov');
+	}
 	return ob_get_clean();
 }
 
@@ -424,7 +527,7 @@ function getAmericanStatesArray() {
 			$key = $satesData[0];
 			$value = $satesData[1];
 			$states["$key"] = $value;
-		}				  	
+		}
 		return $states;
 }
 
@@ -437,7 +540,7 @@ function getCanadianProvincesArray() {
 			$key = $satesData[0];
 			$value = $satesData[1];
 			$states["$key"] = $value;
-		}	
+		}
 		return $states;
 }
 
@@ -476,7 +579,7 @@ function isValidCardNumber($ccNumber, $acceptedTypes = array("visa", "mastercard
       $currentNum *= 2;
     }
     /* Split digits and add. */
-    $checksum += $currentNum % 10; 
+    $checksum += $currentNum % 10;
 	if ($currentNum > 9) {
       $checksum += 1;
     }
@@ -497,7 +600,7 @@ function getAustralianProvincesArray() {
 			$key = $satesData[0];
 			$value = $satesData[1];
 			$states["$key"] = $value;
-		}				  	
+		}
 	return $states;
 }
 
@@ -512,7 +615,7 @@ function generate_country_options($label, $fieldValue = "") {
 				}
 	$listOptions = generate_list_options($countries, $fieldValue);
 	return "<option value=''>-- Select {$label} --</option>".$listOptions;
-	
+
 }
 
 function generate_expiry_month_options($fieldValue = "") {
@@ -527,7 +630,7 @@ function generate_expiry_month_options($fieldValue = "") {
 function generate_expiry_year_options($fieldValue = "") {
 	$months = array();
 	for ($i = date("Y"); $i< date("Y") + 10; $i++) {
-		
+
 		$years["$i"] = $i;
 	}
 	return generate_list_options($years, $fieldValue);
@@ -538,6 +641,7 @@ function generate_list_options($options, $currentValue = "", $sep = "\r\n", $cla
 
 	if(is_array($options)) {
 		foreach ($options as $key => $value) {
+			$value = html_entity_decode($value);
 			if((is_array($currentValue) && in_array(html_entity_decode($key), $currentValue)) || (is_string($currentValue) && $currentValue == $key)) {
 				$returnStr .= '<option '.($class != "" ? "class='{$class}'" : "").' value="'.$key.'" selected="selected">'.$value.'</option>';
 			} else {
@@ -548,6 +652,8 @@ function generate_list_options($options, $currentValue = "", $sep = "\r\n", $cla
 		$listOptions = explode($sep, trim($options));
 
 		foreach ($listOptions as $key => $value) {
+						$value = html_entity_decode($value);
+
 			if(in_array(html_entity_decode($value), $currentValue)) {
 				$returnStr .= '<option '.($class != "" ? "class='{$class}'" : "").'value="'.$value.'" selected="selected">'.$value.'</option>';
 			} else {
@@ -558,13 +664,15 @@ function generate_list_options($options, $currentValue = "", $sep = "\r\n", $cla
 		//print nl2br($options);
 		//$options = str_replace("\r\n", '\n', $options);
 		//$options = str_replace('\n', $sep, $options);
-		
+
 		//print $options;
-		
+
 		$listOptions = explode($sep, trim($options));
 		//print sizeof($listOptions);
 
 		foreach ($listOptions as $key => $value) {
+						$value = html_entity_decode($value);
+
 			if (strstr($value, "=")) {
 				$valueData = explode("=", $value, 2);
 				$key = $value;
@@ -652,7 +760,7 @@ function date_default_timezone_set($timezone) {
 }
 
 if (!function_exists('htmlspecialchars_decode')) {
-
+ 
 function htmlspecialchars_decode($code) {
   $code = str_replace('&', '&amp;', $code);
   $code = str_replace('"', '&quot;', $code);
@@ -661,5 +769,44 @@ function htmlspecialchars_decode($code) {
   $code = str_replace('>', '&gt;', $code);
   return $code;
 }
+}
+
+function fetch_available_upgrades($renderForHome = false) {
+	$ch = curl_init(); //init
+    global $dbObj;
+	$modules = array();
+	global $siteData;
+	//print "yup";
+	$query = "SELECT * FROM modules WHERE site_id='".NUMO_SITE_ID."'";
+	$result = $dbObj->query($query);
+	
+	$primaryLicenseKey = "";
+	$secondaryLicenseKey = "";
+	while ($record = mysql_fetch_array($result)) {
+	//print ".";
+	$modules[] = $record['name'];
+		if ($record['license_key'] != "" & $secondaryLicenseKey == "") {
+		  $secondaryLicenseKey = $record['license_key'];
+		}
+		if (($record['name'] == "accounts" || $record['name'] == "settings") && $record['license_key'] != "") {
+			$primaryLicenseKey = $record['license_key'];
+		}
+	}
+	if ($primaryLicenseKey == "") {
+		$primaryLicenseKey = $secondaryLicenseKey;
+	}
+	 
+	
+
+	curl_setopt($ch, CURLOPT_URL, 'http://numo.server-apps.com/upgrade/view-upgrades/'); //setup request to website to check license key
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  // return the response
+	curl_setopt($ch, CURLOPT_POST, 1); //transfer information as a POST request
+	curl_setopt($ch, CURLOPT_POSTFIELDS, 'lpk='.urlencode($primaryLicenseKey).'&show_home_page_offers='.$siteData['show_home_page_offers'].'&render_for_home='.($renderForHome ? "1" : "0").'&numo_folder='.NUMO_FOLDER_PATH.'&domain='.urlencode($_SERVER["HTTP_HOST"]).'&modules='.implode(",", $modules)); //pass product license key and domain name along to be checked
+
+	//send request and save response to variable
+	$response = @curl_exec($ch);
+
+    print $response;
+	return ""; //success
 }
 ?>

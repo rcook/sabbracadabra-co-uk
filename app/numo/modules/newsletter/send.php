@@ -135,9 +135,11 @@ if($_POST['cmd'] == "send") {
 			$mailObj->send($email." (".$name.")", NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS, $newsletterInfo['title'], str_replace("[name]", $name, $layoutDisplay));
 		}
 	} else {
-		//Set mail headers
-		$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1';
+		//Set mail headers 
+		$headers  = 'From: '.NUMO_SYNTAX_NUMO_ADMINISTRATIVE_EMAIL_ADDRESS."\n";
+    // changed from iso-8859-1 to UTF-8 on April 22, 2014
+	//	$headers .= 'Content-type: text/html; charset=iso-8859-1';
+	$headers .= "Content-type: text/html; charset=UTF-8";
 
 		foreach($sendToList as $email => $name) {
 			// Send the email message out

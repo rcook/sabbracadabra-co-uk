@@ -267,7 +267,11 @@ function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "",
 
     // only allow reinstall if remote address matches secured Lucky Marble API server
     $reinstallAllowedServerIP = "216.139.217.104";
-
+    $query = "SELECT * FROM modules WHERE name='{$name}' AND status=2 AND site_id='".NUMO_SITE_ID."'";
+	
+	$result = $dbObj->query($query);
+	$pendingInstall = mysql_fetch_array($result) > 0; 
+	
 	//check to make sure SQL configuration file exists
 	if(file_exists(MODULES_FOLDER_NAME."/".$name."/configuration/initialization.sql")) {
 		//load array of file contents
@@ -295,16 +299,21 @@ function run_sql_configuration($name = "", $reinstall = false, $licenseKey = "",
 			 $lastInsertID = $record['LAST_INSERT_ID()'];
 			 $line = str_replace("LAST_INSERT_ID", $lastInsertID, $line);
 		  }
-
-		  //print ":SQL: ".$line."<br>"; 
-		  $dbObj->query($line); //run SQL query
+          if (!($pendingInstall && strstr($line, "INSERT INTO `modules`"))) {
+		    //print ":SQL: ".$line."<br>"; 
+		    $dbObj->query($line); //run SQL query
+		  }
 		  if ($_SERVER['REMOTE_ADDR'] == $reinstallAllowedServerIP || $siteID != 1) {
 			print $name.": ".$line."<br>".mysql_error()."<br>";
 		  }
 		}
-	  $update = "UPDATE modules SET license_key='{$licenseKey}' WHERE name='{$name}' AND site_id='{$siteID}' AND license_key=''";
-	  //print $update;
-	  $dbObj->query($update);
+	  if ($licenseKey != "") {
+	    $update = "UPDATE modules SET license_key='{$licenseKey}' WHERE name='{$name}' AND site_id='{$siteID}' AND license_key=''";
+	    $dbObj->query($update);
+	    
+		$update = "UPDATE modules SET status=1 WHERE name='{$name}' AND site_id='{$siteID}' AND license_key='{$licenseKey}'";  
+	    $dbObj->query($update);
+	  }
 	}
 	
 }

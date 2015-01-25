@@ -13,13 +13,20 @@ $_POST['first_name'] = "test";
 $_POST['last_name'] = "user";
 $_POST['payer_email'] = "test@test.com";
 $_POST['mc_gross'] = "105.00";
+
+
 */
- 
+
 global $testMode;
 $testMode = false;
 if (REMOTE_SERVICE === true) {
 $testMode = false;	
 } 
+if ($_GET['cmd'] == "test") {
+  $_POST['invoice'] = 33333333;
+  $testMode = true;
+
+}
 require_once($_SERVER['DOCUMENT_ROOT'].NUMO_FOLDER_PATH."modules/accounts/classes/Account.php");
 include_once("numo/modules/shopping_cart/classes/Order.php");
 $order = new Order($_POST['invoice']);
@@ -112,6 +119,9 @@ foreach ($_POST as $key => $value) {
 		$itemNumbersCheck .= "`id`<>".$value." AND ";
 		$purchasedItems[$value] = $_POST['quantity'.substr($key,11)];
 	}
+    
+    $value = str_replace("&lt;", "<", $value);
+    $value = str_replace("&gt;", ">", $value);    
     $value = str_replace("&#039;", "'", $value);
     $value = str_replace("&amp;", "&", $value);
 
@@ -128,7 +138,7 @@ $sql = "SELECT * FROM `shopping_cart_settings` WHERE site_id='".NUMO_SITE_ID."'"
 			logLine($logging, $logFile, "sql: ".$sql);
 
 if ($testMode) {
-  print $sql."<br>";
+  //print $sql."<br>";
 }
 $result = $dbObj->query($sql);
 $storeSettings = mysql_fetch_array($result);
@@ -171,15 +181,15 @@ if (!$fp) { // HTTP ERROR
 		$res = fgets ($fp, 1024);
         logLine($logging, $logFile, "Response: {$res}");
 		
-		if (strcmp ($res, "VERIFIED") == 0 || $testMode) {
+		if (strstr (trim($res), "VERIFIED") || $testMode) {
             logLine($logging, $logFile, "Response VERIFIED");
 			// TODO:
 			// Check the payment_status is Completed
 			// Check that txn_id has not been previously processed
-			$sql = "SELECT `id`,`payment_status`,`account_id` FROM `shopping_cart_orders` WHERE `txn_id`='".$_POST['txn_id']."'";
+			$sql = "SELECT `id`,`payment_status`,`account_id` FROM `shopping_cart_orders` WHERE `txn_id`='".$_POST['txn_id']."' AND txn_id<>''";
             logLine($logging, $logFile, "SQL: {$sql}");
 			//$msgAdd .= $sql."\n\n";
-			$result = $dbObj->query($sql);
+			$result = $dbObj->query($sql);   
             
 			logLine($logging, $logFile, "num rows: ".mysql_num_rows($result));
 			logLine($logging, $logFile, "isset(_POST[parent_txn_id]): ".isset($_POST['parent_txn_id']));
@@ -208,6 +218,8 @@ if (!$fp) { // HTTP ERROR
 
 			//new order to process
 			} else {
+			
+			
 				
   				logLine($logging, $logFile, "NEW ORDER");
 				
@@ -217,6 +229,12 @@ if (!$fp) { // HTTP ERROR
 				$acctRecInfo = mysql_fetch_array($acctResult);
 				$accountID = $acctRecInfo['account_id'];
 				
+				// if no account id exists, then there is no shopping cart order, and subsequently the invoice id does not exist in our systme
+				// this can be caused by paypal accounts that use more than one shopping cart, and receive secondary order notifcations to this process script.
+				if ($accountID == "") {
+  				  logLine($logging, $logFile, "Unrecognized invoice id: ".$_POST['invoice']);
+				  print "Unrecognized Invoice ID";
+				} else {
 				// update the user's account if they are of "pending" type
 				$update = "UPDATE `accounts` SET activated=1, pending=0, type_id='{$storeSettings['default_account_group']}', slot_4='{$_POST['first_name']} {$_POST['last_name']}', slot_3='{$_POST['payer_email']}', slot_1='guest".time()."' WHERE pending=3 AND type_id=0 AND id='{$accountID}'";
   				logLine($logging, $logFile, "SQL: {$update}");
@@ -381,6 +399,7 @@ if (!$fp) { // HTTP ERROR
 				if ($order->attributes['send_admin_email_order_completed'] == 1) {
 					$order->sendAdminNotificationOfCompletedOrder();
 				}
+			   }
 
 			}
 

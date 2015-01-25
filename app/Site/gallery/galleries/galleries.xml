@@ -1,30 +1,30 @@
 <galleries>
 
 <!--first album-->  
- <gallery base="album1/" file="photos.xml">
-    <sitename>Live 2013</sitename>
-    <photographer>Liz Boyd</photographer>
-    <contactinfo>http://www.lbphotographic.co.uk</contactinfo>
-    <email>lillybet1@msn.com</email>
+ <gallery base="album3/" file="photos.xml">
+    <sitename>Photos from 2014</sitename>
+    <photographer>Various</photographer>
+    <contactinfo>Various</contactinfo>
+    <email>Various</email>
     <security><![CDATA[]]> </security>
   </gallery>
 <!--first album-->  
 
 
 <!--second album-->
-  <gallery base="album2/" file="photos.xml">
-    <sitename>Summer 2012 Publicity Shoot</sitename>
-    <photographer>Tracey Swain</photographer>
-    <contactinfo>http://www.shropshirepostcards.co.uk</contactinfo>
-    <email>tracey.swain@gmail.com</email>
+ <gallery base="album1/" file="photos.xml">
+    <sitename>Live 2013</sitename>
+    <photographer>Various</photographer>
+    <contactinfo>Various</contactinfo>
+    <email>Various</email>
     <security><![CDATA[]]> </security>
   </gallery>
 <!--second album-->
 
 
 <!--third album--> 
-  <gallery base="album3/" file="photos.xml">
-    <sitename>Bizarre Tales Photoart</sitename>
+  <gallery base="album2/" file="photos.xml">
+    <sitename>Summer 2012 Publicity Shoot</sitename>
     <photographer>Tracey Swain</photographer>
     <contactinfo>http://www.shropshirepostcards.co.uk</contactinfo>
     <email>tracey.swain@gmail.com</email>

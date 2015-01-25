@@ -254,11 +254,11 @@ function load($id) {
 
 	function remove() {
 		global $dbObj;
-
+        /* WE NOW NO LONGER DELETE THE PRODUCT FROM THE DATABASE IN ORDER TO PRESERVE PRODUCT 
+		   INFORMATION ON ORDERS MADE 
+		
 		$sql = "DELETE FROM `shopping_cart_products` WHERE id='".$this->id."'";
-		//print $sql."<br>";
 		$dbObj->query($sql);
-
 		$sql = "SELECT file_name FROM `shopping_cart_product_images` WHERE listing_id='".$this->id."'";
 		//print $sql."<br>";
 		$results = $dbObj->query($sql);
@@ -270,6 +270,12 @@ function load($id) {
 		$sql = "DELETE FROM `shopping_cart_product_images` WHERE listing_id='".$this->id."'";
 		//print $sql."<br>";
 		$dbObj->query($sql);
+		*/
+		
+		$sql = "UPDATE `shopping_cart_products` SET status=-1 WHERE id='{$this->id}'";
+		$dbObj->query($sql);
+		
+ 
 	}
 }
 ?>

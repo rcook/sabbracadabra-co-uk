@@ -221,11 +221,13 @@ while($row = mysql_fetch_array($results)) {
 		//}
 		//if ($groupData["{$row['type_id']}"]['require_activation'] == 1) {
 			// pending == 3 == subscriber
+			//var_dump($groupData["{$row['type_id']}"]);
 			if ($row['activated'] != 1) {
-				if ($groupData["{$row['type_id']}"]['require_approval'] == 1 && $row['pending'] != 0 ) {
+				//if ($groupData["{$row['type_id']}"]['require_approval'] == 1 && $row['pending'] != 0 ) {
 					print ",";
-				}
+				//}
 				print "Pending Activation";
+
 			}
 		//}
 

@@ -31,5 +31,21 @@
 
 		$dbObj->query("ALTER TABLE `sites` ADD `location` varchar (255) default ''");
 	}
-		
+
+// added feb 28, 2014 -- allow hiding of plugins if not in use
+	$result = $dbObj->query("SHOW COLUMNS FROM `sites` LIKE 'hide_offline'");
+	$exists = (mysql_num_rows($result))?TRUE:FALSE;
+	if (!$exists) {
+
+		$dbObj->query("ALTER TABLE `sites` ADD `hide_offline` tinyint (4) default '0'");
+	} else {
+	  //print "exists";	
+	}
+
+	$result = $dbObj->query("SHOW COLUMNS FROM `sites` LIKE 'show_home_page_offers'");
+	$exists = (mysql_num_rows($result))?TRUE:FALSE;
+	if (!$exists) {
+		$dbObj->query("ALTER TABLE `sites` ADD `show_home_page_offers` tinyint (4) default 1");
+		$dbObj->query("ALTER TABLE `sites` ADD `show_side_bar_offers` tinyint (4) default 1");
+	}
 ?>

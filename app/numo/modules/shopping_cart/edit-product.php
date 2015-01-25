@@ -23,7 +23,9 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 }
 
 if($_POST['cmd'] == "update") {
-
+  foreach ($_POST as $key => $value) {
+    $_POST["$key"] = sanitize_field($value);
+  }
 	/**********************************/
 	/*         UPDATE PRODUCT         */
 	/**********************************/
@@ -144,39 +146,40 @@ if($_POST['cmd'] == "update") {
 		/*************************************/
 		/*   UPDATE OPTIONAL ATTRIBUTES(s)   */
 		/*************************************/
-		foreach($_POST[$id.'__input_options'] as $oKey => $oId) {
-			$optionalLabel = $_POST[$id.'__input_options_item_label__'.$oId];
-			$optionalCost  = $_POST[$id.'__input_options_item_cost__'.$oId];
-
-			//if cost is not a number set to 0 value
-			if(!is_numeric($optionalCost)) {
-				$optionalCost = "0.00";
-			}
-
-			//insert new row for option
-			if(substr($oId, 0, 3) == "new") {
-				if($optionalLabel != "") {
-					$sql = "INSERT INTO `shopping_cart_optional_product_attribute_options` (attribute_id,status,label,cost) VALUES ('".$idNum."',1,'".$optionalLabel."','".$optionalCost."')";
-					//print $sql."<br>";
-					$dbObj->query($sql);
+		if (is_array($_POST[$id.'__input_options'])) {
+			foreach($_POST[$id.'__input_options'] as $oKey => $oId) {
+				$optionalLabel = $_POST[$id.'__input_options_item_label__'.$oId];
+				$optionalCost  = $_POST[$id.'__input_options_item_cost__'.$oId];
+	
+				//if cost is not a number set to 0 value
+				if(!is_numeric($optionalCost)) {
+					$optionalCost = "0.00";
 				}
-
-			//update existing option
-			} else {
-				//if label does not have a value set status of option to '0' to "remove" option
-				if($optionalLabel == "") {
-					$sql = "UPDATE `shopping_cart_optional_product_attribute_options` SET status=0 WHERE id='".$oId."'";
-					//print $sql."<br>";
-					$dbObj->query($sql);
+	
+				//insert new row for option
+				if(substr($oId, 0, 3) == "new") {
+					if($optionalLabel != "") {
+						$sql = "INSERT INTO `shopping_cart_optional_product_attribute_options` (attribute_id,status,label,cost) VALUES ('".$idNum."',1,'".$optionalLabel."','".$optionalCost."')";
+						//print $sql."<br>";
+						$dbObj->query($sql);
+					}
+	
+				//update existing option
 				} else {
-					$sql = "UPDATE `shopping_cart_optional_product_attribute_options` SET `label`='".$optionalLabel."',cost='".$optionalCost."' WHERE id='".$oId."'";
+					//if label does not have a value set status of option to '0' to "remove" option
+					if($optionalLabel == "") {
+						$sql = "UPDATE `shopping_cart_optional_product_attribute_options` SET status=0 WHERE id='".$oId."'";
+						//print $sql."<br>";
+						$dbObj->query($sql);
+					} else {
+						$sql = "UPDATE `shopping_cart_optional_product_attribute_options` SET `label`='".$optionalLabel."',cost='".$optionalCost."' WHERE id='".$oId."'";
+						//print $sql."<br>";
+						$dbObj->query($sql);
+					}
 					//print $sql."<br>";
-					$dbObj->query($sql);
 				}
-				//print $sql."<br>";
 			}
 		}
-
 		//increase position by 1
 		$position++;
 	}
@@ -1082,6 +1085,24 @@ function display_shopping_cart_category_links($parent,$categories,$pos) {
 	//if ($hasChildren) print '</ul>'."\r\n";
 }
 
+
+function sanitize_field($data) {
+  $data = str_replace("&ldquo;", '"', $data);
+  $data = str_replace("“", '"', $data);
+  $data = str_replace("&#39;", "\'", $data);
+  $data = str_replace("&rdquo;", '"', $data);
+  $data = str_replace("”", '"', $data);
+  $data = str_replace("&lsquo;", "\'", $data);
+  $data = str_replace("‘", "\'", $data);
+  $data = str_replace("&rsquo;", "\'", $data);
+  $data = str_replace("’", "\'", $data);
+  $data = str_replace("&ndash;", "--", $data);
+  $data = str_replace("…", "...", $data);
+  $data = str_replace("&hellip;", "...", $data);
+  
+  return $data;
+
+}
 ?>
 <script type="text/javascript">
 	// <![CDATA[

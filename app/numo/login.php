@@ -22,6 +22,12 @@ if($_POST['cmd'] == "login") {
 						// What happens when the CAPTCHA was entered incorrectly
 						$recaptchaError = "Invalid CAPTCHA Provided";
 					  } 
+	} else if ($siteData['admin_require_captcha'] == "2") {
+		$correctAnswer = date("n") + date("j");
+		if ($_POST['verify'] != $correctAnswer) {
+			$verifyError = "Oops!  Wrong Answer!";
+			$attemptLogin = false;
+		}
 	}
     
 	if($attemptLogin && !login($_POST['username'],$_POST['password'], false, $siteData['login_attempts_threshold'], $siteData['bad_login_freeze_period'])) {
@@ -47,6 +53,10 @@ if(!isset($_SESSION['type_id'])) {
         <?php } else { ?>
 		<base href="http://<?php echo NUMO_SERVER_ADDRESS."".NUMO_FOLDER_PATH; ?>" />	
         <?php } ?>	
+         <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+         <link href="styles/animate.css" rel="stylesheet" media="screen">
+         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
 		<style>		
 		body {background: #f6f6f6;   padding: 0px; margin: 0px; font-family: Arial, sans-serif; color: #333; font-size: 0.9em;}
 		div,h2,p { padding: 0px; margin: 0px; }
@@ -89,10 +99,10 @@ if(!isset($_SESSION['type_id'])) {
 			 */
 	    }
 		.content_box p { color: #999; font-size: 0.75em; padding: 10px 5px;}
-		.content_box form {padding: 10px; margin: 0px; margin-left: 100px; margin-right: 100px;}
+		.content_box form {padding-top: 20px; } 
 		.content_box form ul {padding: 0px; margin: 0px; list-style-type: none; }
-		.content_box form ul li {font-weight: bold; padding: 2px 0px; font-size: 11px; color: #f00; padding-bottom: 10px;}
-		.content_box form ul li label { float: left; width: 12em; font-weight: normal; font-size: 13px; color: #666;}
+		/*.content_box form ul li {font-weight: bold; padding: 2px 0px; font-size: 11px; color: #f00; padding-bottom: 10px;}
+		 .content_box form ul li label { float: left; width: 12em; font-weight: normal; font-size: 13px; color: #666;} */
 		.content_header { 
 
 			
@@ -103,8 +113,9 @@ if(!isset($_SESSION['type_id'])) {
 			background-repeat: no-repeat;
 			padding-bottom: 5px;
 		}
-		.content_header h2 { text-align: center; color: #333333; font-size: 34pt; text-decoration: none; margin: 0px; padding: 0px;}
-		.content_header p {  text-align: center; color: #444444; font-size: 20pt; padding: 0px 5px 10px 5px;  }
+		.content_header h2 { text-align: center; color: #333333; font-size: 34pt; text-decoration: none; margin: 0px; padding: 0px; line-height: 1; }
+		.content_header p {  text-align: center; color: #444444; font-size: 16pt; padding: 10px 5px 10px 5px; line-height: 1;  }
+		/*
 		.content_box input[type=submit] { float: right;  		    
 		
 		     background: #E4E4E4 url('images/bar_bg.jpg') repeat-x; 
@@ -119,16 +130,33 @@ cursor: pointer;
 margin-right: 15px;
 margin-top: 10px;
 }
+*/
+
 .content_box input[type=submit]:hover { 
-  color: #F60;
+/*  color: #F60; */
 }
-		.content_box input[type=text], .content_box input[type=password] { width: 95%; height: 25px; font-size: 24px;  border: 1px solid #dddddd; background-color: #fafafafa; padding: 3px; color: #666; }
+
+.content_box input[type=text], .content_box input[type=password] {/*  width: 270px; */ }
+	/*	.content_box input[type=text], .content_box input[type=password] { width: 95%; height: 25px; font-size: 24px;  border: 1px solid #dddddd; background-color: #fafafafa; padding: 3px; color: #666; }
+		*/
 		.content_box a { color: #336699; font-size: 9pt; line-height: 20px; }
 		.content_box a:hover { color: #F60; }
+		.recaptchatable * {
+		box-sizing:content-box;
+-moz-box-sizing:content-box; /* Firefox */	
+		}
+		.recaptcha_input_area a { line-height: 1;font-size: 8pt; }
+		.recaptcha_input_area #recaptcha_response_field { font-weight: normal; height: auto; }
+		
         </style>
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+        <script>
+		jQuery(document).ready(function() {
+		$('input[type="text"]')[0].focus();
+									   });
+		</script>
 	</head>
-    <body>
+    <body >
     <?php
 	$messages[] = array("Welcome Back!", "Don't forget to <b>bookmark</b> this page.");
 	$messages[] = array("Aloha!", "Another <b>beautiful</b> day in parardise.");
@@ -145,27 +173,46 @@ margin-top: 10px;
             <div id="main_box">
             <div class="content_box">
             <div class="content_header">
-     <h2><?=$messages["{$position}"][0]?></h2>
-            <p><?=$messages["{$position}"][1]?></p> 
+     <h2 class='animated fadeIn'><?=$messages["{$position}"][0]?></h2>
+            <p  class='animated fadeInUp'><?=$messages["{$position}"][1]?></p> 
             </div>
-            <form method="post">
-                <ul class="form_display"> 
+            <form method="post" name="the_form" class="form-horizontal">
+               <!-- <ul class="form_display"> -->
                 <?php if ($badLoginError != "") { ?>
-                    <li><?php echo $badLoginError; ?></li>
+                    <div class='alert alert-danger'><?php echo $badLoginError; ?></div>
                 <?php } ?>
-                    <li><label for="username">Username</label><input type="text" id="username" name="username" value="<?php echo $adminLogin; ?>" /></li>
-                    <li><label for="password">Password</label><input type="password" id="password" name="password" value="<?php echo $adminPassword; ?>" /></li>
+                    <div class="control-group"><label class='control-label' for="username">Username</label>
+                    <div class="controls"><input class="input-xlarge" type="text" id="username" name="username"  placeholder="Username" value="<?php echo $adminLogin; ?>" /></div>
+                    </div>
+                    <div class="control-group"><label class='control-label' for="password">Password</label>
+                    <div class="controls"><input class="input-xlarge" placeholder="Password" type="password" id="password" name="password" value="<?php echo $adminPassword; ?>" /></div>
+                    </div>
                    <?php if ($siteData['admin_require_captcha'] == 1) { ?>
-                     <li style='margin-left: 40px; '><?php print recaptcha_get_html("6Ld1htoSAAAAAEayI5F-fVLCYaICJpaodJHuGb9R"); ?> <?php print $recaptchaError; ?></li>
-                  
+                     
+                     <div class="control-group <?php if ($recaptchaError != "") { print "error"; } ?>">
+                     <div class='controls'><?php print recaptcha_get_html("6Ld1htoSAAAAAEayI5F-fVLCYaICJpaodJHuGb9R", null, true); ?> <span class='help-inline'><?php print $recaptchaError; ?></span>
+                     </div>
+                     </div>
+                   <?php } else if ($siteData['admin_require_captcha'] == 2) { ?>
+                    <div class="control-group <?php if ($verifyError != "") { print "error"; } ?>"><label class='control-label'  for="verify">Verify</label>
+                      <div class="controls">
+					<div style='margin-right: 10px; margin-top:5px; display: inline-block;'><?php echo date("n"); ?> &#43; <?php echo date("j"); ?> &#61; </div><input placeholder="Math!" type="text" class='input-mini' id="verify" name="verify" value="" /> <span class='help-inline'><?php print $verifyError; ?></span>
+                      </div>
+                    </div>
                    <?php } ?>
 
                    <?php if (REMOTE_SERVICE === true) { ?>
-                    <li><label for="password">Domain</label><input type="text" id="numo_domain" name="numo_domain" value="<?php echo $numoDomain; ?>" /></li>
+                    <div class="control-group"><label class='control-label' for="numo_domain">Domain</label>
+                    <div class="controls"><input type="text" id="numo_domain" name="numo_domain" value="<?php echo $numoDomain; ?>" /></div>
+                    </div>
                    
                    <?php } ?>
-                    <li><a href="http://<?php echo NUMO_SERVER_ADDRESS; ?>/manage.numo?module=accounts&component=forgot password">Forgot your password?</a><input type="hidden" name="cmd" value="login" /><input type="submit" id="submit" name="nocmd" value="Log In" /></li>
-                </ul>
+                     <div class="control-group">
+<div class="controls">
+<label><a href="http://<?php echo NUMO_SERVER_ADDRESS; ?>/manage.numo?module=accounts&component=forgot password">Forgot your password?</a></label>
+<input type="hidden" name="cmd" value="login" /><input class='btn btn-large btn-success' type="submit" id="submit" name="nocmd" value="Log In" /></div>
+</div>
+                </div>
             </form>	
             
             </div>
@@ -180,5 +227,12 @@ margin-top: 10px;
 } else if($_SESSION['is_admin'] == 0 || $_SESSION['is_admin'] == "") {
 	//refresh page
 	header("Location: ../");
+} else {
+	//print "cookied sessid: ".$_COOKIE['PHPSESSID']."<br>";
+	//print "sbf: ".$_SESSION['last_active']."<br>";
+	$_SESSION['last_active'] = date("Y-m-d H:i:s");
+//	print "sessid: ".session_id()."<br>";
+//print "session-now: ".$_SESSION['last_active']."<br>";
+
 }
 ?>

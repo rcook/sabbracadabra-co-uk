@@ -11,7 +11,7 @@ if(isset($_SESSION['account_id'])) {
 
 	}
 	if ($PARAMS['exit_to_home'] == "1") {
-	  $link = str_replace("[File]", "//".$numo->getRootFolder()."?cmd=exit", NUMO_SYNTAX_ACCOUNT_LINK);
+	  $link = str_replace("[File]", "//".$numo->getRootFolder()."?cmd=exit&to=home", NUMO_SYNTAX_ACCOUNT_LINK);
 	} else {
 	  $link = str_replace("[File]", "?cmd=exit", NUMO_SYNTAX_ACCOUNT_LINK);
 	}

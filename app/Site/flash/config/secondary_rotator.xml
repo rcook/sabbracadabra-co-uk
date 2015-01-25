@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <gallery>
 <!-- time, in milliseconds, to display each picture - 5000 = 5 seconds -->
-<delay>20000</delay>
+<delay>8000</delay>
 	
 	<!-- target can be: _blank, _top, _self, or _parent - when testing on your local machine, links will ALWAYS open in a new window, regardless of the setting -->
 	
@@ -9,38 +9,38 @@
     
  
 		<pic>
-			<image>Site/themed_images/bizarre_tales_240x302.jpg</image>
-			<link>region_select.htm</link>
-			<target>_self</target>
-			<title>Jonathan Kershaw Music</title>
-			<description>Bizarre Tales - available now</description>
+			<image>Site/themed_images/sec_rot_remnants_ad_240x302.jpg</image>
+			<link>listen.htm</link>
+			<target>_blank</target>
+			<title>New Release</title>
+			<description>Remnants - available now</description>
 			<frame>on</frame>
 		</pic>
    
 		<pic>
-			<image>Site/themed_images/jk_002_240x302.jpg</image>
-			<link>home.htm</link>
+			<image>Site/themed_images/sec_rot_ag_ad_240x302.jpg</image>
+			<link>news.htm#ag_01</link>
 			<target>_self</target>
-			<title>Jonathan Kershaw Music</title>
-			<description>Photo by Tracey Swain</description>
+			<title>AcousticGoth.com</title>
+			<description>With singer Beck Sian</description>
 			<frame>on</frame>
 		</pic>
 
 		<pic>
-			<image>Site/themed_images/ts_004_240x302.jpg</image>
-			<link>photo_gallery.htm</link>
+			<image>Site/themed_images/sec_rot_youtube_ad_240x302.jpg</image>
+			<link>news.htm#youtube</link>
 			<target>_self</target>
 			<title>Jonathan Kershaw Music</title>
-			<description>All photography by Tracey Swain</description>
+			<description>YouTube Channel</description>
 			<frame>on</frame>
 		</pic>
 
 		<pic>
-			<image>Site/themed_images/Logo_240x302.jpg</image>
-			<link>home.htm</link>
+			<image>Site/themed_images/sec_rot_xing3c_ad_240x302.jpg</image>
+			<link>videos.htm#xing3c</link>
 			<target>_self</target>
-			<title>Jonathan Kershaw Music</title>
-			<description>Jonathan Kershaw Music</description>
+			<title>New Video</title>
+			<description>Crossing the Third Sea</description>
 			<frame>on</frame>
 		</pic>
 			

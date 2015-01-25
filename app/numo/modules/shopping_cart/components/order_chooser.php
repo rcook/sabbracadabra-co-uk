@@ -8,13 +8,19 @@ if ($settings == "") {
 			$fieldResults = $dbObj->query($sql);
 
 	if ($_GET['ob'] == "") {
-		$_GET['ob'] = array_shift(explode(" ", $settings['order_by_field']));
+		$obf = explode(" ", $settings['order_by_field']);
+		$_GET['ob'] = array_shift($obf);
 		if ($_GET['ob'] == "") {
 			$_GET['ob'] == "slot_1";
 		}
 	} 
 	if ($_GET['obd'] == "") {
-		$_GET['obd'] = array_pop(explode(" ", $settings['order_by_field']));
+		$obf = explode(" ", $settings['order_by_field']);
+		if (!is_array($obf)) {
+			$obf = array();
+			
+		}
+		$_GET['obd'] = array_pop($obf);
 	} 	
 	//print $_GET['ob'];
 	//print $settings['order_by_field'];

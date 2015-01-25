@@ -10,7 +10,12 @@
     <?php } ?>
     <?php if ($access->hasAccess("accounts", "account-create")) { ?>
 	<li><a href="module/accounts/account-create/"><i class='icon-asterisk'></i> Create New Account</a></li>
+    <?php if ($access->hasAccess("accounts", "import")) { ?>
+	<li><a href="module/accounts/import/"><i class='fa fa-upload'></i> Import New Accounts</a></li>
     <?php } ?>
+    <?php } ?>
+
+
 <?php if ($adminVersion == "") { ?>	</ul><?php } ?>
 <?php } ?>
 <?php if ($adminVersion == "") { ?>	</li><?php } ?>

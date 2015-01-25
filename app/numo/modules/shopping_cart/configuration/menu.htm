@@ -14,7 +14,7 @@
         <?php } ?>
 		</ul>
 	</li>
-    <?php if ($access->hasAccess("shopping_cart", "discounts-and-sales") && false) { ?>
+    <?php if ($access->hasAccess("shopping_cart", "discounts-and-sales")) { ?>
  	<li><a href="module/shopping_cart/discounts-and-sales/"><i class='icon-tags'></i> Discounts &amp; Sales</a></li>   
     <?php } ?>
     <?php if ($access->hasAccess("shopping_cart", "product-categories")) { ?>

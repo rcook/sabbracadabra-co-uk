@@ -1,5 +1,5 @@
 <?php 
-  include("../configuration/database_connection_information.php");
+  @include("../configuration/database_connection_information.php");
 ?>
 /***********************************************
  Fool-Proof Date Input Script with DHTML Calendar
@@ -460,12 +460,14 @@ function SetPickedMonth(PickedYear, PickedMonth, PickedDay) {
 	 } else if (this.hiddenFieldName == "field_2_date") {
 		 // check to make sure it is after field_1_date
 		 if (typeof field_1_date_Object != 'undefined') {
-			 if (this.picked.yearValue <= field_1_date_Object.picked.yearValue) {
-				 if (this.picked.yearValue < field_1_date_Object.picked.yearValue) { updated = true; }
+			if (this.picked.yearValue <= field_1_date_Object.picked.yearValue) {
+			
+				if (this.picked.yearValue < field_1_date_Object.picked.yearValue) { updated = true; }
 					
 				 field_1_date_Object.displayed.yearIndex = this.picked.yearValue;
 				 field_1_date_Object.displayed.yearValue = this.picked.yearValue;
-			   if (this.picked.monthIndex <= field_1_date_Object.picked.monthIndex) {
+			   
+			   	if (this.picked.monthIndex <= field_1_date_Object.picked.monthIndex) {
 					 if (this.picked.monthIndex < field_1_date_Object.picked.monthIndex) { updated = true; }
 
 					 field_1_date_Object.displayed.monthIndex = this.picked.monthIndex;
@@ -485,18 +487,24 @@ function SetPickedMonth(PickedYear, PickedMonth, PickedDay) {
 				  field_1_date_Object.pickDay(field_1_date_Object.displayed.day);
 		      field_1_date_Object.show(); // toggles the show, to actually hide it
 				}
-		  }
+				
+		 }
 
 		} 
 		 
 		
 		 // check to make sure it is before repeat_until
 	 } else if (this.hiddenFieldName == "edit_field_1_date") {
+	 
+		 if (typeof edit_field_2_date_Object != 'undefined') {
+	 
 			 if (this.picked.yearValue >= edit_field_2_date_Object.picked.yearValue) {
+			 
 				 if (this.picked.yearValue > edit_field_2_date_Object.picked.yearValue) { updated = true; }
-
 				 edit_field_2_date_Object.displayed.yearIndex = this.picked.yearValue;
 				 edit_field_2_date_Object.displayed.yearValue = this.picked.yearValue;
+				 
+
 			   if (this.picked.monthIndex >= edit_field_2_date_Object.picked.monthIndex) { 
 				   if (this.picked.monthIndex > edit_field_2_date_Object.picked.monthIndex) { updated = true; }
 					 edit_field_2_date_Object.displayed.monthIndex = this.picked.monthIndex;
@@ -512,16 +520,21 @@ function SetPickedMonth(PickedYear, PickedMonth, PickedDay) {
 					 edit_field_2_date_Object.displayed.day        = edit_field_2_date_Object.picked.day;
 					 edit_field_2_date_Object.displayed.monthIndex = edit_field_2_date_Object.picked.monthIndex;
 				 } 
-				 
+				try {
 				 edit_field_2_date_Object.pickDay(edit_field_2_date_Object.displayed.day);
-		     edit_field_2_date_Object.show(); // toggles the show, to actually hide it
+		     		edit_field_2_date_Object.show(); // toggles the show, to actually hide it
+		     		} catch (ex) {
+		     		
+		     		}
 
 			 }
-			 
+			
+		}
 		 
 	 } else if (this.hiddenFieldName == "edit_field_2_date") { 
 	 
 		 if (typeof edit_field_1_date_Object != 'undefined') {
+		 
 			 if (this.picked.yearValue <= edit_field_1_date_Object.picked.yearValue) {
 				 if (this.picked.yearValue < edit_field_1_date_Object.picked.yearValue) { updated = true; }
 					
@@ -544,10 +557,14 @@ function SetPickedMonth(PickedYear, PickedMonth, PickedDay) {
 				 } 
 				
 				if (updated) {
+				try {
 				  edit_field_1_date_Object.pickDay(edit_field_1_date_Object.displayed.day);
-		      edit_field_1_date_Object.show(); // toggles the show, to actually hide it
+		      			edit_field_1_date_Object.show(); // toggles the show, to actually hide it
+		      			} catch (ex) {
+		      			}
 				}
 		  }
+		  
 
 		} 
 		 
@@ -559,7 +576,7 @@ function SetPickedMonth(PickedYear, PickedMonth, PickedDay) {
 
 // The calendar object
 function calendarObject(DateName, DateFormat, DefaultDate) {
-
+	//alert(DateName + ", " + DateFormat + ", " + DefaultDate);
    /* Properties */
    this.hiddenFieldName = DateName;
    this.monthListID = DateName + '_Month_ID';
@@ -614,13 +631,21 @@ function calendarObject(DateName, DateFormat, DefaultDate) {
       return MonPos;
    }
    function SetGoodDate(CalObj, Notify) { // Notifies the user about their bad default date, and sets the current system date
+    //  alert("bbb");
+    //  alert(callObj);
       CalObj.setPicked(Today.getFullYear(), Today.getMonth(), Today.getDate());
+    //  alert("ccc");
       if (Notify) alert('WARNING: The supplied date is not in valid \'' + DateFormat + '\' format: ' + DefaultDate + '.\nTherefore, the current system date will be used instead: ' + CalObj.picked.formatted);
+    //  alert("ddd");
    }
+  // alert("zzz");
    // Main part of the constructor
    if (DefaultDate != '') {
+     //alert("aaa");
       if ((this.format == 'YYYYMMDD') && (/^(\d{4})(\d{2})(\d{2})$/.test(DefaultDate))) this.setPicked(RegExp.$1, parseInt(RegExp.$2,10)-1, RegExp.$3);
       else {
+      
+       // alert("yy");
          // Get the year
          if ((this.format.substr(0,2) == 'YY') && (/^(\d{2,4})(-|\/)/.test(DefaultDate))) { // Year is at the beginning
             var YearPart = GetGoodYear(RegExp.$1);
@@ -659,6 +684,8 @@ function calendarObject(DateName, DateFormat, DefaultDate) {
             else SetGoodDate(this, true);
          }
          else SetGoodDate(this, true);
+            //    alert("vv");
+
       }
    }
 }
@@ -733,7 +760,7 @@ function DateInput(DateName, Required, DateFormat, DefaultDate) {
          }
          writeln('</select>' + String.fromCharCode(13) + '</td>' + String.fromCharCode(13) + '<td valign="middle">');
          writeln('<input' + InitialStatus + ' class="calendarDateInput" type="text" id="' + DateName + '_Year_ID" size="' + eval(DateName + '_Object.picked.yearPad.length') + '" maxlength="' + eval(DateName + '_Object.picked.yearPad.length') + '" title="Year" value="' + eval(DateName + '_Object.picked.yearPad') + '" onKeyPress="return YearDigitsOnly(window.event)" onKeyUp="' + DateName + '_Object.checkYear(this)" onBlur="' + DateName + '_Object.fixYear(this)">');
-         write('<td valign="middle">' + String.fromCharCode(13) + '<a' + InitialStatus + ' id="' + DateName + '_ID_Link" href="javascript:' + DateName + '_Object.show()" onMouseOver="return ' + DateName + '_Object.iconHover(true)" onMouseOut="return ' + DateName + '_Object.iconHover(false)"><img src="' + ImageURL + '" align="baseline" title="Calendar" border="0"></a>');
+         write('<td valign="top">' + String.fromCharCode(13) + '<a class="time-button btn btn-default" ' + InitialStatus + ' id="' + DateName + '_ID_Link" href="javascript:' + DateName + '_Object.show()" onMouseOver="return ' + DateName + '_Object.iconHover(true)" onMouseOut="return ' + DateName + '_Object.iconHover(false)"><i class="fa fa-fw fa-calendar"></i></a>');
          writeln('<span id="' + DateName + '_ID" style="position:absolute;visibility:hidden;width:' + (CellWidth * 7) + 'px;background-color:' + CalBGColor + ';border:1px solid dimgray;" onMouseOver="' + DateName + '_Object.handleTimer(true)" onMouseOut="' + DateName + '_Object.handleTimer(false)">');
          writeln('<table width="' + (CellWidth * 7) + '" cellspacing="0" cellpadding="1">' + String.fromCharCode(13) + '<tr style="background-color:' + TopRowBGColor + ';">');
          writeln('<td id="' + DateName + '_Previous_ID" style="cursor:default" align="center" class="calendarDateInput" style="height:' + CellHeight + '" onClick="' + DateName + '_Object.previous.go()" onMouseDown="VirtualButton(this,true)" onMouseUp="VirtualButton(this,false)" onMouseOver="return ' + DateName + '_Object.previous.hover(this,true)" onMouseOut="return ' + DateName + '_Object.previous.hover(this,false)" title="' + eval(DateName + '_Object.previous.monthName') + '"><img src="' + PrevURL + '"></td>');
@@ -776,7 +803,9 @@ function DateInput2(DateName, Required, DateFormat, DefaultDate, formElement) {
          DefaultDate = (Required) ? CurrentDate.formatted : ''; // If required, use today's date
       }
       // Creates the calendar object!
+     // alert(DateName);
       eval(DateName + '_Object=new calendarObject(\'' + DateName + '\',\'' + DateFormat + '\',\'' + DefaultDate + '\')');
+     // alert("done");
       // Determine initial viewable state of day, year, and calendar icon
       if ((Required) || (arguments.length == 4)) {
          var InitialStatus = '';
@@ -830,7 +859,7 @@ function DateInput2(DateName, Required, DateFormat, DefaultDate, formElement) {
          }
          myCode = myCode + ('</select>' + String.fromCharCode(13) + '</td>' + String.fromCharCode(13) + '<td valign="middle">');
          myCode = myCode + ('<input' + InitialStatus + ' class="calendarDateInput" type="text" id="' + DateName + '_Year_ID" size="' + eval(DateName + '_Object.picked.yearPad.length') + '" maxlength="' + eval(DateName + '_Object.picked.yearPad.length') + '" title="Year" value="' + eval(DateName + '_Object.picked.yearPad') + '" onKeyPress="return YearDigitsOnly(window.event)" onKeyUp="' + DateName + '_Object.checkYear(this)" onBlur="' + DateName + '_Object.fixYear(this)">');
-         myCode = myCode + ('<td valign="middle">' + String.fromCharCode(13) + '<a' + InitialStatus + ' id="' + DateName + '_ID_Link" href="javascript:' + DateName + '_Object.show()" onMouseOver="return ' + DateName + '_Object.iconHover(true)" onMouseOut="return ' + DateName + '_Object.iconHover(false)"><img src="' + ImageURL + '" align="baseline" title="Calendar" border="0"></a>');
+         myCode = myCode + ('<td valign="top">' + String.fromCharCode(13) + '<a class="time-button btn btn-default" ' + InitialStatus + ' id="' + DateName + '_ID_Link" href="javascript:' + DateName + '_Object.show()" onMouseOver="return ' + DateName + '_Object.iconHover(true)" onMouseOut="return ' + DateName + '_Object.iconHover(false)"><i class="fa fa-fw fa-calendar"></i></a>');
          myCode = myCode + ('<span id="' + DateName + '_ID" style="position:absolute;visibility:hidden;width:' + (CellWidth * 7) + 'px;background-color:' + CalBGColor + ';border:1px solid dimgray;" onMouseOver="' + DateName + '_Object.handleTimer(true)" onMouseOut="' + DateName + '_Object.handleTimer(false)">');
          myCode = myCode + ('<table width="' + (CellWidth * 7) + '" cellspacing="0" cellpadding="1">' + String.fromCharCode(13) + '<tr style="background-color:' + TopRowBGColor + ';">');
          myCode = myCode + ('<td id="' + DateName + '_Previous_ID" style="cursor:default" align="center" class="calendarDateInput" style="height:' + CellHeight + '" onClick="' + DateName + '_Object.previous.go()" onMouseDown="VirtualButton(this,true)" onMouseUp="VirtualButton(this,false)" onMouseOver="return ' + DateName + '_Object.previous.hover(this,true)" onMouseOut="return ' + DateName + '_Object.previous.hover(this,false)" title="' + eval(DateName + '_Object.previous.monthName') + '"><img src="' + PrevURL + '"></td>');

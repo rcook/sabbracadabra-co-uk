@@ -220,7 +220,7 @@ foreach($modules as $key => $module) {
 }
 
 @mysql_free_result($result);
-mysql_free_result($results);
+@mysql_free_result($results);
 ?>
   </div>
 </div>

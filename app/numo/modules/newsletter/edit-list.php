@@ -28,7 +28,7 @@ while($row = mysql_fetch_array($results)) {
 		<option value="2" <?php if($row['availability'] == 2) { print 'selected="selected"'; } ?>>Private (Administrators Only)</option>
 	</select>
 	</li>
-	<li><label for="form_input_submit">&nbsp;</label><input type="submit" name="nocmd" id="form_input_submit" value="Save Changes" /></li>
+	<li><label for="form_input_submit">&nbsp;</label><input class='btn btn-large btn-success btn-default' type="submit" name="nocmd" id="form_input_submit" value="Save Changes" /></li>
 </ul>
 <input type="hidden" name="cmd" value="update" />
 </form>

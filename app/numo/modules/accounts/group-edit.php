@@ -400,8 +400,8 @@ if($row = mysql_fetch_array($result)) {
 
 			while($field = mysql_fetch_array($results)) {
 			?>
-				<div id="item_<?=$field['id']?>" class="lineitem">
-					<ul>
+				<div id="item_<?=$field['id']?>" class="lineitem">  
+					<ul> 
 						<li><img src="images/<?php if($field['locked'] == "1") { print 'locked'; } else { print 'unlocked'; } ?>.jpg" alt="field <?php if($field['locked'] == "1") { print 'locked'; } else { print 'unlocked'; } ?>" /></li>
 						<li><div><input type="text" name="<?=$field['id']?>__name" value="<?=$field['name']?>" /></div></li>
 						<li><div><select onchange="checkTypeSelection(this.value,'<?=$field['id']?>')" <?php if($field['locked'] == "1") { print 'disabled="disabled"'; } ?> name="<?=$field['id']?>__type"><?=display_field_type_options($field['input_type'],$field['locked'])?></select></div></li>

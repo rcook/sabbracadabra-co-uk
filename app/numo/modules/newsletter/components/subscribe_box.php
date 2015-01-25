@@ -1,8 +1,9 @@
+
 <?php if (!$bootstrapStyling) { ?>
-<link rel="stylesheet" type="text/css" href="http://<?php print NUMO_SERVER_ADDRESS; ?><?php print NUMO_FOLDER_PATH; ?>modules/newsletter/components/styles/subscribe_box.css" />
+<link rel="stylesheet" type="text/css" href="//<?php print NUMO_SERVER_ADDRESS; ?><?php print NUMO_FOLDER_PATH; ?>modules/newsletter/components/styles/subscribe_box.css" />
 <?php }
 if ($bootstrapStyling) { ?>
-    <div class="thumbnail">
+    <div class="thumbnail pull-left">
      <div class="caption">
      <?php } ?>
 <?php if ($PARAMS['title'] != "") { ?>
@@ -48,7 +49,7 @@ if(isset($_SESSION['account_id'])) {
 		?>
 		<h4><?=NUMO_SYNTAX_NEWSLETTER_SUBSCRIPTION_LISTS_LABEL?></h4>
 		<form method="post">
-		<ul style='list-style-type: none;'>
+		<ul style='list-style-type: none; margin-left: 5px; padding-left: 0px;'>
 		<?php
 		while($row = mysql_fetch_array($results)) {
 			$sql = "SELECT id FROM newsletter_subscribers WHERE subscription_list_id='".$row['id']."' AND account_id='".$_SESSION['account_id']."'";

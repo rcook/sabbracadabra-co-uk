@@ -2,7 +2,10 @@
 class Discount {
 	function Discount($id) {
 	  $this->attributes['id'] = $id;
+	  $this->attributes['discount_tax_removed'] = 0;
+	  $this->qualifiedProducts = array();;
 	  $this->load();
+	
 	}
 	
 	function load() {
@@ -43,13 +46,15 @@ class Discount {
 	  if ($this->attributes['amount_type'] == "0") {
 		 $description = "{$this->attributes['currency_symbol']}{$this->attributes['amount']} Instant Rebate";  
 	  } else {
-		 $description = rtrim(trim($this->attributes['amount'], '0'), '.')."% off of {$this->attributes['currency_symbol']}{$this->attributes['original_amount']}";
+		 $description = rtrim(trim($this->attributes['amount'], '0'), '.')."% off of {$this->attributes['currency_symbol']}".number_format($this->attributes['original_amount'], 2, '.', '');
 	  }
 	  return $description;
 	}
 	function canBeCobmbined() {
 	  return $this->attributes['compounding'] == "1";	
 	}
+	
+
 	
 	function calculateRebateAmount($amount, $store = true) {
 	  $calculatedAmount = 0;

@@ -127,7 +127,7 @@ if($_POST['cmd'] == "create" && $_POST['demo'] == "") {
 <form method="post">
 <?php if ($PARAMS['demo'] == 1) { ?>
 <input type='hidden' name='demo' value='1' />
-<?php } ?>
+<?php } ?> 
 	<ul>
 		<?php
 		//load field information for accounts group
@@ -149,16 +149,39 @@ if($_POST['cmd'] == "create" && $_POST['demo'] == "") {
 
 			} else if($field['input_type'] == "street address") {
 				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
-			} else if($field['input_type'] == "city") {
-				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
-			} else if($field['input_type'] == "zip") {
-				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
+			//} else if($field['input_type'] == "city") {
+			//	print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
+			//} else if($field['input_type'] == "zip") {
+			//	print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
 			
 			} else if($field['input_type'] == "country") {
-				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
-			
+		//		print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
+
+				print '<li>
+								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
+								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.generate_country_options($field['name'],$fieldValue).'</select>
+							</li>';			
 			} else if($field['input_type'] == "state") {
-				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
+				$countryList = explode("\r\n", str_replace("<br>", "\r\n", NUMO_SYNTAX_NUMO_COUNTRY_LIST));
+ 
+				$countries = array();
+				foreach ($countryList as $data) {
+					$countryData = explode("=", $data);
+					$key = $countryData[0];
+					$value = $countryData[1];
+					$countries["$key"] = $value;
+				}
+				
+				
+				
+				print '<li>
+								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
+								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">';
+					print generate_state_province_options($field['name'], $fieldValue);
+				
+				print '</select>
+							</li>';				
+				//print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$errors[$field['slot']].'</li>';
 			
 			} else if($field['input_type'] == "email") {
 				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input type="email" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$_POST['slot_'.$field['slot']].'" /> '.$errors[$field['slot']].'</li>';

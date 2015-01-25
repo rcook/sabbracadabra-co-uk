@@ -32,6 +32,10 @@ while($row = mysql_fetch_array($results)) {
 }
 
 if($_POST['cmd'] == "create") {
+	foreach ($_POST as $key => $value) {
+    	$_POST["$key"] = sanitize_field($value);
+  	}	
+	
 	//if status checkbox checked then dont display product in display components
 	if(isset($_POST['status'])) {
 		$_POST['status'] = 0;
@@ -274,7 +278,7 @@ table.egood_config th {
 	font-size: 9pt;
 	padding: 3px 10px;
 	border-bottom: 1px solid #cccccc;
-	
+
 }
 </style>
 <script language="JavaScript" src="javascript/prototype.js"></script>
@@ -435,12 +439,12 @@ function change_egood_type(selectBox) {
 	  jQuery(".egood_settting_newsletter").css("display", "block");
   } else if (selectedValue == "listing_service") {
     jQuery(".egood_settting_listing_service").css("display", "none");
-  } 	
+  }
 }
 
 function change_shipping_type(selectBox) {
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  
+
   if (selectedValue == 0) {
 	  jQuery(".shipping_weight_label").css("display", "none");
 	  jQuery("span.shipping_cost_label").css("display", "inline-block");
@@ -448,18 +452,18 @@ function change_shipping_type(selectBox) {
 	  jQuery(".shipping_cost_label_list_item").css("display", "block");
 	  jQuery("li.shipping_egood_config").css("display", "none");
   } else if (selectedValue == 1) {
-	  jQuery("li.shipping_cost_label_list_item").css("display", "block");	  
-	  jQuery("li.shipping_cost_label").css("display", "none");	  
+	  jQuery("li.shipping_cost_label_list_item").css("display", "block");
+	  jQuery("li.shipping_cost_label").css("display", "none");
 	  jQuery("span.shipping_cost_label").css("display", "none");
 	  jQuery("span.shipping_weight_label").css("display", "inline-block");
 	  jQuery("li.shipping_egood_config").css("display", "none");
   } else if (selectedValue == 2) {
-	  jQuery("li.shipping_cost_label_list_item").css("display", "none");	  
+	  jQuery("li.shipping_cost_label_list_item").css("display", "none");
 	  jQuery(".shipping_weight_label").css("display", "none");
 	  jQuery(".shipping_cost_label").css("display", "none");
 	  jQuery(".shipping_cost_label_list_item").css("display", "none");
 	  jQuery("li.shipping_egood_config").css("display", "block");
-  } 
+  }
 }
 </script>
 <ul class="breadcrumb">
@@ -493,17 +497,17 @@ print $errorMsg;
 
 <?php } ?>
 <?php
-if ($_POST['copy_from'] == "existing_product") { 
+if ($_POST['copy_from'] == "existing_product") {
   $sql = "SELECT * FROM `shopping_cart_products` l WHERE l.id = '".$_POST['existing_product']."' AND l.site_id='".NUMO_SITE_ID."'";
   //print $sql;
   $result = $dbObj->query($sql);
   $originalProduct = mysql_fetch_array($result);
-  
+
 	$sql = "SELECT category_id FROM `shopping_cart_product_categories` WHERE `product_id`=".$_POST['existing_product'];
 	$results = $dbObj->query($sql);
-	
+
 	$productCategories = array();
-	
+
 	while($row = mysql_fetch_array($results)) {
 		$productCategories[$row['category_id']] = $row['category_id'];
 	}
@@ -518,7 +522,7 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 	while ($taxRateRecord = mysql_fetch_array($taxRatesResult)) {
 		$taxRateID = $taxRateRecord['tax_rate_id'];
 		$taxRates["$taxRateID"] = $taxRateRecord['rate_name']." @ ".$taxRateRecord['tax_rate']."%";
-		
+
 	}
 }
 
@@ -535,7 +539,7 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 
 		while($field = mysql_fetch_array($results)) {
 			if ($_POST['copy_from'] == "existing_product") {
-				
+
 			  $fieldValue = html_entity_decode($originalProduct['slot_'.$field['slot']]);
 			  if ($field['input_type'] == "text") {
 				  $fieldValue .= " (Copy)";
@@ -544,24 +548,24 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 				  $_POST['shipping']  = $originalProduct['shipping'];
 				  $_POST['shipping2'] = $originalProduct['shipping2'];
 			  }
-			  
+
 			 // print "yup";
 			} else {
 			  $fieldValue = html_entity_decode($_POST['slot_'.$field['slot']]);
 			}
-			
+
 			$fieldOptions = html_entity_decode($field['input_options']);
 
 			if($field['input_type'] == "link") {
 				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input class="text_input" type="text" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="http://" autocomplete="off" /></li>';
 
 			} else if($field['input_type'] == "dropdown list") {
-									
+
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'[]">'.generate_list_options($fieldOptions ,$fieldValue).'</select>
 							</li>';
-							
+
 			} else if($field['input_type'] == "tax rate" ) {
 				if (sizeof($taxRates) > 0) {
 				print '<li>
@@ -598,7 +602,7 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 				print '<li>
 								<label for="slot_'.$field['slot'].'">'.$field['name'].':</label>
 								<select onchange="change_shipping_type(this)" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.generate_list_options($fieldOptions ,$fieldValue).'</select>
-						
+
 
 							</li>';
 
@@ -616,32 +620,32 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 				$fieldOptions = array();
 				$fieldOptions['simple'] = 'Simple Payment';
 				$fieldOptions['accounts'] = "Account Upgrade";
-				
+
 				$accountTypeOptions = array(0 => "** No Change **");
 				$result = $dbObj->query("SELECT * FROM `types` WHERE site_id='".NUMO_SITE_ID."' ORDER BY `id`");
 				while ($rec = mysql_fetch_array($result)) {
 					$accTypeId = $rec['id'];
-					
+
 					$accountTypeOptions["{$accTypeId}"] = $rec['name'];
 				}
 				mysql_free_result($result);
-				
-				
+
+
 				$query = "SELECT * FROM modules WHERE name='access_control' AND site_id='".NUMO_SITE_ID."'";
 				$result = $dbObj->query($query);
 				$exists = (mysql_num_rows($result))?TRUE:FALSE;
 				if ($exists) {
-				  $fieldOptions['access_control']  = "- Access Upgrade";	
+				  $fieldOptions['access_control']  = "- Access Upgrade";
 					$accessTypeOptions = array();
 					$result = $dbObj->query("SELECT * FROM `protected_files` WHERE site_id='".NUMO_SITE_ID."' ORDER BY `file_name`");
 					//print mysql_error();
 					while ($rec = mysql_fetch_array($result)) {
 						$accTypeId = $rec['id'];
-						
+
 						$accessTypeOptions["{$accTypeId}"] = $rec['file_name'];
-					}	
-				
-				
+					}
+
+
 				}
 				$query = "SELECT * FROM modules WHERE name='newsletter' AND site_id='".NUMO_SITE_ID."'";
 				$result = $dbObj->query($query);
@@ -656,31 +660,31 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 					//print mysql_error();
 					while ($rec = mysql_fetch_array($result)) {
 						$accTypeId = $rec['id'];
-						
+
 						$newsletterListOptions["{$accTypeId}"] = $rec['name'];
-					}	
+					}
 
 
 				}
-				
+
 //								$query = "SELECT * FROM modules WHERE name='newsletter' AND site_id='".NUMO_SITE_ID."'";
 
 				$result = $dbObj->query("SHOW COLUMNS FROM `listing_contributors`");
 				$exists = (@mysql_num_rows($result))?TRUE:FALSE;
-				
+
 				if ($exists) {
-				
+
 				  $fieldOptions['listing_service'] = "- Listing Service Contributor";
 				}
-				
+
 				// will need to parse out the field value information
 				// $fieldValue example "accounts:2
 				//                      access_control:page1.htm,page2.htm
 				//                      newsletter:1
 				//                      listing_service:1,3
-				
-				
-				
+
+
+
 				print '<li style="display:none" class="shipping_egood_config"><label for="slot_'.$field['slot'].'"">eGood Configuration:</label>
 				<table>
 				  <tr>
@@ -707,8 +711,8 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 					</td>
 			       </tr>
 				 </table>
-						
-							
+
+
 				</li>';
 			} else {
 				print '<li><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input class="text_input" type="text" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$fieldValue.'" /></li>';
@@ -741,13 +745,15 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 		</div>
 		<div id="group_fields">
 		<?php
-		//load field information for accounts group
+		// load field information for accounts group
 		$sql = "SELECT * FROM `shopping_cart_optional_product_attributes` WHERE `product_id`='".$_POST['existing_product']."' ORDER BY `position`,`label`";
 		//print $sql."<br>";
 		$results = $dbObj->query($sql);
- 
+
         $newCount = 0;
 		while($field = mysql_fetch_array($results)) {
+
+			$myFieldID = $field['id'];
 			$field['id'] = "new{$newCount}-".time();
 			$newCount++;
 		?>
@@ -765,13 +771,18 @@ if (@mysql_num_rows($taxRatesResult) > 0) {
 					<tr><td><b>Label</b></td><td><b>Cost</b></td></tr>
 					<?php
 					//load field information for accounts group
-					$sql = "SELECT * FROM `shopping_cart_optional_product_attribute_options` WHERE `attribute_id`=".$field['id']." AND `status`=1 ORDER BY `id`";
+					$sql = "SELECT * FROM `shopping_cart_optional_product_attribute_options` WHERE `attribute_id`='".$myFieldID."' AND `status`=1 ORDER BY `id`";
 					//print $sql."<br>";
 					$optionals = $dbObj->query($sql);
 
+					  $newOptionCount = 0;
+
 					while($option = mysql_fetch_array($optionals)) {
+					  $option['id'] = "new{$newOptionCount}";
+					  $newOptionCount++;
+
 					?>
-					<tr><td><input type="text" name="<?=$field['id']?>__input_options_item_label__<?=$option['id']?>" value="<?=$option['label']?>" /></td><td><input type="text" name="<?=$field['id']?>__input_options_item_cost__<?=$option['id']?>" class="item_cost" value="<?=number_format($option['cost'], 2, '.', ',')?>" /><input type="hidden" name="<?=$field['id']?>__input_options[]"value="<?=$option['id']?>" /></td></tr>
+					<tr><td><input type="text" name="<?=$field['id']?>__input_options_item_label__<?=$option['id']?>" value="<?=$option['label']?>" /></td><td><input type="text" name="<?=$field['id']?>__input_options_item_cost__<?=$option['id']?>" class="item_cost" value="<?=number_format($option['cost'], 2, '.', ',')?>" /><input type="hidden" name="<?=$field['id']?>__input_options[]" value="<?=$option['id']?>" /></td></tr>
 					<?php
 					}
 					?>
@@ -908,6 +919,24 @@ function display_yes_no_options($value) {
 	} else {
 		return "<option value=\"1\">Yes</option><option value=\"0\" selected=\"selected\">No</option>";
 	}
+}
+
+function sanitize_field($data) {
+  $data = str_replace("&ldquo;", '"', $data);
+  $data = str_replace("“", '"', $data);
+  $data = str_replace("&#39;", "\'", $data);
+  $data = str_replace("&rdquo;", '"', $data);
+  $data = str_replace("”", '"', $data);
+  $data = str_replace("&lsquo;", "\'", $data);
+  $data = str_replace("‘", "\'", $data);
+  $data = str_replace("&rsquo;", "\'", $data);
+  $data = str_replace("’", "\'", $data);
+  $data = str_replace("&ndash;", "--", $data);
+  $data = str_replace("…", "...", $data);
+  $data = str_replace("&hellip;", "...", $data);
+  
+  return $data;
+
 }
 ?>
 <script type="text/javascript">

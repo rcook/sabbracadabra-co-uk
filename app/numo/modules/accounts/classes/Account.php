@@ -549,7 +549,7 @@ class Account {
 					if($lastTypeId == $info['type_id']) {
 						$updateString .= ",slot_".$row['slot']."='".$info['slot_'.$lastFieldSlot]."'";
 					} else {
-						$updateString .= ",slot_".$lastTypeId."='".$info['slot_'.$row['slot']]."'";
+						$updateString .= ",slot_".$lastFieldSlot."='".$info['slot_'.$row['slot']]."'";
 					}
 				//}
 			}

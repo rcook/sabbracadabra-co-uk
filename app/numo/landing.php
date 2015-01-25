@@ -1,6 +1,6 @@
 <?php
 $licenseCheckResponse = "";
-
+//var_dump($_POST);  
 include('configuration/landing.php');
 
 if ($_POST['cmd'] == "change_module_status") {
@@ -9,10 +9,11 @@ if ($_POST['cmd'] == "change_module_status") {
 }
 if($_POST['cmd'] == "install_new_module") {
 	// if valid license key
-	if(($licenseCheckResponse = check_license_key($_POST['license_key'],$_POST['module'])) == "") {
+	
+	if(($licenseCheckResponse  = check_license_key($_POST['license_key'],$_POST['module'])) == "") {
 		//run module initialization SQL code
 		run_sql_configuration($_POST['module'], false, $_POST['license_key'], $_POST['site_id']);
-		header('Location: '.NUMO_FOLDER_PATH);
+		//header('Location: '.NUMO_FOLDER_PATH);
 	}
 } else if ($_POST['cmd'] == "update_license_key") { 
 	if(($licenseCheckResponse = check_license_key($_POST['license_key'],$_POST['module'])) == "") {
@@ -53,11 +54,16 @@ $exists = (mysql_num_rows($result))?TRUE:FALSE;
 if (!$exists) {
   $dbObj->query("ALTER TABLE `modules` ADD `license_key` varchar(100) default ''");
 }
-
+if (!is_array($moduleRecords)) {
+	//$moduleRecords = array();
+ // print "yes";
+}
 foreach( $modules as $key => $module) {
 	$query = "SELECT * FROM modules WHERE name='{$module}' AND site_id='".NUMO_SITE_ID."' AND status>=0";
 	$moduleResult = $dbObj->query($query);
 	$moduleRecord = mysql_fetch_array($moduleResult);
+	//$moduleRecords["$module"] = $moduleRecord;
+	//print $module."<br>";
 	if ($moduleRecord['license_key'] == "" && $moduleRecord['name'] != "accounts" && $moduleRecord['name'] != "settings") { ?>
 		<div class="module_install_completed">
 		 <h2><?=ucwords(str_replace("_", " ", $module))?></h2>
@@ -72,9 +78,14 @@ foreach( $modules as $key => $module) {
 		</div>
         <?php
 	} else {
-	  include('modules/'.$module.'/configuration/landing.php');
+	  if ($siteData['hide_offline'] != "1" || $moduleRecord['status'] == 1) { 
+	    include('modules/'.$module.'/configuration/landing.php');
+	  }
 	}
 }
+
+
+	fetch_available_upgrades(true);
 
 ?>
 <form name="change_module_status" id="change_module_status" method='post'>

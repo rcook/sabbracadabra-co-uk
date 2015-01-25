@@ -13,7 +13,7 @@ ul.form_display li label{width:170px;float:left;}
 </style>
 <ul class="breadcrumb">
   <li><a href="./">Home</a> <span class="divider">/</span></li>
-  <li class="active"><a href="modules/newsletter/manage-list/">Manage Newsletter Subscription Lists</a>  <span class="divider">/</span></li>
+  <li class="active"><a href="module/newsletter/manage-list/">Manage Newsletter Subscription Lists</a>  <span class="divider">/</span></li>
   <li class="active">Create New List</li>
 </ul>
 <h2>Create Subscription List</h2>

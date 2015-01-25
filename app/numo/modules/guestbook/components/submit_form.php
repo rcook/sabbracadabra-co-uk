@@ -245,7 +245,10 @@ if($row = mysql_fetch_array($result)) {
 			} else if($field['input_type'] == "radio") {
 				print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><ul class="numo_checkbox_inputs">'.generate_numo_checkbox_options($field['input_options'],$field['slot'],$_POST['slot_'.$field['slot']],"radio").'</ul> '.$numoFormErrors[$field['slot']].'
 							<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
-
+			} else if($field['input_type'] == "email") {
+				
+				  print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><input class="numo_text_input" type="email" id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'" value="'.$_POST['slot_'.$field['slot']].'" /> '.$numoFormErrors[$field['slot']].'<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
+				
 			} else if($field['input_type'] == "textarea") {
 				print '<li'.(array_key_exists($field['slot'],$numoFormErrors) ? ' class="numo_form_error"' : '').'><label for="slot_'.$field['slot'].'">'.$field['name'].':</label><textarea id="slot_'.$field['slot'].'" name="slot_'.$field['slot'].'">'.$_POST['slot_'.$field['slot']].'</textarea> '.$numoFormErrors[$field['slot']].'<input type="hidden" name="guestbook_fields[]" value="'.$field['slot'].'" /><input type="hidden" name="name__slot_'.$field['slot'].'" value="'.$field['name'].'" /></li>';
 

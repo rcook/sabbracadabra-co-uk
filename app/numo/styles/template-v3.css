@@ -1,4 +1,4 @@
-body { padding: 0px; margin: 0px; font-family: Arial, sans-serif; color: #333; font-size: 0.9em; background-color: #ffffff;}
+body { padding: 0px; margin: 0px;  color: #333; font-size: 0.9em; background-color: #ffffff;}
 div { padding: 0px; margin: 0px; }
 /** TOP BAR ** */ 
 #top_bar {  height: 50px; text-align: left; color: #666666; margin-left: 8%; margin-right: 8%;}
@@ -146,6 +146,7 @@ border-radius: 4px;
 margin: 4px;
 width: 225px;
 min-height: 150px;
+min-height: 125px;
 display: inline-block;
 clear: right;
 float: right;
@@ -176,7 +177,9 @@ box-shadow: 0 0 3px #888;
 }
 */ 
 .module_install_settings p, .module_install_accounts p {/*color: #fff;*/ font-size: 11px; padding-left: 7px;}
+/*
 .module_install_settings a, .module_install_accounts a {color: #ff9900; border-bottom: 1px dotted #ff9900; text-decoration: none;}
+*/
 
 .module_install_settings hr, .module_install_accounts hr { /* border: 1px solid #ffffff !important; */}
 .module_install_completed h2, .module_install_settings h2, .module_install_accounts h2 { 	 font-size: 12pt; display: inline-block; margin: 0px;}

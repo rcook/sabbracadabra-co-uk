@@ -33,6 +33,9 @@ error_reporting(0);
 require("../../../classes/functions.php");
 
 // start session
+if ($_GET['session_id'] != "") {
+  session_id($_GET['session_id']);
+}
 numo_session_start();
 header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"');
 // exit;

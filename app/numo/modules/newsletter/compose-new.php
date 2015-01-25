@@ -38,8 +38,8 @@ ul.form_display li input.text_input {width: 300px;}
 ul.form_display li textarea {width: 300px; height: 50px;}
 </style>
 <ul class="breadcrumb">
-  <li><a href="./">Home</a> <span class="divider">/</span></li>
-  <li class="active"><a href="modules/newsletter/manage/">Manage Newsletters</a>  <span class="divider">/</span></li>
+  <li><a href="./">Home</a> <span class="divider">/</span></li> 
+  <li class="active"><a href="module/newsletter/manage/">Manage Newsletters</a>  <span class="divider">/</span></li>
   <li class="active">Compose</li>
 </ul>
 <h2>Compose Newsletter</h2>

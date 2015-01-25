@@ -25,7 +25,7 @@
 	<style>
 	h2 {margin: 0px; padding: 5px 0px; font-size: 1.1em; color: #2A61BD;}
 	</style>
-	<!-- this file is auto generated internally by the numo system -->
+	<!-- this file is auto generated internally by the numo system  ) --> 
 </head>
 <body>
 <h2>[NUMO.SETTINGS: ERROR TITLE]</h2>
@@ -49,6 +49,7 @@ if(defined($constantName)) {
 
 
 $display = str_replace("[NUMO.SETTINGS: ERROR]","[NUMO.".$_GET['module'].": ".$_GET['component']."]",$display);
+
 $display = str_replace("<numo module='settings' component='error'></numo>","[NUMO.".$_GET['module'].": ".$_GET['component']."]",$display);
 $display = str_replace("<numo module='settings' component='error'></numo>","[ numo module='".$_GET['module']."' component='".$_GET['component']."'][/numo]",$display);
 //print "a";

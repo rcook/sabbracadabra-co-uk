@@ -6,14 +6,15 @@
 <head>
 <!-- #BeginEditable "meta" -->
 <title>JONATHAN KERSHAW MUSIC - MP3 STORE</title>
-<meta name="Keywords" content="jonathan kershaw,jon kershaw,loreena mckennitt,ritchie blackmore,blackmore's night,blackmores night, blackmore night,acoustic guitar,acoustic guitarist,function guitarist,celtic folk,traditional guitar,guitarist for events,guitarist for functions,guitarist for weddings,renaissance music,celtic guitar,celtic guitarist, folk guitar, folk guitarist,classical guitarist" />
-<meta name="Description" content="MP3 store for Jonathan Kershaw music including his latest album Bizarre Tales. The site links to CDBaby for the actual sale and downloads" />
-	<meta property="og:title" content="MP3 Store - Jonathan Kershaw Music" />
+<link rel="shortcut icon" href="http://jonkershawmusic.com/jk_favicon.png" />
+
+<meta name="Keywords" content="Jonathan Kershaw, Jon Kershaw, Celtic music, folk music, acoustic guitar, baroque, relaxing music, hangover music, renaissance." />
+<meta name="Description" content="MP3 music store for Jonathan Kershaw including his latest album Remnants." />
+	<meta property="og:title" content="Music Download Store - Jonathan Kershaw Music" />
 	<meta property="og:site_name" content="Jonathan Kershaw Music" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://jonkershawmusic.com" />
-	<meta property="og:image" content="http://jonkershawmusic.com/site/themed_images/jon_moonshayde_800x800.jpg"/>
-
+	<meta property="og:url" content="http://jonkershawmusic.com/mp3_shop" />
+	<meta property="og:image" content="http://jonkershawmusic.com/site/themed_images/jk_og_pic_800x800.jpg"/>
 <!-- #EndEditable -->
 
 <!-- language content -->
@@ -26,15 +27,13 @@
 <!-- column styles -->
 <!-- #BeginEditable "styles" -->
 
-<link href="Site/styles/minimized.css" rel="stylesheet" type="text/css" />
-
 <style type="text/css">
 #column1_wrapper	{width:100%; 		border:0px;}
-#left1col			{width:290px;		float:left; padding-top:352px;}
+#left1col			{width:0px;			float:left; padding-top:282px;}
 #left1pad			{width:0px;			float:left;}
 #right1col			{width:0px;			float:right;}
 #right1pad			{width:0px;			float:right;}
-#center1col			{margin-left:270px; margin-right:0px; padding-right:0px;}
+#center1col			{margin-left:0px; 	margin-right:0px; padding-right:0px;}
 
 #column2_wrapper	{width:100%; 		border:0px;}
 #left2col			{width:33%;			float:left;}
@@ -42,8 +41,10 @@
 #right2col			{width:33%;			float:right;}
 #right2pad			{width:0px;			float:right;}
 #center2col			{margin-left:33%; 	margin-right:33%;}
+.auto-style1 {
+	text-align: center;
+}
 </style>
-
 
 <!-- #EndEditable -->
 
@@ -57,6 +58,27 @@
 var flashRootLocation = "./";
 var flashConfigLocation = "config";
 var flashConfigType = "xml"; // either xml or php
+
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
 </script>
 
 <!-- #EndEditable -->
@@ -79,6 +101,18 @@ var flashConfigType = "xml"; // either xml or php
 </script>
 
 <!-- #BeginEditable "misc scripting" -->
+
+<!--Facebook Follow script-->
+<!--<div id="fb-root"></div>
+--><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--End of Facebook Follow script-->
+
 <!-- #EndEditable -->
 
 <!-- IE6 PNG fix scripting -->
@@ -112,7 +146,7 @@ var flashConfigType = "xml"; // either xml or php
 <!--SEO H1 -->
 <div id="seo_1">
 <!-- #BeginEditable "seo_h1" -->
-	<h1>Music Download Store</h1>
+<h1>Music Download Store</h1>
 <!-- #EndEditable -->
 </div>
 <!--/SEO H1 -->
@@ -120,8 +154,8 @@ var flashConfigType = "xml"; // either xml or php
 <!--SEO H2 -->
 <div id="seo_2">
 <!-- #BeginEditable "seo_h2" -->
-<!--	<h2>short description</h2>
---><!-- #EndEditable -->
+<h2>MP3, FLAC and MP320s available</h2>
+<!-- #EndEditable -->
 </div>
 <!--/SEO H2 -->
 
@@ -142,164 +176,6 @@ var flashConfigType = "xml"; // either xml or php
 			<div id="left1col">
 				<!-- #BeginEditable "left1" -->
 				
-					<!-- menu side box3 -->
-						<div class="sidemenu">
-							<div class="box1"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3"><div class="box1-inner"><div class="box1-2"><div class="box1-6"><div class="box1-4"><div class="box1-8"><div class="box1-5"><div class="box1-7"><div class="box1-3"><div class="box1-1"><div class="box1-content">
-							<script type="text/javascript">ddsmoothmenu.init({mainmenuid: "smoothmenu2", orientation: 'v', classname: 'ddsmoothmenu-v', contentsource: "markup" })</script>
-							<div id="smoothmenu2" class="ddsmoothmenu-v">	
-							<!--webbot bot="Include" U-Include="Library/expression-fp/menu_side.htm" TAG="BODY" startspan -->
-<!-- #BeginLibraryItem "/Library/dreamweaver/menu_side.lbi" -->
-
-
-<h3>Main Menu</h3>
-
-<ul>
-	<li><a href="home.htm">Home</a></li>
-	<li><a href="news.htm">News</a></li>
-	<li><a href="live.htm">Live</a></li>
-	<li><a href="region_select.htm">Purchase</a>
-	<ul>
-		<li><a href="mp3_shop.htm">Music Download Store</a></li>
-		<li><a href="region_select.htm">CD Music Store</a>[NUMO.SHOPPING CART: LIST]</li>
-		<li><a href="purchase_history.htm">View Your Purchases</a></li>
-		<li><a href="shipping.htm">Shipping &amp; Payment Info</a></li>		
-	</ul>
-	</li>
-	<li><a href="photo_gallery.htm">Gallery</a></li>
-	<li><a href="biog.htm">Background</a><ul>
-		<li><a href="biog.htm">Biography</a></li>
-		<li><a href="influences.htm">Musical Influences</a></li>
-	</ul>
-	</li>
-	<li><a href="guestbook.htm">Guest Book</a></li>
-	<li><a href="contact.htm">Contact</a>
-	<ul>
-		<li><a href="contact.htm#1">Email</a></li>
-		<li><a href="contact.htm#3">Telephone</a></li>
-<!--		<li><a href="../../contact.htm#4">Fax</a></li>
--->		
-		<li><a href="contact.htm#2">Web Form</a></li>
-		<li><a href="contact.htm#5">Address</a></li>
-<!--		<li><a href="../../contact.htm#6">Directions</a></li>
--->	
-	</ul>
-	</li>
-	<li><a href="faqs.htm">FAQs</a></ul>
-
-
-<!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="55655" -->
-							<br style="clear: left" /></div>
-							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
-						</div>
-					<!-- /menu side box3 -->
-
-[NUMO.NEWSLETTER: SUBSCRIBE BOX LEFT]
-<!-- numo box left -->
-[NUMO.AccOUNTS: LOGIN BOX LEFT]
-				
-					<!-- whatsnew -->
-						<div class="whatsnew">
-							<div class="box1"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3"><div class="box1-inner"><div class="box1-2"><div class="box1-6"><div class="box1-4"><div class="box1-8"><div class="box1-5"><div class="box1-7"><div class="box1-3"><div class="box1-1"><div class="box1-content">
-							<!--webbot bot="Include" U-Include="Library/expression-fp/$_whats_new.htm" TAG="BODY" startspan -->
-<!-- #BeginLibraryItem "/Library/dreamweaver/$_whats_new.lbi" -->
-
-
-<h3>Online Store:</h3>
-<!--	
-<h4>All the latest music and releases</h4>
--->
-<p>
-All the latest music and releases are available to purchase from the online 
-store.</p>
-<table style="width: 100%">
-	<tr>
-		<td style="width: 67px">
-		<a href="region_select.htm">
-<img src="Site/images/bizarretales_tn_50x50.jpg" width="50" height="50" style="float: left" alt="New album &quot;Andrasta&quot;" class="auto-style1" longdesc="Library/expression-fp/Available to purchase from the online store" /></a></td>
-		<td style="width: 424px">"Bizarre Tales" is now available on CD or download from the online
-		<a href="region_select.htm">store</a></td>
-	</tr>
-</table>
-<p>
-&nbsp;</p>
-
-
-<!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="26012" -->	
-							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
-						</div>
-					<!-- /whatsnew -->
-
-					<!-- currentnews -->
-						<div class="currentnews">
-							<div class="box1"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3"><div class="box1-inner"><div class="box1-2"><div class="box1-6"><div class="box1-4"><div class="box1-8"><div class="box1-5"><div class="box1-7"><div class="box1-3"><div class="box1-1"><div class="box1-content">
-							<!--webbot bot="Include" U-Include="Library/expression-fp/$_current_news.htm" TAG="BODY" startspan -->
-<!-- #BeginLibraryItem "/Library/dreamweaver/$_current_news.lbi" -->
-
-
-<h3>Latest News:</h3>
-	
-<h4 class="auto-style1"><a href="news.htm#tour01">Beautiful Ghosts &amp; Bizarre Tales Tour 2013-2014 
-announced</a></h4>
-
-<h5>28 May 2013</h5>
-	
-<p>
-<table style="width: 100%">
-	<tr>
-		<td style="width: 105px">
-		<a href="live.htm" target="_blank">
-		<img alt="Beck Siàn" height="100" src="Site/images/beck_02_100x100.jpg" width="100" class="auto-style2"></a></td>
-		<td>Joint <a href="news.htm#tour01">UK tour</a> with singer/songwriter 
-		<a href="http://www.becksianmusic.com" target="_blank">Beck Siàn</a> to begin in July.
-		</td>
-	</tr>
-</table>
-</p>
-
-
-
-
-<!-- #EndLibraryItem -->
-<p>Find out more about this and other recent news by clicking
-<a href="news.htm#review_1">here</a>.</p>
-<!--webbot bot="Include" endspan i-checksum="41189" -->	
-							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
-						</div>
-					<!-- /currentnews -->
-
-					<!-- recentevents -->
-						<div class="recentevents">
-							<div class="box1"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3"><div class="box1-inner"><div class="box1-2"><div class="box1-6"><div class="box1-4"><div class="box1-8"><div class="box1-5"><div class="box1-7"><div class="box1-3"><div class="box1-1"><div class="box1-content">
-							<!--webbot bot="Include" U-Include="Library/expression-fp/$_recent_events.htm" TAG="BODY" startspan -->
-<!-- #BeginLibraryItem "/Library/dreamweaver/$_recent_events.lbi" -->
-
-
-<h3>Live Performances</h3>
-	
-<h4>Chichester Inn, Chichester, West Sussex</h4>
-
-<h5>25th October 2013</h5>
-	
-<p>
-Jonathan will be performing at the 
-<a href="http://www.chichesterinn.co.uk/" target="_blank">Chichester Inn,</a> in 
-Chichester, West Sussex together with acclaimed singer/songwriter 
-<a href="news.htm#tour_01">Beck Siàn</a>.</p>
-
-<p>
-<a href="live.htm">
-<img src="Site/images/jk_live_75x50.jpg" width="75" height="50" style="float: left; margin:2px 5px 2px 5px;" alt="demo" class="auto-style1" /></a>See the <a href="live.htm">Live</a> 
-page for more details of this and all other gigs.</p>
-
-
-<!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="15351" -->
-							</div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb"><div></div></div></div>
-						</div>
-					<!-- /recentevents -->
-				
 				<!-- #EndEditable -->
 			</div>
 				
@@ -316,26 +192,35 @@ page for more details of this and all other gigs.</p>
 				
 <!-- box4 -->
 <div class="box4"><div class="bt4"><div></div></div><div class="i14"><div class="i24"><div class="i34"><div class="box4-inner"><div class="box4-2"><div class="box4-6"><div class="box4-4"><div class="box4-8"><div class="box4-5"><div class="box4-7"><div class="box4-3"><div class="box4-1"><div class="box4-content">
-				
-<h3>MP3 Downloads</h3>
-<p></p>				
+<br />			
+<div class="fb-follow" data-href="https://www.facebook.com/jonkershawmusic" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
+<br />
+<br />
+	
+<h3>Downloads</h3>
+<p class="auto-style1">
+<a href="http://www.freewebstore.org/jonathankershawmusic" target="_blank">
+<img id="img1" alt="For CDs - Click HERE for Main Music Webstore" height="40" onmousedown="FP_swapImg(0,0,/*id*/'img1',/*url*/'button43.gif')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'button41.gif')" onmouseover="FP_swapImg(0,0,/*id*/'img1',/*url*/'button42.gif')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'button42.gif')" src="button41.gif" style="border: 0" width="400" /><!-- MSComment="ibutton" fp-style="fp-btn: Embossed Rectangle 4; fp-font-style: Bold; fp-font-size: 11; fp-font-color-normal: #660000; fp-font-color-hover: #FFFFFF; fp-preload: 0; fp-bgcolor: #FF9900; fp-transparent: 1; fp-proportional: 0" fp-title="For CDs - Click HERE for Main Music Webstore" --></a></p>				
 	
 <h4>Purchase the music as MP3s below</h4>
 <p>Please note that the facility below utilises the CDBaby.com shop. For purchases, you will be re-directed through the CDBaby payment
- system. Your items will appear in the CDBaby.com shopping cart in the store below NOT the normal shopping cart for this site.</p>
+ system.</p>
 	
-<iframe title="Store Widget" frameborder="0" scrolling="no" width="100%" height="575" src="http://www.cdbaby.com/widgets/store/store.aspx?id=QBy9K0Jbwon%2fhG81UolTzQ%3d%3d&type=ByCustomer&c1=0x80551B&c2=0xFFFFFF&c3=0xEBD19A&c4=0xEBD19A&c5=0x8A873A&c6=0xFDFEE1&c7=0xFDF0B9"></iframe>			
-
-
-<!-- contentbox box4 -->
+<iframe name="full" style="width:100%;height:520px;border:0px;" src="http://widget.cdbaby.com/45d883f1-9676-46be-9365-e46d4a888b6e/full/dark/opaque"></iframe><!-- contentbox box4 -->
 
 <!-- contentbox /box4 -->
 				
 <p>(If this store does not load correctly, please click here:
 <a href="http://www.cdbaby.com/jonathankershaw" target="_blank"><strong>
 CDBaby.com</strong></a> for download purchases.)</p>
+			
+<p>&nbsp;</p>
+
+
 </div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bb4"><div></div></div></div>
 <!-- /box4 -->
+
+
 
 				
 				<!-- #EndEditable -->
@@ -367,7 +252,19 @@ CDBaby.com</strong></a> for download purchases.)</p>
 -->			 		
 
 <!-- #BeginEditable "content2_top" -->
-<p>&nbsp;</p>
+<div align="center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Banner Ad 01 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2616328846002063"
+     data-ad-slot="4630502838"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
 <!-- #EndEditable -->
 
 <!-- conent2 columns -->
@@ -391,36 +288,6 @@ CDBaby.com</strong></a> for download purchases.)</p>
 			<div id="center2col">
 				<!-- #BeginEditable "body2" -->
 				
-<!-- 			
-<div class="box4-content">	
-				
-<div class="css_accent_bar">Secondary Info</div>	
-<h3>Secondary Info h3</h3>
-	
-<h4>Secondary Info h4</h4>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed est lorem, 
-ullamcorper sit amet, fringilla porttitor, convallis eget, dolor. Nulla enim 
-enim, fringilla eget, semper eget, pulvinar ut, libero. Suspendisse id velit. 
-Morbi sit amet tortor. Vivamus pharetra sollicitudin enim. Donec eget urna sit 
-amet metus dapibus placerat. Cras luctus lorem in diam. Praesent urna diam, 
-condimentum quis, interdum a, posuere at, lectus. Maecenas nec nisl. Suspendisse 
-risus neque, convallis et, pellentesque eu, vulputate in, tellus. Cras non mi 
-sagittis mauris congue imperdiet.</p>
-
-<h4>Secondary Info h4</h4>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed est lorem, 
-ullamcorper sit amet, fringilla porttitor, convallis eget, dolor. Nulla enim 
-enim, fringilla eget, semper eget, pulvinar ut, libero. Suspendisse id velit. 
-Morbi sit amet tortor. Vivamus pharetra sollicitudin enim. Donec eget urna sit 
-amet metus dapibus placerat. Cras luctus lorem in diam. Praesent urna diam, 
-condimentum quis, interdum a, posuere at, lectus. Maecenas nec nisl. Suspendisse 
-risus neque, convallis et, pellentesque eu, vulputate in, tellus. Cras non mi 
-sagittis mauris congue imperdiet.</p>
-
-<p>&nbsp;</p>
-
-</div>
--->
 
 				<!-- #EndEditable -->
 			</div>
@@ -456,137 +323,8 @@ sagittis mauris congue imperdiet.</p>
 
 <!-- #BeginEditable "header" -->
 
-
-				<!--imagerotator-->
-				<div id="image_rotator_wrapper"><div id="image_rotator_component">
-				<!--webbot bot="Include" U-Include="Site/flash/secondary_rotator/secondary_rotator.htm" TAG="BODY" startspan-->
-
-<!-- #BeginLibraryItem "/Site/flash/image_rotator/secondary_rotator.lbi" -->
-
-<script type="text/javascript">
-			var flashvars            = {};
-			flashvars.configLocation = flashConfigLocation;
-			flashvars.configType = flashConfigType;
-			var params               = {};
-			params.play              = "true";
-			params.loop              = "true";
-			params.quality           = "high";
-			params.scale             = "showall";
-			params.wmode             = "transparent";
-			params.devicefont        = "false";
-			params.swliveconnect     = "false";
-			params.allowfullscreen   = "false";
-			params.allowscriptaccess = "sameDomain";
-			params.base              = flashRootLocation + "Site/flash/";
-			var attributes   = {};
-			attributes.id    = "flashheader";
-			attributes.name  = "secondary_rotator";
-			attributes.align = "middle";
-			swfobject.embedSWF(flashRootLocation + "Site/flash/secondary_rotator.swf", "headerDivsecondary_rotator", "290", "394", "9.0.0", flashRootLocation + "Site/flash/js/expressInstall.swf", flashvars, params, attributes);
-		</script>
-
-
-<!-- image_rotator -->
-<div id="secondary_rotator_wrapper"><div id="secondary_rotator"><div class="secondary_rotator">
-
-	<div id="headerDivsecondary_rotator">
-
-<img src="Site/themed_images/secondary_rotator1.jpg" alt="Welcome Image" style="border:0px;" />			
-	</div>
-
-</div></div></div>
-<!-- /image_rotator -->
-
-<!-- #EndLibraryItem -->
-
-<!--webbot bot="Include" endspan i-checksum="39759" -->  </div></div>   
-				<!--/imagerotator-->
 				
-				<!--portfolio-->
-				<div id="portfolio_component">
-				<!--webbot bot="Include" U-Include="Site/flash/portfolio/portfolio.htm" TAG="BODY" startspan -->
-
-<!-- #BeginLibraryItem "/Site/flash/portfolio/portfolio.lbi" -->
-
-<script type="text/javascript">
-			var flashvars            = {};
-			flashvars.configLocation = flashConfigLocation;
-			flashvars.configType = flashConfigType;
-			var params               = {};
-			params.play              = "true";
-			params.loop              = "true";
-			params.quality           = "high";
-			params.scale             = "showall";
-			params.wmode             = "transparent";
-			params.devicefont        = "false";
-			params.swliveconnect     = "false";
-			params.allowfullscreen   = "false";
-			params.allowscriptaccess = "sameDomain";
-			params.base              = flashRootLocation + "Site/flash/";
-			var attributes   = {};
-			attributes.id    = "flashheader";
-			attributes.name  = "portfolio";
-			attributes.align = "middle";
-			swfobject.embedSWF(flashRootLocation + "Site/flash/portfolio.swf", "headerDivportfolio", "520", "380", "9.0.0", flashRootLocation + "Site/flash/js/expressInstall.swf", flashvars, params, attributes);
-		</script>
-
-
-<!-- portfolio -->
-<div id="portfolio_wrapper"><div id="portfolio"><div class="portfolio">
-
-<div id="headerDivportfolio"><img src="Site/themed_images/portfolio1.jpg" alt="Welcome Image" style="border:0px;" /></div>
-
-</div></div></div>
-<!-- /portfolio -->
-<!-- #EndLibraryItem -->
-
-<!--webbot bot="Include" endspan i-checksum="4892" --></div>       
-				<!--/portfolio-->
 				
-				<!--mp3-->
-				<div id="mp3_component">
-				<!--webbot bot="Include" U-Include="Site/flash/mp3/mp3.htm" TAG="BODY" startspan -->
-
-<!-- #BeginLibraryItem "/Site/flash/mp3/mp3.lbi" -->
-
-<script type="text/javascript">
-			var flashvars            = {};
-			flashvars.configLocation = flashConfigLocation;
-			flashvars.playMusic		 = playMusic;
-			var params               = {};
-			params.play              = "true";
-			params.loop              = "true";
-			params.quality           = "high";
-			params.scale             = "showall";
-			params.wmode             = "transparent";
-			params.devicefont        = "false";
-			params.swliveconnect     = "false";
-			params.allowfullscreen   = "false";
-			params.allowscriptaccess = "sameDomain";
-			params.base              = flashRootLocation + "Site/flash/";
-			var attributes   = {};
-			attributes.id    = "flashheader";
-			attributes.name  = "mp3";
-			attributes.align = "middle";
-			swfobject.embedSWF(flashRootLocation + "Site/flash/mp3.swf", "headerDivmp3", "310", "70", "9.0.0", flashRootLocation + "Site/flash/js/expressInstall.swf", flashvars, params, attributes);
-		</script>
-
-
-<!-- mp3 -->
-<div id="mp3_wrapper"><div id="mp3"><div class="mp3">
-
-	<div id="headerDivmp3">
-
-
-	</div>
-
-</div></div></div>
-<!-- /mp3 -->
-
-<!-- #EndLibraryItem -->
-
-<!--webbot bot="Include" endspan i-checksum="25836" --></div>       
-				<!--/mp3-->
 				
 				<!--time_date-->
 				<div id="time_date">
@@ -678,13 +416,13 @@ addEvent(window,'load',goforit);
 <!-- #BeginLibraryItem "/Library/dreamweaver/static_icons.lbi" -->
 
 <div class="icon_wrapper">
-<a href="home.htm">			<img alt="icon1" title="home"	 		src="Site/graphics/icon1.png" width="50" height="45" id="icon1" style="border:0px;" /></a>
+<a href="index.htm">			<img alt="icon1" title="home"	 		src="Site/graphics/icon1.png" width="50" height="45" id="icon1" style="border:0px;" /></a>
 <a href="sitemap.htm">		<img alt="icon2" title="sitemap" 		src="Site/graphics/icon2.png" width="50" height="45" id="icon2" style="border:0px;" /></a>
 <a href="contact.htm">		<img alt="icon3" title="contact" 		src="Site/graphics/icon3.png" width="50" height="45" id="icon3" style="border:0px;" /></a>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="52084" --></div>
+<!--webbot bot="Include" endspan i-checksum="3635" --></div>
 				<!--/themed icons-->	
 
 				<!--search-->
@@ -810,24 +548,26 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 
 
 <ul>
-	<li><a href="home.htm">Home</a></li>
+	<li><a href="index.htm">Home</a></li>
 	<li><a href="news.htm">News</a></li>
 	<li><a href="live.htm">Live</a></li>
-	<li><a href="region_select.htm">Purchase</a>
+<!--	<li><a href="../../music.htm">Music</a></li>
+-->
+	<li><a href="discog.htm">Discography</a></li>
+	<li><a href="listen.htm" target="_blank">Listen</a></li>
+	<li><a href="videos.htm">Videos</a></li>
+	<li><a href="mp3_shop.htm">Shop</a>
 	<ul>
-		<li><a href="mp3_shop.htm">Music Download Store</a></li>
-		<li><a href="region_select.htm">CD Music Store</a>[NUMO.SHOPPING CART: LIST]</li>
-		<li><a href="purchase_history.htm">View Your Purchases</a></li>
-		<li><a href="shipping.htm">Shipping &amp; Payment Info</a></li>		
+		<li><a href="mp3_shop.htm">Downloads</a></li>
+		<li><a href="http://www.freewebstore.org/jonathankershawmusic" target="_blank">CD Store</a></li>
 	</ul>
-	</li>
-	<li><a href="photo_gallery.htm">Gallery</a></li>
-	<li><a href="guestbook.htm">Guest Book</a></li>
+	
+
 </ul>
 
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="45096" --><br style="clear: left" /></div></div><div class="menu_bg_right"></div></div>
+<!--webbot bot="Include" endspan i-checksum="17456" --><br style="clear: left" /></div></div><div class="menu_bg_right"></div></div>
 				<!-- /menu top -->
 
 				<!--twitter-facebook-->
@@ -837,13 +577,12 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 
 <div>
 	<a href="http://www.facebook.com/jonkershawmusic/" target="_blank">	<img alt="follow me on facebook" 	title="Facebook" 	src="Site/themed_images/facebook_badge.png" 		width="36" height="36" style="border:0px;" /></a>
-	<a href="http://www.myspace.com/jonkershawmusic/" target="_blank">	<img alt="follow me on myspace" 	title="Myspace" 	src="Site/themed_images/myspace_button.png" 			width="36" height="36" style="border:0px;" /></a>
 	<a href="http://www.youtube.com/jonathankershawmusic/" target="_blank">	<img alt="follow Jonathan Kershaw on YouTube" 	title="YouTube" 	src="Site/themed_images/youtube_button_36x36.png" 		width="36" height="36" style="border:0px;" /></a>
 	<a href="http://www.twitter.com/jon_kershaw/" target="_blank">	<img alt="tweet me" 				title="Twitter" 	src="Site/themed_images/t_logo-a.png" 			width="36" height="36" style="border:0px;" /></a>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="7516" --></div>
+<!--webbot bot="Include" endspan i-checksum="48696" --></div>
 				<!--/twitter-facebook-->	
 				
 				<!--zoom menu
@@ -880,20 +619,27 @@ as Led Zeppelin" - Paul Bielatowicz, Guitar Techniques magazine
 <p>Copyright 2012. Circus Bizarre Music. All Rights Reserved.</p>
 
 <p>
-	<a href="index.htm">Front Page</a> | 
-	<a href="home.htm">Home</a> | 
-	<a href="contact.htm">Contact</a> | 
-	<a href="faqs.htm">FAQs</a> | 
-	<a href="label.htm">About the Label</a> | 
+	<a href="index.htm">Home</a> | 
+<!--	<a href="../../home.htm">Home</a> | 
+-->	<a href="contact.htm">Contact</a> | 
+<!--	<a href="../../faqs.htm">FAQs</a> | 
+-->	<a href="label.htm">About the Label</a> | 
 	<a href="privacy.htm">Privacy &amp; Cookies</a> | 
 	<a href="sitemap.htm">Sitemap</a> |
-	<a href="press.htm">Press</a> |
+	<a href="press2.htm">Press</a> |
 	<a href="venue_data.htm">Venue info</a>
 	</p>
+	<p>
+	&nbsp;</p>
+	<p>
+	Related Sites:&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="http://www.acousticgoth.com" target="_blank">Acousticgoth.com</a> | 
+	<a href="http://www.circusbizarre.co.uk" target="_blank">Circus Bizarre Guitar Tuition</a> | 
+	<a href="http://www.worthingguitar.com" target="_blank">Worthing Guitar</a></p>
 </div>
 
 <!-- #EndLibraryItem -->
-<!--webbot bot="Include" endspan i-checksum="63756" -->
+<!--webbot bot="Include" endspan i-checksum="46620" -->
 			<!-- #EndEditable -->
 
 </div></div></div></div></div></div></div></div></div></div></div></div></div><div class="bbf"><div></div></div></div></div>
