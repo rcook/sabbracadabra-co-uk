@@ -8,37 +8,72 @@
 
 <url>
   <loc>http://www.circusbizarre.co.uk/</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>1.00</priority>
+  <lastmod>2015-01-30T17:02:41+00:00</lastmod>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>http://www.circusbizarre.co.uk/index.html</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2015-01-30T17:02:41+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/news.html</loc>
+  <lastmod>2015-01-30T17:02:39+00:00</lastmod>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>http://www.circusbizarre.co.uk/courses.html</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2015-01-30T17:02:43+00:00</lastmod>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.circusbizarre.co.uk/facilities.html</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.circusbizarre.co.uk/about.html</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.circusbizarre.co.uk/contact.html</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>http://www.circusbizarre.co.uk/skype.html</loc>
+  <lastmod>2015-01-30T17:02:37+00:00</lastmod>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>http://www.circusbizarre.co.uk/media.html</loc>
-  <lastmod>2010-04-08T22:35:22+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2015-01-30T17:02:40+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/testim.html</loc>
+  <lastmod>2015-01-30T17:02:37+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/about.html</loc>
+  <lastmod>2015-01-30T17:02:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/contact.html</loc>
+  <lastmod>2015-01-30T17:02:43+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/store.html</loc>
+  <lastmod>2015-01-30T17:58:16+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/gift_lessons.html</loc>
+  <lastmod>2015-01-30T17:02:41+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/privacy.html</loc>
+  <lastmod>2015-01-30T17:02:39+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/sitemap.html</loc>
+  <lastmod>2015-01-30T17:02:38+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.circusbizarre.co.uk/begs_vids.html</loc>
+  <lastmod>2015-01-30T17:02:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
 </url>
 </urlset>

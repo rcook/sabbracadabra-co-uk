@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6 {
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   border: 0;
@@ -35,6 +35,13 @@ h2 {
 	font-weight: bold;
 	line-height: 20px;
 }
+/*h3 {
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 20px;
+}
+*/
 a,  a:link {
 	color: #CCCCCC;
 	font-weight: bold;
@@ -224,6 +231,36 @@ a:active {
 #content ul li {
 	margin-bottom: 5px;
 }
+
+/*Page layout for no sidebar*/
+#outerWrapper #contentWrapper #contentmin {
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	padding-top: 10px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	background-color: #3E3E3E;
+	color: #CCCCCC;
+	border: 1px solid #2C2C2C;
+	font-size: 12px;
+	line-height: 18px;
+}
+/*Page layout for no sidebar*/
+#TopRowContentmin {
+	padding-top: 10px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	color: #999999;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 .clearFloat   {
   clear: both;
   display: block;
@@ -254,7 +291,7 @@ a:active {
 	border: 1px solid #000000;
 	padding-top: 5px;
 	padding-bottom: 6px;
-	font-size: 12px;
+	font-size: 14px;
 	padding-right: 4px;
 	padding-left: 4px;
 	background-image: url(images/sidebar-h3-bg.jpg);
@@ -282,6 +319,7 @@ a:active {
 	text-decoration: none;
 	background-color: #171717;
 	color: #CCCCCC;
+	text-align:center;
 }
 .fltlft {
 	float: left;
@@ -311,6 +349,8 @@ a:active {
 
 #footer a, #footer a:hover, #footer a:visited, #footer a:active {
 	color: #666666;
+	
+	
 }
 #credit {
 	text-align: center;
