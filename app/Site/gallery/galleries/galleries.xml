@@ -2,7 +2,7 @@
 
 <!--first album-->
   <gallery base="album1/" file="photos.xml">
-    <sitename>Album 1</sitename>
+    <sitename>General</sitename>
     <photographer></photographer>
     <contactinfo></contactinfo>
     <email></email>
@@ -12,25 +12,25 @@
 
 
 <!--second album--> 
-  <gallery base="album2/" file="photos.xml">
+<!--  <gallery base="album2/" file="photos.xml">
     <sitename>Album 2</sitename>
     <photographer></photographer>
     <contactinfo></contactinfo>
     <email></email>
     <security><![CDATA[]]> </security>
   </gallery>
-<!--second album--> 
+--><!--second album--> 
   
 
 <!--third album-->  
-  <gallery base="album3/" file="photos.xml">
+<!--  <gallery base="album3/" file="photos.xml">
     <sitename>Album 3</sitename>
     <photographer></photographer>
     <contactinfo></contactinfo>
     <email></email>
     <security><![CDATA[]]> </security>
   </gallery>
-<!--third album-->  
+--><!--third album-->  
     
   
 </galleries>

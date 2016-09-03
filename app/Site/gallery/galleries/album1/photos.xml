@@ -12,7 +12,11 @@
 <![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
 
 <!-- EDIT links to photos, [photo width and height-{for animation}] -->
-<photo path = "image1.jpg" width = "375" height = "500"></photo>
+<photo path = "student_03_630x350.jpg" width = "630" height = "350"></photo>
+<photo path = "student_04_630x350.jpg" width = "630" height = "350"></photo>
+<photo path = "student_05_630x350.jpg" width = "630" height = "350"></photo>
+<photo path = "student_recording_364x630.jpg" width = "364" height = "630"></photo>
+<!--<photo path = "image1.jpg" width = "375" height = "500"></photo>
 <photo path = "image2.jpg" width = "500" height = "375"></photo>
 <photo path = "image3.jpg" width = "375" height = "500"></photo>
 <photo path = "image4.jpg" width = "500" height = "375"></photo>
@@ -22,10 +26,6 @@
 <photo path = "image4.jpg" width = "500" height = "375"></photo>
 <photo path = "image1.jpg" width = "375" height = "500"></photo>
 <photo path = "image2.jpg" width = "500" height = "375"></photo>
-<photo path = "image3.jpg" width = "375" height = "500"></photo>
-<photo path = "image4.jpg" width = "500" height = "375"></photo>
-<photo path = "image1.jpg" width = "375" height = "500"></photo>
-<photo path = "image2.jpg" width = "500" height = "375"></photo>
-
+-->
 <!-- do not edit past this line -->
 </photos></gallery>
