@@ -1,0 +1,10 @@
+	body, html {font-family: Arial, sans-serif; margin: 0px; padding: 0px;}
+	h1 {color: #eee; background: #222; margin: 0px 0px 10px 0px; padding: 10px;}
+	h2 {color: #444; margin: 0px; padding: 0px; font-size: 24px;}
+	p {color: #999; font-style: italic; margin: 0px 0px 5px 0px; padding: 0px; font-size: 12px;}
+	.numo_product_image_table td {vertical-align: top;}
+	.numo_product_image_thumnails_table td {vertical-align: middle; text-align: center; border: 1px solid #efefef;}
+	.numo_product_main_image {width: 400px;}
+	.numo_product_thumbnail {width: 100px;}
+	.numo_product_thumbnail:hover {cursor: pointer;}
+	td.numo_no_product_thumbnail {border: 0px solid #fff;}

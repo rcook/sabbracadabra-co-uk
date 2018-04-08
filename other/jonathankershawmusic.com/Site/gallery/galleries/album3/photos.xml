@@ -1,0 +1,28 @@
+<gallery base = "">
+
+<!-- EDIT Gallery Name -->
+<sitename>Jonathan Kershaw Music 2014</sitename>
+
+<!-- OPTIONAL SEO / RSS info -->
+<photographer></photographer>
+<contactinfo></contactinfo>
+<email></email><security>
+
+<!-- do not alter the following line -->
+<![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
+
+<!-- EDIT links to photos, [photo width and height-{for animation}] -->
+<photo path = "jk_2014_sr_02_333x500.jpg" width = "333" height = "500"></photo>
+<photo path = "jk_2014_ss_06_500x333.jpg" width = "500" height = "333"></photo>
+<photo path = "jk_2014_al_02_373x500.jpg" width = "373" height = "500"></photo>
+<photo path = "jk_2014_ss_02_500x333.jpg" width = "500" height = "333"></photo>
+<photo path = "jk_2014_ss_04_500x333.jpg" width = "500" height = "333"></photo>
+<photo path = "jk_2014_ts_500x413.jpg" width = "500" height = "413"></photo>
+<photo path = "jk_2014_al_437x500.jpg" width = "437" height = "500"></photo>
+<photo path = "jk_2014_sr_01_333x500.jpg" width = "333" height = "500"></photo>
+<photo path = "jk_2014_ss_01_500x333.jpg" width = "500" height = "333"></photo>
+<photo path = "jk_2014_ss_05_333x500.jpg" width = "333" height = "500"></photo>
+<photo path = "jk_2014_ss_03_500x333.jpg" width = "500" height = "333"></photo>
+
+<!-- do not edit past this line -->
+</photos></gallery>

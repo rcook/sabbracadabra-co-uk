@@ -1,0 +1,41 @@
+<?php if ($access->hasAccess("shopping_cart", "manage-products")) { ?>
+<li class='dropdown<?php if ($_GET['m'] == "shopping_cart") { print " active"; } ?>'>
+  <a class='dropdown-toggle' data-toggle='dropdown' href="module/shopping_cart/manage-products/"><i class='icon-shopping-cart'></i> Shopping Cart <b class="caret"></b></a>
+  <ul class='dropdown-menu'>
+	<li class='dropdown-submenu'>
+      <a class='dropdown-toggle' href="module/shopping_cart/manage-products/"><i class='icon-barcode'></i> Products</a>
+		<ul class='dropdown-menu'>
+		<li><a href="module/shopping_cart/manage-products/"><i class='icon-edit'></i> Manage</a></li>
+		<?php if ($access->hasAccess("shopping_cart", "create-product")) { ?>
+		<li><a href="module/shopping_cart/create-product/"><i class='icon-asterisk'></i> Create</a></li>
+        <?php } ?>
+		<?php if ($access->hasAccess("shopping_cart", "import")) { ?>
+		<li><a href="module/shopping_cart/import/"><i class='icon-upload'></i> Import</a></li>
+        <?php } ?>
+		</ul>
+	</li>
+    <?php if ($access->hasAccess("shopping_cart", "discounts-and-sales")) { ?>
+ 	<li><a href="module/shopping_cart/discounts-and-sales/"><i class='icon-tags'></i> Discounts &amp; Sales</a></li>   
+    <?php } ?>
+    <?php if ($access->hasAccess("shopping_cart", "product-categories")) { ?>
+	<li><a href="module/shopping_cart/product-categories/"><i class='icon-list'></i> Categories</a></li>
+    <?php } ?>
+	<?php if ($access->hasAccess("shopping_cart", "components")) { ?>    
+	<li><a href="module/shopping_cart/components/"><i class='icon-star'></i> Components</a></li>
+    <?php } ?>
+	<?php if ($access->hasAccess("shopping_cart", "product-settings")) { ?>    
+	<li><a href="module/shopping_cart/product-settings/"><i class='icon-cogs'></i> Settings</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("shopping_cart", "daily-purchases")) { ?>
+    <li class='dropdown-submenu'><a class='dropdown-toggle' href="module/shopping_cart/daily-purchases/"><i class='icon-credit-card'></i> Shopping Cart Orders</a>
+        <ul class='dropdown-menu'>    
+        <li><a href="module/shopping_cart/daily-purchases/"><i class='icon-money'></i> Daily Sales</a></li>
+        <?php if ($access->hasAccess("shopping_cart", "customer-orders")) { ?>
+        <li><a href="module/shopping_cart/customer-orders/"><i class='icon-search'></i> Order Lookup</a></li>
+        <?php } ?>
+        </ul>
+    </li>
+    <?php } ?>    
+	</ul>
+</li>
+<?php } ?>

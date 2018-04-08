@@ -1,0 +1,725 @@
+﻿@import url("../logo/css/sifr.css");
+@import url("../themed_images/theme.css");
+
+/* HEADER BG *****************************************************************************************************************************/
+
+/* inner CSS *//*
+.boxh-inner								{background: url('../graphics/boxh_0.jpg'); min-height:20px;}
+.boxh-2									{background: url('../graphics/boxh_2.jpg') repeat-x left top; 			vertical-align:top;}
+.boxh-6									{background: url('../graphics/boxh_6.jpg') repeat-x left bottom;}
+.boxh-4									{background: url('../graphics/boxh_4.jpg') repeat-y right top;}
+.boxh-8									{background: url('../graphics/boxh_8.jpg') repeat-y left top;}
+.boxh-5									{background: url('../graphics/boxh-5.jpg') no-repeat right bottom;}
+.boxh-7									{background: url('../graphics/boxh_7.jpg') no-repeat left bottom;}
+.boxh-3									{background: url('../graphics/boxh_3.jpg') no-repeat right top; 			vertical-align:top;}
+.boxh-1									{background: url('../graphics/boxh_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.boxh									{margin:0px;	padding:0px;}
+*/
+
+/* Top corners and border 
+.bth 									{height:60px; 	margin:0px 0px 0px 25px; 			background:url('../graphics/boxh.png') no-repeat 100% 0;}
+.bth div 								{height:60px; 	left:-25px; width:890px; 			background:url('../graphics/boxh.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/
+
+/* Bottom corners and border 
+.bbh 									{height:93px; 	margin:0px 0px 0px 200px; 			background:url('../graphics/boxh.png') no-repeat 100% 100%;}
+.bbh div 								{height:93px; 	left:-200px; width:890px; 			background:url('../graphics/boxh.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+ */
+ 
+/* Left border
+.i1h 									{padding:0px 0px 0px 5px;							background:url('../graphics/boxh_l.png') repeat-y 0 0;} 
+*/
+
+/* Right border 
+.i2h 									{padding:0px 5px 0px 0px;							background:url('../graphics/boxh_r.png') repeat-y 100% 0;}
+*/
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. 
+.i3h 									{display:block;}
+.i3h 									{padding:0px 1px 0px 1px;	margin:0px 5px 0px 5px;}
+.i3h 									{background:url('../graphics/boxh_0.jpg');}
+*/
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). 
+.i3h:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3h 									{display:inline-block;}
+.i3h 									{display:block;}
+*/
+
+/* boxh *****************************************************************************************************************************/
+
+
+/* CONTENT BG *****************************************************************************************************************************/
+
+/* inner CSS *//*
+.boxc-inner								{background: url('../graphics/boxc_0.jpg'); min-height:20px;}
+.boxc-2									{background: url('../graphics/boxc_2.jpg') repeat-x left top; 			vertical-align:top;}
+.boxc-6									{background: url('../graphics/boxc_6.jpg') repeat-x left bottom;}
+.boxc-4									{background: url('../graphics/boxc_4.jpg') repeat-y right top;}
+.boxc-8									{background: url('../graphics/boxc_8.jpg') repeat-y left top;}
+.boxc-5									{background: url('../graphics/boxc_5.jpg') no-repeat right bottom;}
+.boxc-7									{background: url('../graphics/boxc_7.jpg') no-repeat left bottom;}
+.boxc-3									{background: url('../graphics/boxc_3.jpg') no-repeat right top; 			vertical-align:top;}
+.boxc-1									{background: url('../graphics/boxc_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.boxc									{margin:0px;	padding:0px;}
+.boxc-content							{padding:0px 0px 90px 0px; margin:0px;}
+.boxc_content							{position:relative;}
+*/
+/* Top corners and border 
+.btc 									{height:24px; 	margin:0px 0px 0px 30px; 			background:url('../graphics/boxc.png') no-repeat 100% 0;}
+.btc div 								{height:24px; 	left:-30px; width:30px; 			background:url('../graphics/boxc.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/ 
+
+/* Bottom corners and border 
+.bbc 									{height:78px; 	margin:0px 0px 0px 30px; 			background:url('../graphics/boxc.png') no-repeat 100% 100%;}
+.bbc div 								{height:78px; 	left:-30px; width:30px; 			background:url('../graphics/boxc.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+*/
+
+/* Left border 
+.i1c 									{padding:0px 0px 0px 10px;							background:url('../graphics/boxc_l.png') repeat-y 0 0;}
+*/
+
+/* Right border 
+.i2c 									{padding:0px 10px 0px 0px;							background:url('../graphics/boxc_r.png') repeat-y 100% 0;}
+*/
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. 
+.i3c 									{display:block;}
+.i3c 									{padding:0px 0px 0px 0px;	margin:0px 0px 0px 0px;}
+.i3c 									{background:url('../graphics/boxc_0.jpg');}
+*/
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). 
+.i3c:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3c 									{display:inline-block;}
+.i3c 									{display:block;}
+*/
+/* boxc *****************************************************************************************************************************/
+
+
+/* MENU BG *****************************************************************************************************************************/
+
+.menu_bg 								{background: url('../graphics/menu_bg_left.png') no-repeat left top; height:46px; width:auto; padding:0px 0px 0px 41px; float:left;}
+.menu_bg_right 							{background: url('../graphics/menu_bg_right.png') no-repeat right top; height:46px; width:42px; padding:0px 0px 0px 0px; float:left;}
+
+/* inner CSS *//*
+.boxm-inner								{background: url('../graphics/boxm_0.jpg'); min-height:20px;}
+.boxm-2									{background: url('../graphics/boxm_2.jpg') repeat-x left top; 			vertical-align:top;}
+.boxm-6									{background: url('../graphics/boxm_6.jpg') repeat-x left bottom;}
+.boxm-4									{background: url('../graphics/boxm_4.jpg') repeat-y right top;}
+.boxm-8									{background: url('../graphics/boxm_8.jpg') repeat-y left top;}
+.boxm-5									{background: url('../graphics/boxm_5.jpg') no-repeat right bottom;}
+.boxm-7									{background: url('../graphics/boxm_7.jpg') no-repeat left bottom;}
+.boxm-3									{background: url('../graphics/boxm_3.jpg') no-repeat right top; 			vertical-align:top;}
+.boxm-1									{background: url('../graphics/boxm_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.boxm									{margin:0px;	padding:0px;}
+*/
+
+/* Top corners and border 
+.btm 									{height:25px; 	margin:0px 0px 0px 25px; 			background:url('../graphics/boxm.png') no-repeat 100% 0;}
+.btm div 								{height:25px; 	left:-25px; width:25px; 			background:url('../graphics/boxm.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/ 
+
+/* Bottom corners and border 
+.bbm 									{height:25px; 	margin:0px 0px 0px 25px; 			background:url('../graphics/boxm.png') no-repeat 100% 100%;}
+.bbm div 								{height:25px; 	left:-25px; width:25px; 			background:url('../graphics/boxm.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+*/
+
+/* Left border 
+.i1m 									{padding:0px 0px 0px 5px;							background:url('../graphics/boxm_l.png') repeat-y 0 0;}
+*/
+
+/* Right border 
+.i2m 									{padding:0px 5px 0px 0px;							background:url('../graphics/boxm_r.png') repeat-y 100% 0;}
+*/
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. 
+.i3m 									{display:block;}
+.i3m 									{padding:0px 1px 0px 1px;	margin:0px 5px 0px 5px;}
+.i3m 									{background:url('../graphics/boxm_0.jpg');}
+*/
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). 
+.i3m:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3m 									{display:inline-block;}
+.i3m 									{display:block;}
+*/
+
+/* boxm *****************************************************************************************************************************/
+
+
+/* FOOTER BG *****************************************************************************************************************************/
+
+#footer_bg								{background:#DED2B6 url('../graphics/footer_bg.png') repeat-x center top;  }
+/* inner CSS *//*
+.boxf-inner								{background: url('../graphics/boxf_0.jpg'); min-height:20px;}
+.boxf-2									{background: url('../graphics/boxf_2.jpg') repeat-x left top; 			vertical-align:top;}
+.boxf-6									{background: url('../graphics/boxf_6.jpg') repeat-x left bottom;}
+.boxf-4									{background: url('../graphics/boxf_4.jpg') repeat-y right top;}
+.boxf-8									{background: url('../graphics/boxf_8.jpg') repeat-y left top;}
+.boxf-5									{background: url('../graphics/boxf_5.jpg') no-repeat right bottom;}
+.boxf-7									{background: url('../graphics/boxf_7.jpg') no-repeat left bottom;}
+.boxf-3									{background: url('../graphics/boxf_3.jpg') no-repeat right top; 			vertical-align:top;}
+.boxf-1									{background: url('../graphics/boxf_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.boxf									{margin:0px;	padding:0px;}
+.boxf-content							{min-height:100px; padding:30px 0px 0px 0px;}
+*/
+/* Top corners and border 
+.btf 									{height:20px; 	margin:0px 0px 0px 20px; 			background:url('../graphics/boxf.png') no-repeat 100% 0;}
+.btf div 								{height:20px; 	left:-20px; width:20px; 			background:url('../graphics/boxf.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/
+
+/* Bottom corners and border 
+.bbf 									{height:20px; 	margin:0px 0px 0px 20px; 			background:url('../graphics/boxf.png') no-repeat 100% 100%;}
+.bbf div 								{height:20px; 	left:-20px; width:20px; 			background:url('../graphics/boxf.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+*/
+
+/* Left border 
+.i1f 									{padding:0px 0px 0px 13px;							background:url('../graphics/boxf_l.png') repeat-y 0 0;}
+*/
+
+/* Right border 
+.i2f 									{padding:0px 13px 0px 0px;							background:url('../graphics/boxf_r.png') repeat-y 100% 0;}
+*/
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. 
+.i3f 									{display:block;}
+.i3f 									{padding:0px 0px 0px 0px;	margin:0px 0px 0px 0px;}
+.i3f 									{background:url('../graphics/boxf_0.jpg');}
+*/
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). 
+.i3f:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3f 									{display:inline-block;}
+.i3f 									{display:block;}
+*/
+
+/* boxf *****************************************************************************************************************************/
+
+
+/* BOX 1 ***************************************************************************************************************************/
+
+/* inner CSS *//**/
+.box1-inner								{background: url('../graphics/box1_0.jpg'); min-height:20px;}
+.box1-2									{background: url('../graphics/box1_2.jpg') repeat-x left top; 			vertical-align:top;}
+.box1-6									{background: url('../graphics/box1_6.jpg') repeat-x left bottom;}
+.box1-4									{background: url('../graphics/box1_4.jpg') repeat-y right top;}
+.box1-8									{background: url('../graphics/box1_8.jpg') repeat-y left top;}
+.box1-5									{background: url('../graphics/box1_5.jpg') no-repeat right bottom;}
+.box1-7									{background: url('../graphics/box1_7.jpg') no-repeat left bottom;}
+.box1-3									{background: url('../graphics/box1_3.jpg') no-repeat right top; 			vertical-align:top;}
+.box1-1									{background: url('../graphics/box1_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.box1									{margin:0px 0px 10px 0px;	padding:0px;}
+
+/* Top corners and border */
+.bt 									{height:44px; 	margin:0px 0px 0px 30px; 			background:url('../graphics/box1.png') no-repeat 100% 0;}
+.bt div 								{height:44px; 	left:-30px; width:30px; 			background:url('../graphics/box1.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+ 
+/* Bottom corners and border */
+.bb 									{height:46px; 	margin:0px 0px 0px 30px; 			background:url('../graphics/box1.png') no-repeat 100% 100%;}
+.bb div 								{height:46px; 	left:-30px; width:30px; 			background:url('../graphics/box1.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+ 
+/* Left border */
+.i1 									{padding:0px 0px 0px 20px;							background:url('../graphics/box1_l.png') repeat-y 0 0;}
+
+/* Right border */
+.i2 									{padding:0px 20px 0px 0px;							background:url('../graphics/box1_r.png') repeat-y 100% 0;}
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. */
+.i3 									{display:block;}
+.i3 									{padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.i3 									{background:url('../graphics/box1_0.jpg');}
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). */
+.i3:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i3 									{display:inline-block;}
+.i3 									{display:block;}
+
+/* BOX 1 ***************************************************************************************************************************/
+
+
+
+/* BOX2 *****************************************************************************************************************************/
+
+/* inner CSS *//*
+.box2-inner								{background: url('../graphics/box2-0.jpg'); min-height:20px;}
+.box2-2									{background: url('../graphics/box2-2.jpg') repeat-x left top; 			vertical-align:top;}
+.box2-6									{background: url('../graphics/box2-6.jpg') repeat-x left bottom;}
+.box2-4									{background: url('../graphics/box2-4.jpg') repeat-y right top;}
+.box2-8									{background: url('../graphics/box2-8.jpg') repeat-y left top;}
+.box2-5									{background: url('../graphics/box2-5.jpg') no-repeat right bottom;}
+.box2-7									{background: url('../graphics/box2-7.jpg') no-repeat left bottom;}
+.box2-3									{background: url('../graphics/box2-3.jpg') no-repeat right top; 			vertical-align:top;}
+.box2-1									{background: url('../graphics/box2-1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.box2									{margin:0px;	padding:0px;}
+*/
+
+/* Top corners and border 
+.bt2 									{height:25px; 	margin:0px 0px 0px 15px; 			background:url('../graphics/box2.png') no-repeat 100% 0;}
+.bt2 div 								{height:25px; 	left:-15px; width:15px; 			background:url('../graphics/box2.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/
+
+/* Bottom corners and border 
+.bb2 									{height:25px; 	margin:0px 0px 0px 15px; 			background:url('../graphics/box2.png') no-repeat 100% 100%;}
+.bb2 div 								{height:25px; 	left:-15px; width:15px; 			background:url('../graphics/box2.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+*/
+ 
+/* Left border 
+.i12 									{padding:0px 0px 0px 4px;							background:url('../graphics/box2_l.png') repeat-y 0 0;}
+*/
+
+/* Right border 
+.i22 									{padding:0px 4px 0px 0px;							background:url('../graphics/box2_r.png') repeat-y 100% 0;}
+*/
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. 
+.i32 									{display:block;}
+.i32 									{padding:0px 1px 0px 1px;	margin:0px 5px 0px 5px;}
+.i32 									{background:url('../graphics/box2_bg.jpg');}
+*/
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). 
+.i32:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i32 									{display:inline-block;}
+.i32 									{display:block;}
+*/
+
+/* BOX2 *****************************************************************************************************************************/
+
+
+
+/* BOX 3 ******************************************************************************************************************************/
+
+/* inner CSS *//*
+.box3-inner								{background: url('../graphics/box3-0.jpg'); min-height:20px;}
+.box3-2									{background: url('../graphics/box3-2.jpg') repeat-x left top; 			vertical-align:top;}
+.box3-6									{background: url('../graphics/box3-6.jpg') repeat-x left bottom;}
+.box3-4									{background: url('../graphics/box3-4.jpg') repeat-y right top;}
+.box3-8									{background: url('../graphics/box3-8.jpg') repeat-y left top;}
+.box3-5									{background: url('../graphics/box3-5.jpg') no-repeat right bottom;}
+.box3-7									{background: url('../graphics/box3-7.jpg') no-repeat left bottom;}
+.box3-3									{background: url('../graphics/box3-3.jpg') no-repeat right top; 			vertical-align:top;}
+.box3-1									{background: url('../graphics/box3-1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.box3 									{margin:0px; 	padding:0px;}
+*/
+
+/* Top corners and border 
+.bt3 									{height:25px; 	margin:0px 0px 0px 15px; 			background:url('../graphics/box3.png') no-repeat 100% 0;}
+.bt3 div 								{height:25px; 	left:-15px; 	width:15px; 		background:url('../graphics/box3.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+*/
+ 
+/* Bottom corners and border 
+.bb3 									{height:25px; 	margin:0px 0px 0px 15px; 			background:url('../graphics/box3.png') no-repeat 100% 100%;}
+.bb3 div 								{height:25px; 	left:-15px; 	width:15px; 		background:url('../graphics/box3.png') no-repeat 0 100%;	 	position:relative;   font-size:0; line-height:0;}
+*/
+ 
+/* Left border 
+.i13 									{padding:0px 0px 0px 4px;							background:url('../graphics/box3_l.png') repeat-y 0 0;}
+*/
+
+	/* Right border 
+.i23 									{padding:0px 4px 0px 0px;							background:url('../graphics/box3_r.png') repeat-y 100% 0;}
+*/
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. 
+.i33 									{display:block;}
+.i33 									{padding:0px 1px 0px 1px;		margin:0px 5px 0px 5px;}
+.i33 									{background:url('../graphics/box3_bg.jpg');}
+*/
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). 
+.i33:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i33 									{display:inline-block;}
+.i33 									{display:block;}
+*/
+
+/* BOX 3 ******************************************************************************************************************************/
+
+
+/* BOX 4 ********************************************************************************************************************************/
+
+/* inner CSS *//**/
+.box4-inner								{background: url('../graphics/box4_0.jpg'); min-height:20px;}
+.box4-2									{background: url('../graphics/box4_2.jpg') repeat-x left top; 			vertical-align:top;}
+.box4-6									{background: url('../graphics/box4_6.jpg') repeat-x left bottom;}
+.box4-4									{background: url('../graphics/box4_4.jpg') repeat-y right top;}
+.box4-8									{background: url('../graphics/box4_8.jpg') repeat-y left top;}
+.box4-5									{background: url('../graphics/box4_5.jpg') no-repeat right bottom;}
+.box4-7									{background: url('../graphics/box4_7.jpg') no-repeat left bottom;}
+.box4-3									{background: url('../graphics/box4_3.jpg') no-repeat right top; 			vertical-align:top;}
+.box4-1									{background: url('../graphics/box4_1.jpg') no-repeat left top;			vertical-align:top; padding:0px;}
+.box4 									{margin:0px; 	padding:0px;}
+
+
+/* Top corners and border */
+.bt4 									{height:44px; 	margin:0px 0px 0px 30px; 			background:url('../graphics/box4.png') no-repeat 100% 0;}
+.bt4 div 								{height:44px; 	left:-30px; width:30px; 			background:url('../graphics/box4.png') no-repeat 0 0;		position:relative; font-size:0;line-height:0;}
+
+ 
+/* Bottom corners and border */ 
+.bb4 									{height:46px; 	margin:0px 0px 0px 30px; 			background:url('../graphics/box4.png') no-repeat 100% 100%;}
+.bb4 div 								{height:46px; 	left:-30px; width:30px; 			background:url('../graphics/box4.png') no-repeat 0 100%; 		position:relative;   font-size:0; line-height:0;}
+
+ 
+/* Left border */
+.i14 									{padding:0px 0px 0px 20px;							background:url('../graphics/box4_l.png') repeat-y 0 0;}
+
+
+/* Right border */
+.i24 									{padding:0px 20px 0px 0px;							background:url('../graphics/box4_r.png') repeat-y 100% 0;}
+
+
+/* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. */
+.i34 									{display:block;}
+.i34 									{padding:0px 0px 0px 0px;		margin:0px 0px 0px 0px;}
+.i34 									{background:url('../graphics/box4_0.jpg');}
+
+
+/* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). */
+.i34:after 								{content:"."; display:block; 	height:0px; 		visibility:hidden;}
+.i34 									{display:inline-block;}
+.i34 									{display:block;}
+
+
+/* BOX 4 ********************************************************************************************************************************/
+
+
+
+/* MENU TOP ***************************************************************************************/
+ /* do not alter*/
+.ddsmoothmenu							{width: 100%;}
+.ddsmoothmenu ul						{z-index:100;margin: 0;padding: 0;list-style-type: none;}
+.ddsmoothmenu ul li						{position: relative;display: inline;float: left;}
+.ddsmoothmenu ul li a					{display: block;}
+ /* do not alter*/
+
+/* set top level padding */
+.ddsmoothmenu ul li a					{padding: 12px 16px 16px 14px;}
+
+* html .ddsmoothmenu ul li a			{/*IE6 hack to get sub menu links to behave correctly*/display: inline-block;}
+
+/*1st sub level menu*/
+.ddsmoothmenu ul li ul					{position: absolute;left: 0;display: none; /*collapse all sub menus to begin with*/visibility: hidden;}
+.ddsmoothmenu ul li ul li				{display: list-item;float: none;}
+.ddsmoothmenu ul li ul li ul			{top: 0;}
+
+/* set sub level width */
+.ddsmoothmenu ul li ul li a				{width: 165px;}
+
+/* set sub level padding */
+.ddsmoothmenu ul li ul li a				{padding:5px 5px 5px 5px; margin-bottom:0px; margin-left:-2px; }
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu					{height: 1%;} /*Holly Hack for IE7 and below*/
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass							{position: absolute;top: 15px;right: 7px;}
+
+.rightarrowclass						{position: absolute;top: 12px;right: 5px;}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+
+.ddshadow								{position: absolute;left: 0;top: 0;width: 0;height: 0;background: silver;}
+
+.toplevelshadow							{opacity: 0.0;filter: alpha(opacity = 0);}
+/* MENU TOP ***************************************************************************************/
+
+
+/* MENU SIDE ***************************************************************************************/
+/* set the position of the main buttons*/
+.ddsmoothmenu-v 						{margin:0px 0px 0px -4px;}
+
+/* set the main button width */
+.ddsmoothmenu-v ul						{width: 238px;}
+.ddsmoothmenu-v ul						{border-top: 1px #BC9A4A solid}			/* top of all buttons - use dark color here */
+.ddsmoothmenu-v ul						{border-bottom: 1px #F7E8C9 solid;}		/* bottom of all buttons - use light color here*/
+
+/* set the sub level button width  */
+.ddsmoothmenu-v ul li ul				{width: 170px; margin-top:-1px;}
+.ddsmoothmenu-v ul li ul a				{ padding:6px 0px 7px 20px;}
+
+/* set the main button border color */
+.ddsmoothmenu-v ul li a					{border-top: 1px solid #F7E8C9;}		/* use light color here*/
+.ddsmoothmenu-v ul li a					{border-bottom: 1px solid #BC9A4A;}		/* use dark color here */
+
+.ddsmoothmenu-v ul						{margin: 0;padding: 0;list-style-type: none;}
+.ddsmoothmenu-v ul li					{position: relative;}
+
+/* Top level menu links style */
+.ddsmoothmenu-v ul li a					{display: block; overflow: auto;padding: 5px 15px 5px 15px; text-decoration:none;} /*force hasLayout in IE7 */
+
+/*Sub level menu items */
+.ddsmoothmenu-v ul li ul				{position: absolute; top: 0; visibility: hidden;}  
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu-v ul li 			{float: left; height: 1%; }
+* html .ddsmoothmenu-v ul li a 			{height: 1%; }
+/* End */
+/* MENU SIDE ***************************************************************************************/
+
+
+/* FONT STYLES ***************************************************************************************/
+
+
+ /* seo h1/h2 */										
+#seo_1 h1								{color: #F7E8C9;    text-align: left;	text-indent: 0px; 	font-size: 28px;  line-height: 28px;	  font-family: "Book Antiqua",  "Trebuchet MS", Palatino, serif;	padding: 20px 20px 0px 20px;	 margin: 0px 0px 0px 0px;  font-style:italic;}
+#seo_2 h2								{color: #BC9A4A;	text-indent: 0px;	font-size: 14px;	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	padding: 0px 20px 10px 30px;	margin: 0px 0px 0px 0px;	letter-spacing: 3px; text-align:left;}
+
+#logo_tagline							{color: #470602;	font-size: 14px;	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+
+/*clock*/
+#clock 									{color: #DED19A;  	text-align:right; 	font-size:10px; 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	font-weight:normal;	text-decoration:none; }  
+
+
+/* -------------------------- top menu styles--------------------- */
+
+/* topmenu font color */
+.ddsmoothmenu ul li a:link				{color: #ffffff; 	text-decoration: none;}
+.ddsmoothmenu ul li a:visited			{color: #ffffff; 	text-decoration: none;}
+.ddsmoothmenu ul li a:hover				{color: #470602; 	text-decoration: none;}
+.ddsmoothmenu ul li a:active			{color: #ffffff; 	text-decoration: none;}
+.ddsmoothmenu ul li a:selected			{color: #ffffff; 	text-decoration: none;}
+
+/* topmenu SUBMENU font color */
+.ddsmoothmenu ul li ul li a:link		{color: #EEF277; 	text-decoration: none;}
+.ddsmoothmenu ul li ul li a:visited		{color: #EEF277; 	text-decoration: none;}
+.ddsmoothmenu ul li ul li a:hover		{color: #F7E8C9; 	text-decoration: none;}
+.ddsmoothmenu ul li ul li a:active		{color: #EEF277; 	text-decoration: none;}
+.ddsmoothmenu ul li ul li a:selected	{color: #EEF277; 	text-decoration: none;}
+
+/* topmenu button background color */
+.ddsmoothmenu ul li a					{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top;}
+.ddsmoothmenu ul li a:link				{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top; margin-right:2px;}
+.ddsmoothmenu ul li a:visited			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top; margin-right:2px;}
+.ddsmoothmenu ul li a:hover				{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat -253px top; margin-right:2px;}
+.ddsmoothmenu ul li a:active			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top; margin-right:2px;}
+.ddsmoothmenu ul li a:selected			{background-color:transparent; background:url('../graphics/topmenu_bg.png') no-repeat left top; margin-right:2px;}
+
+/* topmenu SUBMENU button background color */
+.ddsmoothmenu ul li ul li a:link		{background-color: #470602; background-image:none;}
+.ddsmoothmenu ul li ul li a:visited		{background-color: #470602; background-image:none;}
+.ddsmoothmenu ul li ul li a:hover		{background-color: #990000; background-image:none;}
+.ddsmoothmenu ul li ul li a:active		{background-color: #470602; background-image:none;}
+.ddsmoothmenu ul li ul li a:selected	{background-color: #470602; background-image:none;}
+
+/* topmenu border color*/
+.ddsmoothmenu ul li a					{border-right: 0px solid #121867; border-left: 0px solid #121867; margin-right:-1px;}
+
+/* topmenu SUBMENU borders */
+.ddsmoothmenu ul li ul li a				{border-right: 1px solid #330000; border-left: 1px solid #330000; border-top: 1px solid #330000; border-bottom: 1px solid #330000; margin-bottom:-1px;}
+
+/* -------------------------- side menu styles--------------------- */
+
+
+/* sidemenu font color */
+.ddsmoothmenu-v ul li a:link 			{color: #470602; text-decoration: none;}
+.ddsmoothmenu-v ul li a:visited 		{color: #470602; text-decoration: none;}
+.ddsmoothmenu-v ul li a:hover			{color: #F7E8C9; text-decoration: none;}
+.ddsmoothmenu-v ul li a:active 			{color: #F7E8C9; text-decoration: none;}
+.ddsmoothmenu-v ul li a.selected		{color: #F7E8C9; text-decoration: none;}
+
+/* sidemenu SUBMENU font color */
+.ddsmoothmenu-v ul li ul a 				{color: #470602}
+.ddsmoothmenu-v ul li ul a:link 		{color: #470602}
+.ddsmoothmenu-v ul li ul a:visited 		{color: #470602}
+.ddsmoothmenu-v ul li ul a:hover 		{color: #660000}
+.ddsmoothmenu-v ul li ul a:active 		{color: #660000}
+.ddsmoothmenu-v ul li ul a:selected 	{color: #660000}
+
+/* sidemenu button background color */
+.ddsmoothmenu-v ul li a:link 			{background-color: transparent;	/*	background-image:url('../graphics/sidemenu.png'); 	background-position:center bottom;*/}
+.ddsmoothmenu-v ul li a:visited 		{background-color: transparent;	/*	background-image:url('../graphics/sidemenu.png'); background-position:center bottom;*/}
+.ddsmoothmenu-v ul li a:hover			{background-color: #BC9A4A;}
+.ddsmoothmenu-v ul li a:active 			{background-color: transparent;	/*	background-image:url('../graphics/sidemenu.png'); background-position:center bottom; */}
+.ddsmoothmenu-v ul li a.selected		{background-color: #BC9A4A;		/*	background-image:url('../graphics/sidemenu.png'); background-position:center bottom;*/}
+
+/* sidemenu SUBMENU button background color */
+.ddsmoothmenu-v ul li ul a 				{background-color: #BC9A4A;}
+.ddsmoothmenu-v ul li ul a:link 		{background-color: #BC9A4A}
+.ddsmoothmenu-v ul li ul a:visited 		{background-color: #BC9A4A}
+.ddsmoothmenu-v ul li ul a:hover 		{background-color: #F7E8C9}
+.ddsmoothmenu-v ul li ul a:active 		{background-color: #F7E8C9}
+.ddsmoothmenu-v ul li ul a:selected 	{background-color: #F7E8C9}
+
+/* sidemenu border color */
+.ddsmoothmenu-v ul li ul a 				{border-left:1px #F7E8C9 solid; border-right:1px #F7E8C9 solid; margin-right:0px;}
+
+/* menu font type, size and family */
+.ddsmoothmenu ul						{font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.ddsmoothmenu ul li ul li a				{font: normal 10px "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.ddsmoothmenu-v ul						{font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.ddsmoothmenu-v ul li ul li a			{font: normal 10px "Trebuchet MS", Arial, Helvetica, sans-serif;}
+/* base colors (yellow)
+lightest	=	#F7E8C9- lightest
+			=	#BC9A4A- light
+			=	#6C4C19- med
+			=	#102040- dark
+ */
+/* base colors (red)
+lightest	=	#EEF277- lightest
+			=	#C5D930- lighter
+			=	#8FBD26- light
+			=	#470602- med
+			=	#660000 #150100 - dark
+ */
+
+
+/* -------------------------- content box styles --------------------- */
+.box1-content h3						{color: #150100; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:18px; margin:0px 0px 0px 0px; padding:12px 0px 7px 5px; 	font-weight:normal;}
+.box1-content h4						{color: #660000; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:14px; margin:0px 0px 0px 0px; padding:0px 0px 2px 10px;}
+.box1-content h5						{color: #330000; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:11px; margin:0px 0px 0px 0px; padding:0px 0px 5px 10px; 	font-weight:normal;}
+.box1-content p							{color: #470602; 	font-family:"Trebuchet MS", Geneva, sans-serif; font-size:12px; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; 		line-height:1.4em; 	vertical-align:top;}
+.box1-content							{color: #470602;	font-family: "Trebuchet MS", Geneva, sans-serif;font-size: 12px;margin: 0px 0px 0px 0px;padding: 0px 10px 10px 10px;min-height: 50px;vertical-align: top;}
+
+.box1-content a:link					{color: #660000; 	text-decoration:underline;}
+.box1-content a:visited					{color: #660000; 	text-decoration:underline;}
+.box1-content a:hover					{color: #000000; 	text-decoration:none;}
+.box1-content a:active					{color: #660000; 	text-decoration:underline;}
+
+.box1-content ul						{color: #330000;}
+
+.box2-content h3						{color: #121867;	font-family: Georgia, "Palatino Linotype", "Book Antigua", Palatino, serif;font-size: 22px;margin: 0px 0px 0px 0px;padding: 20px 0px 20px 0px;letter-spacing: 5px;}
+.box2-content h4						{color: #141A9C; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:18px; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; text-indent: 20px;}
+.box2-content h5						{color: #121867; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 14px; margin:0px 0px 0px 0px; padding:0px 0px 5px 0px; 	font-weight:normal;}
+.box2-content p							{color: #141414; 	font-family:"Trebuchet MS", Geneva, sans-serif;font-size: 13px; margin: 0px 0px 0px 0px; padding: 0px 0px 10px 20px; line-height: 1.6em; vertical-align: top;}
+.box2-content							{color: #141414;	font-family:"Trebuchet MS", Geneva, sans-serif; font-size:13px; margin:0px 0px 0px 0px; padding:0px 25px 10px 20px; 		vertical-align:top;}
+
+.box2-content a:link					{color: #141A9C; 	text-decoration:underline;}
+.box2-content a:visited					{color: #141A9C; 	text-decoration:underline;}
+.box2-content a:hover					{color: #000000; 	text-decoration:none;}
+.box2-content a:active					{color: #141A9C; 	text-decoration:underline;}
+
+.box2-content ul						{color: #0B5191;}
+
+.box3-content h3						{color: #121867; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:20px; margin:0px 0px 0px 0px; padding:0px 0px 10px 10px; 		font-weight:normal;}
+.box3-content h4						{color: #141A9C; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:16px; margin:0px 0px 0px 0px; padding:0px 0px 10px 10px;}
+.box3-content h5						{color: #DD3807; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 14px; margin:0px 0px 0px 0px; padding:0px 0px 5px 10px; 		font-weight:normal;}
+.box3-content p							{color: #141414; 	font-family:"Trebuchet MS", Geneva, sans-serif; font-size:12px; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; 		line-height:1.4em; 	vertical-align:top;}
+.box3-content							{color: #141414; 	font-family:"Trebuchet MS", Geneva, sans-serif; font-size:12px; margin:0px 0px 0px 0px; padding:0px 10px 10px 10px; 		min-height:50px; 	vertical-align:top;}
+
+.box3-content a:link					{color: #141A9C; 	text-decoration:underline;}
+.box3-content a:visited					{color: #141A9C; 	text-decoration:underline;}
+.box3-content a:hover					{color: #000000; 	text-decoration:none;}
+.box3-content a:active					{color: #141A9C; 	text-decoration:underline;}
+
+.box3-content ul						{color: #0B5191;}
+
+
+.box4-content h3						{background: url('../themed_images/css_h3.png') no-repeat left top; text-indent:0px;}
+.box4-content h3						{color: #150100;	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 18px; 	margin: 0px 0px 0px 0px;	padding: 8px 0px 15px 40px;font-weight: normal;}
+.box4-content h4						{color: #660000;	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;	font-size: 14px;	margin: 0px 0px 0px 0px;	padding: 0px 0px 10px 0px;}
+.box4-content h5						{color: #330000; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; 	font-size: 14px;	margin: 0px 0px 0px 0px;	padding: 0px 0px 5px 0px; 		font-weight:normal;}
+.box4-content p							{color: #470602;	font-family: "Trebuchet MS", Geneva, sans-serif;					font-size: 13px;	margin: 0px 0px 10px 0px;	padding: 5px 0px 5px 0px;		line-height: 1.6em;vertical-align: top;}
+.box4-content							{color: #470602;	font-family: "Trebuchet MS", Geneva, sans-serif;					font-size: 13px;	margin: 0px 0px 0px 0px;	padding: 0px 20px 10px 20px;	vertical-align: top;}
+	
+.box4-content a:link					{color: #660000;	text-decoration: underline;}
+.box4-content a:visited					{color: #660000; 	text-decoration:underline;}
+.box4-content a:hover					{color: #000000; 	text-decoration:none;}
+.box4-content a:active					{color: #660000; 	text-decoration:underline;}
+
+.box4-content ul						{color: #470602;}
+
+#footer									{color: #470602; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size:13px;}
+#footer p								{color: #470602; 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;font-size:13px;}
+#footer a:link							{color: #470602; 	text-decoration:underline;}
+#footer a:visited						{color: #470602; 	text-decoration:underline;}
+#footer a:hover							{color: #000000; 	text-decoration:none;}
+#footer a:active						{color: #470602; 	text-decoration:underline;}
+
+/* ---------------------  css heading image -----------------------*/
+
+
+.css_h4									{background: url('../themed_images/css_h3.png') no-repeat left top; text-indent:16px; padding: 0px 0px 10px 0px; margin: 0px 0px 0px 10px;}
+.css_h4	h4								{color: #82AD82;	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;font-size: 24px;margin: 0px 0px 0px 0px;padding: 3px 0px 5px 50px;font-weight: normal;letter-spacing: 3px;}
+/*.css_accent_bar						{background-image: url('../themed_images/accent_bar.png'); background-repeat:no-repeat}*/
+.css_accent_bar							{color: #82AD82; 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 22px;padding: 0px 0px 5px 10px;margin: 0px 0px 20px 0px;font-weight: bold;letter-spacing: 3px;}
+
+
+#headertext h3							{color: #6E6E67; 	font-family:"Trebuchet MS", Tahoma; font-size:16px; margin:0px 0px 0px 0px; padding:0px 0px 5px 0px;}
+#headertext h4							{color: #6E6E67; 	font-family:"Trebuchet MS", Tahoma; font-size:13px; margin:0px 0px 20px 0px; padding:5px 0px 5px 0px;}
+#headertext h5							{color: #6E6E67; 	font-family:"Trebuchet MS", Tahoma; font-size: 9px; margin:0px 0px 0px 0px; padding:0px 0px 10px 0px; 	font-weight:normal;}
+#headertext p							{color: #6E6E67; 	font-family:"Trebuchet MS", Tahoma; font-size:11px; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; 	line-height:1.4em; 	vertical-align:top;}
+#headertext								{color: #6E6E67; 	font-family:"Trebuchet MS", Tahoma; font-size:11px; margin:0px 0px 10px 0px; padding:0px 10px 10px 10px; 	min-height:50px; 	vertical-align:top;}
+
+#headertext a:link						{color: #DD3807; 	text-decoration:underline;}
+#headertext a:visited					{color: #DD3807; 	text-decoration:underline;}
+#headertext a:hover						{color: #000000; 	text-decoration:none;}
+#headertext a:active					{color: #DD3807; 	text-decoration:underline;}
+
+/*icons*/
+#icons									{color: #303F28; 	font-size:11px;} 
+ #icons a:link							{color: #303F28;}
+ #icons a:visited						{color: #303F28;}
+ #icons a:hover							{color: #57563C;}
+ #icons a:active						{color: #303F28;}
+ 
+/* company name used in Privacy page */
+.redfont 								{color: #333333; 	font-size:9px;	font-weight:bold;}
+
+
+/* -------------------------- Global styles --------------------- */
+
+body 									{color:#2c3016; 	font-family: "Palatino Linotype", "Book Antigua", Palatino, serif; font-size:11px; line-height:1.5em;}
+textarea								{color: #34391c;}
+input									{color: #34391c;}
+a:link 									{color: #0D3D6C;	text-decoration:none;}
+a:visited 								{color: #0D3D6C;	text-decoration:none;}
+a:hover 								{color: #000000; 	text-decoration:underline;}
+a:active 								{color: #0D3D6C;	text-decoration:none;}
+a:focus 								{color: #0D3D6C;	text-decoration:none;}
+
+h3										{color: #470602;	padding: 5px;margin: 0px 0px 0px 20px; font-size:20px;}
+h4										{color: #470602;	padding: 7px;margin: 0px;font-size: 14px;}
+h5										{color: #470602;	padding: 0px 0px 0px 15px;margin: 0px;font-size: 13px;}
+h6										{color: #470602;	padding: 0px 0px 10px 15px;margin: 0px;font-size: 13px;}
+p										{color: #6E6E67; 	padding: 0px; margin:0px; font-size:11px;}
+ul										{color: #6E6E67;}
+hr										{color: #6E6E67;	height: 1px;width: 50%;margin-left: auto;margin-right: auto;}
+
+/* -------------------------- TEXT LOGO styles ------------------ */
+#textlogo 								{color: #1c4f09;	font-size:2px; padding: 0px; }
+#textlogo a:link 						{color: #cccccc;}
+#textlogo a:visited 					{color: #cccccc;}
+#textlogo a:hover 						{color: #009900;}
+#textlogo a:active 						{color: #cccccc;}
+/* FONT STYLES ***************************************************************************************/
+
+
+
+.catalog 								{}
+.product 								{border: 1px solid #cccccc; height: 200px; min-width: 100px; text-align: left; padding: 10px; vertical-align: top;}
+.paypalbtn								{height: 36px; border: 1px #f7f7f7solid; text-align: center; width: auto; display: block; clear: both;padding: 2px;}
+
+
+.component-index						{border: 1px #724639 solid; padding:5px; display:block; height:80px;}
+.features-index							{margin: 10px;border: 1px solid #724639;padding: 5px;display: block;min-height: 80px;}
+.features-title							{font-size: 16px;font-variant: small-caps;color: #724639;padding-right: 10px;padding-left: 10px;}
+
+.demopic 								{padding:5px 5px 5px 5px;}
+
+
+#icon1									{margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; vertical-align:top; text-align:left; border:0px;}
+#icon2									{margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; vertical-align:top; text-align:left;border:0px;}
+#icon3									{margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; vertical-align:top; text-align:left;border:0px;}
+
+
+input.button 				{width:auto !important; margin-right:2px; margin-left:3px; border:1px solid #1F2E19; border-right-color:#1F2E19; border-bottom-color:#1F2E19; padding:1px .5em; background:#1F2E19 url(../graphics/submit-button-bg.jpg) left center repeat-x; color:#FFFFFF;}
+button 						{width:auto !important; margin-right:2px; margin-left:3px; border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D; padding:1px .5em; background:#28292D url(../graphics/submit-button-bg.jpg) left center repeat-x; color:#3D4026;}
+input.button:active 		{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D;}
+button:active 				{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D;}
+input.button:hover 			{cursor:pointer;}
+button:hover 				{cursor:pointer;}
+input.button.primary 		{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color: #28292D; background:#28292D url(../graphics/submit-button-bg.jpg) right center repeat-x;}
+button.primary 				{border:1px solid #28292D; border-right-color:#28292D; border-bottom-color: #28292D; background:#28292D url(../graphics/submit-button-bg.jpg) right center repeat-x;}
+input.button.primary:active {border:1px solid #28292D; border-right-color:#28292D; border-bottom-color:#28292D;}
+
+/* zoom menu */
+.demo img 								{border:0px none; padding:0px; width:48px; height:48px; vertical-align:top;}
+#zoom_menu img 							{padding:0px 4px;}
+#zoom_menu div.jqDock					{}
+div.jqDockLabel 						{border:0px none; padding:0px 4px;}
+div.jqDockLabelLink 					{cursor:pointer;}
+div.jqDockLabelImage 					{cursor:default;}
+div.jqDockLabel 						{font-family:Arial, Helvetica, sans-serif;  font-weight:bold; font-size:14px; white-space:nowrap; color:#ffffff; background-color:transparent;}
+

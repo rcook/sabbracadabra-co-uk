@@ -1,0 +1,35 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type="text/javascript">
+			var flashvars            = {};
+			flashvars.configLocation = flashConfigLocation;
+			flashvars.configType = flashConfigType;
+			var params               = {};
+			params.play              = "true";
+			params.loop              = "true";
+			params.quality           = "high";
+			params.scale             = "showall";
+			params.wmode             = "transparent";
+			params.devicefont        = "false";
+			params.swliveconnect     = "false";
+			params.allowfullscreen   = "false";
+			params.allowscriptaccess = "sameDomain";
+			params.base              = flashRootLocation + "Site/flash/";
+			var attributes   = {};
+			attributes.id    = "flashheader";
+			attributes.name  = "scroller_menu";
+			attributes.align = "middle";
+			swfobject.embedSWF(flashRootLocation + "Site/flash/scroller_menu.swf", "headerDivscroller_menu", "252", "200", "9.0.0", flashRootLocation + "Site/flash/js/expressInstall.swf", flashvars, params, attributes);
+		</script>
+
+
+<!-- scroller_menu -->
+<div id="scroller_menu_wrapper"><div id="scroller_menu"><div class="scroller_menu">
+
+	<div id="headerDivscroller_menu">
+
+
+	</div>
+
+</div></div></div>
+<!-- /scroller_menu -->

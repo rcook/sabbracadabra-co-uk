@@ -1,0 +1,30 @@
+<?php if ($access->hasAccess("settings", "general")) { ?>
+<li class='dropdown<?php if ($_GET['m'] == "settings") { print " active"; } ?>'><a class='dropdown-toggle' href="module/settings/general/"><i class='icon-cog'></i> System <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    <?php if ($access->hasAccess("settings", "manage-syntax") && ($access->hasAccess("settings", "manage-ssl-security") || $access->hasAccess("settings", "update"))) { ?>
+	
+	<?php if ($access->hasAccess("settings", "general")) { ?>
+    <li><a href="module/settings/general/"><i class='icon-globe'></i> Site Settings</a></li>
+	<?php } ?>
+	<li><a href="module/settings/manage-syntax/"><i class='icon-font'></i> Syntax Configuration</a></li>
+    <?php if (REMOTE_SERVICE !== true && $access->hasAccess("settings", "manage-ssl-certificate")) { ?>
+    <li><a href="module/settings/manage-ssl-security/"><i class='icon-lock'></i> SSL Security</a></li>
+	<?php } ?>
+	<?php if (REMOTE_SERVICE !== true && $access->hasAccess("settings", "update")) { ?>
+    <li><a href="module/settings/update/"><i class='icon-refresh'></i> System Updates</a></li>
+    <?php } ?>
+	
+    <?php } ?>
+    <li><a href="http://<?php
+		if (REMOTE_SERVICE === true) {
+			echo "".$numo->getRootFolder();
+			if ($doDemoModules) {
+				echo "/".$_GET['numo']."/";
+			}
+		} else {
+			echo NUMO_SERVER_ADDRESS.str_replace("/numo/", "/", NUMO_FOLDER_PATH);
+		}
+		?>"><i class='icon-off'></i> Exit Admin Panel</a></li>
+        </ul>
+</li>
+<?php } ?>

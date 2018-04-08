@@ -1,0 +1,36 @@
+﻿<body><!-- #BeginLibraryItem "/Library/dreamweaver/search.lbi" -->
+
+
+<br />
+<script type="text/javascript">
+
+// Google Internal Site Search script- By JavaScriptKit.com (http://www.javascriptkit.com)
+// For this and over 400+ free scripts, visit JavaScript Kit- http://www.javascriptkit.com/
+// This notice must stay intact for use
+
+
+//!!!!! do not change anything above this line !!!!!
+
+var domainroot="www.jonkershawmusic.com"
+
+//!!!!! do not change anything below this line !!!!!
+
+
+function Gsitesearch(curobj){
+curobj.q.value="site:"+domainroot+" "+curobj.qfront.value
+}
+
+</script>
+
+
+<form action="http://www.google.com/search" method="get" onsubmit="Gsitesearch(this)">
+
+<p><input name="q" type="hidden" /> 
+<input name="qfront" type="text" style="width: 100px; height:15px;" /> <input class="button primary" type="submit" value="Search" />
+</p> 
+</form>
+
+
+<!-- #EndLibraryItem -->
+</body>
+

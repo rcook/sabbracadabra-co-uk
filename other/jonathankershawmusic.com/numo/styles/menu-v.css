@@ -1,0 +1,76 @@
+.menu-v {text-align: left;}
+.menu-v ul{
+margin: 0;
+padding: 0;
+width: 185px; /* Main Menu Item widths */
+list-style-type: none;
+font: bold 12px Verdana;
+border-bottom: 1px solid #eee;
+}
+ 
+.menu-v ul li{position: relative;}
+
+/* Top level menu links style */
+.menu-v ul li a{
+display: block;
+overflow: auto; /*force hasLayout in IE7 */
+color: #2A61B3;
+text-decoration: none;
+padding: 6px;
+border-bottom: 1px solid #AAA;
+border-right: 1px solid #AAA;
+}
+
+.menu-v ul li a:link, .menu-v ul li a:visited, .menu-v ul li a:active{
+	background: #eeeeee; 
+
+background-image: linear-gradient(bottom, rgb(209,207,209) 0%, rgb(237,237,237) 100%);
+background-image: -o-linear-gradient(bottom, rgb(209,207,209) 0%, rgb(237,237,237) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(209,207,209) 0%, rgb(237,237,237) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(209,207,209) 0%, rgb(237,237,237) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(209,207,209) 0%, rgb(237,237,237) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(209,207,209)),
+	color-stop(1, rgb(237,237,237))
+);
+color: #2A61B3;
+}
+
+
+.menu-v ul li a.selected{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+background: #DDD; 
+color: #2A61B3;
+}
+
+.menu-v ul li a:hover{
+background: #DDD; /*background of menu items during onmouseover (hover state)*/
+color: #2A61B3;
+padding-left: 10px;
+}
+
+/*Sub level menu items */
+.menu-v ul li ul{
+position: absolute;
+width: 170px; /*Sub Menu Items width */
+top: 0;
+font-weight: normal;
+visibility: hidden;
+}
+
+.menu-separator {
+	border-top: 2px solid #cccccc;
+}
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass{position: absolute;top: 12px;right: 7px;}
+.rightarrowclass{position: absolute;top: 6px;right: 5px;}
+ 
+/* Holly Hack for IE \*/
+* html .menu-v ul li { float: left; height: 1%; }
+* html .menu-v ul li a { height: 1%; }
+/* End */
+

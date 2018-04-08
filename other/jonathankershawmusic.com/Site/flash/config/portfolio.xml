@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gallery>
+
+<!-- time, in milliseconds, to display each picture -- 5000 = 5 seconds -->
+<transitionDelay>8000</transitionDelay>
+<numberOfButtonsOnStage>4</numberOfButtonsOnStage>
+<numberOfButtonsToShift>4</numberOfButtonsToShift>
+<buttonAlign>left</buttonAlign> <!-- center, left, right -->
+<buttonDisplayDirection>horizontal</buttonDisplayDirection>	<!-- horizontal, vertical -->
+
+<backButtonLabel>back</backButtonLabel> 
+<nextButtonLabel>next</nextButtonLabel>
+
+<buttonWidth>125</buttonWidth> <!-- do not change -->
+<buttonHeight>50</buttonHeight> <!-- do not change -->
+<stageWidth>520</stageWidth> <!-- do not change -->
+<buttonBarStartX>22</buttonBarStartX> <!-- do not change -->
+<buttonBarStartY>283</buttonBarStartY><!-- do not change -->
+
+
+
+
+<!-- target can be: _blank, _top, _self, or _parent -- when testing on your local machine, links will ALWAYS open in a new window, regardless of the setting -->
+	
+	<images>
+	
+<!-- 1st image -->		
+		<pic>
+			<image>Site/themed_images/rot_pic_remnants_ad_476x238.jpg</image>
+			<link>listen.htm</link>
+			<linkLabel>Listening Room</linkLabel>
+			<target>_blank</target>
+			<title>Remnants by Jonathan Kershaw</title>
+			<shortDescription>Remnants by Jonathan Kershaw now available</shortDescription>
+			<description>Remnants - the new release by Jonathan Kershaw, now available on CD and MP3 download</description>
+		</pic>
+		
+<!-- 2nd image -->		
+		<pic>
+			<image>Site/themed_images/rot_pic_jk_ad_476x238.jpg</image>
+			<link></link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Jonathan Kershaw Music Official Website</title>
+			<shortDescription>Jonathan Kershaw Music Official Website</shortDescription>
+			<description>Website home page for Jonathan Kershaw music</description>
+		</pic>
+		
+<!-- 3rd image -->		
+		<pic>
+			<image>Site/themed_images/rot_pic_crossing_ad_476x238.jpg</image>
+			<link>videos.htm#xing3c</link>
+			<linkLabel>Watch video now</linkLabel>
+			<target>_self</target>
+			<title>Crossing the Third Sea Video</title>
+			<shortDescription>Video for Crossing the Third Sea by Jonathan Kershaw</shortDescription>
+			<description>Video for Crossing the Third Sea by Jonathan Kershaw</description>
+		</pic>
+		
+<!-- 4th image -->		
+		<pic>
+			<image>Site/themed_images/rot_pic_ag_ad_476x238.jpg</image>
+			<link>news.htm#ag_01</link>
+			<linkLabel>Acoustic Goth</linkLabel>
+			<target>_self</target>
+			<title>Acoustic Goth - Jonathan Kershaw and Beck Sian</title>
+			<shortDescription>Jonathan Kershaw is currently on tour with singer Beck Sian</shortDescription>
+			<description>Jonathan Kershaw is currently on tour with Australian singer Beck Sian (cousin of Kate Bush)</description>
+		</pic>
+		
+<!-- 5th image -->		
+		<pic>
+			<image>Site/themed_images/rot_pic_live_ad_476x238.jpg</image>
+			<link>live.htm</link>
+			<linkLabel>Live dates</linkLabel>
+			<target>_self</target>
+			<title>Jonathan Kershaw Live Gigs</title>
+			<shortDescription>List of upcoming live shows from Jonathan Kershaw</shortDescription>
+			<description>List of upcoming live shows from Jonathan Kershaw</description>
+		</pic>
+		
+<!-- 6th image -->		
+		<pic>
+			<image>Site/themed_images/rot_pic_youtube_ad_476x238.jpg</image>
+			<link>news.htm#youtube</link>
+			<linkLabel>Jonathan Kershaw YouTube Channel</linkLabel>
+			<target>_self</target>
+			<title>Jonathan Kershaw on YouTube</title>
+			<shortDescription>Jonathan Kershaw on YouTube</shortDescription>
+			<description>Check out and subscribe to the latest videos and messages from Jonathan on YouTube</description>
+		</pic>
+				
+<!-- 7th image -->		
+<!--		<pic>
+			<image>Site/themed_images/portfolio7.jpg</image>
+			<link>faqs.htm</link>
+			<linkLabel>click me</linkLabel>
+			<target>_self</target>
+			<title>Seventh Topic</title>
+			<shortDescription>This is the sixth short description</shortDescription>
+			<description>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</description>
+		</pic>
+-->
+<!-- 8th image -->		
+<!--		<pic>
+			<image>Site/themed_images/portfolio8.jpg</image>
+			<link>faqs.htm</link>
+			<linkLabel>click me</linkLabel>
+			<target>_self</target>
+			<title>Eighth Topic</title>
+			<shortDescription>This is the sixth short description</shortDescription>
+			<description>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</description>
+		</pic>
+-->				
+				
+				
+<!-- copy new <pic>...</pic> here -->
+
+
+
+	
+<!-- do not change anything below this line -->
+		
+	</images>
+</gallery>

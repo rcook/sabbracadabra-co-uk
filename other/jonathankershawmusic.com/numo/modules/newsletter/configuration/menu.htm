@@ -1,0 +1,49 @@
+<?php if ($access->hasAccess("newsletter", "manage")) { ?>
+<li class='dropdown<?php if ($_GET['m'] == "newsletter") { print " active"; } ?>'>
+  <a class='dropdown-toggle' data-toggle='dropdown' href="module/newsletter/manage/"><i class='icon-comment'></i> Newsletter <b class="caret"></b></a>
+	<ul class='dropdown-menu'>
+	<?php if ($access->hasAccess("newsletter", "manage")) { ?>
+    <li <?php if ($access->hasAccess("newsletter", "compose-new")) { print 'class="dropdown-submenu"'; } ?>>
+    <a <?php if ($access->hasAccess("newsletter", "compose-new")) { print 'class="dropdown-toggle"'; } ?> href="module/newsletter/manage/"><i class='icon-envelope'></i> Newsletter Messages</a>
+	<?php if ($access->hasAccess("newsletter", "compose-new")) { ?>	
+        <ul class='dropdown-menu'>
+		<li><a href="module/newsletter/manage/"><i class='icon-edit'></i> Manage</a></li>
+		<li><a href="module/newsletter/compose-new/"><i class='icon-asterisk'></i> Compose New</a></li>
+		</ul>
+	<?php } ?>
+    </li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "manage-list")) { ?>
+	<li <?php if ($access->hasAccess("newsletter", "manage-list")) { print 'class="dropdown-submenu"'; } ?>>
+    <a <?php if ($access->hasAccess("newsletter", "manage-list")) { print 'class="dropdown-toggle"'; } ?> href="module/newsletter/manage-list/"><i class='icon-list'></i> Subscription Lists</a>
+      <?php if ($access->hasAccess("newsletter", "create-list")) { ?>	
+        <ul class='dropdown-menu'>
+		<li><a href="module/newsletter/manage-list/"><i class='icon-edit'></i> Manage</a></li>
+		<li><a href="module/newsletter/create-list/"><i class='icon-asterisk'></i> Create</a></li>
+		</ul>
+      <?php } ?>
+	</li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "manage-subscribers")) { ?>	
+	<li <?php if ($access->hasAccess("newsletter", "manage-subscribers")) { print 'class="dropdown-submenu"'; } ?>>
+    <a <?php if ($access->hasAccess("newsletter", "manage-subscribers")) { print 'class="dropdown-toggle"'; } ?> href="module/newsletter/manage-subscribers/"><i class='icon-group'></i> Subscribers</a>
+		<ul class='dropdown-menu'>
+		<li><a href="module/newsletter/manage-subscribers/"><i class='icon-edit'></i> Manage</a></li>
+        <?php if ($access->hasAccess("newsletter", "create-subscriber")) { ?>	
+		<li><a href="module/newsletter/create-subscriber/"><i class='icon-asterisk'></i> Create</a></li>
+        <?php } ?>
+        <?php if ($access->hasAccess("newsletter", "import")) { ?>	
+		<li><a href="module/newsletter/import/"><i class='icon-upload'></i> Import</a></li>
+        <?php } ?>
+		</ul>
+	</li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "components")) { ?>
+	<li><a href="module/newsletter/components/"><i class='icon-star'></i> Components</a></li>
+    <?php } ?>
+    <?php if ($access->hasAccess("newsletter", "configure")) { ?>
+	<li><a href="module/newsletter/configure/"><i class='icon-cogs'></i> Configure</a></li>
+    <?php } ?>
+	</ul>
+</li>
+<?php } ?>

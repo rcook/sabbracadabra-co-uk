@@ -1,0 +1,80 @@
+﻿#header_wr					{width:990px;}
+.boxh-content				{height:270px;}
+#content1_wr				{width:990px;}
+#content2_wr				{width:990px;}
+#footer_wr					{width:990px;}
+
+
+
+
+/* BOXES ie6 ******************************************************************************************************************************************/
+/* box1 ie6 */
+* html .bt 					{height:0px; margin:0px; 						background:none;}
+* html .bt div 				{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bb 					{height:0px; margin:0px; 						background:none;}
+* html .bb div 				{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i1 					{padding:0px;									background:none;}
+* html .i2 					{padding:0px;									background:none;}
+
+/* box2 ie6 */
+* html .bt2 				{height:0px; margin:0px; 						background:none;}
+* html .bt2 div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bb2 				{height:0px; margin:0px; 						background:none;}
+* html .bb2 div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i12 				{padding:0px;									background:none;}
+* html .i22 				{padding:0px;									background:none;}
+
+/* box3 ie6 */ 
+* html .bt3 				{height:0px; margin:0px; 						background:none;}
+* html .bt3 div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bb3 				{height:0px; margin:0px; 						background:none;}
+* html .bb3 div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i13 				{padding:0px;									background:none;}
+* html .i23 				{padding:0px;									background:none;}
+
+/* box4 ie6 */ 
+* html .bt4 				{height:0px; margin:0px; 						background:none;}
+* html .bt4 div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bb4 				{height:0px; margin:0px; 						background:none;}
+* html .bb4 div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i14 				{padding:0px;									background:none;}
+* html .i24 				{padding:0px;									background:none;}
+
+
+
+* html .bth 				{height:0px; margin:0px; 						background:none;}
+* html .bth div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bbh 				{height:0px; margin:0px; 						background:none;}
+* html .bbh div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i1h 				{padding:0px;									background:none;}
+* html .i2h 				{padding:0px;									background:none;}
+
+
+* html .btc 				{height:0px; margin:0px; 						background:none;}
+* html .btc div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bbc 				{height:0px; margin:0px; 						background:none;}
+* html .bbc div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i1c 				{padding:0px;									background:none;} 
+* html .i2c 				{padding:0px;									background:none;}
+
+
+* html .btm 				{height:0px; margin:0px; 						background:none;}
+* html .btm div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bbm 				{height:0px; margin:0px; 						background:none;}
+* html .bbm div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i1m 				{padding:0px;									background:none;}
+* html .i2m 				{padding:0px;									background:none;}
+.boxm-inner					{height:50px;}
+
+
+* html .btf 				{height:0px; margin:0px; 						background:none;}
+* html .btf div 			{height:0px; left:0px; width:0px; 				background:none;		position:relative; 	font-size:0;	line-height:0;}
+* html .bbf 				{height:0px; margin:0px; 						background:none;}
+* html .bbf div 			{height:0px; left:0px; width:0px; 				background:none; 		position:relative;  font-size:0; 	line-height:0;}
+* html .i1f 				{padding:0px;									background:none;}
+* html .i2f 				{padding:0px;									background:none;}
+
+/* BOXES ie6 ******************************************************************************************************************************************/
+
+
+

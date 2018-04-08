@@ -1,0 +1,1 @@
+<img src="http://<?php print NUMO_SERVER_ADDRESS; ?><? print NUMO_FOLDER_PATH;?>extensions/captcha/components/captcha_image.php?session_id=<?php echo session_id(); ?>" alt="" title="" />

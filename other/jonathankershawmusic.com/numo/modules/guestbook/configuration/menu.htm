@@ -1,0 +1,17 @@
+<?php if ($access->hasAccess("guestbook", "responses")) { ?>
+<li class='dropdown<?php if ($_GET['m'] == "guestbook") { print " active"; } ?>'>
+	<a href="module/guestbook/responses/" class='dropdown-toggle' data-toggle='dropdown'><i class='icon-book'></i> Guestbook <b class="caret"></b></a>
+	<ul class='dropdown-menu'>
+		<li><a href="module/guestbook/responses/"><i class='icon-envelope'></i> Responses</a></li>
+        <?php if ($access->hasAccess("guestbook", "components")) { ?>
+		<li><a href="module/guestbook/components/"><i class='icon-star'></i> Component</a></li>
+        <?php } ?>
+        <?php if ($access->hasAccess("guestbook", "manage")) { ?>
+		<li><a href="module/guestbook/manage/"><i class='icon-edit'></i> Manage</a></li>
+        <?php } ?>
+        <?php if ($access->hasAccess("guestbook", "configure-layout") && REMOTE_SERVICE !== true) { ?>
+		<li><a href="module/guestbook/configure-layout/"><i class='icon-cog'></i> Layout</a></li>
+        <?php } ?>
+	</ul>
+</li>
+<?php } ?>

@@ -1,0 +1,38 @@
+<gallery base = "">
+
+<!-- EDIT Gallery Name -->
+<sitename>Live images from 2013</sitename>
+
+<!-- OPTIONAL SEO / RSS info -->
+<photographer></photographer>
+<contactinfo></contactinfo>
+<email></email><security>
+
+<!-- do not alter the following line -->
+<![CDATA[]]> </security><banner></banner><thumbnail base ="images/"></thumbnail> <large base ="images/"></large><photos id = "images">
+
+<!-- EDIT links to photos, [photo width and height-{for animation}] -->
+<photo path = "live_003_500x334.jpg" width = "500" height = "334"></photo>
+<photo path = "live_jk_002_500x410.jpg" width = "500" height = "410"></photo>
+<photo path = "live_jk_001_333x500.jpg" width = "333" height = "500"></photo>
+<photo path = "live_jk_010_335x500.jpg" width = "335" height = "500"></photo>
+<photo path = "live_jk_008_500x340.jpg" width = "500" height = "340"></photo>
+<photo path = "live_jk_004_333x500.jpg" width = "333" height = "500"></photo>
+<photo path = "live_jk_006_332x500.jpg" width = "332" height = "500"></photo>
+<photo path = "lunaesque_001e_500x387.jpg" width = "500" height = "387"></photo>
+<photo path = "live_jk_005_500x344.jpg" width = "500" height = "344"></photo>
+<photo path = "live_004_473x614.jpg" width = "473" height = "614"></photo>
+<photo path = "live_jk_009_335x500.jpg" width = "335" height = "500"></photo>
+<photo path = "live_jk_003_352x500.jpg" width = "352" height = "500"></photo>
+<photo path = "live_jk_007_332x500.jpg" width = "332" height = "500"></photo>
+<photo path = "lunaesque_002e_335x500.jpg" width = "335" height = "500"></photo>
+<!--<photo path = "pic2.jpg" width = "500" height = "375"></photo>
+<photo path = "image7.jpg" width = "375" height = "500"></photo>
+<photo path = "image8.jpg" width = "500" height = "375"></photo>
+<photo path = "image9.jpg" width = "375" height = "500"></photo>
+<photo path = "image10.jpg" width = "500" height = "375"></photo>
+<photo path = "image11.jpg" width = "375" height = "500"></photo>
+<photo path = "image12.jpg" width = "500" height = "375"></photo>
+-->
+<!-- do not edit past this line -->
+</photos></gallery>
