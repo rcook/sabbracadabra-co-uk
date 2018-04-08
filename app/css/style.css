@@ -52,7 +52,7 @@ body {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	width: 95px;
+	width: 126px;
 }
 /*main menu text on hover*/
 #header .header ul li a:hover {
@@ -64,6 +64,26 @@ by altering them in the joint interface png file using an artwork editor ie pain
 	background: url(../images/interface1.png) no-repeat -112px -43px;
 	color: #fff;
 }
+
+#header .header ul li.unselected a {
+	background: url(../images/interface2.png) no-repeat -112px -43px;
+}
+
+#header .header ul li.selected a:hover {
+	background: url(../images/interface3.png) no-repeat -112px -43px;
+	color: #fff;
+}
+
+#header .header ul li.unselected a:hover {
+	background: url(../images/interface3.png) no-repeat -112px -43px;
+	color: #fff;
+}
+
+#header .header ul li.unselected a:active {
+	background: url(../images/interface_press.png) no-repeat -112px -43px;
+}
+
+
 #header .header form {
 	display: inline-block;
 	float: right;
@@ -383,8 +403,16 @@ footer puts in otherwise */
 	margin: 0;
 	padding: 12px 0 0;
 }
-/*shows page inner box in left hand coloumn list*/
-#body .content > ul li a {
+
+/*Live page show-list editing*/
+
+/*Live shows page shows-list background colour*/
+#body .content .livelist  {
+	background: #000000;
+}
+
+/*Live page inner box in left hand coloumn list*/
+#body .content .livelist > table tr td p a {
 	background: #3F4040;
 /*above is box background colour, below is main text colour*/
 	color: #C0C0C0; 
@@ -395,28 +423,23 @@ footer puts in otherwise */
 	padding: 0 12px;
 	text-decoration: none;
 }
+
+/*Live page left column inner box colour on hover*/
+#body .content .livelist > table tr td p a:hover {
+	background: #4A1B24;
+	color: #726177;
+	opacity: 0.9;
+}
+
+
+}
 #body .content > ul li a b {
 	display: inline-block;
 	font-size: 16px;
 /*	padding: 0 46px 0 0;
 */}
-/*this is the "Shows" page "Book Now" text*/
-#body .content > ul li a i {
-	color: #9c83a4;
-	font-size: 16px;
-	font-weight: bold;
-	text-decoration: underline;
-}
 
-/*Shows page left column inner box colour on hover*/
-#body .content > ul li a:hover {
-	background: #4A1B24;
-}
 
-/*"Book now" text on hover*/
-#body .content > ul li a:hover i {
-	color: #fae9ff;
-}
 #body .content .paging {
 	text-align: center;
 	padding: 40px 10px;
@@ -466,6 +489,21 @@ footer puts in otherwise */
 	margin: 0 0 36px;
 	padding: 0;
 }
+
+/*control for spacing between newsletter subscription entry boxes*/
+#body .sidebar .mc-field-group {
+	margin: 0 0 12px;
+	padding: 0;
+}
+
+/*control for spacing below newsletter subscribe button*/
+
+#body .sidebar .clear {
+	margin: 0 0 6px;
+	padding: 0;
+}
+
+
 
 /*Right hand column title box*/
 #body .sidebar div h3 {
