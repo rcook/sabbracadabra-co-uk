@@ -28,6 +28,12 @@ body,html{
 	font-size: 14px;
 	color:rgba(255, 255, 255, 0.51);
 	}
+.header-top-left ul li a{
+	color:rgba(255, 255, 255, 0.51);
+	}
+.header-top-left ul li a:hover{
+	color:white;
+	}
 .header-top-left ul li.activ a{
 	background:#3C3C3C;
 	padding: .5em 1em;
@@ -249,12 +255,15 @@ ul.navig li:nth-of-type(3) {
 	margin: 0 0em 0 0px;
 }
 }
+/* End of this little section of <768px */
+
 .search{
 	float:left;
 	width:18%;
 	}
 .search input[type=text]{
 	background:url(../images/search.png) no-repeat 13em 0.9em;
+	background-position:right;
 	display:block;
 	height:40px;
 	outline:none;
@@ -262,7 +271,7 @@ ul.navig li:nth-of-type(3) {
 	color:#fff;
 	border:1px solid #333;
 	width:100%;
-	padding: 21px;
+	padding: 10px 21px 0px 5px;
 	cursor:pointer;
 	}
 /*-- //header --*/
@@ -372,7 +381,7 @@ ul.navig li:nth-of-type(3) {
 	padding-left: .5em;
 	}
 .banner-info p.para1{
-	color: #C7DBF9;
+	color: #C7DBF9;			/*banner text colour */
 	margin:1em 0;
 	font-size: 15px;
 	font-weight: 300;
@@ -629,6 +638,7 @@ ul.social-slide li i.mac{
     }
 }
 /*----*/
+
 .callbacks_tabs a{
  visibility: hidden;
 }
@@ -703,12 +713,21 @@ ul.social-slide li i.mac{
 	line-height: 25px;
 	font-weight: 300;
 	}
+.banner-bottom-left li{
+	margin: 1em 0 0;
+	font-size: 15px;
+	color: #fff;				/*main area 1 list text colour*/
+/*	line-height: 25px;
+*/	font-weight: 300;
+	}	
+	
 .banner-bottom-left p span{
 	display:block;
 	margin-top: 2em;
 	}
 .get{
 	float:left;
+	margin-top: 1.5em;
 	}
 .get a{
 	background:#121212;
@@ -730,6 +749,7 @@ ul.social-slide li i.mac{
 .buy{
 	float:left;
 	margin-left: 3em;
+	margin-top: 1.5em;
 	}
 .buy a{
 	background:red;
@@ -760,20 +780,28 @@ ul.social-slide li i.mac{
 	}
 .fig{
 	float:left;
-	width:45%;
+	width:95%;							/*controls percentage of the container that the image fig takes up */
 	}
 .fig img{
 	width:100%;
 	}
 .fig1{
 	float:right;
-	width: 40%;
-	margin-top: 10em;
+	width: 50%;
+	margin-top: 2em;
 	margin-left: 4em;
 	}
 .fig1 img{
 	width:100%;
 	}
+.fig2{
+	float:left;
+	width:49%;							/*controls percentage of the container that the image fig 2 takes up */
+	}
+.fig2 img{
+	width:100%;
+	}
+	
 .watch-demo{
 	background:#737171;					/*background grey colour 2 for main text area (colour 1 above)*/
 	font-family: 'Roboto', sans-serif;
@@ -802,6 +830,7 @@ ul.social-slide li i.mac{
 	font-size:28px;
 	margin:0;
 	font-weight: 400;
+	font-style:italic;
 	}
 .banner-bottom-right1 p.para{
 	margin: 1em 0 3em;
@@ -809,10 +838,12 @@ ul.social-slide li i.mac{
 	color: #151515;
 	line-height: 25px;
 	font-weight: 300;
+	text-align:right;
 	}
 .banner-bottom-right1 p.para span{
 	display:block;
 	margin-top: 2em;
+	text-align:left;
 	}
 /*-- //banner-bottom --*/
 /*-- footer --*/
@@ -1275,7 +1306,7 @@ ul.social-slide li i.mac{
 	text-decoration:none;
 	}
 .news-left-l h3 a:hover{	
-	color:#12D194;
+	color:red;
 	text-decoration:none;
 	}
 .news-left-l h3{
@@ -1283,6 +1314,11 @@ ul.social-slide li i.mac{
 	}
 .news-left-l img{
 	width:100%;
+	}
+.news-left-l p label{					/*date underneath the news items on the left*/
+	color:red;
+	font-size:14px;
+	margin:0;
 	}
 .news-left-l p{
 	color:#626262;
@@ -1303,8 +1339,8 @@ ul.social-slide li i.mac{
 .news-right-text img{
 	width:100%;
 	}
-.news-right-text p label{
-	color:#12D194;
+.news-right-text p label{					/*date underneath the news items on the right*/
+	color:red;
 	font-size:14px;
 	margin:0;
 	}
@@ -1330,7 +1366,7 @@ ul.social-slide li i.mac{
 	}
 .news-bottom ul li a.new1{
 	padding:5px 10px;
-	background:#12D194;
+	background:red;
 	font-size:14px;
 	color:#fff;
 	text-decoration:none;
@@ -1338,6 +1374,9 @@ ul.social-slide li i.mac{
 .news-bottom ul li a.new1:hover{
 	text-decoration:none;
 	}
+.news-bottom ul li a.select{
+	font-weight:bold
+}
 .news-bottom ul li a{
 	font-size:14px;
 	color:#555;
@@ -1348,7 +1387,7 @@ ul.social-slide li i.mac{
 	}
 a.read{
 	padding:.5em 2em;
-	background:#12D194;
+	background:red;
 	color:#fff;
 	font-size:14px;
 	transition:.5s all;
@@ -1406,7 +1445,7 @@ a.read:hover{
 	list-style-type:none;
 	background: url(../images/marker.png) no-repeat 0px 4px;
 	display: block;
-	height: 18px;
+	height: 28px;
 	margin: 1em 0;
 	}
 .single-right-text ul li a{
@@ -1417,7 +1456,7 @@ a.read:hover{
 	}
 .single-right-text ul li a:hover{
 	text-decoration:none;
-	color:#12D194;
+	color:red;
 	}
 .single-right h3{
 	color:#2A2A2A;
@@ -1488,7 +1527,7 @@ a.read:hover{
 	width:100%;
 	}
 .news-right-text1 p label{
-	color:#12D194;
+	color:red;
 	font-size:14px;
 	margin:0;
 	}
@@ -1582,7 +1621,7 @@ a.read:hover{
 		}
 	.search input[type=text] {
 		  background: url(../images/search.png) no-repeat 11em 1em;
-		  padding: 21px 21px 21px 5px;
+		  padding: 10px 21px 0px 5px;
 		  }
 	.search {
 		width: 16%;
@@ -1599,7 +1638,7 @@ a.read:hover{
 	.header-top-left ul li.activ a {
 		margin-right: .5em;
 		}
-	.callbacks_container {
+	.callbacks_container {					/* controls position of info-banner within main pic */
 		margin: 30% 0 0;
 		}
 	.callbacks_nav.next {
@@ -1617,7 +1656,7 @@ a.read:hover{
 		}
 	.search input[type=text] {
 		  background: url(../images/search.png) no-repeat 11em 1em;
-		  padding: 21px 21px 21px 5px;
+		  padding: 10px 21px 0px 5px;
 		  }
 }
 @media (max-width: 1280px)
@@ -1628,7 +1667,7 @@ a.read:hover{
 	.header-top-left ul li.activ a {
 		margin-right: .3em;
 		}
-	.callbacks_container {
+	.callbacks_container {					/* controls position of info-banner within main pic */
 		margin: 20% 0 0;
 		}
 	.callbacks1_tabs {
@@ -1649,6 +1688,17 @@ a.read:hover{
 	.callbacks_nav {
 		top: -18%;
 		}
+	ul.navig li a {
+		padding: 12px 23px;
+		}
+	.search {
+		width: 16%;
+		}
+	.search input[type=text] {
+		  background: url(../images/search.png) no-repeat 11em 1em;
+			background-position:right;
+		  padding: 10px 21px 0px 5px;
+		  }
 	.banner-bottom {
 		padding: 5em 0;
 		}
@@ -1658,19 +1708,28 @@ a.read:hover{
 	.banner-bottom-left p span {
 		margin-top: 1em;
 		}
-	.fig1 {
-		margin-top: 8em;
+	.buy a{
+		padding: .5em 2em;
 		}
-	.banner-bottom-right1 h4 {
+	.get a{
+		padding: .5em 2em;
+		}
+/*	.fig1 {
+		margin-top: 1.5em;
+		}
+*/	.banner-bottom-right1 h4 {
 		font-size: 25px;
 		}
 	.grids {
 		padding: 5em 0;
 		}
-	.rslides li {
+/* commented out bit below moved the text in the info banner across (effectively giving a margin in the info box) however, it
+caused the text to disappear out of the other edge of the box! */		
+		
+/*	.rslides li {
 		left: 8%;
 		}
-	.single-left-text h3 {
+*/	.single-left-text h3 {
 		font-size: 26px;
 		}
 	.single-right h3 {
@@ -1750,8 +1809,9 @@ a.read:hover{
 		}
 	.search input[type=text] {
 		background: url(../images/search.png) no-repeat 15em 1em;
+		background-position:right;
 		font-size: 13px;
-		padding: 21px 4px;
+		padding: 10px 21px 0px 4px;
 		}
 	.rslides li {
 		left: 0%;
@@ -1766,7 +1826,7 @@ a.read:hover{
 		text-align: center;
 		}
 	ul.navig li a {
-		padding: 12px 17px;
+		padding: 12px 13px;
 		}
 	ul.navig li a {
 		font-size: 1em;
@@ -1780,7 +1840,7 @@ a.read:hover{
 		}
 	
 	.search {
-		width: 23%;
+		width: 15%;
 		}
 	.banner {
 		min-height: 450px;
@@ -1798,11 +1858,11 @@ a.read:hover{
 	.banner-bottom-left h4 {
 		font-size: 22px;
 		}
-	.fig1 {
-		margin-top: 6em;
+/*	.fig1 {
+		margin-top: 1em;
 		margin-left: 0em;
 		}
-	.callbacks_nav.next {
+*/	.callbacks_nav.next {
 		right: -172%;
 		}
 	.callbacks_nav {
@@ -1811,13 +1871,17 @@ a.read:hover{
 	.banner-bottom-left p {
 		margin: 1em 0 3em;
 		}
+	.banner-bottom-left li {
+		margin: 1em 0 0;
+		}
+
 	.get a {
-		padding: .5em 2em;
+		padding: .5em 1.5em;
 		font-size: 18px;
 		}
 	.buy a {
 		font-size: 18px;
-		padding: .5em 2em;
+		padding: .5em 1.5em;
 		}
 	.banner-bottom-right1 h4 {
 		font-size: 22px;
@@ -1983,6 +2047,7 @@ a.read:hover{
 		}
 	.search input[type=text] {
 		background: url(../images/search.png) no-repeat 25em 1em;
+		background-position:right;
 		}
 	.callbacks_container {
 		width: 50%;
@@ -2005,12 +2070,14 @@ a.read:hover{
 		}
 	.get a {
 		font-size: 16px;
+		padding: .5em 1.5em;
 		}
 	.buy {
 		margin-left: 1em;
 		}
 	.buy  a{
 		font-size: 16px;
+		padding: .5em 1.5em;
 		}
 	.grids {
 		padding: 3em 0;
@@ -2024,6 +2091,10 @@ a.read:hover{
 	.banner-bottom-left p {
 		margin: 1em 0 2em;
 		}
+	.banner-bottom-left li {
+		margin: 1em 0 0;
+		}
+
 	.single-left {
 		width: 100%;
 		float:none;
@@ -2190,34 +2261,42 @@ a.read:hover{
 	.head-logo {
 		margin: 3em 0;
 		}
-	.banner-info p.para1 {
+/* The commented out script below originally cut off the banner text when screen size was reduced below 640px */	
+	
+/*	.banner-info p.para1 {
 	  overflow: hidden;
 	  height: 42px;
 	  }
-	.head-logo a span {
+*/	.head-logo a span {
 		background: url(../images/logo.png) no-repeat 12.5em 0em;
 		}
 	.search input[type=text] {
 		background: url(../images/search.png) no-repeat 20em 1em;
+		background-position:right;
 		}
 	.banner {
-		background: url(../images/banner.jpg) no-repeat -95px 0px;
+		background-size:auto 100%;
+		background-position: -60px 0px;
 		}
 	.callbacks1_tabs {
 		  top:147%;
 		  left: 71%;
 		  width: 70%;
 		}
+		
+/* commented out section of this caused the title text to be cut short on small screens */
 	.banner-bottom-left h4 {
 		font-size: 18px;
-		overflow: hidden;
+/*		overflow: hidden;
 		height: 20px;
-		}
+*/		}
 	.get a {
 		  font-size: 13px;
+		  padding: .5em 1em;
 		}
 	.buy a {
 		  font-size: 13px;
+		  padding: .5em 1em;
 		}
 	.banner-bottom {
 		padding: 2em 0;
@@ -2237,6 +2316,10 @@ a.read:hover{
 	.banner-bottom-left p {
 		 font-size: 14px;
 		}
+	.banner-bottom-left li {
+		 font-size: 14px;
+		}
+
 	.footer {
 		padding: 2em 0;
 		}
@@ -2366,6 +2449,9 @@ a.read:hover{
 	.search {
 		  width: 66%;
 		}
+	.search input[type=text]{
+		background-position:right;
+		}
 	.navigation {
 		margin-top: 0.5em;
 		}
@@ -2377,7 +2463,10 @@ a.read:hover{
 		top: 174%;
 		}
 	.banner {
+		background-size:auto 100%;
+		background-position: -100px 0px;
 		  min-height: 400px;
+		
 		}
 	.banner-info h4 {
 		  font-size: 18px;
@@ -2388,19 +2477,33 @@ a.read:hover{
 		}
 	.banner-bottom-left h4 {
 		  font-size: 16px;
-		  overflow: hidden;
-		  height: 20px;
+  		 margin-bottom: 20px; 
+
+/* The commented out section below caused the title to be cut short on <480 screens */		  
+/*		  overflow: hidden;
+		  height: 20px; */
 		}
 	.banner-bottom-left p {
 		  margin: .5em 0 2em;
-		  overflow: hidden;
+/*		  overflow: hidden;
 		  height: 123px;
+*/		}
+	.banner-bottom-left li {
+		  margin: .5em 0 0;
+
+/*		  overflow: hidden; 
+		  height: 123px; */
 		}
+
 	.get a {
 		  font-size: 11px;
+			padding: .5em 0.2em;
+
 		}
 	.buy a {
 		  font-size: 11px;
+ 			padding: .5em 0.2em;
+
 		}
 	.banner-bottom-left {
 		width: 50%;
@@ -2421,6 +2524,9 @@ a.read:hover{
 		  }
 	.banner-bottom-right1 h4 {
 		  font-size: 16px;
+		}
+	.watch a {
+ 			padding: .5em 1em;
 		}
 	.footer-icon a img {
 		width: 90%;
@@ -2513,9 +2619,10 @@ a.read:hover{
 		height: 11px;
 		width: 11px;
 		}
-	.banner-info p.para1 {
-		height: 33px;
-		font-size: 12px;
+	.banner-info p.para1 {				/* alters the size of banner info text on <320px screen */
+		height: 44px;					/* was originally set to 33px. Had to change to 44px to allow
+										 extra line of text. Also had to alter main banner pic min-height (see below)*/
+		font-size: 11px;
 		}
 	.head-logo a span {
 		background: url(../images/logo.png) no-repeat 6em 0em;
@@ -2576,8 +2683,10 @@ a.read:hover{
 		  right: -20%;
 		}
 	.banner {
-		  min-height: 166px;
-		}
+/*		 sets min height of main pic on screen <320. Was originally set to 166px. Changed to 177 to allow extra line of 
+			text in banner-info. Also had to alter height in banner-info p.para1 (see above) */
+		  min-height: 177px;
+			}
 	.fig1 {
 		display: none;
 		}
@@ -2593,11 +2702,25 @@ a.read:hover{
 	.get {
 		  margin-left: 2em;
 		}
-	.fig {
-		  float: none;
-		 width: 70%;
-  margin: 2em auto 0;
+	.get a {
+		  padding: .5em 1.7em;
 		}
+	.buy a {
+		padding: .5em 1.7em;
+		}
+	.fig {
+		 float: none;
+		 width: 70%;			/* only fig is shown on reduced displays - notfig1 - this is the reduction value
+		 						for media width <320px and sets how much of the area to use.) */ 
+ 		 margin: 2em auto 0;
+		}
+	.fig2 {
+		 float: none;
+		 width: 100%;			/* only fig2 is shown on reduced displays - notfig1 - this is the reduction value
+		 						for media width <320px and sets how much of the area to use.) */ 
+ 		 margin: 2em auto 0;
+		}
+
 	.banner-bottom-left1 {
 		  float: none;
 		  width: 100%;
@@ -2608,11 +2731,16 @@ a.read:hover{
 		  text-align: center;
 		}
 	.banner-bottom-left p {
-		  height: 71px;
+/*		  height: 71px;
+*/		  font-size: 13px;
+		}
+	.banner-bottom-left li {
+/*		  height: 71px;*/
 		  font-size: 13px;
 		}
 	.banner-bottom-left h4 {
 		font-size: 14px;
+		 margin-bottom: 18px; 
 		}
 	.banner-bottom-right1 h4 {
 		  font-size: 14px;
@@ -2647,8 +2775,8 @@ a.read:hover{
 		  padding: 1em 0;
 		}
 	.single-left-text p {
-		  overflow: hidden;
-		  height: 127px;
+/*		  overflow: hidden;
+		  height: 127px; */
 		  line-height: 25px;
 		  margin: .5em 0;
 		  font-size: 13px;
@@ -2657,7 +2785,7 @@ a.read:hover{
 		font-size: 16px;
 		}
 	.single-right-text ul li {
-		  height: 30px;
+		  height: 40px;		  
 		  margin:0;
 		}
 	.single-right-text ul li a {
