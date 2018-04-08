@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gallery>
+
+<!-- time, in milliseconds, to display each picture 5000 = 5 seconds -->
+<transitionDelay>15000</transitionDelay>
+<numberOfButtonsOnStage>4</numberOfButtonsOnStage>
+<numberOfButtonsToShift>4</numberOfButtonsToShift>
+<buttonAlign>left</buttonAlign> <!-- center, left, right -->
+<buttonDisplayDirection>vertical</buttonDisplayDirection>	<!-- horizontal, vertical -->
+
+<backButtonLabel>back</backButtonLabel> 
+<nextButtonLabel>next</nextButtonLabel>
+
+<buttonWidth>212</buttonWidth> <!-- do not change -->
+<buttonHeight>67</buttonHeight> <!-- do not change -->
+<stageWidth>990</stageWidth> <!-- do not change -->
+<buttonBarStartX>25</buttonBarStartX> <!-- do not change -->
+<buttonBarStartY>60</buttonBarStartY><!-- do not change -->
+
+
+
+
+<!-- target can be: _blank, _top, _self, or _parent when testing on your local machine, links will ALWAYS open in a new window, regardless of the setting -->
+	
+	<images>
+	
+<!-- 1st image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-1.jpg</image>
+			<link>index.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>First Topic</title>
+			<shortDescription>Short description goes here Short description goes here Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- 2nd image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-2.jpg</image>
+			<link>about.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Second Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- 3rd image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-3.jpg</image>
+			<link>catalog.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Third Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- 4th image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-4.jpg</image>
+			<link>contact.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Fourth Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+
+<!-- 5th image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-5.jpg</image>
+			<link>contact.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Fifth Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- 6th image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-6.jpg</image>
+			<link>contact.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Sixth Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- 7th image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-7.jpg</image>
+			<link>contact.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Seventh Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- 8th image -->		
+		<pic>
+			<image>Site/themed_images/portfolio-very-large-8.jpg</image>
+			<link>contact.htm</link>
+			<linkLabel></linkLabel>
+			<target>_self</target>
+			<title>Eighth Topic</title>
+			<shortDescription>Short description goes here</shortDescription>
+			<description>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular belief.</description>
+		</pic>
+		
+<!-- copy new <pic>...</pic> here -->
+
+
+
+	
+<!-- do not change anything below this line -->
+		
+	</images>
+</gallery>

@@ -1,0 +1,86 @@
+﻿
+/*logos*/
+#logo						{position:absolute; top:0px; 		left:0px;			width:auto; 	height:auto;}
+#textlogo					{position:absolute; top:20px; 		left:40px;			width:auto; 	height:auto;}
+/*#textlogo					{background:url('../graphics/logo_bg.png') no-repeat left top; width:530px; height:150px;}*/
+#logo_tagline				{position:absolute; top:25px; 		left:10px;			width:auto; 	height:auto;}
+#seo_1						{position:absolute; top:180px; 		left:40px;			width:680px; 	height:auto; text-align:left;/*static componentsbackground:url('../graphics/seo_h1bg.png') no-repeat;*/}
+#seo_2						{position:absolute; top:210px; 		left:40px;			width:680px; 	height:auto;}
+
+/*static components*/
+#news_ticker				{position:absolute; top:250px; 		left:40px; 			text-align:left; background:url('../graphics/latest_news_ticker.png') no-repeat 0px 0px; padding:0px 0px 0px 50px; height:40px; }
+#search						{position:absolute; top:13px; 		right:30px; 			}
+#bookmark					{position:absolute; top:71px; 		right:175px; 			width:auto; 	height:50px;}
+#menu_top					{position:absolute; top:0px; 		left:30px;}
+#twitter-facebook			{position:absolute; top:60px; 		right:0px; width: 212px; text-align:center;}
+#themed_object				{visibility:hidden; display:none; 	position:absolute; 	top:350px; 		left:45px;}
+#get_in_touch				{position:absolute; top:125px; 		right:35px;}
+
+/*animated components*/
+#mp3_component				{visibility:hidden; display:none;	position:absolute; 	top:50px; 		right:40px;			width:300px;	height:90px;}
+#zoom_menu_component		{visibility:hidden; display:none;	position:absolute; 	top:149px; 		right:50px;			width:300px; 	height:auto;		}
+#zoom_menu					{														width:300px;	margin-left:auto; 	margin-right:auto;}
+
+
+
+
+
+
+
+/* change "PAGE WIDTHS" here */
+#main_wrapper				{width:990px; /*  min-width:990px; - max-width:1680px;  */ padding:0px; margin:0px; border:0px;}
+
+/* change "HEADER HEIGHT" here */
+.boxm-content				{padding-top:320px; *padding-top:310px; }
+
+/* change "BACKGROUND IMAGE" here */
+#main						{background:url('../themed_images/minimized_themed_bg.jpg') no-repeat center top;}
+
+/* change "FOOTER HEIGHT" here */
+#footer_bg					{margin:0px 0px 0px 0px;}
+#footer						{padding:0px 0px 0px 0px; 		text-align:center;}
+
+/* change "ADVERTISING" here */
+#advertising				{margin:0px 0px 0px 0px; padding:5px; text-align:center;}
+
+/* change "BACK TO TOP" here */
+#backtotop					{margin:0px auto 0px auto; height:40px; width:100px;}
+.back_to_top				{position:absolute; top:-20px; left:0px;}
+
+/* page styles */
+html, body					{margin:0px; 		padding:0px;}
+#main						{width:100%; 		position:absolute; 		top:0px; left:0px; padding:0px; margin:0px;}
+#main_wrapper				{margin-left:auto;	margin-right:auto; 		position:relative;	margin:-1px auto 0px auto; border:1px transparent solid;}
+body						{background:url('../graphics/body_bg.jpg') center top;}
+
+/* header styles - do not edit */
+#header_bg					{width:100%;		position:absolute;		top:0px;	left:0px;	padding:0px;	border:0px; 			}
+#header_wrapper				{width:100%;		position:relative;		margin-left:auto; margin-right:auto;}
+
+/* content styles - do not edit */
+#content1_bg				{width:100%;		padding:0px; 			border:0px;}
+#content1_wr				{margin-left:auto;	margin-right:auto;		position:relative;	padding:0px; 	border:0px;	min-height:350px;	}
+#content1					{margin-left:0px; 	margin-right:0px; 		position:relative; 	padding:0px 0px 0px 0px; border:0px;}
+
+/* footer styles - do not edit */
+#footer_bg					{width:100%;		padding:0px;}
+#footer						{width:100%;		padding:10px 0px 10px 0px;	height:auto;}
+#footer_bg					{background:url('../graphics/footer_bg.jpg') center top;}
+#footer						{background:url('../graphics/footer.jpg') repeat-x  center top;}
+#footercolumns				{width:990px; margin-left:auto; margin-right:auto;}
+
+/* change "TWITTER FEED" here */
+#advertising				{background:url('../graphics/advertising.jpg') no-repeat center top;}
+#advertising_wrapper		{background:url('../graphics/advertising_bg.jpg') center center;}
+
+.clear						{min-width:600px; max-width:990px; margin-left:auto; margin-right:auto; clear:both; height:0px;}
+
+/*HIDDEN COMPONENTS*/
+#secondary_src				{visibility:hidden; display:none;}
+#headerDivssr				{visibility:hidden; display:none;}
+#portfolio_component		{visibility:hidden; display:none;}
+#headerDivportfolio			{visibility:hidden; display:none;}
+#headerDivportfolio img		{visibility:hidden; display:none;}
+#slider_component			{visibility:hidden; display:none;}
+#primary_src				{visibility:hidden; display:none;}
+#mp3_component 				{visibility:hidden; display:none; }

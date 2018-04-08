@@ -1,0 +1,283 @@
+﻿@charset "utf-8";
+/* CSS Document */
+@import "http://fonts.googleapis.com/css?family=Metrophobic|Quattrocento+Sans";
+
+/* Special INSTRUCTIONS for Internet Explorer */
+/* Google fonts are loaded into your WEBSITE visitors web browser directly so no need to embed the fonts */
+/* if you wish to PREVIEW your unpublished web page using Internet Explorer, you'll need to download and install the font into your computer */
+/* to download the special google fonts to preview unpublished pages in Internet Explorer copy the following URL into your web browsers address bar, download the font and install into your computer */
+
+/* 'Headings' = Allan FONT */
+/* 'Body' = Shanti FONT */
+
+
+/* Allan FONT =  	http://www.google.com/webfonts/family?family=Allan#download	*/
+/* Shanti FONT =  	http://www.google.com/webfonts/family?family=Shanti&subset=latin#download 	*/
+
+
+
+
+
+/* TOP MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.ddsmoothmenu ul li a, .ddsmoothmenu ul li a:link, .ddsmoothmenu ul li a:visited, .ddsmoothmenu ul li a:active					
+										{font-size: 20px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.ddsmoothmenu ul li a:hover				{font-size: 20px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+
+/****** SUBMENU */
+.ddsmoothmenu ul li ul li a, .ddsmoothmenu ul li ul li a:link, .ddsmoothmenu ul li ul li a:visited, .ddsmoothmenu ul li ul li a:active				
+										{font-size: 16px;	font-family: 'Quattrocento Sans', Arial, sans-serif;
+}
+.ddsmoothmenu ul li ul li a:hover		{font-size: 16px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NEWS TICKER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.webwidget_slideshow_common, .webwidget_slideshow_common a:link, .webwidget_slideshow_common a:visited, .webwidget_slideshow_common a:active							
+										{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.webwidget_slideshow_common	a:hover		{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.webwidget_slideshow_common h4			{font-size: 20px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SEO H1 AND H2 */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#seo_1 h1, #seo_1 h1 a, #seo_1 h1 p, #seo_1 h1 span								
+										{font-size: 18px;	font-family: 'Metrophobic', arial, serif;}
+#seo_2 h2, #seo_2 h2 a, #seo_2 h2 p, #seo_2 h2 span								
+										{font-size: 13px;	font-family: 'Quattrocento Sans', Arial, sans-serif; line-height:1.4em;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NON FLASH SLIDER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.nivo-caption p, .nivo-caption, .nivo-caption a  						
+										{font-size: 12px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.nivo-caption h3 						{font-size: 24px;	font-family: 'Metrophobic', arial, serif;}
+/****** CONTINUE BUTTON */
+.slider_readmore a:link, .slider_readmore a:visited, .slider_readmore a:active
+										{font-size:20px; 	font-family: 'Metrophobic', arial, serif;}
+.slider_readmore a:hover				{font-size:20px; 	font-family: 'Metrophobic', arial, serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** HORIZONTAL BOXES --------------------- */
+.boxi-content, .boxi-content p, .boxi-content a, .boxi-content a:link, .boxi-content a:visited, .boxi-content a:active
+										{font-size: 12px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.boxi-content a:hover					{font-size: 12px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.boxi-content h3, .boxi-content h3 a:link, .boxi-content h3 a:visited, .boxi-content h3 a:active
+										{font-size: 32px;	font-family: 'Metrophobic', Arial, sans-serif;}
+/****** LEFT/RIGHT COLUMN BOXES --------------------- */
+.box1-content, .box1-content p, .box1-content a:link, .box1-content a:visited, .box1-content a:active
+										{font-size: 12px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.box1-content a:hover					{font-size: 12px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.box1-content h3, .box1-content h3 a:link, .box1-content h3 a:visited, .box1-content h3 a:active
+										{font-size: 20px;	font-family: 'Metrophobic', Arial, sans-serif;}
+/****** CENTER COLUMN BOXES --------------------- */
+.box4-content, .box4-content p, .box4-content a:link, .box4-content a:visited, .box4-content a:active
+										{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.box4-content a:hover					{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.box4-content h3, .box4-content h3 a:link, .box4-content h3 a:visited, .box4-content h3 a:active
+										{font-size: 24px;	font-family: 'Metrophobic', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SIDE MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.ddsmoothmenu-v ul li a, .ddsmoothmenu-v ul li a:link, .ddsmoothmenu-v ul li a:visited, .ddsmoothmenu-v ul li a:active					
+										{font-size: 18px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.ddsmoothmenu-v ul li a:hover			{font-size: 18px;	font-family: 'Quattrocento Sans' 'Quattrocento Sans', Arial, sans-serif;}
+
+/****** SUBMENU */
+.ddsmoothmenu-v ul li ul li a, .ddsmoothmenu-v ul li ul li a:link, .ddsmoothmenu-v ul li ul li a:visited, .ddsmoothmenu-v ul li ul li a:active				
+										{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+.ddsmoothmenu-v ul li ul a:hover 		{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ADVERTISING */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#advertising, #advertising p, #advertising span, #advertising div, #advertising table
+										{font-size: 14px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* FOOTER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#footer h3								{font-size: 26px;	font-family: 'Metrophobic', Arial, sans-serif;}
+#footer									{font-size: 15px;	font-family: 'Quattrocento Sans', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ZOOM MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+div.jqDockLabel 						{font-size: 20px;	font-family: 'Metrophobic', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* PRIVACY PAGE COMPANY NAME */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.redfont 								{font-size: 15px;	font-family: 'Metrophobic', Arial, sans-serif;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* paddings and styles that do not need editing  ----------------------------------------------------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* TOP MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.ddsmoothmenu ul li a, .ddsmoothmenu ul li a:link, .ddsmoothmenu ul li a:visited, .ddsmoothmenu ul li a:active, .ddsmoothmenu ul li a:hover
+										{text-decoration: none;}
+.ddsmoothmenu ul li ul li a, .ddsmoothmenu ul li ul li a:link, .ddsmoothmenu ul li ul li a:visited, .ddsmoothmenu ul li ul li a:active, .ddsmoothmenu ul li ul li a:hover				
+										{text-decoration: none;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NEWS TICKER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.webwidget_slideshow_common, .webwidget_slideshow_common a:link, .webwidget_slideshow_common a:visited, .webwidget_slideshow_common a:active							
+										{text-decoration: none;}
+.webwidget_slideshow_common	a:hover		{text-decoration: underline;}
+.webwidget_slideshow_common h4			{text-decoration: none;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SEO H1 AND H2 */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#seo_1 h1, #seo_1 h1 a, #seo_1 h1 p, #seo_1 h1 span								
+										{padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px; font-style:normal; font-weight:normal; text-align:left;}
+#seo_2 h2, #seo_2 h2 a, #seo_2 h2 p, #seo_2 h2 span	
+										{padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;	font-style:normal; line-height:1.5em; letter-spacing:.05em; font-weight:normal; text-align:justify;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* NON FLASH SLIDER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* slider captions */
+.nivo-caption h3 						{padding:0px 0px 0px 0px; margin:0px;font-style: normal;font-weight: normal;text-decoration: none;text-transform: none;letter-spacing: 0em;word-spacing: 0em;line-height: 1.2; text-align:center;}
+.nivo-caption p 						{padding:5px 5px 20px 5px;margin:0px;font-style: normal;font-weight: normal;text-shadow: 1px 1px 1px #AFFFD5 ;text-decoration: none;text-transform: none;letter-spacing: 0em;word-spacing: 0em;line-height: 1.2; text-align:justify;}
+.slider_readmore a						{text-decoration:none;}
+.slider_readmore a						{padding:0px 0px 0px 0px; }
+.slider_readmore						{text-align:center; font-weight:bold;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOXES */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** HORIZONTAL BOXES --------------------- */
+.boxi-content h3						{font-weight:normal; font-style:normal; text-align:left; text-indent:0px; margin: 0px 0px 0px 0px;}
+.boxi-content, .boxi-content p 								
+										{line-height:1.4em;}
+.boxi-content a:hover					{text-decoration:underline;}
+/****** LEFT/RIGHT COLUMN BOXES --------------------- */
+.box1-content h3						{font-weight:normal; font-style:normal; text-align:left; text-indent:0px; margin: 0px 0px 0px 0px;}
+
+/*.box1-content h3						{background: url('../../graphics/h3_box1_bg.png') no-repeat right 35px; width:210px; min-height:43px;}*/
+.box1-content, .box1-content p			{line-height:1.4em; 	}
+/****** CENTER COLUMN BOXES --------------------- */
+.box4-content h3						{font-weight:normal; font-style:normal; text-align:left; text-indent:0px; margin: 0px 0px 0px 0px;}
+
+/*.box4-content h3						{background: url('../../graphics/h3_bg.png') no-repeat 10px top; height:40px; width:710px;}*/		
+.box4-content, .box4-content p			{line-height:1.4em; 	}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* INFO BOX IMAGE BOXES */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** HORIZONTAL BOXES --------------------- */
+.infocontent a 							{font-size: 16px; 	font-family:Arial, Helvetica, sans-serif; 	text-decoration:none;text-align: left;}
+.infocontent a:hover:after,
+.infocontent a:focus:after				{color: #000000;	text-align: center;	font-weight: normal;		text-shadow: 1px 1px 1px #fff;			margin:0px 0px 7px 0px;	padding:0px 0px 0px 0px;}
+/****** LEFT/RIGHT COLUMN BOXES --------------------- */
+.sidecontent a 							{font-size: 12px; 	font-family:Arial, Helvetica, sans-serif; 	text-decoration:none;}
+.sidecontent a:hover:after,
+.sidecontent a:focus:after				{color: #000000;	text-align: center;	font-weight: normal;	text-shadow: 1px 1px 1px #fff;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* SIDE MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.ddsmoothmenu-v ul li a, .ddsmoothmenu-v ul li a:link, .ddsmoothmenu-v ul li a:visited, .ddsmoothmenu-v ul li a:active, .ddsmoothmenu-v ul li a:hover					
+										{text-decoration: none;}
+/****** SUBMENU */
+.ddsmoothmenu-v ul li ul li a, .ddsmoothmenu-v ul li ul li a:link, .ddsmoothmenu-v ul li ul li a:visited, .ddsmoothmenu-v ul li ul li a:active, .ddsmoothmenu-v ul li ul a:hover				
+										{text-decoration: none;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ADVERTISING */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+#advertising, #advertising p, #advertising span, #advertising div, #advertising table
+										{text-align:center; line-height:1.4em;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* FOOTER */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/****** FOOTER LEFT --------------------- */
+.footer_left h3							{font-weight:normal; text-indent:60px;}
+.footer_left,.footer_left li, .footer_left li a, .footer_left li a:link, .footer_left li a:visited, .footer_left li a:active, .footer_left li a:hover	 					
+										{font-weight:normal; text-decoration:none; line-height:1.4em;}
+/****** FOOTER CENTER --------------------- */
+.footer_center h3						{font-weight:normal; text-indent:60px;}
+.footer_center, .footer_center a, .footer_center a:link, .footer_center a:visited, .footer_center a:active, .footer_center p, .footer_center div, .footer_center span, .footer_center table, .footer_center a:hover 					
+										{font-weight:normal; text-decoration:none; line-height:1.4em;}
+/****** FOOTER RIGHT --------------------- */
+.footer_right h3						{font-weight:normal; text-indent:60px;}
+.footer_right, .footer_right a, .footer_right a:link, .footer_right a:visited, .footer_right a:active, .footer_right p, .footer_right div, .footer_right span, .footer_right table, .footer_right a:hover 					
+										{font-weight:normal; text-decoration:none; line-height:1.4em;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ZOOM MENU */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+div.jqDockLabel 						{font-weight:normal; white-space:nowrap; background-color:transparent;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* PRIVACY PAGE COMPANY NAME */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.redfont 								{font-weight:bold;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */

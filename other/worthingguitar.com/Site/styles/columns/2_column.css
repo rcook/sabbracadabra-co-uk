@@ -1,0 +1,16 @@
+﻿#column1_wrapper	{width:100%; 		border:0px;}
+#left1col			{width:242px;		float:left;  		padding:0px 0px 0px 35px;}
+#left1pad			{width:0px;			float:left;}
+#right1col			{width:0px;			float:right;}
+#right1pad			{width:0px;			float:right;}
+#center1col			{margin-left:282px; margin-right:0px; 	padding:0px 25px 0px 0px;}
+
+#infoleft			{width:330px ;		float:left;  		margin:0px 0px 0px 0px; 		padding:0px 0px 0px 0px;	vertical-align:top; }
+#inforight			{width:330px ;		float:right;		margin:0px 0px 0px 0px; 		padding:0px 0px 0px 0px;	vertical-align:top; }
+#infocenter			{										margin:0px 330px 0px 330px; 	padding:0px 0px 0px 0px;	vertical-align:top; }
+#infocenter			{										*margin:0px 320px0px 320px; 	padding:0px 0px 0px 0px;	vertical-align:top; }
+
+#footerleft			{width:233px ;		float:left;  		margin:0px 0px 0px 0px; 		padding:0px 0px 0px 0px;	vertical-align:top;}
+#footerright		{width:303px ;		float:right;		margin:0px 0px 0px 0px; 		padding:0px 0px 0px 0px;	vertical-align:top;}
+#footercenter		{width:422px ;							margin:0px 303px 0px 243px; 	padding:0px 0px 0px 0px;	vertical-align:top;}
+#footercenter		{										*margin:0px 280px0px 200px; 	padding:0px 0px 0px 0px;	vertical-align:top;}

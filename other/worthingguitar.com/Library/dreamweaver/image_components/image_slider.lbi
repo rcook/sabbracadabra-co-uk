@@ -1,0 +1,84 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div id="slider-wrapper">
+        
+<div id="slider" class="nivoSlider">
+            
+<!-- image 1: --> <a href="#"><img src="../../../Site/themed_images/portfolio-very-large-1.jpg" 		alt="image1" 	title="#image1" /></a>
+<!-- image 2: --> <a href="#"><img src="../../../Site/themed_images/portfolio-very-large-2.jpg" 		alt="image2" 	title="#image2" /></a>
+<!-- image 3: --> <a href="#"><img src="../../../Site/themed_images/portfolio-very-large-3.jpg" 		alt="image3" 	title="#image3" /></a>
+<!-- image 4: --> <a href="#"><img src="../../../Site/themed_images/portfolio-very-large-4.jpg" 		alt="image4" 	title="#image4" /></a>
+                
+
+
+
+
+</div>
+
+<div id="slidercover"></div>
+
+
+			<!-- image 1: title and captions -->                
+            <div id="image1" class="nivo-html-caption">
+            
+            <h3>Heading 1</h3>
+            <p>This is an example of the content for a specific image in the Nivo slider. Lorem ipsum not available so I'll just type a bunch of stuff....</p>
+       			<div class="slider_readmore"><a href="../../../about.htm">Continue</a></div>
+    
+            </div>
+			<!-- /image 1: title and captions -->   
+			
+
+			<!-- image 2: title and captions -->                
+            <div id="image2" class="nivo-html-caption">
+            
+            <h3>Heading 2</h3>
+            <p>This is an example of the content for a specific image in the Nivo slider. Lorem ipsum not available so I'll just type a bunch of stuff....</p>
+            
+       			<div class="slider_readmore"><a href="../../../about.htm">Continue</a></div>
+            
+            </div>
+			<!-- /image 2: title and captions -->     
+			
+
+			<!-- image 3: title and captions -->                
+            <div id="image3" class="nivo-html-caption">
+            
+            <h3>Heading 3</h3>
+            <p>This is an example of the content for a specific image in the Nivo slider. Lorem ipsum not available so I'll just type a bunch of stuff....</p>
+            
+       			<div class="slider_readmore"><a href="../../../about.htm">Continue</a></div>
+            
+            </div>
+			<!-- /image 3: title and captions -->         
+			
+
+			<!-- image 4: title and captions -->                
+            <div id="image4" class="nivo-html-caption">
+            
+            <h3>Heading 4</h3>
+            <p>This is an example of the content for a specific image in the Nivo slider. Lorem ipsum not available so I'll just type a bunch of stuff....</p>
+            
+       			<div class="slider_readmore"><a href="../../../about.htm">Continue</a></div>
+       			
+            </div>
+			<!-- image 5: title and captions -->                
+       
+       
+        </div>
+
+    <script type="text/javascript" src="../../../Site/javascript/jquery.nivo.slider.js"></script>
+
+
+<script type="text/javascript">
+jQuery(window).load(function() {
+  // init the nivo slider on the #slider div
+  jQuery('#slider').nivoSlider();
+
+  // override the hover effects for the bullets
+  jQuery('.nivo-control').hover(
+    function() {jQuery(this).animate({ opacity: 0.50 }, 300, 'linear')},
+    function() {jQuery(this).animate({ opacity: 1.00 }, 100, 'linear')});
+
+});
+</script>

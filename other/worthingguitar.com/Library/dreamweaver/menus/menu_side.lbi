@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<h3>Main Menu:</h3>
+
+
+<ul>
+	<li><a href="../../../index.htm">Home</a></li>
+	<li><a href="../../../contact.htm">Contact</a>
+	  <ul>
+  <li><a href="../../../contact.htm#1">Email</a></li>
+  <li><a href="../../../contact.htm#3">Telephone</a></li>
+  <li><a href="../../../contact.htm#4">Fax</a></li>
+  <li><a href="../../../contact.htm#2">Web Form</a></li>
+  <li><a href="../../../contact.htm#5">Address</a></li> 
+  <li><a href="../../../contact.htm#6">Directions</a></li> 
+ </ul>
+</li>
+	<li><a href="#">Catalog</a><ul>
+		<li><a href="../../../catalog.htm">Category 1</a><ul>
+			<li><a href="../../../catalog.htm">Category 1a</a></li>
+			<li><a href="../../../catalog.htm">Category 1b</a></li>
+			<li><a href="../../../catalog.htm">Category 1c</a></li>
+		</ul>
+		</li>
+		<li><a href="../../../catalog.htm">Category 2</a></li>
+		<li><a href="../../../catalog.htm">Category 3</a></li>
+	</ul>
+	</li>
+	<li><a href="../../../services.htm">Services</a><ul>
+		<li><a href="../../../services.htm#silver">Service 1</a></li>
+		<li><a href="../../../services.htm#gold">Service 2</a></li>
+		<li><a href="../../../services.htm#platinum">Service 3</a></li>
+	</ul>
+	</li>
+	<li><a href="../../../photo_gallery.htm">Photos</a></li>
+	<li><a href="../../../$_blank_primary.htm">Layouts</a><ul>
+		<li><a href="../../../$_vimeo_video.htm">Video Layout</a></li>
+		<li><a href="../../../$_alternate_index_no_flash.htm">Non Flash Primary</a></li>
+		<li><a href="../../../$_alternate_index.htm">Alternate Primary</a></li>
+		<li><a href="../../../$_blank_primary.htm">Primary Layout</a></li>
+		<li><a href="../../../$_blank_secondary.htm">Secondary Layout</a></li>
+		<li><a href="../../../$_blank_minimized.htm">Minimized Layout</a></li>
+		<li><a href="../../../$_blank_minimized2.htm">Minimized Layout 2</a></li>
+		<li><a href="../../../$_1_column.htm">1 Column Layout</a></li>
+		<li><a href="../../../$_2_column.htm">2 Column Left</a></li>
+		<li><a href="../../../$_right_column.htm">2 Column Right</a></li>
+		<li><a href="../../../$_3_column.htm">3 Column Layout</a></li>
+	</ul>
+	</li>
+	<!-- numo vertical links -->
+</ul>
