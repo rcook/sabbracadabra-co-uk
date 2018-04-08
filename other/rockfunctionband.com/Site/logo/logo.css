@@ -1,0 +1,61 @@
+﻿@charset "utf-8";
+/* CSS Document */
+@import "http://fonts.googleapis.com/css?family=Syncopate";
+
+/* Special INSTRUCTIONS for Internet Explorer */
+/* Google fonts are loaded into your WEBSITE visitors web browser directly so no need to embed the fonts */
+/* if you wish to PREVIEW your unpublished web page using Internet Explorer, you'll need to download and install the font into your computer */
+/* to download the special google fonts to preview unpublished pages in Internet Explorer copy the following URL into your web browsers address bar, download the font and install into your computer */
+
+/* 'Website name' = Dancing FONT */
+/* 'Headings' = Cuprum FONT */
+/* 'Body' = Josefin FONT */
+
+
+/* Dancing+Script FONT =  		http://www.google.com/webfonts/family?family=Droid Serif&subset=latin#download 	*/
+/* Cuprum FONT =  	http://www.google.com/webfonts/family?family=Carter One&subset=latin#download	*/
+/* Josefin FONT =  		http://www.google.com/webfonts/family?family=Josefin&subset=latin#download 	*/
+
+/* website name text logo */
+#textlogo, #textlogo a, #textlogo p, #textlogo a:link, #textlogo a:visited, #textlogo a:active, #textlogo a:hover
+										{font-size: 53px;	color: #E85603;		font-family: 'Syncopate', arial, serif;	text-shadow: 1px 1px 1px #000000;}
+/* logo tagline */
+#logo_tagline, #logo_tagline a, #logo_tagline p				
+										{font-size: 13px;	color: #ffffff;		font-family: 'Quattrocento Sans', Arial, sans-serif;	text-shadow: 1px 1px 2px #000000;}
+
+
+/* paddings and margins for positioning */
+#textlogo, #textlogo a, #textlogo p, #textlogo a:link, #textlogo a:visited, #textlogo a:active, #textlogo a:hover 					
+										{padding:80px 0px 0px 0px; 	margin:0px 0px 0px 0px; 	text-align:right; 	text-decoration:none;}
+/* logo tagline */
+#logo_tagline, #logo_tagline a, #logo_tagline p			
+										{padding:30px 0px 0px 0px; 	margin:15px 0px 0px 30px;		text-align:right;}
+
+
+
+.sn-pxg SPAN.pxg-source {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+}
+.sn-pxg U.pxg-set, .sn-pxg U.pxg-set S.s, .sn-pxg U.pxg-set S.s B.b {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: inherit;
+  width:inherit;
+  position: absolute;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+  font-weight:inherit; 
+  padding:0px 0px 0px 0px; /* for left aligned text.. change the right padding to 400px; ... padding:0px 400px 0px 0px;*/
+}
+.sn-pxg U.pxg-set {
+  text-decoration: none;
+  z-index: 1;
+  display:inline-block;
+  position:relative;
+
+}

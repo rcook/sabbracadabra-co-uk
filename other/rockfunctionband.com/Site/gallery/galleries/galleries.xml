@@ -1,0 +1,15 @@
+<galleries>
+
+<!--first album-->
+  <gallery base="live_photos/" file="photos.xml">
+    <sitename>Solid Ball Of Rock - Live!</sitename>
+    <photographer></photographer>
+    <contactinfo></contactinfo>
+    <email></email>
+    <security><![CDATA[]]> </security>
+  </gallery>
+<!--first album-->
+
+    
+  
+</galleries>

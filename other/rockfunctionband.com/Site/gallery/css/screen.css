@@ -1,0 +1,50 @@
+﻿@charset "UTF-8";
+
+/* Select Album and Album1 .... */
+label, select 			{font-size:12px;font-family: "Lucida Grande", "Trebuchet MS", sans-serif;}
+/* Select Album: (font color) */
+#galleries label 		{color:#BFCCFF}
+
+select 					{color: #000; background-color:#cccccc; border: 1px solid #000;}
+/* First Gallery .... */
+.albumName 				{color:#cccccc; font-family: "Lucida Grande", "Trebuchet MS", sans-serif; font-size:30px;}
+
+/* Album 1 menu width */
+#gallerySelect 			{width: 200px; color:#000000; }
+/* Album 1 menu width */
+#galleries 				{margin:0 auto 0px auto; height:auto;}
+/* PREVIOUS | PAUSE | NEXT */
+#controls 				{margin-left:auto; margin-right:auto; width:249px; height:auto;}
+/* PREVIOUS | PAUSE | NEXT */
+#transport 				{margin: 0;padding: 0;list-style: none; font-size:11px;}
+#transport li 			{float: left;margin: 0;padding: 0;text-align: center;}
+#transport a 			{text-decoration: none;text-transform: uppercase;font-size: 100%;font-weight: bold;letter-spacing: 0.1em;margin: 0 1px 0 0;padding: 4px 8px;width: 66px;float: left;display: block;-moz-user-select: none;-khtml-user-select: none;}
+#transport a:link 		{background: #666 url('../images/buttonbg.jpg') repeat-x;color: #000;}
+#transport a:visited 	{background: #666 url('../images/buttonbg.jpg') repeat-x;color: #000;}
+#transport a:hover 		{background: #666 url('../images/buttonbg2.jpg') repeat-x;color: #999;}
+#transport a:focus 		{-moz-user-select: none; -khtml-user-select: none;}
+#transport .playBtn .pauseLabel, #transport .pauseBtn .playLabel {display: none;}
+
+.gallery-select  		{margin-left:auto; margin-right:auto; width:200px; border:0px;}
+#previews				{border:1px #404040 solid;padding: 10px 10px 10px 10px;width:200px;}
+
+#thumbnails 			{width:290px;clear: both; margin-left:auto; margin-right:auto;}
+#thumbnails div 		{position: relative;width: 24px;height: 24px;float: left;margin: 8px;padding: 0;float: left;display:inline;}
+#thumbnails img 		{width: 24px;height: 24px;position: absolute; border: 1px black solid;}
+#picture 				{padding: 0px;width: 500px;}
+#mainImageOutline 		{margin: 0 auto;padding: 0;background-color: #eee;border: solid 1px #000000;padding: 1em; overflow: hidden; width: 0px;height: 0px;}
+#mainImage 				{width: 100%;height: 100%;}
+
+#picture img 			{border: 1px solid #000000; }
+.selectedThumbnail		{border: solid 2px #fc0 !important; }
+.inFocus 				{border: solid 1px #fc0 !important; }
+.jsEnabled #gallery 	{display: none;}
+.gallery_files			{height: 650px;}
+.gallery-title			{height: 40px;}
+.gallery-mainimage		{height: 530px;}
+.gallery-controls		{height: 30px;} 
+.gallery-thumbs			{height: 50px; }
+
+
+
+}

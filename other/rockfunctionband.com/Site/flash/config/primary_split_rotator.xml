@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SplitRotator>
+  <Settings>
+    <imageWidth>500</imageWidth>
+    <imageHeight>280</imageHeight>
+    <segments>7</segments>
+    <tweenTime>1.2</tweenTime>
+    <tweenDelay>0.1</tweenDelay>
+    <tweenType>easeInOutBack</tweenType>
+    <zDistance>0</zDistance>
+    <expand>20</expand>
+    <innerColor>0x111111</innerColor>
+    <textBackground>0x0064C8</textBackground>
+    <shadowDarkness>100</shadowDarkness>
+    <textDistance>25</textDistance>
+    <autoplay>12</autoplay>
+  </Settings>
+  
+  
+  
+  <Image Filename="Site/themed_images/band_04_500x280.jpg">
+    <Text>
+      <headline>Solid Ball Of Rock - Live!</headline>
+      <break>Ӂ</break>
+      <paragraph>Bringing the rock party to YOUR function, wedding or event.</paragraph>
+      <break>Ӂ</break>
+      <inline>Find out more by contacting us through the </inline>
+      <a href="../../contact.htm" target="_blank">Ӂcontact page</a>
+      <paragraph>.</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/band_01_500x280.jpg">
+    <Text>
+      <headline>Rock for everyone!</headline>
+      <break>Ӂ</break>
+      <inline>Huge range of classic, stadium and chart topping rock</inline>
+      <a href="../../playlist.htm" target="_blank">Ӂanthems</a>
+      <paragraph>.</paragraph>
+      <break>Ӂ</break>
+      <inline>Let us know if you have any particular requests to be played at your event. </inline>
+      <a href="../../contact.htm" target="_blank">ӁContact</a>
+      <paragraph>Ӂus here.</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/band_02_500x280.jpg">
+    <Text>
+      <headline>Crowd pleasers</headline>
+      <break>Ӂ</break>
+      <paragraph>Playing rock anthems from some of the biggest bands of the 70s, 80s and 90s</paragraph>
+      <break>Ӂ</break>
+      <inline>Crowd pleasing favourites including songs by Bon Jovi, Whitesnake, Guns N' Roses, Alice Cooper and many more. Check out the</inline>
+      <a href="../../playlist.htm#Example_Playlists" target="_blank">Ӂ example playlists</a>
+      <paragraph>.</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/band_03_500x280.jpg">
+    <Text>
+      <headline>Solid Ball Of Rock - Live!</headline>
+      <break>Ӂ</break>
+      <paragraph>Bringing the rock party to YOUR function, wedding or event.</paragraph>
+      <break>Ӂ</break>
+      <inline>Find out more by contacting us through the </inline>
+      <a href="../../contact.htm" target="_blank">Ӂcontact page</a>
+      <paragraph>.</paragraph>
+    </Text>
+  </Image>
+  
+  
+  <Image Filename="Site/themed_images/band_05_500x280.jpg">
+    <Text>
+      <headline>Lights, sound...action!</headline>
+      <break>Ӂ</break>
+      <paragraph>Full PA and lighting can be provided to ensure you get a complete spectacle!</paragraph>
+      <break>Ӂ</break>
+      <inline>All Solid Ball Of Rock members are top industry professionals. Read about the players on the</inline>
+      <a href="../../aboutus.htm#The_Players" target="_blank">Ӂabout us</a>
+      <paragraph>Ӂpage.</paragraph>
+    </Text>
+  </Image> 
+  
+  <Image Filename="Site/themed_images/band_07_500x280.jpg">
+    <Text>
+      <headline>Booking Now!</headline>
+      <break>Ӂ</break>
+      <paragraph>The band are currently taking bookings for summer 2012 and beyond.</paragraph>
+      <break>Ӂ</break>
+      <inline>Book the band for your event.</inline>
+      <a href="../../contact.htm" target="_blank">Ӂcontact</a>
+      <paragraph>Ӂus now.</paragraph>
+    </Text>
+  </Image>
+  
+  
+  
+  
+</SplitRotator>

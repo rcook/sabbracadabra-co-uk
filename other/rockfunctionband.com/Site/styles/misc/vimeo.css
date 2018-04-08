@@ -1,0 +1,67 @@
+﻿.nivoSlider 						{position:relative;}
+.nivoSlider img 					{position:absolute;top:0px;left:0px;}
+.nivoSlider a.nivo-imageLink 		{position:absolute;top:0px;left:0px;width:100%;height:100%;border:0;padding:0;margin:0;z-index:6;display:none;}
+.nivo-slice 						{display:block;position:absolute;z-index:5;height:100%;}
+.nivo-box 							{display:block;position:absolute;z-index:5;}
+
+/***** caption size and position */
+.nivo-caption 						{position:absolute;	left:-310px;	top:-10px;	width:200px;	z-index:8; vertical-align:top;}
+
+/***** caption background color */
+.nivo-caption 						{background:none;	 /* Overridden by captionOpacity setting */}
+
+/***** basic caption font styles */
+.nivo-caption a 					{display:inline !important;}
+
+/***** advanced caption font styles */
+.nivo-html-caption 					{display:none;}
+
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a 				{position:absolute;top:45%;z-index:9;cursor:pointer;}
+.nivo-prevNav 						{left:0px;}
+.nivo-nextNav 						{right:0px;}
+
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a 					{position:relative;z-index:9;cursor:pointer;}
+.nivo-controlNav a.active 			{font-weight:bold;}
+
+/* Slider background */
+#slider-wrapper 					{background:url('../../graphics/vimeo_bg.png') no-repeat;}
+
+/***** Slider background size */
+#slider-wrapper 					{width:750px;	height:450px;	margin-left:auto;	margin-right:auto;	margin-bottom:0px;}
+
+/***** Slider image positioning */
+#slider-wrapper 					{padding-top:43px;	margin:0px 0px 0px 0px;}
+
+/***** Nivo image size and positioning */
+#slider 							{position:relative;	width:500px;	height:280px;	margin-left:100px;}
+
+/* Slider defaults */
+#slider 							{background:url('../../graphics/loading.gif') no-repeat 50% 50%;}
+#slider img 						{position:absolute;top:0px;left:0px;display:none;}
+#slider a 							{border:0;display:block;}
+
+/***** Nivo control button position */
+.nivo-controlNav 					{position:absolute;	left:0px;	bottom:-45px;}
+
+/* Nivo control button defaults*/
+.nivo-controlNav a 					{border-style: none;border-color: inherit;border-width: 0;display:block;text-indent:-9999px;}
+
+/***** Nivo control button width background spacing */
+.nivo-controlNav a 					{width:30px;	height:20px;	background:url('../../graphics/bullets.png') no-repeat;	margin-right:3px;	float:left;}
+.nivo-controlNav a.active 			{background-position:0 -30px;}
+
+/* Back and Next control defaults */
+.nivo-directionNav a 				{border-style: none;	border-color: inherit;	border-width: 0;	text-indent:-9999px;}
+
+/***** Back and Next control size and background */
+.nivo-directionNav a 				{display:block;	width:30px;	height:30px;	background:url('../../graphics/arrows.png') no-repeat;}
+
+/***** Back and Next control positioning */
+a.nivo-nextNav 						{background-position:-30px 0;	right:10px;}
+a.nivo-prevNav 						{left:5px;}
+.clear 								{clear:both;}
+
+.slider_readmore					{background:url('../../graphics/slider_readmore.png') no-repeat scroll top center; width:172px; height:65px; position:absolute; left:15px; top:160px;  }
+.slider_readmore					{padding:13px 0px 0px 0px;}
